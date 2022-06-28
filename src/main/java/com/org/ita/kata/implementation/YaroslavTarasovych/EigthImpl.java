@@ -2,6 +2,8 @@ package com.org.ita.kata.implementation.YaroslavTarasovych;
 
 import com.org.ita.kata.Eight;
 
+import java.text.DecimalFormat;
+
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
@@ -15,7 +17,12 @@ public class EigthImpl implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+
+        float n=(float)(mpg*1.609344/4.54609188);
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+        String result = decimalFormat.format(n);
+        return Float.valueOf(result);
     }
 
     @Override
