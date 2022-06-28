@@ -14,8 +14,15 @@ public class EigthImpl implements Eight {
     }
 
     @Override
-    public float mpgToKPM(float mpg) {
-        return 0;
+    public float mpgToKPM(float mpg) throws ArithmeticException {
+        final float galonLitres = 4.54609188f;
+        final float mileKilometres = 1.609344f;
+        if (mpg <= 0) {
+            throw new ArithmeticException("Input can't be 0");
+        }
+        float result = (mpg / galonLitres) * mileKilometres;
+        return Float.parseFloat(result % 1 != 0 ? (String.format("%.02f", result))
+                : (String.format("%.01f", result)));
     }
 
     @Override
