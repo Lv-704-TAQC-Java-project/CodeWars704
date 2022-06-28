@@ -2,6 +2,8 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Eight;
 
+import java.text.DecimalFormat;
+
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
@@ -40,7 +42,8 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        DecimalFormat twoDecFormat = new DecimalFormat("#.##");
+        return Double.parseDouble(twoDecFormat.format(number));
     }
 
     @Override
