@@ -5,7 +5,19 @@ import com.org.ita.kata.Six;
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        final int THREE = 3;
+        int current = 1;
+        long result = (long) Math.pow(current, THREE);
+
+        while (result != m) {
+            if (result > m) {
+                current = -1;
+                break;
+            }
+            current++;
+            result += (long) Math.pow(current, THREE);
+        }
+        return current;
     }
 
     @Override
