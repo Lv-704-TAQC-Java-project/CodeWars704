@@ -30,7 +30,6 @@ public class EigthImpl implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-
         return Integer.parseInt(str);
     }
 
