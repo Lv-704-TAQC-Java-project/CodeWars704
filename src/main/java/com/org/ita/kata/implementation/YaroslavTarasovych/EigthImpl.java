@@ -39,20 +39,20 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        BigDecimal factorial=new BigDecimal(String.valueOf(1));
-        if (n==0||n==1) {
+        BigDecimal factorial = new BigDecimal(String.valueOf(1));
+        if (n == 0 || n == 1) {
             return false;
         } else {
-            BigDecimal bi=new BigDecimal(String.valueOf(n-1));
+            BigDecimal bi = new BigDecimal(String.valueOf(n - 1));
             do {
-                factorial=factorial.multiply(BigDecimal.valueOf(bi.intValue()));
-                bi=bi.subtract(BigDecimal.valueOf(1));
-            }while (bi.intValue()!=1);
+                factorial = factorial.multiply(BigDecimal.valueOf(bi.intValue()));
+                bi = bi.subtract(BigDecimal.valueOf(1));
+            }while (bi.intValue() != 1);
         }
-        factorial=new BigDecimal(String.valueOf(factorial.add(BigDecimal.valueOf(1))));
-        BigDecimal numWilson=new BigDecimal(String.valueOf(factorial.divide(BigDecimal.valueOf(n*n),2, RoundingMode.HALF_UP)));
-
-        return factorial.compareTo(numWilson.multiply(BigDecimal.valueOf(n*n)))==0;
+        factorial = new BigDecimal(String.valueOf(factorial.add(BigDecimal.valueOf(1))));
+        BigDecimal numWilson = new BigDecimal(String.valueOf(factorial.divide(BigDecimal.valueOf(n * n),
+                2, RoundingMode.HALF_UP)));
+        return factorial.compareTo(numWilson.multiply(BigDecimal.valueOf(n * n))) == 0;
     }
 
     @Override
