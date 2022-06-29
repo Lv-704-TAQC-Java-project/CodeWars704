@@ -35,7 +35,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        return n == 5.0 || n == 13.0 || n == 563.0;
     }
 
     @Override
