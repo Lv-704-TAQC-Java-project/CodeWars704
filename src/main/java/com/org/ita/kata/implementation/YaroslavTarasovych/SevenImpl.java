@@ -13,18 +13,15 @@ public class SevenImpl implements Seven {
     @Override
     public String seriesSum(int n) {
 
-        if (n==0) return "0.00";
-        if (n==1) return "1.00";
-
-        double sum=1;
-        int a=4;
-
+        if (n == 0) return "0.00";
+        double sum = 1;
+        int a = 4;
         for (int i = 0; i < n-1; i++) {
-            double div=(double) 1/a;
-            sum =sum + div;
-            a+=3;
+            double div = (double) 1 / a;
+            sum = sum + div;
+            a += 3;
         }
-        return String.format("%.2f",sum);
+        return String.format("%.2f", sum);
     }
 
     @Override
@@ -32,8 +29,4 @@ public class SevenImpl implements Seven {
         return 0;
     }
 
-    public static void main(String[] args) {
-        Seven seven=new SevenImpl();
-        System.out.println(seven.seriesSum(4));
-    }
 }
