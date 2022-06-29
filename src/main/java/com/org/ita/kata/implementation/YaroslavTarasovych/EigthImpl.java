@@ -17,12 +17,10 @@ public class EigthImpl implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-
-        float n=(float)(mpg*1.609344/4.54609188);
+        float n = ( float )( mpg*1.609344 / 4.54609188 );
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
-        String result = decimalFormat.format(n);
-        return Float.valueOf(result);
+        String result = decimalFormat.format( n );
+        return Float.valueOf( result );
     }
 
     @Override
