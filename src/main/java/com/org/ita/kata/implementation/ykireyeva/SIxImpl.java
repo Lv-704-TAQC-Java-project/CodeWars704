@@ -2,13 +2,15 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Six;
 
+import java.util.regex.Pattern;
+
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
         long sum = 0L;
         long n = 0;
-        while (sum != m){
-            sum += Math.pow(1+n, 3);
+        while (sum != m) {
+            sum += Math.pow(1 + n, 3);
             n++;
         }
         return n;
@@ -41,6 +43,22 @@ public class SIxImpl implements Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        StringBuilder result = new StringBuilder();
+
+        if (lstOfArt.length == 0) {
+            return "";
+        }
+
+        for (String letter : lstOf1stLetter) {
+            int amount = 0;
+            for (String art : lstOfArt) {
+                if (Pattern.compile("^" + letter).matcher(art).find()) {
+                    amount += Integer.parseInt(art.replaceAll("[A-Z]", "").trim());
+                }
+            }
+            result.append(String.format("(%s : %d) - ", letter, amount));
+
+        }
+        return result.toString().trim().replaceAll("\\s.$", "");
     }
 }
