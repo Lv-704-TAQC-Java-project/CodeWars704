@@ -54,8 +54,4 @@ public class SIxImpl implements Six {
         return null;
     }
 
-    public static void main(String[] args) {
-        SIxImpl n=new SIxImpl();
-        System.out.println(n.findNb(4183059834009L));
-    }
 }
