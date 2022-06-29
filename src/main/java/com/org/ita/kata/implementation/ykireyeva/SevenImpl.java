@@ -2,6 +2,8 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Seven;
 
+import java.text.DecimalFormat;
+
 public class SevenImpl implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
@@ -10,7 +12,13 @@ public class SevenImpl implements Seven {
 
     @Override
     public String seriesSum(int n) {
-        return null;
+        double divisor = 1;
+        double sum = 0;
+        for (int i = 0; i < n; i++){
+            sum += 1 / divisor;
+            divisor +=3;
+        }
+        return new DecimalFormat("#.00").format(sum);
     }
 
     @Override
