@@ -5,7 +5,13 @@ import com.org.ita.kata.Six;
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long sqrt1 = (long) Math.sqrt(m);
+        if (sqrt1 * sqrt1 == m) {
+            long n = (long) Math.sqrt(2 * sqrt1);
+            if ((n * (n + 1) == 2 * sqrt1)) {
+                return n;
+            } else return -1;
+        } else return -1;
     }
 
     @Override
