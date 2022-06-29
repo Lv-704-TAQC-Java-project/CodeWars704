@@ -22,24 +22,9 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        int[] outputArray = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            int num = array[i];
-            if (num % Math.sqrt(num) == 0) {
-                outputArray[i] = (int) Math.sqrt(num);
-            } else {
-                outputArray[i] = num * num;
-            }
-        }
-        return outputArray;
-
-        /*
-         * Implementation with Stream API
-         *
-         * return Arrays.stream(array)
-         *       .map(x -> (x % Math.sqrt(x) == 0) ? (int) Math.sqrt(x) : x * x)
-         *       .toArray();
-         */
+        return Arrays.stream(array)
+                .map(x -> (x % Math.sqrt(x) == 0) ? (int) Math.sqrt(x) : x * x)
+                .toArray();
     }
 
         @Override
