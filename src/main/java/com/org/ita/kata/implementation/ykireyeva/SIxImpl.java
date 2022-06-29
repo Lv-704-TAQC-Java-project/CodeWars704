@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Six;
+
 import java.text.DecimalFormat;
 
 public class SIxImpl implements Six {
@@ -8,8 +9,8 @@ public class SIxImpl implements Six {
     public long findNb(long m) {
         long sum = 0L;
         long n = 0;
-        while (sum != m){
-            sum += Math.pow(1+n, 3);
+        while (sum != m) {
+            sum += Math.pow(1 + n, 3);
             n++;
         }
         return n;
@@ -25,7 +26,7 @@ public class SIxImpl implements Six {
         double totalExpense = 0;
         double averageExpense;
 
-        for (int i = 1; i < lines.length; i++){
+        for (int i = 1; i < lines.length; i++) {
             String line = lines[i].replaceAll(regex, "");
             String[] elements = line.split("\\s+");
             actualBalance -= Double.parseDouble(elements[2]);
@@ -34,7 +35,7 @@ public class SIxImpl implements Six {
                     elements[0], elements[1], elements[2], new DecimalFormat("#.00").format(actualBalance)));
         }
 
-        averageExpense = totalExpense/(lines.length - 1);
+        averageExpense = totalExpense / (lines.length - 1);
         resultBook.append(String.format("Total expense  %s\\r\\nAverage expense  %s",
                 new DecimalFormat("0.00").format(totalExpense),
                 new DecimalFormat("0.00").format(averageExpense)));
