@@ -42,8 +42,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        DecimalFormat twoDecFormat = new DecimalFormat("#.##");
-        return Double.parseDouble(twoDecFormat.format(number));
+        return Double.parseDouble(new DecimalFormat("#.##").format(number));
     }
 
     @Override
