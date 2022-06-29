@@ -44,7 +44,7 @@ public class EigthImpl implements Eight {
         return ((fact + 1) / (n * n)) % 1 == 0;
     }
 
-    public static long findFactorial(double n) {
+    private static long findFactorial(double n) {
         long factorial = 1;
         for (int i = 2; i <= n; i++) {
             factorial *= i;
