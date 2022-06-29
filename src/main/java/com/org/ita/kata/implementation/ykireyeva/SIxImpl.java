@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Six;
+import java.text.DecimalFormat;
 
 public class SIxImpl implements Six {
     @Override
@@ -16,7 +17,29 @@ public class SIxImpl implements Six {
 
     @Override
     public String balance(String book) {
-        return null;
+        String[] lines = book.split("\\r\\n|\\n");
+        String regex = "[!:=;?,{}]";
+        StringBuilder resultBook = new StringBuilder("Original Balance: "
+                + lines[0].replaceAll(regex, "") + "\\r\\n");
+        double actualBalance = Double.parseDouble(lines[0].replaceAll(regex, ""));
+        double totalExpense = 0;
+        double averageExpense;
+
+        for (int i = 1; i < lines.length; i++){
+            String line = lines[i].replaceAll(regex, "");
+            String[] elements = line.split("\\s+");
+            actualBalance -= Double.parseDouble(elements[2]);
+            totalExpense += Double.parseDouble(elements[2]);
+            resultBook.append(String.format("%s %s %s Balance %s\\r\\n",
+                    elements[0], elements[1], elements[2], new DecimalFormat("#.00").format(actualBalance)));
+        }
+
+        averageExpense = totalExpense/(lines.length - 1);
+        resultBook.append(String.format("Total expense  %s\\r\\nAverage expense  %s",
+                new DecimalFormat("0.00").format(totalExpense),
+                new DecimalFormat("0.00").format(averageExpense)));
+
+        return resultBook.toString();
     }
 
     @Override
