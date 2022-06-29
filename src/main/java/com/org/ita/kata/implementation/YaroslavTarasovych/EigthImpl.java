@@ -20,14 +20,13 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        int[] newArray=new int[array.length];
-
+        int[] newArray = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            int num=(int)Math.sqrt(array[i]);
-            if (Math.pow(num,2)==array[i]) {
-                newArray[i]=(int)Math.sqrt(array[i]);
+            int num = (int) Math.sqrt(array[i]);
+            if ( Math.pow(num,2) == array[i]) {
+                newArray[i] = (int) Math.sqrt(array[i]);
             } else {
-                newArray[i]= (int) Math.pow(array[i],2);
+                newArray[i] = (int) Math.pow(array[i], 2);
             }
         }
 
