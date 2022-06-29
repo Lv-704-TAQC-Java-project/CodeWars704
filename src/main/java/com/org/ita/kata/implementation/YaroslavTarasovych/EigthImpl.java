@@ -5,7 +5,8 @@ import com.org.ita.kata.Eight;
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
-        return 0;
+        int result = (int) Math.floor(time * 0.5);
+        return result;
     }
 
     @Override
