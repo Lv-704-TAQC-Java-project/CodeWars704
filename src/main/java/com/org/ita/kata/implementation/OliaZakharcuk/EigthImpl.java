@@ -19,7 +19,16 @@ public class EigthImpl implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+
+        final float GAL_PER_L = 4.54609188f;
+        final float MILE_PER_KM = 1.609344f;
+
+        float KM_PER_L = (mpg / GAL_PER_L) * MILE_PER_KM;
+
+        String result = KM_PER_L % 1 != 0 ? (String.format("%.02f", KM_PER_L))
+                : (String.format("%.01f", KM_PER_L));
+
+        return Float.parseFloat(result);
     }
 
     @Override
