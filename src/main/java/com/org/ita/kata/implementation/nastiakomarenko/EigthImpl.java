@@ -15,7 +15,20 @@ public class EigthImpl implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        //const
+        double gallon = 4.54609188; // in litres
+        double mile = 1.609344; // in km
+//parameters
+
+        double res = mpg*(mile/gallon);
+        if(res%10==0){
+            return Math.round(res);
+        }else {
+            double scale = Math.pow(10, 2);
+            double result = Math.ceil(res * scale) / scale;
+            return (float) result;
+        }
+
     }
 
     @Override
