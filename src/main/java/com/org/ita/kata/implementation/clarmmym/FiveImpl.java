@@ -3,6 +3,7 @@ package com.org.ita.kata.implementation.clarmmym;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class FiveImpl implements Five {
     @Override
@@ -22,7 +23,21 @@ public class FiveImpl implements Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        final int PERIMETER_CONST = 4;
+        int result = PERIMETER_CONST * Arrays.stream((fib(n.add(BigInteger.valueOf(1))))).sum();
+        return BigInteger.valueOf(result);
+    }
+
+    private int[] fib(BigInteger n) {
+        int[] f = new int[n.add(BigInteger.valueOf(2)).intValue()];
+
+        f[0] = 0;
+        f[1] = 1;
+
+        for (int i = 2; i <= n.intValue(); i++) {
+            f[i] = f[i - 1] + f[i - 2];
+        }
+        return f;
     }
 
     @Override
