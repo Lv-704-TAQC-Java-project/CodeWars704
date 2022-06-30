@@ -3,6 +3,7 @@ package com.org.ita.kata.implementation.ykireyeva;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
+import java.util.stream.LongStream;
 
 public class FiveImpl implements Five {
     @Override
@@ -17,7 +18,17 @@ public class FiveImpl implements Five {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        int k = 1;
+        int numOfZeros = 0;
+        long fact = LongStream.rangeClosed(1, n)
+                .reduce(1, (x, y) -> x * y);
+        double rest = fact % Math.pow(5, k);
+        while (rest == 0) {
+            fact /= Math.pow(5, k);
+            rest = fact % Math.pow(5, k);
+            numOfZeros++;
+        }
+        return numOfZeros;
     }
 
     @Override
