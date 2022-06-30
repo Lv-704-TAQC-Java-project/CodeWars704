@@ -8,7 +8,6 @@ public class EigthImpl implements Eight {
         time = 6.7;
         double lPerhour = time * 0.5;
         return (int) Math.floor(lPerhour);
-
     }
 
     @Override
