@@ -35,8 +35,18 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
-    }
+            return (factorial(n - 1) + 1) % (n * n) == 0;
+        }
+
+        public static double factorial(double number) {
+            if (number <= 1) {
+                return 1;
+            } else {
+                return number * factorial(number - 1);
+            }
+
+        }
+
 
     @Override
     public double twoDecimalPlaces(double number) {
