@@ -2,6 +2,8 @@ package com.org.ita.kata.implementation.YaroslavTarasovych;
 
 import com.org.ita.kata.Six;
 
+import java.util.StringJoiner;
+
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
@@ -35,6 +37,18 @@ public class SIxImpl implements Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        if (lstOfArt == null || lstOfArt.length == 0) return "";
+        int[] sum = new int[lstOf1stLetter.length];
+        for (int i = 0; i < lstOfArt.length; i++) {
+            String[] line = lstOfArt[i].split(" ");
+            for (int j = 0; j < lstOf1stLetter.length; j++) {
+                if (line[0].charAt(0) == lstOf1stLetter[j].charAt(0)) sum[j] += Integer.parseInt(line[1]);
+            }
+        }
+        StringJoiner joiner = new StringJoiner(" - ", "", "");
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
+            joiner.add("(" + lstOf1stLetter[i] + " : " + sum[i] + ")");
+        }
+        return joiner.toString();
     }
 }
