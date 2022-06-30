@@ -27,7 +27,32 @@ public class FiveImpl implements Five {
 
     @Override
     public double solveSum(double m) {
-        return 0;
+        double floor = 0;
+        double top = 1;
+        double x = (top - floor) / 2 + floor;
+        double exp = 1e-12;
+
+        double actual = f(x);
+        while (Math.abs(m - actual) > exp) {
+            if (m> actual) {
+                floor = x;
+            } else {
+                top = x;
+            }
+            x = floor + (top - floor) / 2;
+            actual = f(x);
+        }
+        return x;
+    }
+
+    private double f(double x) {
+        int U = 1_000_000;
+        double sum = 0;
+
+        for (int i = 0; i < U; i++) {
+            sum += i * Math.pow(x, i);
+        }
+        return sum;
     }
 
     @Override
