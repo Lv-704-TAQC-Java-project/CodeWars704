@@ -5,7 +5,20 @@ import com.org.ita.kata.Six;
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
-        return 0;
+
+        final int CUBE = 3;
+        int n = 1;
+        long tempSum = 1;
+
+        while (tempSum != m) {
+            if (tempSum > m) {
+                n = -1;
+                break;
+            }
+            n++;
+            tempSum += (long) Math.pow(n, CUBE);
+        }
+        return n;
     }
 
     @Override
