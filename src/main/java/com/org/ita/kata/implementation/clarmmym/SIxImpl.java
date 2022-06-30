@@ -35,6 +35,21 @@ public class SIxImpl implements Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        StringBuilder result = new StringBuilder();
+
+        for (var firstLetter : lstOf1stLetter) {
+            int temp = 0;
+            for (var dataOfBook : lstOfArt) {
+                if (firstLetter.charAt(0) == (dataOfBook.charAt(0))) {
+                    System.out.println(Integer.parseInt(dataOfBook.split(" ")[1]));
+                    temp += Integer.parseInt(dataOfBook.split(" ")[1]);
+                }
+            }
+            result.append("(").append(firstLetter).append(" : ").append(temp).append(")");
+            if (!firstLetter.equals(lstOf1stLetter[lstOf1stLetter.length - 1])) {
+                result.append(" - ");
+            }
+        }
+        return result.toString();
     }
 }
