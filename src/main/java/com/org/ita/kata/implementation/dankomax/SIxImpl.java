@@ -2,8 +2,6 @@ package com.org.ita.kata.implementation.dankomax;
 
 import com.org.ita.kata.Six;
 import java.util.Arrays;
-import java.util.Optional;
-
 
 public class SIxImpl implements Six {
     @Override
@@ -23,28 +21,27 @@ public class SIxImpl implements Six {
 
     @Override
     public double mean(String town, String strng) {
-        Optional townData = Arrays.stream(strng.split("\n")).filter(t -> t.contains(town + ":")).findFirst();
-        if (townData.isPresent()) {
-            String[] townRainfallArr = townData.get().toString().split(":")[1].split(",");
-            double townRainfallTotal = Arrays.stream(townRainfallArr).mapToDouble(month -> Double.parseDouble(month.split(" ")[1])).sum();
-
-            return townRainfallTotal / townRainfallArr.length;
-        }
-
-        return -1.0;
+        return Arrays.stream(townRainfallArr(town, strng))
+                .mapToDouble(month -> Double.parseDouble(month.split(" ")[1]))
+                .average()
+                .orElse(-1.0);
     }
 
     @Override
     public double variance(String town, String strng) {
-        Optional townData = Arrays.stream(strng.split("\n")).filter(t -> t.contains(town + ":")).findFirst();
-        if (townData.isPresent()) {
-            String[] townRainfallArr = townData.get().toString().split(":")[1].split(",");
-            double townRainfallTotalDeviation = Arrays.stream(townRainfallArr).mapToDouble(month -> Math.pow(Double.parseDouble(month.split(" ")[1]) - mean(town, strng), 2)).sum();
+        return Arrays.stream(townRainfallArr(town, strng))
+                .mapToDouble(month -> Math.pow(Double.parseDouble(month.split(" ")[1]) - mean(town, strng), 2))
+                .average()
+                .orElse(-1.0);
+    }
 
-            return townRainfallTotalDeviation / townRainfallArr.length;
-        }
-
-        return -1.0;
+    private static String[] townRainfallArr(String town, String strng) {
+        return Arrays.stream(strng.split("\n"))
+                .filter(t -> t.contains(town + ":"))
+                .findFirst()
+                .orElse(":,")
+                .split(":")[1]
+                .split(",");
     }
 
     @Override
