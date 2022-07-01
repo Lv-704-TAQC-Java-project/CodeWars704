@@ -38,9 +38,4 @@ public class FiveImpl implements Five {
     public long[] smallest(long n) {
         return new long[0];
     }
-
-    public static void main(String[] args) {
-        Five five=new FiveImpl();
-        System.out.println(five.zeros(100));
-    }
 }
