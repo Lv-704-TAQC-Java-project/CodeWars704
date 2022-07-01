@@ -43,10 +43,6 @@ public class SIxImpl implements Six {
         int lost = 0;
         int rank = 0;
 
-        if (Objects.equals(toFind, "")) {
-            return "";
-        }
-
         String[] allRecords = resultSheet.split(",");
         List<String> teamRecords = new ArrayList<>();
         for (String allRecord : allRecords) {
@@ -94,13 +90,12 @@ public class SIxImpl implements Six {
             }
         }
 
-        if ((won == 0) & (draws == 0) & (lost == 0)) {
+        if ((won == 0) & (draws == 0) & (lost == 0) & toFind != "") {
             return toFind + ":This team didn't play!";
         }
 
-        return toFind + ":W=" + won + ";D=" + draws
+        return toFind == "" ? "" : toFind + ":W=" + won + ";D=" + draws
                 + ";L=" + lost + ";Scored=" + pointsScored + ";Conceded=" + pointsConceded + ";Points=" + rank;
-
     }
 
     @Override
