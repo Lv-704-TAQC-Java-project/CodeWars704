@@ -4,7 +4,7 @@ import com.org.ita.kata.Seven;
 
 public class SevenImpl implements Seven {
     @Override
-    public long (double[] array, double navg) {
+    public long newAvg(double[] array, double navg) {
 
          array  =new double[] {14, 30, 5, 7, 9, 11, 15};
          navg = 92;
