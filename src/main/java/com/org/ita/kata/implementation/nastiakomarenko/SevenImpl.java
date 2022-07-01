@@ -10,8 +10,19 @@ public class SevenImpl implements Seven {
 
     @Override
     public String seriesSum(int n) {
-        return null;
+
+        Double sum = 0.00;
+        if (n == 0) {
+            return String.valueOf(sum);
+        } else {
+            for (Integer i = 0; i < n; i++) {
+                sum += Double.valueOf(1) / Double.valueOf(1 + i * 3);
+            }
+            return String.format("%.2f", sum);
+        }
     }
+
+
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
