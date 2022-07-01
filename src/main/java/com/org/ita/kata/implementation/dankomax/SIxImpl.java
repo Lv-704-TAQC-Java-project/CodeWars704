@@ -1,6 +1,8 @@
 package com.org.ita.kata.implementation.dankomax;
 
 import com.org.ita.kata.Six;
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 public class SIxImpl implements Six {
     @Override
@@ -15,7 +17,11 @@ public class SIxImpl implements Six {
 
     @Override
     public double f(double x) {
-        return 0;
+        return BigDecimal.ONE
+                .add(BigDecimal.valueOf(x))
+                .sqrt(MathContext.DECIMAL128)
+                .subtract(BigDecimal.ONE)
+                .doubleValue();
     }
 
     @Override
