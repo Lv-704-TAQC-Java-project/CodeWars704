@@ -22,7 +22,18 @@ public class FiveImpl implements Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+
+        BigInteger firstElem = BigInteger.valueOf(0);
+        BigInteger secondElem = BigInteger.valueOf(1);
+        BigInteger sum = BigInteger.valueOf(0);
+
+        for (BigInteger j = BigInteger.valueOf(0); j.compareTo(n.add(BigInteger.valueOf(1))) < 0; j = j.add(BigInteger.valueOf(1))) {
+            sum = sum.add(secondElem);
+            BigInteger temp = firstElem;
+            firstElem = secondElem;
+            secondElem = secondElem.add(temp);
+        }
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     @Override
