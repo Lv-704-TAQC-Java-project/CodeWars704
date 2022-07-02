@@ -1,7 +1,10 @@
-public interface Eight {
-public class KeepHydrated  {
-  public int Liters(double time)  {
-    return  (int)Math.floor(time*0.5);
+package com.org.ita.kata.implementation.avlrvn;
+import com.org.ita.kata.Eight;
+public class EigthImpl implements Eight {
+    @Override
+  public class KeepHydrated {
+  public int Liters(double time) {
+    return (int)Math.floor(time*0.5);
   }
 }
 }
