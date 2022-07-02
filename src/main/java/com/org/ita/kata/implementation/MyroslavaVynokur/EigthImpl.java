@@ -4,7 +4,7 @@ import com.org.ita.kata.Eight;
 
 public class EigthImpl implements Eight {
     @Override
-    public int liters(double time) throws ArithmeticException{
+    public int liters(double time) {
         if (time <= 0) {
             throw new ArithmeticException("time can not be 0");
         }
