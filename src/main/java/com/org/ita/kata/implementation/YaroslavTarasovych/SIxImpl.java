@@ -3,6 +3,11 @@ package com.org.ita.kata.implementation.YaroslavTarasovych;
 import com.org.ita.kata.Six;
 
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.text.DecimalFormat;
+import java.util.Locale;
+import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.StringJoiner;
@@ -21,7 +26,12 @@ public class SIxImpl implements Six {
 
     @Override
     public double f(double x) {
-        return 0;
+        BigDecimal bigDecimal = new BigDecimal(x);
+        bigDecimal = bigDecimal.add(BigDecimal.valueOf(1));
+        MathContext mc = new MathContext(50);
+        bigDecimal = bigDecimal.sqrt(mc);
+        bigDecimal = bigDecimal.subtract(BigDecimal.valueOf(1));
+        return Double.parseDouble(String.valueOf(bigDecimal));
     }
 
     @Override
