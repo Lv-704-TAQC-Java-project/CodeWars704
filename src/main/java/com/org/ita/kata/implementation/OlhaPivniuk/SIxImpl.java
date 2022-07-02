@@ -1,17 +1,11 @@
-package com.org.ita.kata.implementation.ykireyeva;
+package com.org.ita.kata.implementation.OlhaPivniuk;
 
 import com.org.ita.kata.Six;
 
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
-        long sum = 0L;
-        long n = 0;
-        while (sum != m){
-            sum += Math.pow(1+n, 3);
-            n++;
-        }
-        return n;
+        return 0;
     }
 
     @Override

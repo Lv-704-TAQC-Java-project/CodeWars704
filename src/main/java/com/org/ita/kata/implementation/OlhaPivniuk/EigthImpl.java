@@ -1,8 +1,6 @@
-package com.org.ita.kata.implementation.ykireyeva;
+package com.org.ita.kata.implementation.OlhaPivniuk;
 
 import com.org.ita.kata.Eight;
-
-import java.util.Arrays;
 
 public class EigthImpl implements Eight {
     @Override
@@ -12,7 +10,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return length * width * height;
+        return 0;
     }
 
     @Override
@@ -27,26 +25,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        int[] outputArray = new int[2];
-        int countOfPositives = 0;
-        int sumOfNegatives = 0;
-
-        if (input == null || input.length == 0) {
-            return new int[0];
-        }
-
-        for (int i : input) {
-            if (i > 0) {
-                countOfPositives++;
-            } else {
-                sumOfNegatives += i;
-            }
-        }
-
-        outputArray[0] = countOfPositives;
-        outputArray[1] = sumOfNegatives;
-
-        return outputArray;
+        return new int[0];
     }
 
     @Override
@@ -66,8 +45,6 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return Arrays.stream(numbers)
-                .filter(x -> x % divider == 0)
-                .toArray();
+        return new int[0];
     }
 }
