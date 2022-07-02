@@ -1,4 +1,4 @@
-package com.org.ita.kata.implementation.MyroslavaVynokur;
+package com.org.ita.kata.implementation.avlrvn;
 
 import com.org.ita.kata.Five;
 
@@ -17,12 +17,7 @@ public class FiveImpl implements Five {
 
     @Override
     public int zeros(int n) {
-        BigInteger result = BigInteger.valueOf(1);
-        for (int i = 1; i <= n; i++) {
-            result = result.multiply(BigInteger.valueOf(i));
-        }
-        return String.valueOf(result).chars()
-                .reduce(0, (count, ch) -> (ch == '0') ? count + 1 : 0);
+        return 0;
     }
 
     @Override
