@@ -13,5 +13,4 @@ public class EigthImpl implements Eight {
     }
     return array;
   }
-@Override
 }
