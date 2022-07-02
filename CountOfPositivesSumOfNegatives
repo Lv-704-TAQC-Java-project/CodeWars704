@@ -11,5 +11,4 @@
        }
        return new int[] {count, sum};
     }
-    @Override
     }
