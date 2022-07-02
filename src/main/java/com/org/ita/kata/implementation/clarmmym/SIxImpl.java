@@ -2,10 +2,6 @@ package com.org.ita.kata.implementation.clarmmym;
 
 import com.org.ita.kata.Six;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class SIxImpl implements Six {
     @Override
