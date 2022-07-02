@@ -2,6 +2,11 @@ package com.org.ita.kata.implementation.MyroslavaVynokur;
 
 import com.org.ita.kata.Eight;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
@@ -20,31 +25,65 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        for (int i = 0; i < array.length; i++) {
+            if (Math.sqrt(array[i]) % 1 == 0) {
+                array[i] = (int) Math.sqrt(array[i]);
+            } else {
+                array[i] = (int) Math.pow(array[i], 2);
+            }
+        }
+        return array;
     }
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        if (input == null || input.length == 0) {
+            return new int[]{};
+        }
+        int amountOfPositive = 0;
+        int sumOfNegative = 0;
+        for (int i : input) {
+            if (i > 0) {
+                amountOfPositive++;
+            } else {
+                sumOfNegative += i;
+            }
+        }
+        return new int[]{amountOfPositive, sumOfNegative};
     }
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str);
     }
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        boolean amIWilson = true;
+        for (int k = 2; k <= n / 2; k++) {
+            double end = n % k;
+            if (end == 0) {
+                amIWilson = false;
+                break;
+            }
+        }
+        return n > 1 && (amIWilson);
     }
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        final DecimalFormat df = new DecimalFormat("0.00");
+        return Double.parseDouble(df.format(number));
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        List<Integer> arrayList = new ArrayList<>();
+        for (int number : numbers) {
+            if (number % divider == 0) {
+                arrayList.add(number);
+            }
+        }
+        return arrayList.stream().mapToInt(Integer::intValue).toArray();
     }
 }
