@@ -1,7 +1,12 @@
+package com.org.ita.kata.implementation.avlrvn;
+import com.org.ita.kata.Eight;
+public class EigthImpl implements Eight {
+@Override
 public interface Eight {
 public class Kata {
   public static double getVolumeOfCuboid(final double length, final double width, final double height) {
     return length * width * height;
   }
+}
 }
 }
