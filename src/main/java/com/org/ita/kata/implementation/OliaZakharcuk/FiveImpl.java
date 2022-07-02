@@ -17,7 +17,17 @@ public class FiveImpl implements Five {
 
     @Override
     public int zeros(int n) {
-        return 0;
+
+        int count = 0;
+        double kMax = customLog(n);
+        for(int k = 1; k < kMax; k++){
+            count = count + (int)(n / Math.pow(5, k));
+        }
+        return count;
+    }
+    private static double customLog(double logNumber) {
+        double base = 5;
+        return Math.log(logNumber) / Math.log(base);
     }
 
     @Override
