@@ -3,6 +3,7 @@ package com.org.ita.kata.implementation.ykireyeva;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class FiveImpl implements Five {
     @Override
@@ -12,7 +13,40 @@ public class FiveImpl implements Five {
 
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long[] arr = new long[2];
+        outer:
+        for (long i = m; i <= i + g && i < n; i++) {
+            if (checkForPrime(i) && checkForPrime(i + g)) {
+                for (long j = i + 1; j < i + g; j++) {
+                    if (checkForPrime(j) && checkForPrime(j + g)) {
+                        return null;
+                    }
+                    if (checkForPrime(j)) {
+                        i = i + g - 1;
+                        continue outer;
+                    }
+                }
+                arr[0] = i;
+                arr[1] = i + g;
+                return arr;
+            }
+        }
+        return null;
+    }
+
+    private boolean checkForPrime(long inputNumber) {
+        boolean isItPrime = true;
+        if (inputNumber <= 1) {
+            isItPrime = false;
+        } else {
+            for (int i = 2; i <= inputNumber / 2; i++) {
+                if ((inputNumber % i) == 0) {
+                    isItPrime = false;
+                    break;
+                }
+            }
+        }
+        return isItPrime;
     }
 
     @Override
