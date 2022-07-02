@@ -2,8 +2,10 @@ package com.org.ita.kata.implementation.MyroslavaVynokur;
 
 import com.org.ita.kata.Eight;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class EigthImpl implements Eight {
     @Override
@@ -43,7 +45,8 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        final DecimalFormat df = new DecimalFormat("0.00");
+        return Double.parseDouble(df.format(number));
     }
 
     @Override
