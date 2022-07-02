@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.OliaZakharcuk;
 
 import com.org.ita.kata.Six;
+import java.math.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +18,15 @@ public class SIxImpl implements Six {
 
     @Override
     public double f(double x) {
-        return 0;
+
+        MathContext mc = new MathContext(100);
+        BigDecimal bigDecimal = new BigDecimal(x);
+        BigDecimal bigDecimalOne = new BigDecimal(1);
+        bigDecimal = bigDecimal.add(bigDecimalOne);
+        bigDecimal = bigDecimal.sqrt(mc);
+        bigDecimal = bigDecimal.subtract(bigDecimalOne);
+
+        return bigDecimal.doubleValue();
     }
 
     @Override
