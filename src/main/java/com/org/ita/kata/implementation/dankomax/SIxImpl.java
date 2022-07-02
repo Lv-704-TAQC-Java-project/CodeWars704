@@ -9,7 +9,15 @@ import java.util.Arrays;
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long numberOfLevels = 0;
+        long totalVolume = 0;
+
+        while (totalVolume < m) {
+            numberOfLevels++;
+            totalVolume += (long)Math.pow(numberOfLevels, 3);
+        }
+
+        return totalVolume == m ? numberOfLevels : -1;
     }
 
     @Override
