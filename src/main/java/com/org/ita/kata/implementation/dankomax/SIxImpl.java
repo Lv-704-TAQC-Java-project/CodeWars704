@@ -21,12 +21,27 @@ public class SIxImpl implements Six {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        return Arrays.stream(townRainfallArr(town, strng))
+                .mapToDouble(month -> Double.parseDouble(month.split(" ")[1]))
+                .average()
+                .orElse(-1.0);
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        return Arrays.stream(townRainfallArr(town, strng))
+                .mapToDouble(month -> Math.pow(Double.parseDouble(month.split(" ")[1]) - mean(town, strng), 2))
+                .average()
+                .orElse(-1.0);
+    }
+
+    private static String[] townRainfallArr(String town, String strng) {
+        return Arrays.stream(strng.split("\n"))
+                .filter(t -> t.contains(town + ":"))
+                .findFirst()
+                .orElse(":,")
+                .split(":")[1]
+                .split(",");
     }
 
     @Override
