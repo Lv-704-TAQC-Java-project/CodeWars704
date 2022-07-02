@@ -52,7 +52,15 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        boolean amIWilson = true;
+        for (int k = 2; k <= n / 2; k++) {
+            double end = n % k;
+            if (end == 0) {
+                amIWilson = false;
+                break;
+            }
+        }
+        return n > 1 && (amIWilson);
     }
 
     @Override
