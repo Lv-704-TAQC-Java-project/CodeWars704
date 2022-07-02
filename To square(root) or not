@@ -1,0 +1,13 @@
+@Override
+  public static int[] squareOrSquareRoot(int[] array) {
+    for (int i=0; i<array.length; i++) {
+        double sqr = Math.sqrt(array[i]);
+        if (sqr==Math.round(sqr)) {
+            array[i] = (int)sqr;
+        } else {
+          array[i] = array[i]*array[i];
+        }  
+    }
+    return array;
+  }
+@Override
