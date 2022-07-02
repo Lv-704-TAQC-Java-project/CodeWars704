@@ -9,7 +9,7 @@ public class EigthImpl implements Eight {
     }
 
     @Override
-    public double getVolumeOfCuboid(double length, double width, double height) throws ArithmeticException {
+    public double getVolumeOfCuboid(double length, double width, double height) {
         double volume = length * width * height;
         if (volume > 0) {
             return volume;
