@@ -1,4 +1,4 @@
-package com.org.ita.kata.implementation.MyroslavaVynokur;
+package com.org.ita.kata.implementation.avlrvn;
 
 import com.org.ita.kata.Seven;
 
@@ -10,11 +10,7 @@ public class SevenImpl implements Seven {
 
     @Override
     public String seriesSum(int n) {
-        double sum = 0.00;
-        for (int i = 0; i < n; i++) {
-            sum += 1.0 / (1 + 3 * i);
-        }
-        return String.format("%.2f", sum);
+        return null;
     }
 
     @Override

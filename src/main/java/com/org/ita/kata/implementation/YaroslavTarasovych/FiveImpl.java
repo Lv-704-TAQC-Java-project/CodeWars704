@@ -17,21 +17,54 @@ public class FiveImpl implements Five {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        if (n < 5) return 0;
+        int count = 0;
+        for (int i = 5; n / i >= 1; i *= 5)
+            count += n / i;
+        return count;
     }
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger i = n.add(BigInteger.valueOf(1));
+        BigInteger num1 = BigInteger.valueOf(0);
+        BigInteger num2 = BigInteger.valueOf(1);
+        BigInteger sum = BigInteger.valueOf(0);
+        for (BigInteger j = BigInteger.valueOf(0); j.compareTo(i) < 0; j = j.add(BigInteger.valueOf(1))) {
+            sum = sum.add(num2);
+            BigInteger a = num1;
+            num1 = num2;
+            num2 = num2.add(a);
+        }
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     @Override
     public double solveSum(double m) {
-        return 0;
+        double s = Math.sqrt(4 * m + 1);
+        return (2 * m + 1 - s) / (2 * m);
     }
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        StringBuilder num = new StringBuilder(String.valueOf(n));
+        long min = n;
+        long minStart = 0;
+        long minEnd = 0;
+        for (int i = 0; i < num.length(); i++) {
+            for (int j = 0; j < num.length(); j++) {
+                char c = num.charAt(i);
+                StringBuilder anotherNum = new StringBuilder(String.valueOf(n));
+                anotherNum.deleteCharAt(i);
+                anotherNum.insert(j, c);
+                long a = Long.parseLong(String.valueOf(anotherNum));
+                if (a < min) {
+                    min = a;
+                    minStart = i;
+                    minEnd = j;
+                }
+            }
+        }
+        return new long[]{min, minStart, minEnd};
     }
 }
