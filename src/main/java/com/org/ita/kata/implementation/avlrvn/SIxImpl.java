@@ -1,4 +1,4 @@
-package com.org.ita.kata.implementation.nastiakomarenko;
+package com.org.ita.kata.implementation.avlrvn;
 
 import com.org.ita.kata.Six;
 
@@ -15,18 +15,7 @@ public class SIxImpl implements Six {
 
     @Override
     public double f(double x) {
-         x =(Math.exp(1)) - 15;
-        double answer =0;
-        if(x<0){
-            double mult = x *(-1);
-             answer = (double) Math.sqrt(1 + mult) - 1;
-
-            System.out.println(answer);
-        }else {
-             answer = (double) Math.sqrt(1 + x) - 1;
-        }
-
-        return answer;
+        return 0;
     }
 
     @Override
