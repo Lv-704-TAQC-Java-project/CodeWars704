@@ -1,10 +1,6 @@
-package com.org.ita.kata.implementation.OliaZakharcuk;
+package com.org.ita.kata.implementation.avlrvn;
 
 import com.org.ita.kata.Eight;
-
-import java.util.*;
-import java.util.stream.*;
-import java.util.ArrayList;
 
 public class EigthImpl implements Eight {
     @Override
@@ -39,38 +35,16 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-
-        long fact;
-        boolean isWilson;
-
-        fact = factorial(n - 1);
-        if((fact + 1) / (n * n) % 1 == 0){
-            isWilson = true;
-        }else{
-            isWilson = false;
-        }
-        return isWilson;
-    }
-
-    private static long factorial(double n) {
-        long factorial = 1;
-        for (int i = 1; i <= n; i++) {
-            factorial = factorial * i;
-        }
-        return factorial;
+        return false;
     }
 
     @Override
     public double twoDecimalPlaces(double number) {
-
-        return Math.round(number * 100) / 100.0;
+        return 0;
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-
-        IntStream stream = Arrays.stream(numbers);
-
-        return stream.filter(i -> i % divider == 0).toArray();
+        return new int[0];
     }
 }
