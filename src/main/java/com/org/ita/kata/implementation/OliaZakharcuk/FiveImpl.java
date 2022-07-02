@@ -27,7 +27,9 @@ public class FiveImpl implements Five {
 
     @Override
     public double solveSum(double m) {
-        return 0;
+
+        return  1 + (1 - Math.sqrt(1+4*m)) / (2*m);
+
     }
 
     @Override
