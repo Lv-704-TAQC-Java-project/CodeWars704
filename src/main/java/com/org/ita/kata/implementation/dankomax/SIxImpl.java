@@ -35,6 +35,27 @@ public class SIxImpl implements Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
+        final String DIVIDER = " - ";
+        StringBuilder finalStr = new StringBuilder();
+
+        for (String letter : lstOf1stLetter) {
+            int categoryQuantity = 0;
+
+            for (String art : lstOfArt) {
+                if (art.matches("^" + letter + "+.*")) {
+                    categoryQuantity += Integer.parseInt(art.replaceAll("\\D", ""));
+                }
+            }
+
+            if (finalStr.length() > 0) {
+                finalStr.append(DIVIDER);
+            }
+            finalStr.append(String.format("(%s : %d)", letter, categoryQuantity));
+        }
+        return finalStr.toString();
     }
 }
