@@ -27,7 +27,7 @@ public class FiveImpl implements Five {
         List<Long> primeLongs = new ArrayList<>();
 
         for (long i = m; i < n; i++)
-            if (GapInPrimes.isPrime(i)) {
+            if (FiveImpl.isPrime(i)) {
                 primeLongs.add(i);
             }
 
