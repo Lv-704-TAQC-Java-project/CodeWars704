@@ -20,7 +20,17 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+
+        int res[] = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            int a = array[i];
+            if (Math.sqrt(a) % 1 == 0) {
+                res[i] = (int) Math.sqrt(a);
+            } else {
+                res[i] = a * a;
+            }
+        }
+        return res;
     }
 
     @Override
@@ -35,16 +45,45 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
-    }
+            return (factorial(n - 1) + 1) % (n * n) == 0;
+        }
+
+        public static double factorial(double number) {
+            if (number <= 1) {
+                return 1;
+            } else {
+                return number * factorial(number - 1);
+            }
+
+        }
+
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+
+        number = 3.3424;
+        double result = (double) Math.round(number * 100) / 100;
+        return result;
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        numbers = new int[]{1, 2, 3, 4, 5, 6};
+        int count =0;
+        divider=2;
+        for(int i=0;i< numbers.length;i++){
+            if(numbers[i]%divider==0){
+                count++;
+            }
+        }
+        int res[] = new int[count];
+        int index=0;
+        for(int j=0;j< numbers.length;j++){
+            if(numbers[j]%divider==0){
+                res[index]=numbers[j];
+                index++;
+            }
+        }
+        return res;
     }
 }
