@@ -23,6 +23,7 @@ public class FiveImpl implements Five {
         return prime;
     }
 
+    @Override
     public long[] gap(int g, long m, long n) {
         List<Long> primeLongs = new ArrayList<>();
 
