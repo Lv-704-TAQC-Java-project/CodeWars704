@@ -14,7 +14,7 @@ public class EigthImpl implements Eight {
     }
 
     @Override
-    public float mpgToKPM(float mpg) throws ArithmeticException {
+    public float mpgToKPM(float mpg) {
         final float galonLitres = 4.54609188f;
         final float mileKilometres = 1.609344f;
         if (mpg <= 0) {
