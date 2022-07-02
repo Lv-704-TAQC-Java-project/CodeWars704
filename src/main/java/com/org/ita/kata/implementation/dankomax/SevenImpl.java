@@ -10,7 +10,16 @@ public class SevenImpl implements Seven {
 
     @Override
     public String seriesSum(int n) {
-        return null;
+        final int PROGRESSION_DELTA = 3;
+        int currentDelimiter = 1;
+        double progressionSum = 0;
+
+        for (int i = 0; i < n; i++) {
+            progressionSum += 1.0 / currentDelimiter;
+            currentDelimiter += PROGRESSION_DELTA;
+        }
+
+        return String.format("%.2f", progressionSum);
     }
 
     @Override
