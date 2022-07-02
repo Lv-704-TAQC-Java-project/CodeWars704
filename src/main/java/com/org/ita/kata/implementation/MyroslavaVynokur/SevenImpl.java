@@ -4,7 +4,7 @@ import com.org.ita.kata.Seven;
 
 public class SevenImpl implements Seven {
     @Override
-    public long newAvg(double[] arr, double navg) throws IllegalArgumentException {
+    public long newAvg(double[] arr, double navg) {
         double sum = 0;
         double avg = navg * (arr.length + 1);
         for (double v : arr) {
