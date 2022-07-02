@@ -40,7 +40,10 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+
+        number = 3.3424;
+        double result = (double) Math.round(number * 100) / 100;
+        return result;
     }
 
     @Override
