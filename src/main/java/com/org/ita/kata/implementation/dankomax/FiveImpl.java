@@ -12,7 +12,31 @@ public class FiveImpl implements Five {
 
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long currentPrime;
+        long previousPrime = 0;
+
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                currentPrime = i;
+                if (previousPrime != 0 && currentPrime - previousPrime == g) {
+                    return new long[]{previousPrime, currentPrime};
+                }
+                previousPrime = currentPrime;
+            }
+        }
+        return null;
+    }
+
+    private static boolean isPrime(long n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (long i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
