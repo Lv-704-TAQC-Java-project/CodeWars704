@@ -45,6 +45,22 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        numbers = new int[]{1, 2, 3, 4, 5, 6};
+        int count =0;
+        divider=2;
+        for(int i=0;i< numbers.length;i++){
+            if(numbers[i]%divider==0){
+                count++;
+            }
+        }
+        int res[] = new int[count];
+        int index=0;
+        for(int j=0;j< numbers.length;j++){
+            if(numbers[j]%divider==0){
+                res[index]=numbers[j];
+                index++;
+            }
+        }
+        return res;
     }
 }
