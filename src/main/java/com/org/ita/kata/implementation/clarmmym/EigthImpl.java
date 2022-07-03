@@ -29,8 +29,27 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        int[] result = new int[2];
+        if (input != null) {
+            if (input.length != 0) {
+                int count = 0;
+                int sum = 0;
+
+                for (int element : input) {
+                    if (element > 0) {
+                        count++;
+                    } else if (element < 0) {
+                        sum += element;
+                    }
+                }
+
+                result[0] = count;
+                result[1] = sum;
+            }
+        }
+        return result;
     }
+
 
     @Override
     public int stringToNumber(String str) {
