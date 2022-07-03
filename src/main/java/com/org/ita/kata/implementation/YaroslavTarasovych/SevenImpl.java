@@ -15,6 +15,10 @@ public class SevenImpl implements Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        int count = 0;
+        for (int i = bef + 1; i <= p; i++) {
+            if (p - i <= aft) count++;
+        }
+        return count;
     }
 }
