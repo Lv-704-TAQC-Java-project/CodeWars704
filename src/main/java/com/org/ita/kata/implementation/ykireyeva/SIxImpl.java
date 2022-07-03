@@ -57,7 +57,7 @@ public class SIxImpl implements Six {
     @Override
     public double mean(String town, String strng) {
         ArrayList<Double> listOfFall = stringToList(town, strng);
-        if (listOfFall == null){
+        if (listOfFall == null) {
             return -1;
         }
         return listOfFall.stream().reduce(0.0, Double::sum) / listOfFall.size();
@@ -66,30 +66,31 @@ public class SIxImpl implements Six {
     @Override
     public double variance(String town, String strng) {
         ArrayList<Double> listOfFall = stringToList(town, strng);
-        if (listOfFall == null){
+        if (listOfFall == null) {
             return -1;
         }
-        double avg =  listOfFall.stream().reduce(0.0, Double::sum) / listOfFall.size();
+        double avg = listOfFall.stream().reduce(0.0, Double::sum) / listOfFall.size();
         double sumOfSquare = 0;
-        for (double d : listOfFall){
+        for (double d : listOfFall) {
             sumOfSquare += Math.pow(avg - d, 2);
         }
         return sumOfSquare / listOfFall.size();
     }
 
-    public static ArrayList<Double> stringToList(String town, String str){
+    public static ArrayList<Double> stringToList(String town, String str) {
         Matcher m = Pattern.compile(".*" + town + ".*").matcher(str);
         String line = "";
-        if (m.find()){
+        if (m.find()) {
             line = m.group();
         }
-        if (line.length() == 0){
+        if (line.length() == 0) {
             return null;
         }
         return Arrays.stream(line.replaceAll("[^\\d.]+", " ").trim().split(" "))
-                            .map(Double::parseDouble)
-                            .collect(Collectors.toCollection(ArrayList::new));
+                .map(Double::parseDouble)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
+
     @Override
     public String nbaCup(String resultSheet, String toFind) {
         return null;
