@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.dankomax;
 
 import com.org.ita.kata.Eight;
+import java.util.Arrays;
 
 public class EigthImpl implements Eight {
     @Override
@@ -25,26 +26,40 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        if (input == null || input.length == 0) {
+            return new int[0];
+        }
+
+        int[] resultArr = {0, 0};
+
+        for (int num : input) {
+            if (num > 0) {
+                resultArr[0]++;
+            } else {
+                resultArr[1] += num;
+            }
+        }
+
+        return resultArr;
     }
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str);
     }
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        return n == 5.0 || n == 13.0 || n == 563.0;
     }
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number * 100) / 100.0;
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers).filter(i -> i % divider == 0).toArray();
     }
 }
