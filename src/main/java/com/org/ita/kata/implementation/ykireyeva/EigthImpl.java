@@ -2,8 +2,8 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Eight;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.text.DecimalFormat;
 
 
 public class EigthImpl implements Eight {
@@ -24,7 +24,9 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        return Arrays.stream(array)
+                .map(x -> (x % Math.sqrt(x) == 0) ? (int) Math.sqrt(x) : x * x)
+                .toArray();
     }
 
     @Override
