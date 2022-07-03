@@ -6,20 +6,32 @@ import com.org.ita.kata.Six;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.StringJoiner;
+import java.math.BigInteger;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.text.DecimalFormat;
-import java.util.Locale;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.StringJoiner;
+
 
 
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        BigInteger big = new BigInteger(String.valueOf(0));
+        int i = 1;
+        int n = -1;
+        BigInteger mNum=new BigInteger(String.valueOf(m));
+        while (big.compareTo(mNum) < 0){
+            long math = (long) Math.pow(i, 3);
+            big=big.add(BigInteger.valueOf(math));
+            n = i;
+            i++;
+        }
+        if (big.compareTo(mNum) == 0) {
+            return n;
+        } else {
+            return -1;
+        }
     }
 
     @Override
