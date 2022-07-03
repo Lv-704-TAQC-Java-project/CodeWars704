@@ -4,12 +4,14 @@ import com.org.ita.kata.Eight;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
 
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) Math.floor(time * 0.5);
     }
 
     @Override
@@ -57,12 +59,21 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        String result = decimalFormat.format(number);
+        return Double.valueOf(result);
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int[] newArray = new int[0];
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
+                newArray = Arrays.copyOf(newArray,newArray.length+1);
+                newArray[newArray.length - 1] = numbers[i];
+            }
+        }
+        return newArray;
     }
 
 }
