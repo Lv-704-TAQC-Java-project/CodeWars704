@@ -2,15 +2,19 @@ package com.org.ita.kata.implementation.clarmmym;
 
 import com.org.ita.kata.Eight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
-        return 0;
+        final double LITER_PER_HOUR = 0.5;
+        return (int) Math.floor(time * LITER_PER_HOUR);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     @Override
@@ -25,8 +29,27 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        int[] result = new int[2];
+        if (input != null) {
+            if (input.length != 0) {
+                int count = 0;
+                int sum = 0;
+
+                for (int element : input) {
+                    if (element > 0) {
+                        count++;
+                    } else if (element < 0) {
+                        sum += element;
+                    }
+                }
+
+                result[0] = count;
+                result[1] = sum;
+            }
+        }
+        return result;
     }
+
 
     @Override
     public int stringToNumber(String str) {
@@ -40,11 +63,17 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number * 100.0) / 100.0;
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        List<Integer> result = new ArrayList<>();
+        for (int n : numbers) {
+            if (n % divider == 0) {
+                result.add(n);
+            }
+        }
+        return result.stream().mapToInt(i -> i).toArray();
     }
 }
