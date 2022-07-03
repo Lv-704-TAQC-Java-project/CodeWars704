@@ -3,16 +3,18 @@ package com.org.ita.kata.implementation.ykireyeva;
 import com.org.ita.kata.Eight;
 
 import java.util.Arrays;
+import java.text.DecimalFormat;
+
 
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) (time * 0.5);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     @Override
@@ -29,7 +31,26 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        int[] outputArray = new int[2];
+        int countOfPositives = 0;
+        int sumOfNegatives = 0;
+
+        if (input == null || input.length == 0) {
+            return new int[0];
+        }
+
+        for (int i : input) {
+            if (i > 0) {
+                countOfPositives++;
+            } else {
+                sumOfNegatives += i;
+            }
+        }
+
+        outputArray[0] = countOfPositives;
+        outputArray[1] = sumOfNegatives;
+
+        return outputArray;
     }
 
     @Override
@@ -44,11 +65,13 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        return Double.parseDouble(new DecimalFormat("#.##").format(number));
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers)
+                .filter(x -> x % divider == 0)
+                .toArray();
     }
 }
