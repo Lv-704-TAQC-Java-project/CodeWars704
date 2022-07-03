@@ -18,7 +18,10 @@ public class EigthImpl implements Eight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        double volume = length * width * height;
+        if (volume > 0) {
+            return volume;
+        } else throw new ArithmeticException("Input numbers should be bigger than 0");
     }
 
     @Override
