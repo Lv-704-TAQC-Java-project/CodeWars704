@@ -2,7 +2,9 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Eight;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
+
 
 public class EigthImpl implements Eight {
     @Override
@@ -61,7 +63,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        return Double.parseDouble(new DecimalFormat("#.##").format(number));
     }
 
     @Override
