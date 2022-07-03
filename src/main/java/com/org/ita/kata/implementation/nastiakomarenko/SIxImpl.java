@@ -26,7 +26,6 @@ public class SIxImpl implements Six {
     @Override
     public double variance(String town, String str2) {
 
-         str2 = "3,6,5,2,6,5";
         double count = 0.0, sum=0.0;
         for (int i = 0; i < str2.length(); i++) {
             if (Character.isDigit(str2.charAt(i))) {
