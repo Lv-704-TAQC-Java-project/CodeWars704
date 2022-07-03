@@ -60,7 +60,21 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        long fact;
+
+        if (n == 1) {
+            return false;
+        }
+        fact = findFactorial(n - 1);
+        return ((fact + 1) / (n * n)) % 1 == 0;
+    }
+
+    private static long findFactorial(double n) {
+        long factorial = 1;
+        for (int i = 2; i <= n; i++) {
+            factorial *= i;
+        }
+        return factorial;
     }
 
     @Override
