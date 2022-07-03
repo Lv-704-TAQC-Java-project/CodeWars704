@@ -34,7 +34,23 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        int[] result = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            int element = array[i];
+
+            if (hasIntegerRoot(element)) {
+                result[i] = (int) Math.sqrt(element);
+            } else {
+                result[i] = (int) Math.pow(element, 2);
+            }
+        }
+        return result;
+    }
+
+    private static boolean hasIntegerRoot(int number) {
+        int root = (int) Math.sqrt(number);
+        return Math.pow(root, 2) == number;
+
     }
 
     @Override
