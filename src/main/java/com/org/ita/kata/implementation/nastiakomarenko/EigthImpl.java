@@ -11,9 +11,6 @@ public class EigthImpl implements Eight {
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
 
-         length = 5;
-         width = 4;
-         height = 4;
       return length*width*height;
     }
 
