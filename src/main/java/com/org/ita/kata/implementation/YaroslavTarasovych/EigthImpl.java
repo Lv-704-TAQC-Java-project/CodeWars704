@@ -2,10 +2,9 @@ package com.org.ita.kata.implementation.YaroslavTarasovych;
 
 import com.org.ita.kata.Eight;
 
-
-import java.text.DecimalFormat;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class EigthImpl implements Eight {
@@ -17,15 +16,15 @@ public class EigthImpl implements Eight {
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
 
-        return length*width*height;
+        return length * width * height;
     }
 
     @Override
     public float mpgToKPM(float mpg) {
-        float n = ( float )( mpg*1.609344 / 4.54609188 );
+        float n = (float) (mpg * 1.609344 / 4.54609188);
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        String result = decimalFormat.format( n );
-        return Float.valueOf( result );
+        String result = decimalFormat.format(n);
+        return Float.valueOf(result);
     }
 
     @Override
@@ -33,7 +32,7 @@ public class EigthImpl implements Eight {
         int[] newArray = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             int num = (int) Math.sqrt(array[i]);
-            if ( Math.pow(num,2) == array[i]) {
+            if (Math.pow(num, 2) == array[i]) {
                 newArray[i] = (int) Math.sqrt(array[i]);
             } else {
                 newArray[i] = (int) Math.pow(array[i], 2);
@@ -46,7 +45,7 @@ public class EigthImpl implements Eight {
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
         if (input == null || input.length == 0) return new int[0];
-        int[] newArray = new int[]{0,0};
+        int[] newArray = new int[]{0, 0};
         for (int i = 0; i < input.length; i++) {
             if (input[i] > 0) {
                 newArray[0]++;
@@ -72,7 +71,7 @@ public class EigthImpl implements Eight {
             do {
                 factorial = factorial.multiply(BigDecimal.valueOf(bi.intValue()));
                 bi = bi.subtract(BigDecimal.valueOf(1));
-            }while (bi.intValue() != 1);
+            } while (bi.intValue() != 1);
         }
         factorial = new BigDecimal(String.valueOf(factorial.add(BigDecimal.valueOf(1))));
         BigDecimal numWilson = new BigDecimal(String.valueOf(factorial.divide(BigDecimal.valueOf(n * n),
@@ -92,7 +91,7 @@ public class EigthImpl implements Eight {
         int[] newArray = new int[0];
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] % divider == 0) {
-                newArray = Arrays.copyOf(newArray,newArray.length+1);
+                newArray = Arrays.copyOf(newArray, newArray.length + 1);
                 newArray[newArray.length - 1] = numbers[i];
             }
         }

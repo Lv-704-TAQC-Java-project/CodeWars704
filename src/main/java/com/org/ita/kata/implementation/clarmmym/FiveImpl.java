@@ -4,8 +4,8 @@ import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class FiveImpl implements Five {
@@ -97,7 +97,7 @@ public class FiveImpl implements Five {
 
         double actual = f(x);
         while (Math.abs(m - actual) > exp) {
-            if (m> actual) {
+            if (m > actual) {
                 floor = x;
             } else {
                 top = x;

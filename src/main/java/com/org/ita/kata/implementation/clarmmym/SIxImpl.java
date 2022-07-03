@@ -2,9 +2,9 @@ package com.org.ita.kata.implementation.clarmmym;
 
 import com.org.ita.kata.Six;
 
-import java.util.Arrays;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

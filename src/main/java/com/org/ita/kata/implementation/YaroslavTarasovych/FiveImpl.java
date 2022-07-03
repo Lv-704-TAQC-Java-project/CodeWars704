@@ -16,10 +16,10 @@ public class FiveImpl implements Five {
         BigInteger bigInteger;
         for (long i = m; i <= n - g; i++) {
             bigInteger = BigInteger.valueOf(i);
-            if (! bigInteger.isProbablePrime((int) Math.log(i)))
+            if (!bigInteger.isProbablePrime((int) Math.log(i)))
                 continue;
             bigInteger = BigInteger.valueOf(i + g);
-            if (! bigInteger.isProbablePrime((int) Math.log(i + g)))
+            if (!bigInteger.isProbablePrime((int) Math.log(i + g)))
                 continue;
             boolean flag = false;
             for (int j = 2; j < g; j++) {

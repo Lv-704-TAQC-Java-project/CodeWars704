@@ -2,11 +2,19 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Eight;
 
-import java.util.Arrays;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 
 public class EigthImpl implements Eight {
+    private static long findFactorial(double n) {
+        long factorial = 1;
+        for (int i = 2; i <= n; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+
     @Override
     public int liters(double time) {
         return (int) (time * 0.5);
@@ -67,14 +75,6 @@ public class EigthImpl implements Eight {
         }
         fact = findFactorial(n - 1);
         return ((fact + 1) / (n * n)) % 1 == 0;
-    }
-
-    private static long findFactorial(double n) {
-        long factorial = 1;
-        for (int i = 2; i <= n; i++) {
-            factorial *= i;
-        }
-        return factorial;
     }
 
     @Override

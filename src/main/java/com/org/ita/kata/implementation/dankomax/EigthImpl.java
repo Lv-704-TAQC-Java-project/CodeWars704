@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.dankomax;
 
 import com.org.ita.kata.Eight;
+
 import java.util.Arrays;
 
 public class EigthImpl implements Eight {
@@ -8,7 +9,7 @@ public class EigthImpl implements Eight {
     public int liters(double time) {
         final double LITERS_PER_HOUR = 0.5;
 
-        return (int)Math.floor(time * LITERS_PER_HOUR);
+        return (int) Math.floor(time * LITERS_PER_HOUR);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class EigthImpl implements Eight {
         for (int i = 0; i < array.length; i++) {
             double sqrtOfCurrentNum = Math.sqrt(array[i]);
             boolean currentNumHasIntSquareRoot = sqrtOfCurrentNum % 1 == 0.0;
-            resultArr[i] = currentNumHasIntSquareRoot ? (int)sqrtOfCurrentNum : (int)Math.pow(array[i], 2);
+            resultArr[i] = currentNumHasIntSquareRoot ? (int) sqrtOfCurrentNum : (int) Math.pow(array[i], 2);
         }
 
         return resultArr;

@@ -1,7 +1,9 @@
 package com.org.ita.kata.implementation.OliaZakharcuk;
 
 import com.org.ita.kata.Six;
-import java.math.*;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,11 +50,11 @@ public class SIxImpl implements Six {
         int size = 0;
         double sum = 0;
         String[] splitedData = strng.split("\n");
-        for (String k: splitedData){
-            if(k.contains(town)){
+        for (String k : splitedData) {
+            if (k.contains(town)) {
                 String[] splitedTowns = k.split(":");
                 String[] splitedRenge = splitedTowns[1].split(",");
-                for(String j : splitedRenge){
+                for (String j : splitedRenge) {
                     String[] splitedNumbers = j.split(" ");
                     sum = sum + Double.parseDouble(splitedNumbers[1]);
                     size++;
@@ -60,7 +62,7 @@ public class SIxImpl implements Six {
             }
         }
 
-        if(size == 0){
+        if (size == 0) {
             return -1.0;
         }
 
@@ -72,16 +74,16 @@ public class SIxImpl implements Six {
     @Override
     public double variance(String town, String strng) {
 
-        double temp ;
+        double temp;
         int size = 0;
         double sum = 0;
 
         String[] splitedData = strng.split("\n");
-        for (String k: splitedData){
-            if(k.contains(town)){
+        for (String k : splitedData) {
+            if (k.contains(town)) {
                 String[] splitedTowns = k.split(":");
                 String[] splitedRenge = splitedTowns[1].split(",");
-                for(String j : splitedRenge){
+                for (String j : splitedRenge) {
                     String[] splitedNumbers = j.split(" ");
                     temp = Double.parseDouble(splitedNumbers[1]) - mean(town, strng);
                     sum = sum + Math.pow(temp, 2);
@@ -90,7 +92,7 @@ public class SIxImpl implements Six {
             }
         }
 
-        if(size == 0){
+        if (size == 0) {
             return -1.0;
         }
 
@@ -125,12 +127,12 @@ public class SIxImpl implements Six {
                 int secondTeamScore;
                 int start = teamNameMatcher.start();
                 int j = 0;
-                while (teamScoreMatcher.find()){
+                while (teamScoreMatcher.find()) {
                     point[j] = i.substring(teamScoreMatcher.start(), teamScoreMatcher.end());
                     j++;
                 }
 
-                if (start == 0){
+                if (start == 0) {
                     firstTeamScore = Integer.parseInt(point[0]);
                     secondTeamScore = Integer.parseInt(point[1]);
                 } else {
@@ -152,10 +154,10 @@ public class SIxImpl implements Six {
                 totalConceded += secondTeamScore;
             }
         }
-        if ((countOfWin == countOfDraws) && (countOfDraws == countOfLost) && (countOfLost == 0)){
+        if ((countOfWin == countOfDraws) && (countOfDraws == countOfLost) && (countOfLost == 0)) {
             return toFind + ":This team didn't play!";
 
-        }else{
+        } else {
             return toFind + ":W=" + countOfWin + ";D=" + countOfDraws + ";L=" + countOfLost + ";Scored=" + totalScore + ";Conceded=" + totalConceded + ";Points=" + mark;
 
         }
@@ -168,17 +170,17 @@ public class SIxImpl implements Six {
         int[] sumList = new int[lstOf1stLetter.length];
         String res = "";
 
-        for(String i : lstOfArt){
+        for (String i : lstOfArt) {
             String[] splitedLstOfArt = i.split(" ");
-            for (int j = 0; j < lstOf1stLetter.length; j++){
-                if(lstOf1stLetter[j].charAt(0) == splitedLstOfArt[0].charAt(0)){
+            for (int j = 0; j < lstOf1stLetter.length; j++) {
+                if (lstOf1stLetter[j].charAt(0) == splitedLstOfArt[0].charAt(0)) {
                     sumList[j] = sumList[j] + Integer.parseInt(splitedLstOfArt[1]);
                 }
             }
         }
-        for(int i = 0; i < lstOf1stLetter.length; i++){
-            res = res + "(" + lstOf1stLetter[i] + " : " + sumList[i] + ")" ;
-            if(i < lstOf1stLetter.length - 1) res = res + " - ";
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
+            res = res + "(" + lstOf1stLetter[i] + " : " + sumList[i] + ")";
+            if (i < lstOf1stLetter.length - 1) res = res + " - ";
         }
         return res;
     }
