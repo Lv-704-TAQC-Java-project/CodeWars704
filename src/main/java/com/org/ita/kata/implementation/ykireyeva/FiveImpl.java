@@ -4,7 +4,6 @@ import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.stream.LongStream;
-import java.util.Arrays;
 
 
 public class FiveImpl implements Five {

@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FiveImpl implements Five {
-    @Override
-    public int artificialRain(int[] v) {
-        return 0;
-    }
-
     private static boolean isPrime(double n) {
         boolean prime = true;
         for (int k = 2; k <= n / 2; k++) {
@@ -21,6 +16,11 @@ public class FiveImpl implements Five {
             }
         }
         return prime;
+    }
+
+    @Override
+    public int artificialRain(int[] v) {
+        return 0;
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Six;
 
-
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 

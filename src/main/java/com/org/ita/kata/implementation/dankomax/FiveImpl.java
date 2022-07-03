@@ -5,6 +5,18 @@ import com.org.ita.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+    private static boolean isPrime(long n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (long i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public int artificialRain(int[] v) {
         return 0;
@@ -25,18 +37,6 @@ public class FiveImpl implements Five {
             }
         }
         return null;
-    }
-
-    private static boolean isPrime(long n) {
-        if (n <= 1) {
-            return false;
-        }
-        for (long i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     @Override

@@ -4,8 +4,35 @@ import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.List;
+
 public class FiveImpl implements Five {
+    private static boolean isPrime(long n) {
+
+        for (long i = 2; i <= (long) Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static ArrayList<Long> getPrimeNumbers(long m, long n) {
+
+        ArrayList<Long> primeNumbers = new ArrayList<>();
+
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                primeNumbers.add(i);
+            }
+        }
+        return primeNumbers;
+    }
+
+    private static double customLog(double logNumber) {
+        double base = 5;
+        return Math.log(logNumber) / Math.log(base);
+    }
+
     @Override
     public int artificialRain(int[] v) {
         return 0;
@@ -27,41 +54,16 @@ public class FiveImpl implements Five {
         }
         return null;
     }
-    private static boolean isPrime(long n) {
-
-        for (long i = 2; i <= (long) Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static ArrayList<Long> getPrimeNumbers(long m, long n){
-
-        ArrayList<Long> primeNumbers = new ArrayList<>();
-
-        for (long i = m; i <= n; i++) {
-            if (isPrime(i)) {
-                primeNumbers.add(i);
-            }
-        }
-        return primeNumbers;
-    }
 
     @Override
     public int zeros(int n) {
 
         int count = 0;
         double kMax = customLog(n);
-        for(int k = 1; k < kMax; k++){
-            count = count + (int)(n / Math.pow(5, k));
+        for (int k = 1; k < kMax; k++) {
+            count = count + (int) (n / Math.pow(5, k));
         }
         return count;
-    }
-    private static double customLog(double logNumber) {
-        double base = 5;
-        return Math.log(logNumber) / Math.log(base);
     }
 
     @Override
@@ -83,7 +85,7 @@ public class FiveImpl implements Five {
     @Override
     public double solveSum(double m) {
 
-        return  1 + (1 - Math.sqrt(1+4*m)) / (2*m);
+        return 1 + (1 - Math.sqrt(1 + 4 * m)) / (2 * m);
 
     }
 

@@ -3,6 +3,15 @@ package com.org.ita.kata.implementation.nastiakomarenko;
 import com.org.ita.kata.Eight;
 
 public class EigthImpl implements Eight {
+    public static double factorial(double number) {
+        if (number <= 1) {
+            return 1;
+        } else {
+            return number * factorial(number - 1);
+        }
+
+    }
+
     @Override
     public int liters(double time) {
 
@@ -14,7 +23,7 @@ public class EigthImpl implements Eight {
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
 
-      return length*width*height;
+        return length * width * height;
     }
 
     @Override
@@ -24,10 +33,10 @@ public class EigthImpl implements Eight {
         double mile = 1.609344; // in km
 //parameters
 
-        double res = mpg*(mile/gallon);
-        if(res%10==0){
+        double res = mpg * (mile / gallon);
+        if (res % 10 == 0) {
             return Math.round(res);
-        }else {
+        } else {
             double scale = Math.pow(10, 2);
             double result = Math.ceil(res * scale) / scale;
             return (float) result;
@@ -38,7 +47,7 @@ public class EigthImpl implements Eight {
     @Override
     public int[] squareOrSquareRoot(int[] array) {
 
-        int res[] = new int[array.length];
+        int[] res = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             int a = array[i];
             if (Math.sqrt(a) % 1 == 0) {
@@ -62,18 +71,8 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-            return (factorial(n - 1) + 1) % (n * n) == 0;
-        }
-
-        public static double factorial(double number) {
-            if (number <= 1) {
-                return 1;
-            } else {
-                return number * factorial(number - 1);
-            }
-
-        }
-
+        return (factorial(n - 1) + 1) % (n * n) == 0;
+    }
 
     @Override
     public double twoDecimalPlaces(double number) {
@@ -86,18 +85,18 @@ public class EigthImpl implements Eight {
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
         numbers = new int[]{1, 2, 3, 4, 5, 6};
-        int count =0;
-        divider=2;
-        for(int i=0;i< numbers.length;i++){
-            if(numbers[i]%divider==0){
+        int count = 0;
+        divider = 2;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
                 count++;
             }
         }
-        int res[] = new int[count];
-        int index=0;
-        for(int j=0;j< numbers.length;j++){
-            if(numbers[j]%divider==0){
-                res[index]=numbers[j];
+        int[] res = new int[count];
+        int index = 0;
+        for (int j = 0; j < numbers.length; j++) {
+            if (numbers[j] % divider == 0) {
+                res[index] = numbers[j];
                 index++;
             }
         }

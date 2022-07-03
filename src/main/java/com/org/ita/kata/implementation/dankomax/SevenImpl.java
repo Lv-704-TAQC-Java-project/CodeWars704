@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.dankomax;
 
 import com.org.ita.kata.Seven;
+
 import java.util.Arrays;
 
 public class SevenImpl implements Seven {

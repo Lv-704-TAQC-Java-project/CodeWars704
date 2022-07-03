@@ -2,17 +2,24 @@ package com.org.ita.kata.implementation.OliaZakharcuk;
 
 import com.org.ita.kata.Eight;
 
-import java.util.*;
-import java.util.stream.*;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class EigthImpl implements Eight {
+    private static long factorial(double n) {
+        long factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial = factorial * i;
+        }
+        return factorial;
+    }
+
     @Override
     public int liters(double time) {
 
         final double LITERS_PER_HOUR = 0.5;
 
-        return (int)Math.floor(LITERS_PER_HOUR * time);
+        return (int) Math.floor(LITERS_PER_HOUR * time);
     }
 
     @Override
@@ -40,9 +47,9 @@ public class EigthImpl implements Eight {
 
         int[] squareOrSquareRootArr = new int[array.length];
 
-        for(int i = 0; i < array.length; i++){
-            if(Math.sqrt(array[i]) % 1 == 0.0){
-                squareOrSquareRootArr[i] = (int)Math.sqrt(array[i]);
+        for (int i = 0; i < array.length; i++) {
+            if (Math.sqrt(array[i]) % 1 == 0.0) {
+                squareOrSquareRootArr[i] = (int) Math.sqrt(array[i]);
             } else {
                 squareOrSquareRootArr[i] = array[i] * array[i];
             }
@@ -57,14 +64,14 @@ public class EigthImpl implements Eight {
         int counterOfPositiveNumbers = 0;
         int sumOfNegativeNumbers = 0;
 
-        if (input == null || input.length == 0){
+        if (input == null || input.length == 0) {
             return new int[0];
         }
 
-        for(int i : input){
-            if(i > 0){
+        for (int i : input) {
+            if (i > 0) {
                 counterOfPositiveNumbers++;
-            }else {
+            } else {
                 sumOfNegativeNumbers += i;
             }
         }
@@ -87,20 +94,8 @@ public class EigthImpl implements Eight {
         boolean isWilson;
 
         fact = factorial(n - 1);
-        if((fact + 1) / (n * n) % 1 == 0){
-            isWilson = true;
-        }else{
-            isWilson = false;
-        }
+        isWilson = (fact + 1) / (n * n) % 1 == 0;
         return isWilson;
-    }
-
-    private static long factorial(double n) {
-        long factorial = 1;
-        for (int i = 1; i <= n; i++) {
-            factorial = factorial * i;
-        }
-        return factorial;
     }
 
     @Override

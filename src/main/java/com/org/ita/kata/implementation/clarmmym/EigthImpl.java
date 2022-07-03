@@ -6,6 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EigthImpl implements Eight {
+    private static boolean hasIntegerRoot(int number) {
+        int root = (int) Math.sqrt(number);
+        return Math.pow(root, 2) == number;
+
+    }
+
+    private static int factorial(double number) {
+        int fact = 1;
+        for (int i = 2; i <= number; i++) {
+            fact = fact * i;
+        }
+        return fact;
+    }
+
+    private static boolean isWhole(double number) {
+        return (number % 1 == 0);
+    }
+
+    private static double wilsonFormula(double p) {
+        return (factorial(p - 1) + 1) / (p * p);
+    }
+
     @Override
     public int liters(double time) {
         final double LITER_PER_HOUR = 0.5;
@@ -47,12 +69,6 @@ public class EigthImpl implements Eight {
         return result;
     }
 
-    private static boolean hasIntegerRoot(int number) {
-        int root = (int) Math.sqrt(number);
-        return Math.pow(root, 2) == number;
-
-    }
-
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
         int[] result = new int[2];
@@ -76,7 +92,6 @@ public class EigthImpl implements Eight {
         return result;
     }
 
-
     @Override
     public int stringToNumber(String str) {
         return Integer.parseInt(str);
@@ -90,22 +105,6 @@ public class EigthImpl implements Eight {
             result = isWhole(wilsonFormula(n));
         }
         return result;
-    }
-
-    private static int factorial(double number) {
-        int fact = 1;
-        for (int i = 2; i <= number; i++) {
-            fact = fact * i;
-        }
-        return fact;
-    }
-
-    private static boolean isWhole(double number) {
-        return (number % 1 == 0);
-    }
-
-    private static double wilsonFormula(double p) {
-        return (factorial(p - 1) + 1) / (p * p);
     }
 
     @Override

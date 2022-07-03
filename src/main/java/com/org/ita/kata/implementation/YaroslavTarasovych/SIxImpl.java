@@ -2,16 +2,13 @@ package com.org.ita.kata.implementation.YaroslavTarasovych;
 
 import com.org.ita.kata.Six;
 
-
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.MathContext;
 import java.util.Locale;
+import java.util.StringJoiner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.StringJoiner;
-import java.math.BigInteger;
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.text.DecimalFormat;
-
 
 
 public class SIxImpl implements Six {
@@ -20,10 +17,10 @@ public class SIxImpl implements Six {
         BigInteger big = new BigInteger(String.valueOf(0));
         int i = 1;
         int n = -1;
-        BigInteger mNum=new BigInteger(String.valueOf(m));
-        while (big.compareTo(mNum) < 0){
+        BigInteger mNum = new BigInteger(String.valueOf(m));
+        while (big.compareTo(mNum) < 0) {
             long math = (long) Math.pow(i, 3);
-            big=big.add(BigInteger.valueOf(math));
+            big = big.add(BigInteger.valueOf(math));
             n = i;
             i++;
         }
@@ -40,12 +37,12 @@ public class SIxImpl implements Six {
         String allBalance = "";
         String[] lines = book.split("\\n|\\r");
         String reg = "[ !=,:;?*{}]";
-        String balance = lines[0].replaceAll(reg,"");
-        allBalance = allBalance + "Original Balance: "+balance + "\n";
-        double total=0;
-        int count=0;
+        String balance = lines[0].replaceAll(reg, "");
+        allBalance = allBalance + "Original Balance: " + balance + "\n";
+        double total = 0;
+        int count = 0;
         for (int i = 1; i < lines.length; i++) {
-            String text = lines[i].replaceAll(reg,"");
+            String text = lines[i].replaceAll(reg, "");
             Pattern p1 = Pattern.compile("\\d+");
             Pattern p2 = Pattern.compile("[a-zA-Z]+");
             Pattern p3 = Pattern.compile("\\d+\\.\\d+");
@@ -61,13 +58,13 @@ public class SIxImpl implements Six {
             total += Double.parseDouble(c);
             count++;
             balance = String.valueOf((Double.parseDouble(balance) - Double.parseDouble(c)));
-            balance = String.format(Locale.ENGLISH,"%.2f", Double.parseDouble(balance));
-            allBalance +=  a + " " + b + " " + c + " Balance " + balance + "\n";
+            balance = String.format(Locale.ENGLISH, "%.2f", Double.parseDouble(balance));
+            allBalance += a + " " + b + " " + c + " Balance " + balance + "\n";
 
         }
         double avg = total / count;
-        allBalance += "Total expense  " + String.format(Locale.ENGLISH,"%.2f", total) + "\n";
-        allBalance += "Average expense  " + String.format(Locale.ENGLISH,"%.2f", avg);
+        allBalance += "Total expense  " + String.format(Locale.ENGLISH, "%.2f", total) + "\n";
+        allBalance += "Average expense  " + String.format(Locale.ENGLISH, "%.2f", avg);
         return allBalance;
     }
 
@@ -146,11 +143,11 @@ public class SIxImpl implements Six {
                 int pointOther;
                 int start = m.start();
                 int j = 0;
-                while (m1.find()){
+                while (m1.find()) {
                     point[j] = lines[i].substring(m1.start(), m1.end());
                     j++;
                 }
-                if (start == 0){
+                if (start == 0) {
                     pointTeam = Integer.parseInt(point[0]);
                     pointOther = Integer.parseInt(point[1]);
                 } else {

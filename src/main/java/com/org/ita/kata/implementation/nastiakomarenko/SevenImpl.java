@@ -38,7 +38,6 @@ public class SevenImpl implements Seven {
     }
 
 
-
     @Override
     public int whereIsHe(int p, int bef, int aft) {
         return 0;

@@ -11,7 +11,7 @@ public class SevenImpl implements Seven {
         for (double i : arr) {
             arrSum = arrSum + i;
         }
-        long donation = (long)Math.ceil((navg * (arr.length + 1)) - arrSum);
+        long donation = (long) Math.ceil((navg * (arr.length + 1)) - arrSum);
 
         if (donation <= 0) {
             throw new IllegalArgumentException("--- Exception 1 ---");
@@ -28,7 +28,7 @@ public class SevenImpl implements Seven {
         double resultSum = 0;
         int divider = 1;
 
-        for(int i = 0; i < n; i ++){
+        for (int i = 0; i < n; i++) {
             resultSum = resultSum + NUMERATOR / divider;
             divider += INCR;
         }
@@ -42,9 +42,9 @@ public class SevenImpl implements Seven {
         int temp = p - bef;
         int possiblePositions;
 
-        if (temp > aft){
+        if (temp > aft) {
             possiblePositions = aft + 1;
-        }else{
+        } else {
             possiblePositions = p - bef;
         }
 

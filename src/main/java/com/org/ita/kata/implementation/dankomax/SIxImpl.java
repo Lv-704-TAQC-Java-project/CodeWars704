@@ -1,12 +1,30 @@
 package com.org.ita.kata.implementation.dankomax;
 
 import com.org.ita.kata.Six;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Arrays;
 
 
 public class SIxImpl implements Six {
+    private static String[] townRainfallArr(String town, String strng) {
+        return Arrays.stream(strng.split("\n"))
+                .filter(t -> t.contains(town + ":"))
+                .findFirst()
+                .orElse(":,")
+                .split(":")[1]
+                .split(",");
+    }
+
+    private static int teamScore(String teamStats) {
+        return Arrays.stream(teamStats.split(" "))
+                .filter(team -> team.matches("\\d+"))
+                .map(Integer::parseInt)
+                .findFirst()
+                .orElse(0);
+    }
+
     @Override
     public long findNb(long m) {
         long numberOfLevels = 0;
@@ -14,7 +32,7 @@ public class SIxImpl implements Six {
 
         while (totalVolume < m) {
             numberOfLevels++;
-            totalVolume += (long)Math.pow(numberOfLevels, 3);
+            totalVolume += (long) Math.pow(numberOfLevels, 3);
         }
 
         return totalVolume == m ? numberOfLevels : -1;
@@ -69,23 +87,14 @@ public class SIxImpl implements Six {
                 .orElse(-1.0);
     }
 
-    private static String[] townRainfallArr(String town, String strng) {
-        return Arrays.stream(strng.split("\n"))
-                .filter(t -> t.contains(town + ":"))
-                .findFirst()
-                .orElse(":,")
-                .split(":")[1]
-                .split(",");
-    }
-
     @Override
     public String nbaCup(String resultSheet, String toFind) {
 
-        if(toFind.isEmpty()) {
+        if (toFind.isEmpty()) {
             return "";
         }
 
-        if(!resultSheet.contains(toFind + " ")) {
+        if (!resultSheet.contains(toFind + " ")) {
             return String.format("%s:This team didn't play!", toFind);
         }
 
@@ -125,14 +134,6 @@ public class SIxImpl implements Six {
         int rank = wins * 3 + draws;
 
         return String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d", toFind, wins, draws, loses, scored, conceded, rank);
-    }
-
-    private static int teamScore (String teamStats) {
-        return Arrays.stream(teamStats.split(" "))
-                .filter(team -> team.matches("\\d+"))
-                .map(Integer::parseInt)
-                .findFirst()
-                .orElse(0);
     }
 
     @Override
