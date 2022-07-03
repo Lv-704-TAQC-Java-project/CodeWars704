@@ -1,16 +1,11 @@
-package com.org.ita.kata.implementation.YaroslavTarasovych;
+package com.org.ita.kata.implementation.OlhaPivniuk;
 
 import com.org.ita.kata.Eight;
-
-
-import java.text.DecimalFormat;
-import java.util.Arrays;
-
 
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
-        return (int) Math.floor(time * 0.5);
+        return 0;
     }
 
     @Override
@@ -45,20 +40,11 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        String result = decimalFormat.format(number);
-        return Double.valueOf(result);
+        return 0;
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        int[] newArray = new int[0];
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % divider == 0) {
-                newArray = Arrays.copyOf(newArray,newArray.length+1);
-                newArray[newArray.length - 1] = numbers[i];
-            }
-        }
-        return newArray;
+        return new int[0];
     }
 }
