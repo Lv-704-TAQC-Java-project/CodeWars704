@@ -46,8 +46,31 @@ public class SIxImpl implements Six {
     }
 
     @Override
-    public double variance(String town, String strng) {
-        return 0;
+    public double variance(String town, String str2) {
+
+        double count = 0.0, sum=0.0;
+        for (int i = 0; i < str2.length(); i++) {
+            if (Character.isDigit(str2.charAt(i))) {
+                count++;
+                sum += Double.parseDouble(String.valueOf(str2.charAt(i)));
+            }
+        }
+        double average = sum/count;
+        double arr[] = new double[(int) count];
+        int index=0;
+        for (int j = 0; j < str2.length(); j++) {
+            if (Character.isDigit(str2.charAt(j))) {
+                arr[index]= (Double.parseDouble(String.valueOf(str2.charAt(j)))-average);
+                index++;
+            }
+        }
+
+        double result=0;
+        for(int m=0;m<index;m++){
+            result+=(arr[m]*arr[m]);
+        }
+        return result/count;
+
     }
 
     @Override
