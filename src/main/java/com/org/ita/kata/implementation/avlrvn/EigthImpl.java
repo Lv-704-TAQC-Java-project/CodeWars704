@@ -3,6 +3,7 @@ package com.org.ita.kata.implementation.avlrvn;
 import com.org.ita.kata.Eight;
 
 public class EigthImpl implements Eight {
+
     @Override
     public int liters(double time) {
          return (int)Math.floor(time*0.5);
@@ -13,9 +14,10 @@ public class EigthImpl implements Eight {
         return 0;
     }
 
+
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+       return (float)Math.round(100 * mpg * 1.609344 / 4.54609188) / 100;
     }
 
     @Override
