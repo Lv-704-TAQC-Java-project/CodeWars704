@@ -4,7 +4,7 @@ import com.org.ita.utils.Tasks;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println(Tasks.getDescriptionById(19));
+        SettingsMenu.run();
+//        System.out.println(Tasks.getDescriptionById(19));
     }
 }
