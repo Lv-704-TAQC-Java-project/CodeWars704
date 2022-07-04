@@ -2,12 +2,22 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Eight;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
+
 public class EigthImpl implements Eight {
+    private static long findFactorial(double n) {
+        long factorial = 1;
+        for (int i = 2; i <= n; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) (time * 0.5);
     }
 
     @Override
@@ -22,7 +32,9 @@ public class EigthImpl implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        return Arrays.stream(array)
+                .map(x -> (x % Math.sqrt(x) == 0) ? (int) Math.sqrt(x) : x * x)
+                .toArray();
     }
 
     @Override
@@ -51,17 +63,23 @@ public class EigthImpl implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str.trim());
     }
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        long fact;
+
+        if (n == 1) {
+            return false;
+        }
+        fact = findFactorial(n - 1);
+        return ((fact + 1) / (n * n)) % 1 == 0;
     }
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        return Double.parseDouble(new DecimalFormat("#.##").format(number));
     }
 
     @Override
