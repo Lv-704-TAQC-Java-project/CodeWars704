@@ -1,11 +1,11 @@
-package com.org.ita.kata.implementation.avlrvn;
+package com.org.ita.kata.implementation.OlhaPivniuk;
 
 import com.org.ita.kata.Eight;
 
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
-         return (int)Math.floor(time*0.5);
+        return 0;
     }
 
     @Override
