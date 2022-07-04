@@ -6,7 +6,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public int liters(double time) {
-         return (int)Math.floor(time*0.5);
+        return (int) Math.floor(time * 0.5);
     }
 
     @Override
@@ -16,31 +16,31 @@ public class EigthImpl implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-       return (float)Math.round(100 * mpg * 1.609344 / 4.54609188) / 100;
+        return (float) Math.round(100 * mpg * 1.609344 / 4.54609188) / 100;
     }
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        for (int i=0; i<array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             double sqr = Math.sqrt(array[i]);
-            if (sqr==Math.round(sqr)) {
-                array[i] = (int)sqr;
+            if (sqr == Math.round(sqr)) {
+                array[i] = (int) sqr;
             } else {
-              array[i] = array[i]*array[i];
-            }  
+                array[i] = array[i] * array[i];
+            }
         }
-        return array
+        return array;
     }
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        if (input == null || input.length == 0) return new int[] {};
-       int count = 0, sum = 0;
-       for (int i : input) {
-         if (i > 0) count ++;
-         if (i < 0) sum += i;
-       }
-       return new int[] {count, sum};
+        if (input == null || input.length == 0) return new int[]{};
+        int count = 0, sum = 0;
+        for (int i : input) {
+            if (i > 0) count++;
+            if (i < 0) sum += i;
+        }
+        return new int[]{count, sum};
     }
 
     @Override
