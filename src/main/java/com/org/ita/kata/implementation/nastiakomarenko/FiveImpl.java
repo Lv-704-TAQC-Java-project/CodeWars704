@@ -16,8 +16,20 @@ public class FiveImpl implements Five {
     }
 
     @Override
-    public int zeros(int n) {
-        return 0;
+    public int zeros(int factor) {
+
+        int number = getFactorial(factor);
+        String str = String.valueOf(number);
+        int zeros = str.length() - str.replaceAll("0", "").length();
+       return zeros;
+
+    }
+    public static int getFactorial(int f) {
+        if (f <= 1) {
+            return 1;
+        } else {
+            return f * getFactorial(f - 1);
+        }
     }
 
     @Override
