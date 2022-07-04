@@ -72,18 +72,17 @@ public class SIxImpl implements Six {
         double avg = listOfFall.stream().reduce(0.0, Double::sum) / listOfFall.size();
         double sumOfSquare = 0;
         for (double d : listOfFall) {
-            sumOfSquare += Math.pow(avg - d, 2);
+            sumOfSquare += (d - avg) * (d - avg);
         }
         return sumOfSquare / listOfFall.size();
     }
 
-    public static ArrayList<Double> stringToList(String town, String str) {
-        Matcher m = Pattern.compile(".*" + town + ".*").matcher(str);
-        String line = "";
+    private static ArrayList<Double> stringToList(String town, String str) {
+        Matcher m = Pattern.compile(".*" + town + ":.*").matcher(str);
+        String line;
         if (m.find()) {
             line = m.group();
-        }
-        if (line.length() == 0) {
+        } else {
             return null;
         }
         return Arrays.stream(line.replaceAll("[^\\d.]+", " ").trim().split(" "))
