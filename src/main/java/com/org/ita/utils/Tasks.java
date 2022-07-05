@@ -284,7 +284,8 @@ public enum Tasks {
             }
         }
         return null;
-    }
+    }        
+
 
     public static String getDescriptionById(int id) {
         for (Tasks task : values()) {
@@ -293,6 +294,12 @@ public enum Tasks {
             }
         }
         return " ";
+    }
+
+    public static void showAllTasks (){
+        for (Tasks task : values()) {
+            System.out.println(task.id + " - " + task.taskName);
+        }
     }
 
     public String getDescription() {

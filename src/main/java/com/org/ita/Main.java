@@ -1,10 +1,11 @@
 package com.org.ita;
 
-import com.org.ita.utils.Tasks;
+import com.org.ita.utils.Menu;
+
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println(Tasks.getDescriptionById(19));
+        Menu menu = new Menu();
+        menu.run();
     }
 }
