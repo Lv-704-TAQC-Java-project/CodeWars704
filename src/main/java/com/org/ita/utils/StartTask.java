@@ -1,12 +1,7 @@
-package com.org.ita;
+package com.org.ita.utils;
 
 
-import com.org.ita.kata.Eight;
-import com.org.ita.kata.Seven;
-import com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl;
-
-
-public class StartTask implements Runner{
+public class StartTask implements Runner {
     @Override
     public void run() {
         list();
@@ -31,11 +26,12 @@ public class StartTask implements Runner{
     }
 
     private void list(){
-        System.out.println("1) Task Eight");
-        System.out.println("2) Task Seven");
-        System.out.println("3) Task Six");
-        System.out.println("4) Task Five");
-        System.out.println("0) Exit");
+        System.out.println("1) Level Eight");
+        System.out.println("2) Level Seven");
+        System.out.println("3) Level Six");
+        System.out.println("4) Level Five");
+        System.out.println("0) Return");
+        System.out.println();
     }
 
 //    private static Object taskEight(){

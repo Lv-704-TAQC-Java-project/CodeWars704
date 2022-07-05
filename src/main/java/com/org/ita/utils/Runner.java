@@ -1,4 +1,4 @@
-package com.org.ita;
+package com.org.ita.utils;
 
 import java.util.Scanner;
 

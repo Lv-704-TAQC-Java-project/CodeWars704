@@ -1,5 +1,7 @@
 package com.org.ita;
 
+import com.org.ita.utils.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,7 +28,7 @@ public class SettingsMenu {
         System.out.println("1) View a list of all implementations (ID, First name Last name, github nickname)");
         String implement = "";
         if (setImplementation == 0) implement = "(You didn't choose implementation)";
-        else implement = "(You choose number " + setImplementation + ")";
+        else implement = "(You choose implementation: " + Group.getMemberGitHubById(setImplementation) + ")";
         System.out.println("2) Set an implementation " + implement);
         System.out.println("3) Show list of tasks");
         System.out.println("4) Start a task");
