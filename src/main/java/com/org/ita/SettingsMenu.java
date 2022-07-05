@@ -24,7 +24,10 @@ public class SettingsMenu {
 
     private static void menuTitle() {
         System.out.println("1) View a list of all implementations (ID, First name Last name, github nickname)");
-        System.out.println("2) Set an implementation");
+        String implement = "";
+        if (setImplementation == 0) implement = "(You didn't choose implementation)";
+        else implement = "(You choose number " + setImplementation + ")";
+        System.out.println("2) Set an implementation " + implement);
         System.out.println("3) Show list of tasks");
         System.out.println("4) Start a task");
         System.out.println("0) Exit");
@@ -32,6 +35,7 @@ public class SettingsMenu {
 
 
     public static void run() {
+
         while (true){
             clearScreen();
             menuTitle();
@@ -40,12 +44,12 @@ public class SettingsMenu {
             list.add(new ListImplementation());
             list.add(new SetImplementation());
             list.add(new ShowListOfTask());
+            list.add(new StartTask());
             list.get(chooseNumber).run();
         }
     }
 
     public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+
     }
 }

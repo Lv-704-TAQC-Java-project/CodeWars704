@@ -14,17 +14,19 @@ public class StartTask implements Runner{
         Object num;
         switch (task){
             case 1:
-                num = (EigthImpl)StartTask.taskEight();
+                num = null;
                 break;
             case 2:
-                num = StartTask.taskSeven();
+                num = null;
                 break;
             case 3:
-                num = StartTask.taskSix();
+                num = null;
                 break;
             case 4:
-                num = StartTask.taskFive();
+                num = null;
                 break;
+            case 0:
+
         }
     }
 
@@ -36,71 +38,71 @@ public class StartTask implements Runner{
         System.out.println("0) Exit");
     }
 
-    private static Object taskEight(){
-        Eight num = null;
-        int implement = SettingsMenu.getSetImplementation();
-        switch (implement){
-            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
-            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
-            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
-            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
-            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
-            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
-            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
-            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
-            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
-        }
-        return num;
-    }
-
-    private static Object taskSeven(){
-        Eight num = null;
-        int implement = SettingsMenu.getSetImplementation();
-        switch (implement){
-            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
-            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
-            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
-            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
-            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
-            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
-            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
-            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
-            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
-        }
-        return num;
-    }
-
-    private static Object taskSix(){
-        Eight num = null;
-        int implement = SettingsMenu.getSetImplementation();
-        switch (implement){
-            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
-            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
-            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
-            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
-            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
-            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
-            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
-            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
-            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
-        }
-        return num;
-    }
-
-    private static Object taskFive(){
-        Eight num = null;
-        int implement = SettingsMenu.getSetImplementation();
-        switch (implement){
-            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
-            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
-            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
-            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
-            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
-            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
-            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
-            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
-            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
-        }
-        return num;
-    }
+//    private static Object taskEight(){
+//        Eight num = null;
+//        int implement = SettingsMenu.getSetImplementation();
+//        switch (implement){
+//            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
+//            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
+//            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
+//            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
+//            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
+//            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
+//            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
+//            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
+//            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
+//        }
+//        return num;
+//    }
+//
+//    private static Object taskSeven(){
+//        Eight num = null;
+//        int implement = SettingsMenu.getSetImplementation();
+//        switch (implement){
+//            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
+//            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
+//            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
+//            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
+//            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
+//            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
+//            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
+//            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
+//            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
+//        }
+//        return num;
+//    }
+//
+//    private static Object taskSix(){
+//        Eight num = null;
+//        int implement = SettingsMenu.getSetImplementation();
+//        switch (implement){
+//            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
+//            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
+//            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
+//            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
+//            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
+//            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
+//            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
+//            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
+//            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
+//        }
+//        return num;
+//    }
+//
+//    private static Object taskFive(){
+//        Eight num = null;
+//        int implement = SettingsMenu.getSetImplementation();
+//        switch (implement){
+//            case 1: num = new com.org.ita.kata.implementation.avlrvn.EigthImpl(); break;
+//            case 2: num = new com.org.ita.kata.implementation.clarmmym.EigthImpl(); break;
+//            case 3: num = new com.org.ita.kata.implementation.dankomax.EigthImpl(); break;
+//            case 4: num = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(); break;
+//            case 5: num = new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(); break;
+//            case 6: num = new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(); break;
+//            case 7: num = new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(); break;
+//            case 8: num = new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(); break;
+//            case 9: num = new com.org.ita.kata.implementation.ykireyeva.EigthImpl();
+//        }
+//        return num;
+//    }
 }
