@@ -3,11 +3,40 @@ package com.org.ita.kata.implementation.YaroslavTarasovych;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class FiveImpl implements Five {
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        if (v.length == 1) return 1;
+        int array[] = new int[v.length];
+        for (int i = 0; i < v.length - 1; i++) {
+            boolean up = true;
+            boolean down = true;
+            int count = 1;
+            for (int j = i; j < v.length - 1; j++) {
+                if (v[j] >= v[j + 1]&&up) {
+                    count++;
+                    continue;
+                } else {
+                    up = false;
+                }
+                if (v[j] <= v[j + 1]&&down) {
+                    count++;
+                    continue;
+                } else {
+                    down = false;
+                }
+                break;
+            }
+            array[i] = count;
+        }
+        int max=array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i]>max) max=array[i];
+        }
+        System.out.println();
+        return max;
     }
 
     @Override
@@ -84,5 +113,12 @@ public class FiveImpl implements Five {
             }
         }
         return new long[]{min, minStart, minEnd};
+    }
+
+    public static void main(String[] args) {
+        FiveImpl five = new FiveImpl();
+        System.out.println(five.artificialRain(new int[]{2}));
+        System.out.println(five.artificialRain(new int[]{1,2,1,2,1}));
+        System.out.println(five.artificialRain(new int[]{4,2,3,3,2}));
     }
 }
