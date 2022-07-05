@@ -8,7 +8,7 @@ import java.io.IOException;
 public class RunTask {
 
     private static Eight eight;
-    private static Seven seven;
+   // private static Seven seven;
     private Group member;
 
     public void setMember(Group member) {
@@ -16,18 +16,11 @@ public class RunTask {
         switch (member) {
             case MEMBER_4:
                 eight = new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl();
-                seven = new com.org.ita.kata.implementation.MyroslavaVynokur.SevenImpl();
+               // seven = new com.org.ita.kata.implementation.MyroslavaVynokur.SevenImpl();
                 break;
             default:
                 System.out.println("Rest will be imlemented soon");
         }
-    }
-
-    public static void runLiters() throws IOException {
-        System.out.println("Run task liters.\nPlease input time:");
-        double a = Double.parseDouble(Buffer.br.readLine());
-        double answer = eight.liters(a);
-        System.out.println(answer);
     }
 
     public void runTask(int taskId) {
@@ -42,6 +35,12 @@ public class RunTask {
                 System.out.println("rest will be done soon");
         }
 
+    }
 
+    public static void runLiters() throws IOException {
+        System.out.println("Run task liters.\nPlease input time:");
+        double a = Double.parseDouble(Buffer.br.readLine());
+        double answer = eight.liters(a);
+        System.out.println(answer);
     }
 }

@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Data {
 
     public static void menu() {
-
         System.out.println("Please select your pick:\n1 - show list of all implementations " +
                 "\n2 - show all tasks \n3 - set somebody's implementation \n4 - run somebody's implementation");
     }

@@ -45,4 +45,5 @@ public enum Group {
     public String getName() {
         return Name;
     }
+
 }
