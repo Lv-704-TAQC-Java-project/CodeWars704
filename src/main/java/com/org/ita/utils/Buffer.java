@@ -58,5 +58,13 @@ public class Buffer implements Reader {
         }
     }
 
-
+    @Override
+    public String[] readStringArr() {
+        try {
+            return br.readLine().trim().split("\\s+");
+        } catch (IOException e) {
+            System.out.println("Input should be String");
+        }
+        return this.readStringArr();
+    }
 }
