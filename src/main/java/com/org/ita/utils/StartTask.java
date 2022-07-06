@@ -32,6 +32,7 @@ public class StartTask implements Runner {
         switch (taskId) {
             case 1:
                 runLiters();
+                break;
             case 2:
                 runGetVolumeOfCuboid();
                 break;
@@ -50,10 +51,13 @@ public class StartTask implements Runner {
             case 16:
                 runRainfall();
                 break;
+            case 19:
+                runArtificialRain();
+                break;
             case 20:
                 runGap();
                 break;
-            case 23:
+            case 24:
                 runSmallest();
                 break;
             default:
@@ -182,6 +186,15 @@ public class StartTask implements Runner {
 
         long[] answer = member.getFive().gap(g, m, n);
         System.out.println("Result " + Arrays.toString(answer) + " gap");
+    }
+
+    public void runArtificialRain() {
+        System.out.println("Run task artificialRain.");
+        System.out.println("Methods of deriving the number that conveys the maximum coverage of the array section");
+        System.out.println("Please input an array of integers:");
+        int[] intArr = br.readIntArr();
+        int result = member.getFive().artificialRain(intArr);
+        System.out.println("The maximum number of numbers that will be covered by artificial rain is equal to " + result);
     }
 
     public void runSeriesSum(){
