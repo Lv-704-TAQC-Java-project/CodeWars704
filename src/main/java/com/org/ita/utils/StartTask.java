@@ -77,5 +77,12 @@ public class StartTask implements Runner {
         int answer = member.getSeven().whereIsHe(p, bef, aft);
         System.out.println("The amount of possible positions " + answer);
     }
+
+    public void runF() {
+        System.out.println("Run task f.\nPlease input x (double):");
+        double x = br.readDouble();
+        double answer = member.getSix().f(x);
+        System.out.println("Result " + answer);
+    }
 }
 
