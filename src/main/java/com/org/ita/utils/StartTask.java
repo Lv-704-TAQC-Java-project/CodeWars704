@@ -41,6 +41,12 @@ public class StartTask implements Runner {
             case 5:
                 runCountPositivesSumNegatives();
                 break;
+            case 10:
+                runNewAvg();
+                break;
+            case 11:
+                runSeriesSum();
+                break;
             case 16:
                 runRainfall();
                 break;
@@ -83,6 +89,7 @@ public class StartTask implements Runner {
         System.out.println("Is " + n + "Wilson?");
         boolean numb = member.getEight().amIWilson(n);
         System.out.println("Result: " + numb);
+    }
     public void runZeros(){
         System.out.println("Run task zeros.\nPlease input the number (int):");
         int factor = br.readInt();
@@ -175,6 +182,22 @@ public class StartTask implements Runner {
 
         long[] answer = member.getFive().gap(g, m, n);
         System.out.println("Result " + Arrays.toString(answer) + " gap");
+    }
+
+    public void runSeriesSum(){
+        System.out.println("Run task seriesSum.\nPlease input the number (int):");
+        int n = br.readInt();
+        String answer = member.getSeven().seriesSum(n);
+        System.out.println("The sum of following series " + answer);
+    }
+
+    public void runNewAvg() {
+        System.out.println("Run task newAvg.\nPlease input an array of numbers (double)");
+        double[] arr = br.readDoubleArr();
+        System.out.println("Please input average navg (double):");
+        double nabg = br.readDouble();
+        double result = member.getSeven().newAvg(arr, nabg);
+        System.out.println("The expected donation is " + result + " $");
     }
 }
 
