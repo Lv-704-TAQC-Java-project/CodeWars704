@@ -167,7 +167,7 @@ public class StartTask implements Runner {
         if (n > 0) {
             long result = member.getSix().findNb(n);
             System.out.println("You have entered " + n);
-            if (result >= 0){
+            if (result >= 0) {
                 System.out.println("Your number n is: " + result);
             } else {
                 System.out.println("There is no such n");
@@ -177,7 +177,8 @@ public class StartTask implements Runner {
             runFindNb();
         }
         System.out.println();
-    
+    }
+
     public void runSolveSum() {
         System.out.println("Run task solveSum.");
         System.out.println("This method returns the value of x from the sequence U(n, x) = x + 2x**2 + 3x**3 + .. + nx**n");
