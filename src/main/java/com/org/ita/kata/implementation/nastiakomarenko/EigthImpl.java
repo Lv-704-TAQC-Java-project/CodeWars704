@@ -2,8 +2,6 @@ package com.org.ita.kata.implementation.nastiakomarenko;
 
 import com.org.ita.kata.Eight;
 
-import java.util.Arrays;
-
 public class EigthImpl implements Eight {
     public static double factorial(double number) {
         if (number <= 1) {
@@ -49,7 +47,22 @@ public class EigthImpl implements Eight {
     @Override
     public int[] squareOrSquareRoot(int[] array) {
 
-        int res[] = new int[2];
+        int[] res = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            int a = array[i];
+            if (Math.sqrt(a) % 1 == 0) {
+                res[i] = (int) Math.sqrt(a);
+            } else {
+                res[i] = a * a;
+            }
+
+        }
+        return res;
+    }
+
+    @Override
+    public int[] countPositivesSumNegatives(int[] input) {
+        int[] res = new int[2];
         int count = 0, sum = 0;
         if (input != null && input.length > 0) {
             for (int i = 0; i < input.length; i++) {
@@ -65,28 +78,6 @@ public class EigthImpl implements Eight {
             System.out.println("0");
         }
         return res;
-
-    }
-
-    @Override
-    public int[] countPositivesSumNegatives(int[] input) {
-        int res [] = new int[2];
-        int count =0,sum=0;
-        if(input!=null&&input.length>0) {
-            for (int i = 0; i < input.length; i++) {
-                if (input[i] > 0) {
-                    count++;
-                } else {
-                    sum += input[i];
-                }
-            }
-            res[0] = count;
-            res[1] = sum;
-            System.out.println(Arrays.toString(res));
-        }else{
-            System.out.println("0");
-        }
-        return new int[0];
     }
 
     @Override
