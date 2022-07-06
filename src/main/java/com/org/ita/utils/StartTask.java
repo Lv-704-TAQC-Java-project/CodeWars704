@@ -32,6 +32,8 @@ public class StartTask implements Runner {
                 runGetVolumeOfCuboid();
             case 2:
                 runLiters();
+            case 16:
+                runRainfall();
             case 23:
                 runSmallest();
             default:
@@ -80,6 +82,20 @@ public class StartTask implements Runner {
 
         int answer = member.getSeven().whereIsHe(p, bef, aft);
         System.out.println("The amount of possible positions " + answer);
+    }
+
+    public void runRainfall() {
+        System.out.println("Run task Rainfall.\nPlease input the town (string):");
+        String town = br.readString();
+
+        System.out.println("Run task Rainfall.\nPlease input data of rain (string):");
+        String data = br.readString();
+
+        double mean = member.getSix().mean(town, data);
+        double variance = member.getSix().variance(town, data);
+
+        System.out.println("Mean of your data is " + mean);
+        System.out.println("Variance of your data is " + variance);
     }
 
     public void runSmallest() {
