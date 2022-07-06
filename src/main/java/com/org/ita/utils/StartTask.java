@@ -57,6 +57,9 @@ public class StartTask implements Runner {
             case 20:
                 runGap();
                 break;
+            case 23:
+                runSolveSum();
+                break;
             case 24:
                 runSmallest();
                 break;
@@ -151,6 +154,21 @@ public class StartTask implements Runner {
         double x = br.readDouble();
         double answer = member.getSix().f(x);
         System.out.println("Result " + answer);
+    }
+    
+    public void runSolveSum() {
+        System.out.println("Run task solveSum.");
+        System.out.println("This method returns the value of x from the sequence U(n, x) = x + 2x**2 + 3x**3 + .. + nx**n");
+        System.out.println("Please input m > 0 (double) :");
+        double a = br.readDouble();
+        if (a > 0) {
+            System.out.println("You have entered " + a);
+            double result = member.getFive().solveSum(a);
+            System.out.println("The number x is equal: " + result);
+        } else {
+            System.out.println("Please input m larger then 0");
+            runSolveSum();
+        }
     }
 
     public void runMpgToKPM() {
