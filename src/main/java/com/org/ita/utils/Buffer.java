@@ -79,4 +79,20 @@ public class Buffer implements Reader {
         return this.readStringArr();
     }
 
+    @Override
+    public double[] readDoubleArr() {
+        try {
+            String[] in = br.readLine().trim().split("\\s+");
+            double[] arr = new double[in.length];
+
+            for (int i = 0; i < in.length; i++) {
+                arr[i] = Double.parseDouble(in[i]);
+            }
+
+            return arr;
+        } catch (IOException e) {
+            System.out.println("Input should be double");
+        }
+        return this.readDoubleArr();
+    }
 }

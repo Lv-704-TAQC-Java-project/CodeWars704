@@ -14,6 +14,8 @@ public interface Reader {
 
     float readFloat();
 
+    double[] readDoubleArr();
+
     String readString();
 
     String[] readStringArr();
