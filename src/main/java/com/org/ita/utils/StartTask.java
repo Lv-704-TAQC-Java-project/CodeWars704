@@ -64,6 +64,20 @@ public class StartTask implements Runner {
         System.out.println("Result " + answer);
     }
 
+    public void runWhereIsHe() {
+        System.out.println("Run task WhereIsHe.\nPlease input the total amount of people (int):");
+        int p = br.readInt();
+
+        System.out.println("Run task WhereIsHe.\nPlease input amount of people before (int):");
+        int bef = br.readInt();
+
+        System.out.println("Run task WhereIsHe.\nPlease input amount of people after (int):");
+        int aft = br.readInt();
+
+        int answer = member.getSeven().whereIsHe(p, bef, aft);
+        System.out.println("The amount of possible positions " + answer);
+    }
+
     public void runSmallest() {
         System.out.println("Run task getVolumeOfCuboid.\nPlease enter positive number (long):");
         long n = br.readLong();
