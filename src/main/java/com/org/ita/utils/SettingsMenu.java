@@ -2,11 +2,13 @@ package com.org.ita.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import static com.org.ita.utils.Message.*;
 
 public class SettingsMenu {
 
     private static int setImplementation = 0;
     private static List<Runner> list = new ArrayList<>();
+
 
     Buffer br = new Buffer();
 
@@ -19,6 +21,7 @@ public class SettingsMenu {
     }
 
     private void menuTitle() {
+        colorln(DIVIDER_MAIN, ANSI_BLUE);
         System.out.println("1) View a list of all implementations (ID, First name Last name, github nickname)");
         String implement = "";
         if (setImplementation == 0) implement = "(You didn't choose implementation)";
