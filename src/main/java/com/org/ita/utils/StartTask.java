@@ -56,5 +56,15 @@ public class StartTask implements Runner {
         double volume = member.getEight().getVolumeOfCuboid(a, b, c);
         System.out.println("Result" + volume + " hours");
     }
+
+    public void runSmallest() {
+        System.out.println("Run task getVolumeOfCuboid.\nPlease enter positive number (long):");
+        long n = br.readLong();
+
+        long[] resultArr = member.getFive().smallest(n);
+        System.out.println("You have entered " + n);
+        System.out.println("The smallest number you got by one swap is: " + resultArr[0]);
+        System.out.println("You can get this number by taking digit from index " + resultArr[1] + " and inserting it at index " + resultArr[2]);
+    }
 }
 
