@@ -140,4 +140,4 @@ public class StartTask implements Runner {
         System.out.println("Result " + Arrays.toString(answer));
     }   
 }
-}
+
