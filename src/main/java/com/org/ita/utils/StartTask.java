@@ -117,5 +117,11 @@ public class StartTask implements Runner {
         System.out.println("Result: " + numb);
 
     }
+    public void runTwoDecimalPlaces(){
+        System.out.println("Run task twoDecimalPlaces.\nPlease input number (double):");
+        double a = br.readDouble();
+        double answer = member.getEight().twoDecimalPlaces(a);
+        System.out.println("Result " + answer);
+    }
 }
 
