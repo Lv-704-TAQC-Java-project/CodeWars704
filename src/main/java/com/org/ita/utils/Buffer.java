@@ -38,5 +38,15 @@ public class Buffer implements Reader {
         }
     }
 
+    @Override
+    public float readFloat() {
+        try {
+            return Float.parseFloat(Buffer.br.readLine());
+        } catch (IOException e) {
+            System.out.println("Input should be float");
+            return this.readFloat();
+        }
+    }
+
 
 }
