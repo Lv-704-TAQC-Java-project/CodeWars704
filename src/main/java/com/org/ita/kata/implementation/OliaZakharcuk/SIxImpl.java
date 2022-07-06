@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.text.DecimalFormat;
 public class SIxImpl implements Six {
     @Override
     public long findNb(long m) {
@@ -28,7 +28,30 @@ public class SIxImpl implements Six {
 
     @Override
     public String balance(String book) {
-        return null;
+
+        String cleanedBook = book.replaceAll("([^\\n. \\da-zA-Z])", "");
+        String[] bookLines = cleanedBook.split("[\\n]+");
+        String originalBalance = bookLines[0];
+        StringBuilder tempString = new StringBuilder();
+        double totalExp = 0.0;
+        double average;
+        double newBalance = Double.parseDouble(originalBalance);
+
+        for (int i = 1; i < bookLines.length; i++){
+            String[] currentBookLine = bookLines[i].split("\\s+");
+            totalExp += Double.parseDouble(currentBookLine[2]);
+            newBalance -= Double.parseDouble(currentBookLine[2]);
+
+            tempString.append(currentBookLine[0]).append(" ").append(currentBookLine[1]).append(" ")
+                    .append(currentBookLine[2]).append(" Balance ")
+                    .append((new DecimalFormat("0.00")
+                            .format(newBalance))).append("\\r\\n");
+        }
+        average = totalExp / (bookLines.length - 1);
+
+        return "Original Balance: " + (new DecimalFormat("#.00").format(Double.parseDouble(originalBalance))) + "\\r\\n" + tempString.toString() +
+                "Total expense  " + new DecimalFormat("0.00").format(totalExp) +
+                "\\r\\n" + "Average expense  " + (new DecimalFormat("0.00").format(average));
     }
 
     @Override

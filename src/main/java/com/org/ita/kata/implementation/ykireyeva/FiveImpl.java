@@ -3,6 +3,7 @@ package com.org.ita.kata.implementation.ykireyeva;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 
@@ -67,12 +68,21 @@ public class FiveImpl implements Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        int sum = IntStream.rangeClosed(1, n.intValue() + 1)
+                .map(FiveImpl::fibonacci).sum();
+        return BigInteger.valueOf(4L * sum);
+    }
+
+    private static int fibonacci(int n) {
+        if (n <= 1)
+            return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     @Override
     public double solveSum(double m) {
-        return 0;
+        double x = Math.sqrt(4 * m + 1);
+        return (2 * m + 1 - x) / (2 * m);
     }
 
     @Override

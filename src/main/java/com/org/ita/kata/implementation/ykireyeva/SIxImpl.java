@@ -3,7 +3,12 @@ package com.org.ita.kata.implementation.ykireyeva;
 import com.org.ita.kata.Six;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 
 public class SIxImpl implements Six {
@@ -52,17 +57,103 @@ public class SIxImpl implements Six {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        ArrayList<Double> listOfFall = stringToList(town, strng);
+        if (listOfFall == null) {
+            return -1;
+        }
+        return listOfFall.stream().reduce(0.0, Double::sum) / listOfFall.size();
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        ArrayList<Double> listOfFall = stringToList(town, strng);
+        if (listOfFall == null) {
+            return -1;
+        }
+        double avg = listOfFall.stream().reduce(0.0, Double::sum) / listOfFall.size();
+        double sumOfSquare = 0;
+        for (double d : listOfFall) {
+            sumOfSquare += (d - avg) * (d - avg);
+        }
+        return sumOfSquare / listOfFall.size();
+    }
+
+    private static ArrayList<Double> stringToList(String town, String str) {
+        Matcher m = Pattern.compile(".*" + town + ":.*").matcher(str);
+        String line;
+        if (m.find()) {
+            line = m.group();
+        } else {
+            return null;
+        }
+        return Arrays.stream(line.replaceAll("[^\\d.]+", " ").trim().split(" "))
+                .map(Double::parseDouble)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        return null;
+        int numOfDraws = 0;
+        int numOfWin = 0;
+        int numOfLose = 0;
+        int totalScored = 0;
+        int totalConceded = 0;
+        int sumOfPoints = 0;
+        int indexOfRequiredTeam;
+        int indexOfOtherTeam;
+        Pattern pattern = Pattern.compile(".*" + toFind + ".*");
+        StringBuilder result = new StringBuilder();
+
+        if (!Pattern.compile(toFind + "\\s").matcher(resultSheet).find()) {
+            return toFind + ":This team didn't play!";
+        }
+        if (toFind.length() == 0) {
+            return "";
+        }
+
+        ArrayList<String> listOfMatches = Arrays.stream(resultSheet.split(","))
+                .filter(e -> pattern.matcher(e).matches())
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        ArrayList<String> listOfTeams = new ArrayList<>();
+        for (String m : listOfMatches) {
+            if (Pattern.compile("\\d+\\.\\d+").matcher(m).find()) {
+                return "Error(float number):" + m;
+            }
+            listOfTeams.addAll(List.of(m.split("(?<=[0-9]\\s)")));
+        }
+
+        for (int i = 0; i < listOfTeams.size(); i += 2) {
+            if (pattern.matcher(listOfTeams.get(i)).find()) {
+                indexOfRequiredTeam = i;
+                indexOfOtherTeam = i + 1;
+            } else {
+                indexOfRequiredTeam = i + 1;
+                indexOfOtherTeam = i;
+            }
+            int scoreOfRequired = Integer.parseInt(listOfTeams.get(indexOfRequiredTeam)
+                    .trim()
+                    .replaceAll(".*[^\\d](\\d+).*", "$1"));
+            int scoreOfOther = Integer.parseInt(listOfTeams.get(indexOfOtherTeam)
+                    .trim()
+                    .replaceAll(".*[^\\d](\\d+).*", "$1"));
+
+            totalScored += scoreOfRequired;
+            totalConceded += scoreOfOther;
+
+            if (scoreOfRequired > scoreOfOther) {
+                numOfWin++;
+                sumOfPoints += 3;
+            } else if (scoreOfRequired < scoreOfOther) {
+                numOfLose++;
+            } else {
+                numOfDraws++;
+                sumOfPoints += 1;
+            }
+        }
+        result.append(String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d",
+                toFind, numOfWin, numOfDraws, numOfLose, totalScored, totalConceded, sumOfPoints));
+        return result.toString();
     }
 
     @Override

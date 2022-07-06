@@ -28,6 +28,12 @@ public class SevenImpl implements Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        int count = 0;
+        for (int i = bef; i < p; i++) {
+            if (p-i-1 <= aft) {
+                count++;
+            }
+        }
+        return count;
     }
 }

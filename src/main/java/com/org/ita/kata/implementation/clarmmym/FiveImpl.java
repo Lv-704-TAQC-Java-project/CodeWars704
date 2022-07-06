@@ -11,7 +11,49 @@ import java.util.List;
 public class FiveImpl implements Five {
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        if(v.length==1){
+            return 1;
+        }
+
+        int result = 0;
+
+        for (int i = 0; i < v.length; i++) {
+            int left = i;
+            int right = i;
+            int current = i;
+
+            int lCount = 0;
+            int rCount = 0;
+
+            while (left != 0) {
+                if (v[left] <= v[current]) {
+                    lCount++;
+                    current = left;
+                    left--;
+                } else {
+                    break;
+                }
+            }
+
+            current = i;
+
+            while (right != v.length - 1) {
+                if (v[right] <= v[current]) {
+                    rCount++;
+                    current = right;
+                    right++;
+                } else {
+                    break;
+                }
+            }
+
+            if (lCount + rCount >= result) {
+                result = lCount + rCount;
+            }
+
+        }
+
+        return result;
     }
 
     @Override
@@ -120,6 +162,65 @@ public class FiveImpl implements Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        char[] numbers = ("" + n).toCharArray();
+
+        int firstNumber = Integer.parseInt(String.valueOf(numbers[0]));
+        int minNumber = firstNumber;
+        int biggerThenFirth = Integer.parseInt(String.valueOf(numbers[1]));
+        int subtraction = biggerThenFirth - firstNumber;
+        int positionMinNumber = 0;
+        int indexBiggerThenFirst = 0;
+        boolean isBiggerThenFirst = false;
+
+        for (int i = 1; i < numbers.length; i++) {
+            int currentN = Integer.parseInt(String.valueOf(numbers[i]));
+            if (currentN <= minNumber) {
+                minNumber = currentN;
+                positionMinNumber = i;
+            }
+        }
+
+
+        if (positionMinNumber == 0) {
+            for (int i = 1; i < numbers.length; i++) {
+                int currentN = Integer.parseInt(String.valueOf(numbers[i]));
+                if (currentN - firstNumber < subtraction) {
+                    isBiggerThenFirst = true;
+                    positionMinNumber = i;
+                    if (currentN == minNumber) {
+                        indexBiggerThenFirst = i;
+                    }
+
+                    subtraction = currentN - firstNumber;
+                    biggerThenFirth = currentN;
+                }
+            }
+        }
+
+        StringBuilder numbInString = new StringBuilder("" + n);
+
+        long[] result;
+        if (isBiggerThenFirst) {
+            numbInString.deleteCharAt(positionMinNumber);
+            numbInString.insert(indexBiggerThenFirst + 1, biggerThenFirth);
+
+            result = new long[]{Integer.parseInt(String.valueOf(numbInString)), positionMinNumber, indexBiggerThenFirst + 1};
+        } else {
+            StringBuilder secondNumbInString = new StringBuilder(numbInString);
+
+            numbInString.deleteCharAt(positionMinNumber);
+            numbInString.insert(0, minNumber);
+
+            secondNumbInString.deleteCharAt(0);
+            secondNumbInString.insert(positionMinNumber, firstNumber);
+
+            boolean firstOrSecond = Integer.parseInt(String.valueOf(numbInString)) < Integer.parseInt(String.valueOf(secondNumbInString));
+            if (firstOrSecond) {
+                result = new long[]{Integer.parseInt(String.valueOf(numbInString)), positionMinNumber, 0};
+            } else {
+                result = new long[]{Integer.parseInt(String.valueOf(secondNumbInString)), 0, positionMinNumber};
+            }
+        }
+        return result;
     }
 }

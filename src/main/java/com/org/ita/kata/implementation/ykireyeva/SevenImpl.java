@@ -3,11 +3,16 @@ package com.org.ita.kata.implementation.ykireyeva;
 import com.org.ita.kata.Seven;
 
 import java.text.DecimalFormat;
+import java.util.stream.DoubleStream;
 
 public class SevenImpl implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
-        return 0;
+        double sum = DoubleStream.of(arr).reduce(0, Double::sum);
+        if (navg < sum / arr.length) {
+            throw new IllegalArgumentException();
+        }
+        return (long) Math.ceil(navg * (arr.length + 1) - sum);
     }
 
     @Override

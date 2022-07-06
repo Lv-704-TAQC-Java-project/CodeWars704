@@ -40,6 +40,17 @@ public class SevenImpl implements Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        int sum = bef + aft;
+        int count = 0;
+        int posPosit = p - sum;
+        for (int i = 0; i < posPosit; i++) {
+            int res = p - (aft + i);
+            System.out.println(res);
+            count++;    //possible positions
+        }
+
+
+        return count;
     }
 }
+

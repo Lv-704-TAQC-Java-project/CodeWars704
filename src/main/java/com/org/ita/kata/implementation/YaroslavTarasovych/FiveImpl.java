@@ -3,11 +3,41 @@ package com.org.ita.kata.implementation.YaroslavTarasovych;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class FiveImpl implements Five {
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        if (v.length == 1) return 1;
+        int array[] = new int[0];
+        int count = 1;
+        boolean next = false;
+        int countEqual = 0;
+        for (int i = 0; i < v.length - 1; i++) {
+              if (v[i] < v[i + 1] && next) {
+                  array = Arrays.copyOf(array, array.length + 1);
+                  array[array.length - 1] = count;
+                  next = false;
+                  count = 1;
+                  i -= countEqual;
+              }
+              if (v[i] < v[i + 1]) {
+                  count++;
+              }
+              if (v[i] == v[i + 1]) {
+                  count++;
+                  countEqual++;
+              }
+              if (v[i] > v[i + 1]) {
+                  count++;
+                  countEqual = 0;
+                  next = true;
+              }
+        }
+        array = Arrays.copyOf(array, array.length + 1);
+        array[array.length - 1] = count;
+        System.out.println(Arrays.toString(array));
+        return Arrays.stream(array).max().getAsInt();
     }
 
     @Override
