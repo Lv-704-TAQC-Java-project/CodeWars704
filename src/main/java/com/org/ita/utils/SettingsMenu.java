@@ -7,7 +7,6 @@ public class SettingsMenu {
 
     private static int setImplementation = 0;
     private static List<Runner> list = new ArrayList<>();
-  //  private static Scanner scanner = new Scanner(System.in);
 
     Buffer br = new Buffer();
 

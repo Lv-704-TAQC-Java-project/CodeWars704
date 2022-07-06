@@ -8,6 +8,8 @@ public interface Reader {
 
     double readDouble();
 
+    float readFloat();
+
     String readString();
 
 }
