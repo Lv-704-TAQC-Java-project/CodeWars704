@@ -27,7 +27,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        return Float.parseFloat(new DecimalFormat("0.00").format(mpg / 2.8248094));
     }
 
     @Override
