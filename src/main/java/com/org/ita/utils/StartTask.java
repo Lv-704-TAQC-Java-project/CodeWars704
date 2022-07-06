@@ -1,5 +1,8 @@
 package com.org.ita.utils;
 
+import java.sql.SQLOutput;
+import java.util.Arrays;
+
 public class StartTask implements Runner {
 
     private Group member;
@@ -30,6 +33,19 @@ public class StartTask implements Runner {
         switch (taskId) {
             case 1:
                 runLiters();
+                break;
+            case 2:
+                runGetVolumeOfCuboid();
+                break;
+            case 5:
+                runCountPositivesSumNegatives();
+                break;
+            case 16:
+                runRainfall();
+                break;
+            case 23:
+                runSmallest();
+                break;
             default:
                 System.out.println("rest will be done soon");
         }
@@ -40,7 +56,7 @@ public class StartTask implements Runner {
         System.out.println("Run task liters.\nPlease input time (double):");
         double a = br.readDouble();
         double answer = member.getEight().liters(a);
-        System.out.println("Result " + answer + " hours");
+        System.out.println("Result - " + answer + " hours");
     }
 
     public void runGetVolumeOfCuboid() {
@@ -54,8 +70,16 @@ public class StartTask implements Runner {
         double c = br.readDouble();
 
         double volume = member.getEight().getVolumeOfCuboid(a, b, c);
-        System.out.println("Result" + volume + " hours");
+        System.out.println("Result - " + volume + " volume");
     }
+
+    public void runAmIWilson() {
+        System.out.println("Run task amIWilson.\nPlease input number (double):");
+        double n = br.readDouble();
+        System.out.println("Is " + n + "Wilson?");
+        boolean numb = member.getEight().amIWilson(n);
+        System.out.println("Result: " + numb);
+        }
 
     public void runStringToNumber() {
         System.out.println("Run task stringToNumber.\nPlease input value (String):");
@@ -123,5 +147,11 @@ public class StartTask implements Runner {
         double answer = member.getEight().twoDecimalPlaces(a);
         System.out.println("Result " + answer);
     }
+    public void runCountPositivesSumNegatives() {
+        System.out.println("Run task CountPositivesSumNegatives.\nPlease input an array of integers:");
+        int[] intArr = br.readIntArr();
+        int[] answer = member.getEight().countPositivesSumNegatives(intArr);
+        System.out.println("Result " + Arrays.toString(answer));
+    }   
 }
 
