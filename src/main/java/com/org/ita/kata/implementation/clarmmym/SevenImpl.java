@@ -27,6 +27,6 @@ public class SevenImpl implements Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        return (p - bef) - ((p - bef > aft) ? (p - bef - aft - 1) : 0);
     }
 }
