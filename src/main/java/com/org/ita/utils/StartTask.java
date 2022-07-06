@@ -63,10 +63,10 @@ public class StartTask implements Runner {
         System.out.println("Run task getVolumeOfCuboid.\nPlease input length of cuboid (double):");
         double a = br.readDouble();
 
-        System.out.println("Please input width of cuboid (double):");
+        System.out.println("Run task getVolumeOfCuboid.\nPlease input width of cuboid (double):");
         double b = br.readDouble();
 
-        System.out.println("Please input height of cuboid (double):");
+        System.out.println("Run task getVolumeOfCuboid.\nPlease input height of cuboid (double):");
         double c = br.readDouble();
 
         double volume = member.getEight().getVolumeOfCuboid(a, b, c);
@@ -133,6 +133,20 @@ public class StartTask implements Runner {
         System.out.println("Result " + answer);
     }
 
+    public void runAmIWilson() {
+        System.out.println("Run task amIWilson.\nPlease input number (double):");
+        double n = br.readDouble();
+        System.out.println("Is " + n + "Wilson?");
+        boolean numb = member.getEight().amIWilson(n);
+        System.out.println("Result: " + numb);
+
+    }
+    public void runTwoDecimalPlaces(){
+        System.out.println("Run task twoDecimalPlaces.\nPlease input number (double):");
+        double a = br.readDouble();
+        double answer = member.getEight().twoDecimalPlaces(a);
+        System.out.println("Result " + answer);
+    }
     public void runCountPositivesSumNegatives() {
         System.out.println("Run task CountPositivesSumNegatives.\nPlease input an array of integers:");
         int[] intArr = br.readIntArr();
