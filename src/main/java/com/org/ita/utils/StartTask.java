@@ -83,6 +83,11 @@ public class StartTask implements Runner {
         System.out.println("Is " + n + "Wilson?");
         boolean numb = member.getEight().amIWilson(n);
         System.out.println("Result: " + numb);
+    public void runZeros(){
+        System.out.println("Run task zeros.\nPlease input the number (int):");
+        int factor = br.readInt();
+        int answer = member.getFive().zeros(factor);
+        System.out.println("The amount of trailing zeros in factorial " + answer);
     }
 
     public void runStringToNumber() {
