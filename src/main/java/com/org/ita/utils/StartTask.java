@@ -32,6 +32,7 @@ public class StartTask implements Runner {
         switch (taskId) {
             case 1:
                 runLiters();
+                break;
             case 2:
                 runGetVolumeOfCuboid();
                 break;
@@ -40,6 +41,12 @@ public class StartTask implements Runner {
                 break;
             case 5:
                 runCountPositivesSumNegatives();
+                break;
+            case 10:
+                runNewAvg();
+                break;
+            case 11:
+                runSeriesSum();
                 break;
             case 16:
                 runRainfall();
@@ -190,5 +197,20 @@ public class StartTask implements Runner {
         System.out.println("The maximum number of numbers that will be covered by artificial rain is equal to " + result);
     }
 
+    public void runSeriesSum(){
+        System.out.println("Run task seriesSum.\nPlease input the number (int):");
+        int n = br.readInt();
+        String answer = member.getSeven().seriesSum(n);
+        System.out.println("The sum of following series " + answer);
+    }
+
+    public void runNewAvg() {
+        System.out.println("Run task newAvg.\nPlease input an array of numbers (double)");
+        double[] arr = br.readDoubleArr();
+        System.out.println("Please input average navg (double):");
+        double nabg = br.readDouble();
+        double result = member.getSeven().newAvg(arr, nabg);
+        System.out.println("The expected donation is " + result + " $");
+    }
 }
 
