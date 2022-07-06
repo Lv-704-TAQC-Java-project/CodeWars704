@@ -298,7 +298,7 @@ public enum Tasks {
 
     public static void showAllTasks() {
         for (Tasks task : values()) {
-            System.out.println(task.id + " - " + task.taskName);
+            System.out.println(task.getId() + ") " + task.getTaskName());
         }
     }
 
