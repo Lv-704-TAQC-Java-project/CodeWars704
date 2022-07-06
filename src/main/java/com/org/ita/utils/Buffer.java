@@ -3,16 +3,17 @@ package com.org.ita.utils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 
 public class Buffer implements Reader {
 
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     @Override
     public double readDouble() {
         try {
             return Double.parseDouble(Buffer.br.readLine());
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Input should be double");
             return this.readDouble();
         }
@@ -22,7 +23,7 @@ public class Buffer implements Reader {
     public int readInt() {
         try {
             return Integer.parseInt(Buffer.br.readLine());
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Input should be int");
             return this.readInt();
         }
@@ -32,9 +33,19 @@ public class Buffer implements Reader {
     public long readLong() {
         try {
             return Long.parseLong(Buffer.br.readLine());
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Input should be of a 'long' type");
             return this.readLong();
+        }
+    }
+
+    @Override
+    public BigInteger readBigInteger() {
+        try {
+            return new BigInteger(Buffer.br.readLine());
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Input should be BI");
+            return this.readBigInteger();
         }
     }
 
@@ -52,7 +63,7 @@ public class Buffer implements Reader {
     public float readFloat() {
         try {
             return Float.parseFloat(Buffer.br.readLine());
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Input should be float");
             return this.readFloat();
         }
@@ -61,7 +72,7 @@ public class Buffer implements Reader {
     @Override
     public String[] readStringArr() {
         try {
-            return br.readLine().trim().split("\\s+");
+            return Buffer.br.readLine().trim().split("\\s+");
         } catch (IOException e) {
             System.out.println("Input should be String");
         }
