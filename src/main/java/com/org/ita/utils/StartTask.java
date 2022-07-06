@@ -1,6 +1,5 @@
 package com.org.ita.utils;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class StartTask implements Runner {
@@ -33,11 +32,11 @@ public class StartTask implements Runner {
         switch (taskId) {
             case 1:
                 runLiters();
-            case 3:
-                runMpgToKPM();
-                break;
             case 2:
                 runGetVolumeOfCuboid();
+                break;
+            case 3:
+                runMpgToKPM();
                 break;
             case 5:
                 runCountPositivesSumNegatives();
@@ -45,7 +44,10 @@ public class StartTask implements Runner {
             case 16:
                 runRainfall();
                 break;
-            case 24:
+            case 20:
+                runGap();
+                break;
+            case 23:
                 runSmallest();
                 break;
             default:
@@ -75,6 +77,12 @@ public class StartTask implements Runner {
         System.out.println("Result - " + volume + " volume");
     }
 
+    public void runAmIWilson() {
+        System.out.println("Run task amIWilson.\nPlease input number (double):");
+        double n = br.readDouble();
+        System.out.println("Is " + n + "Wilson?");
+        boolean numb = member.getEight().amIWilson(n);
+        System.out.println("Result: " + numb);
     public void runZeros(){
         System.out.println("Run task zeros.\nPlease input the number (int):");
         int factor = br.readInt();
@@ -140,25 +148,33 @@ public class StartTask implements Runner {
         float answer = member.getEight().mpgToKPM(x);
         System.out.println("Result " + answer + " kilometers per liter");
     }
-    public void runAmIWilson() {
-        System.out.println("Run task amIWilson.\nPlease input number (double):");
-        double n = br.readDouble();
-        System.out.println("Is " + n + "Wilson?");
-        boolean numb = member.getEight().amIWilson(n);
-        System.out.println("Result: " + numb);
 
-    }
-    public void runTwoDecimalPlaces(){
+    public void runTwoDecimalPlaces() {
         System.out.println("Run task twoDecimalPlaces.\nPlease input number (double):");
         double a = br.readDouble();
         double answer = member.getEight().twoDecimalPlaces(a);
         System.out.println("Result " + answer);
     }
+
     public void runCountPositivesSumNegatives() {
         System.out.println("Run task CountPositivesSumNegatives.\nPlease input an array of integers:");
         int[] intArr = br.readIntArr();
         int[] answer = member.getEight().countPositivesSumNegatives(intArr);
         System.out.println("Result " + Arrays.toString(answer));
-    }   
+    }
+
+    public void runGap() {
+        System.out.println("Run task Gap.\nPlease input the gap we are looking for (int):");
+        int g = br.readInt();
+
+        System.out.println("Please input the start of the search (long):");
+        long m = br.readLong();
+
+        System.out.println("Please input the end of the search (long):");
+        long n = br.readLong();
+
+        long[] answer = member.getFive().gap(g, m, n);
+        System.out.println("Result " + Arrays.toString(answer) + " gap");
+    }
 }
 
