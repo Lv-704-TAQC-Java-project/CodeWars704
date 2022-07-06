@@ -41,6 +41,9 @@ public class StartTask implements Runner {
             case 5:
                 runCountPositivesSumNegatives();
                 break;
+            case 10:
+                runNewAvg();
+                break;
             case 11:
                 runSeriesSum();
                 break;
@@ -186,6 +189,15 @@ public class StartTask implements Runner {
         int n = br.readInt();
         String answer = member.getSeven().seriesSum(n);
         System.out.println("The sum of following series " + answer);
+    }
+
+    public void runNewAvg() {
+        System.out.println("Run task newAvg.\nPlease input an array of numbers (double)");
+        double[] arr = br.readDoubleArr();
+        System.out.println("Please input average navg (double):");
+        double nabg = br.readDouble();
+        double result = member.getSeven().newAvg(arr, nabg);
+        System.out.println("The expected donation is " + result + " $");
     }
 }
 
