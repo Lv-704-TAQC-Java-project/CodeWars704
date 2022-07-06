@@ -56,5 +56,12 @@ public class StartTask implements Runner {
         double volume = member.getEight().getVolumeOfCuboid(a, b, c);
         System.out.println("Result" + volume + " hours");
     }
+
+    public void runStringToNumber() {
+        System.out.println("Run task stringToNumber.\nPlease input value (String):");
+        String a = br.readString();
+        int answer = member.getEight().stringToNumber(a);
+        System.out.println("Result " + answer);
+    }
 }
 
