@@ -18,7 +18,7 @@ public class ListImplementation implements Runner{
             System.out.println(name);
         }
         System.out.print("Please enter to return to the menu: ");
-        int sc=br.readInt();
+        String enter = br.readString();
         System.out.println();
     }
 }
