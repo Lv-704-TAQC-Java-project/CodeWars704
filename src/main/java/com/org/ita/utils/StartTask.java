@@ -1,6 +1,7 @@
 package com.org.ita.utils;
 
 import java.util.Arrays;
+import static com.org.ita.utils.Message.*;
 
 public class StartTask implements Runner {
 
@@ -56,6 +57,9 @@ public class StartTask implements Runner {
                 break;
             case 17:
                 runNbaCup();
+                break;
+            case 18:
+                runStockSummary();
                 break;
             case 19:
                 runArtificialRain();
@@ -270,6 +274,28 @@ public class StartTask implements Runner {
         String team = br.readString();
         String teamScore = member.getSix().nbaCup(resultSheet, team);
         System.out.println("Result for the team " + team + " : " + teamScore);
+    }
+
+    public void runStockSummary()  {
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task 'Help the bookseller!'", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Enter an array of strings (strings are divided by comma) in the following format:");
+        colorln("ABART 20, CDXEF 50, BKWRK 25, BTSQZ 89, DRTYM 60", ANSI_YELLOW);
+        System.out.println("Where 3, 4, 5 letters represent a book code and digits after a 'space'");
+        System.out.println("indicate the quantity of books by this code in stock.");
+        String[] lstOfArt = br.readStringArrSplitByComma();
+
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Enter an array of strings (strings are divided by comma) in the following format:");
+        colorln("A, B, C, W", ANSI_YELLOW);
+        String[] lstOf1stLetter = br.readStringArrSplitByComma();
+
+        String result = member.getSix().stockSummary(lstOfArt, lstOf1stLetter);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("You've got a following result:");
+        colorln(result, ANSI_RED);
+        System.out.println("Where (key: value) - 'key' is a book category and 'value' is quantity of books in category.");
     }
 }
 
