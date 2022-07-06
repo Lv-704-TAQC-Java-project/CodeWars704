@@ -80,6 +80,20 @@ public class Buffer implements Reader {
     }
 
     @Override
+    public int[] readIntArr() {
+        try {
+            String[] in = br.readLine().trim().split("\\s+");
+            int[] arr = new int[in.length];
+            for (int i = 0; i < arr.length; i++)
+                arr[i] = Integer.parseInt(in[i]);
+            return arr;
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Input should be int");
+            return this.readIntArr();
+        }
+    }
+
+    @Override
     public double[] readDoubleArr() {
         try {
             String[] in = br.readLine().trim().split("\\s+");
