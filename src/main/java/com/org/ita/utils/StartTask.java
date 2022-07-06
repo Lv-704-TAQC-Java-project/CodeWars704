@@ -42,6 +42,9 @@ public class StartTask implements Runner {
             case 5:
                 runCountPositivesSumNegatives();
                 break;
+            case 10:
+                runNewAvg();
+                break;
             case 11:
                 runSeriesSum();
                 break;
@@ -51,8 +54,14 @@ public class StartTask implements Runner {
             case 16:
                 runRainfall();
                 break;
+            case 19:
+                runArtificialRain();
+                break;
             case 20:
                 runGap();
+                break;
+            case 23:
+                runSolveSum();
                 break;
             case 24:
                 runSmallest();
@@ -149,6 +158,7 @@ public class StartTask implements Runner {
         double answer = member.getSix().f(x);
         System.out.println("Result " + answer);
     }
+    
     public void runFindNb() {
         System.out.println("Run task findNb.");
         System.out.println("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m");
@@ -167,8 +177,22 @@ public class StartTask implements Runner {
             runFindNb();
         }
         System.out.println();
-
+    
+    public void runSolveSum() {
+        System.out.println("Run task solveSum.");
+        System.out.println("This method returns the value of x from the sequence U(n, x) = x + 2x**2 + 3x**3 + .. + nx**n");
+        System.out.println("Please input m > 0 (double) :");
+        double a = br.readDouble();
+        if (a > 0) {
+            System.out.println("You have entered " + a);
+            double result = member.getFive().solveSum(a);
+            System.out.println("The number x is equal: " + result);
+        } else {
+            System.out.println("Please input m larger then 0");
+            runSolveSum();
+        }
     }
+   
     public void runMpgToKPM() {
         System.out.println("Run task mpgToKPM.\nPlease input x (float):");
         float x = br.readFloat();
@@ -204,11 +228,29 @@ public class StartTask implements Runner {
         System.out.println("Result " + Arrays.toString(answer) + " gap");
     }
 
+    public void runArtificialRain() {
+        System.out.println("Run task artificialRain.");
+        System.out.println("Methods of deriving the number that conveys the maximum coverage of the array section");
+        System.out.println("Please input an array of integers:");
+        int[] intArr = br.readIntArr();
+        int result = member.getFive().artificialRain(intArr);
+        System.out.println("The maximum number of numbers that will be covered by artificial rain is equal to " + result);
+    }
+
     public void runSeriesSum(){
         System.out.println("Run task seriesSum.\nPlease input the number (int):");
         int n = br.readInt();
         String answer = member.getSeven().seriesSum(n);
         System.out.println("The sum of following series " + answer);
+    }
+
+    public void runNewAvg() {
+        System.out.println("Run task newAvg.\nPlease input an array of numbers (double)");
+        double[] arr = br.readDoubleArr();
+        System.out.println("Please input average navg (double):");
+        double nabg = br.readDouble();
+        double result = member.getSeven().newAvg(arr, nabg);
+        System.out.println("The expected donation is " + result + " $");
     }
 }
 
