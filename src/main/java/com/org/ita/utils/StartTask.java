@@ -45,7 +45,7 @@ public class StartTask implements Runner {
             case 16:
                 runRainfall();
                 break;
-            case 23:
+            case 24:
                 runSmallest();
                 break;
             default:
