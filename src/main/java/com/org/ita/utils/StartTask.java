@@ -33,6 +33,8 @@ public class StartTask implements Runner {
         switch (taskId) {
             case 1:
                 runLiters();
+            case 3:
+                runMpgToKPM();
                 break;
             case 2:
                 runGetVolumeOfCuboid();
@@ -133,6 +135,12 @@ public class StartTask implements Runner {
         System.out.println("Result " + answer);
     }
 
+    public void runMpgToKPM() {
+        System.out.println("Run task mpgToKPM.\nPlease input x (float):");
+        float x = br.readFloat();
+        float answer = member.getEight().mpgToKPM(x);
+        System.out.println("Result " + answer + " kilometers per liter");
+    }
     public void runAmIWilson() {
         System.out.println("Run task amIWilson.\nPlease input number (double):");
         double n = br.readDouble();
