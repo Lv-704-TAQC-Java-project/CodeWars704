@@ -29,6 +29,16 @@ public class Buffer implements Reader {
     }
 
     @Override
+    public long readLong() {
+        try {
+            return Long.parseLong(Buffer.br.readLine());
+        } catch (IOException e) {
+            System.out.println("Input should be of a 'long' type");
+            return this.readLong();
+        }
+    }
+
+    @Override
     public String readString() {
         try {
             return Buffer.br.readLine();
