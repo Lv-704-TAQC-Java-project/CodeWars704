@@ -32,6 +32,9 @@ public class StartTask implements Runner {
                 runGetVolumeOfCuboid();
             case 2:
                 runLiters();
+            case 12:
+                runFindNb();
+                break;
             case 23:
                 runSmallest();
             default:
@@ -98,5 +101,27 @@ public class StartTask implements Runner {
         double answer = member.getSix().f(x);
         System.out.println("Result " + answer);
     }
+
+    public void runFindNb() {
+        System.out.println("Run task findNb.");
+        System.out.println("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m");
+        System.out.println("Please enter positive number (long):");
+        long n = br.readLong();
+        if (n > 0) {
+            long result = member.getSix().findNb(n);
+            System.out.println("You have entered " + n);
+            if (result >= 0){
+                System.out.println("Your number n is: " + result);
+            } else {
+                System.out.println("There is no such n");
+            }
+        } else {
+            System.out.println("Please enter a positive number greater than 0");
+            runFindNb();
+        }
+        System.out.println();
+
+    }
+
 }
 
