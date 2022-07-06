@@ -91,5 +91,12 @@ public class StartTask implements Runner {
         System.out.println("The smallest number you got by one swap is: " + resultArr[0]);
         System.out.println("You can get this number by taking digit from index " + resultArr[1] + " and inserting it at index " + resultArr[2]);
     }
+
+    public void runF() {
+        System.out.println("Run task f.\nPlease input x (double):");
+        double x = br.readDouble();
+        double answer = member.getSix().f(x);
+        System.out.println("Result " + answer);
+    }
 }
 
