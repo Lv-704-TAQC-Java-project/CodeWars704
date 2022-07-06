@@ -36,7 +36,6 @@ public class FiveImpl implements Five {
         }
         array = Arrays.copyOf(array, array.length + 1);
         array[array.length - 1] = count;
-        System.out.println(Arrays.toString(array));
         return Arrays.stream(array).max().getAsInt();
     }
 
