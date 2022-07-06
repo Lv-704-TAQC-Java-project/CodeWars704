@@ -32,7 +32,7 @@ public class StartTask implements Runner {
         switch (taskId) {
             case 1:
                 runLiters();
-                break;
+                break;  
             case 2:
                 runGetVolumeOfCuboid();
                 break;
@@ -47,6 +47,9 @@ public class StartTask implements Runner {
                 break;
             case 11:
                 runSeriesSum();
+                break;
+            case 13:
+                runFindNb();
                 break;
             case 16:
                 runRainfall();
@@ -156,6 +159,25 @@ public class StartTask implements Runner {
         System.out.println("Result " + answer);
     }
     
+    public void runFindNb() {
+        System.out.println("Run task findNb.");
+        System.out.println("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m");
+        System.out.println("Please enter positive number (long):");
+        long n = br.readLong();
+        if (n > 0) {
+            long result = member.getSix().findNb(n);
+            System.out.println("You have entered " + n);
+            if (result >= 0){
+                System.out.println("Your number n is: " + result);
+            } else {
+                System.out.println("There is no such n");
+            }
+        } else {
+            System.out.println("Please enter a positive number greater than 0");
+            runFindNb();
+        }
+        System.out.println();
+    
     public void runSolveSum() {
         System.out.println("Run task solveSum.");
         System.out.println("This method returns the value of x from the sequence U(n, x) = x + 2x**2 + 3x**3 + .. + nx**n");
@@ -170,7 +192,7 @@ public class StartTask implements Runner {
             runSolveSum();
         }
     }
-
+   
     public void runMpgToKPM() {
         System.out.println("Run task mpgToKPM.\nPlease input x (float):");
         float x = br.readFloat();
