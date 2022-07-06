@@ -1,5 +1,6 @@
 package com.org.ita.utils;
 
+import java.io.IOException;
 import java.math.BigInteger;
 
 public interface Reader {
@@ -19,6 +20,8 @@ public interface Reader {
     String readString();
 
     String[] readStringArr();
+
+    String[] readStringArrSplitByComma();
 
     int[] readIntArr();
 

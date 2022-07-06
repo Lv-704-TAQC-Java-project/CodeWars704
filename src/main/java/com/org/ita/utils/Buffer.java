@@ -80,6 +80,16 @@ public class Buffer implements Reader {
     }
 
     @Override
+    public String[] readStringArrSplitByComma() {
+        try {
+            return Buffer.br.readLine().trim().split(",");
+        } catch (IOException e) {
+            System.out.println("Input should be String");
+        }
+        return this.readStringArr();
+    }
+
+    @Override
     public int[] readIntArr() {
         try {
             String[] in = br.readLine().trim().split("\\s+");
