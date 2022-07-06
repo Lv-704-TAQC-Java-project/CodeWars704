@@ -7,14 +7,11 @@ public class ShowListOfTask implements Runner {
     @Override
     public void run() {
         SettingsMenu.clearScreen();
-        int count = 0;
-        for (Tasks task : Tasks.values()) {
-            System.out.println(count++ + ")" + task.getTaskName());
-        }
-        System.out.println("Choose task number(0..23) or return to menu (-1): ");
-        int sc = br.readInt();
+        Tasks.showAllTasks();
+        System.out.println("Choose task number(1..24) or return to menu (-1): ");
+        int number = br.readInt();
         System.out.println();
-        if (sc != -1) description(sc);
+        if (number != -1) description(number);
     }
 
     private void description(int num) {
