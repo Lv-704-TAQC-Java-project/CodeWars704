@@ -9,34 +9,35 @@ public class FiveImpl implements Five {
     @Override
     public int artificialRain(int[] v) {
         if (v.length == 1) return 1;
-        int array[] = new int[v.length];
+        int array[] = new int[0];
+        int count = 1;
+        boolean next = false;
+        int countEqual = 0;
         for (int i = 0; i < v.length - 1; i++) {
-            boolean up = true;
-            boolean down = true;
-            int count = 1;
-            for (int j = i; j < v.length - 1; j++) {
-                if (v[j] >= v[j + 1]&&up) {
-                    count++;
-                    continue;
-                } else {
-                    up = false;
-                }
-                if (v[j] <= v[j + 1]&&down) {
-                    count++;
-                    continue;
-                } else {
-                    down = false;
-                }
-                break;
-            }
-            array[i] = count;
+              if (v[i] < v[i + 1] && next) {
+                  array = Arrays.copyOf(array, array.length + 1);
+                  array[array.length - 1] = count;
+                  next = false;
+                  count = 1;
+                  i -= countEqual;
+              }
+              if (v[i] < v[i + 1]) {
+                  count++;
+              }
+              if (v[i] == v[i + 1]) {
+                  count++;
+                  countEqual++;
+              }
+              if (v[i] > v[i + 1]) {
+                  count++;
+                  countEqual = 0;
+                  next = true;
+              }
         }
-        int max=array[0];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i]>max) max=array[i];
-        }
-        System.out.println();
-        return max;
+        array = Arrays.copyOf(array, array.length + 1);
+        array[array.length - 1] = count;
+        System.out.println(Arrays.toString(array));
+        return Arrays.stream(array).max().getAsInt();
     }
 
     @Override
@@ -113,12 +114,5 @@ public class FiveImpl implements Five {
             }
         }
         return new long[]{min, minStart, minEnd};
-    }
-
-    public static void main(String[] args) {
-        FiveImpl five = new FiveImpl();
-        System.out.println(five.artificialRain(new int[]{2}));
-        System.out.println(five.artificialRain(new int[]{1,2,1,2,1}));
-        System.out.println(five.artificialRain(new int[]{4,2,3,3,2}));
     }
 }
