@@ -20,4 +20,6 @@ public interface Reader {
 
     String[] readStringArr();
 
+    int[] readIntArr();
+
 }
