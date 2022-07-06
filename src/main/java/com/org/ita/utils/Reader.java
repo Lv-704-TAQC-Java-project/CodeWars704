@@ -12,4 +12,6 @@ public interface Reader {
 
     String readString();
 
+    String[] readStringArr();
+
 }
