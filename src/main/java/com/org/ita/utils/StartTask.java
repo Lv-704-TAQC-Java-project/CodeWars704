@@ -63,6 +63,14 @@ public class StartTask implements Runner {
         System.out.println("Result" + volume + " hours");
     }
 
+    public void runAmIWilson() {
+        System.out.println("Run task amIWilson.\nPlease input number (double):");
+        double n = br.readDouble();
+        System.out.println("Is " + n + "Wilson?");
+        boolean numb = member.getEight().amIWilson(n);
+        System.out.println("Result: " + numb);
+        }
+
     public void runStringToNumber() {
         System.out.println("Run task stringToNumber.\nPlease input value (String):");
         String a = br.readString();
@@ -113,6 +121,6 @@ public class StartTask implements Runner {
         double x = br.readDouble();
         double answer = member.getSix().f(x);
         System.out.println("Result " + answer);
-    }
+    
 }
-
+}
