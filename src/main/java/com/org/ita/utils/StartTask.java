@@ -29,7 +29,11 @@ public class StartTask implements Runner {
     public void runTask(int taskId) {
         switch (taskId) {
             case 1:
+                runGetVolumeOfCuboid();
+            case 2:
                 runLiters();
+            case 23:
+                runSmallest();
             default:
                 System.out.println("rest will be done soon");
         }
@@ -47,10 +51,10 @@ public class StartTask implements Runner {
         System.out.println("Run task getVolumeOfCuboid.\nPlease input length of cuboid (double):");
         double a = br.readDouble();
 
-        System.out.println("Run task getVolumeOfCuboid.\nPlease input width of cuboid (double):");
+        System.out.println("Please input width of cuboid (double):");
         double b = br.readDouble();
 
-        System.out.println("Run task getVolumeOfCuboid.\nPlease input height of cuboid (double):");
+        System.out.println("Please input height of cuboid (double):");
         double c = br.readDouble();
 
         double volume = member.getEight().getVolumeOfCuboid(a, b, c);
