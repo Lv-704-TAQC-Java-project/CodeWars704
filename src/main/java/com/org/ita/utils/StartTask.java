@@ -42,5 +42,19 @@ public class StartTask implements Runner {
         double answer = member.getEight().liters(a);
         System.out.println("Result " + answer + " hours");
     }
+
+    public void runGetVolumeOfCuboid() {
+        System.out.println("Run task getVolumeOfCuboid.\nPlease input length of cuboid (double):");
+        double a = br.readDouble();
+
+        System.out.println("Run task getVolumeOfCuboid.\nPlease input width of cuboid (double):");
+        double b = br.readDouble();
+
+        System.out.println("Run task getVolumeOfCuboid.\nPlease input height of cuboid (double):");
+        double c = br.readDouble();
+
+        double volume = member.getEight().getVolumeOfCuboid(a, b, c);
+        System.out.println("Result" + volume + " hours");
+    }
 }
 
