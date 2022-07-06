@@ -1,8 +1,6 @@
-package com.org.ita.kata.implementation.ykireyeva;
+package com.org.ita.kata.implementation.avlrvn;
 
 import com.org.ita.kata.Seven;
-
-import java.text.DecimalFormat;
 
 public class SevenImpl implements Seven {
     @Override
@@ -12,13 +10,7 @@ public class SevenImpl implements Seven {
 
     @Override
     public String seriesSum(int n) {
-        double divisor = 1;
-        double sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += 1 / divisor;
-            divisor += 3;
-        }
-        return new DecimalFormat("#.00").format(sum);
+        return null;
     }
 
     @Override
