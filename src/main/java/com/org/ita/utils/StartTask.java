@@ -32,10 +32,10 @@ public class StartTask implements Runner {
                 runGetVolumeOfCuboid();
             case 2:
                 runLiters();
-            case 12:
+            case 13:
                 runFindNb();
                 break;
-            case 23:
+            case 24:
                 runSmallest();
             default:
                 System.out.println("rest will be done soon");
