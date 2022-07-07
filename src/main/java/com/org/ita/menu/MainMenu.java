@@ -1,10 +1,13 @@
-package com.org.ita.utils;
+package com.org.ita.menu;
+
+import com.org.ita.info.GroupInfo;
+import com.org.ita.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import static com.org.ita.utils.Message.*;
 
-public class SettingsMenu {
+public class MainMenu {
 
     private static int setImplementation = 0;
     private static final List<Runner> list = new ArrayList<>();
@@ -12,7 +15,7 @@ public class SettingsMenu {
     Buffer br = new Buffer();
 
     public static void setSetImplementation(int setImplementation) {
-        SettingsMenu.setImplementation = setImplementation;
+        MainMenu.setImplementation = setImplementation;
     }
 
     public static int getSetImplementation() {
@@ -27,7 +30,7 @@ public class SettingsMenu {
         if (setImplementation == 0) {
             implement = "(No implementation selected)";
         } else {
-            implement = "(Current implementation: " + Group.getMemberNameById(setImplementation) + ")";
+            implement = "(Current implementation: " + GroupInfo.getMemberNameById(setImplementation) + ")";
         }
         colorln(implement, setImplementation == 0 ? ANSI_YELLOW : ANSI_GREEN);
 
@@ -45,9 +48,9 @@ public class SettingsMenu {
             int chooseNumber = br.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
 
             list.add(new Exit());
-            list.add(new ListImplementation());
-            list.add(new ShowListOfTask());
-            list.add(new StartTask());
+            list.add(new ImplementationMenu());
+            list.add(new TaskDescriptionMenu());
+            list.add(new TaskRunnerMenu());
             list.get(chooseNumber).run();
         }
     }

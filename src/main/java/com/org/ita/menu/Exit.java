@@ -1,4 +1,6 @@
-package com.org.ita.utils;
+package com.org.ita.menu;
+
+import com.org.ita.utils.Runner;
 
 public class Exit implements Runner {
     @Override

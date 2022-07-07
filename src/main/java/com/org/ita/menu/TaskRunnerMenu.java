@@ -1,4 +1,9 @@
-package com.org.ita.utils;
+package com.org.ita.menu;
+
+import com.org.ita.info.TaskInfo;
+import com.org.ita.utils.Buffer;
+import com.org.ita.info.GroupInfo;
+import com.org.ita.utils.Runner;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -6,18 +11,18 @@ import java.util.StringJoiner;
 
 import static com.org.ita.utils.Message.*;
 
-public class StartTask implements Runner {
+public class TaskRunnerMenu implements Runner {
 
-    private Group member;
-    private final int GROUP_SIZE = Group.values().length;
+    private GroupInfo member;
+    private final int GROUP_SIZE = GroupInfo.values().length;
     Buffer br = new Buffer();
 
     @Override
     public void run() {
-        SettingsMenu.clearScreen();
+        MainMenu.clearScreen();
         colorHeader("Available tasks:", ANSI_BLUE);
 
-        Tasks.showAllTasks();
+        TaskInfo.showAllTasks();
 
         colorln(DIVIDER, ANSI_BLUE);
         colorln("1..24 - to run a task", ANSI_GREEN);
@@ -26,22 +31,22 @@ public class StartTask implements Runner {
         int number = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 24);
 
         if (number != 0) {
-            if (SettingsMenu.getSetImplementation() == 0) {
+            if (MainMenu.getSetImplementation() == 0) {
                 colorln("You need to pick a user first:", ANSI_RED);
                 int userId = br.getValidIntFromUserInput("Invalid user ID. Choose in range from 1 to " + GROUP_SIZE, 1, GROUP_SIZE);
 
-                colorln("Selected user: " + Group.getMemberNameById(userId), ANSI_GREEN);
-                SettingsMenu.setSetImplementation(userId);
+                colorln("Selected user: " + GroupInfo.getMemberNameById(userId), ANSI_GREEN);
+                MainMenu.setSetImplementation(userId);
             }
 
-            member = Group.getMemberById(SettingsMenu.getSetImplementation());
+            member = GroupInfo.getMemberById(MainMenu.getSetImplementation());
 
             setMember(member);
             runTask(number);
         }
     }
 
-    public void setMember(Group member) {
+    public void setMember(GroupInfo member) {
         this.member = member;
     }
 
