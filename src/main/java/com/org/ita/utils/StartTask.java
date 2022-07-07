@@ -373,19 +373,35 @@ public class StartTask implements Runner {
         }
     }
 
-    String resultSheet = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
-            + "Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,"
-            + "Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,"
-            + "Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 106,Boston Celtics 112 Philadelphia 76ers 95,"
-            + "Brooklyn Nets 100 Chicago Bulls 115,Detroit Pistons 92 Utah Jazz 87,Miami Heat 104 Charlotte Hornets 94,"
-            + "Toronto Raptors 106 Indiana Pacers 99,Orlando Magic 87 Washington Wizards 88,Golden State Warriors 111 New Orleans Pelicans 95,"
-            + "Atlanta Hawks 94 Detroit Pistons 106,Chicago Bulls 97 Cleveland Cavaliers 95,";
-
     public void runNbaCup() {
-        System.out.println("Run task NbaCup.\nPlease input some team, e.g. - Boston Celtics or Los Angeles Clippers");
-        String team = br.readString();
-        String teamScore = member.getSix().nbaCup(resultSheet, team);
-        System.out.println("Result for the team " + team + " : " + teamScore);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task NbaCup", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function NbaCup returns the number of matches team - won, draws, lost, total score, conceded and NBA rank", ANSI_YELLOW);
+        System.out.println("Please input NBA scores, e.g.:\n");
+        System.out.println("Los Angeles Clippers 104 Dallas Mavericks 88,\n" +
+                "New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,\n" +
+                "Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,\n" +
+                "Portland Trail Blazers 112 New Orleans Pelicans 94,Sacramento Kings 104 Los Angeles Clippers 111,\n" +
+                "Houston Rockets 85 Denver Nuggets 105,");
+
+        String NBAresults = "";
+        StringJoiner NBAFormated = new StringJoiner("\n");
+        while (true){
+            NBAresults = br.readString();
+            if (NBAresults == null || NBAresults.isEmpty()) break;
+            NBAFormated.add(NBAresults);
+        }
+        System.out.println("Please input some team, e.g.:");
+        colorln("Los Angeles Clippers", ANSI_YELLOW);
+        String teamName = br.readString();
+        String teamScore = member.getSix().nbaCup(NBAFormated.toString(), teamName);
+        try {
+            teamScore = teamScore.replaceAll("\\\\r\\\\n","\n");
+            System.out.println("Result: " + teamScore);
+        } catch (NullPointerException e) {
+            colorln("This task is not implemented yet", ANSI_RED);
+        }
     }
 
     public void runStockSummary() {
