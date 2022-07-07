@@ -39,7 +39,8 @@ public class EigthImpl implements Eight {
         String result = KM_PER_L % 1 != 0 ? (String.format("%.02f", KM_PER_L))
                 : (String.format("%.01f", KM_PER_L));
 
-        return Float.parseFloat(result);
+        String answer = result.replace(",",".");
+        return Float.parseFloat(answer);
     }
 
     @Override
