@@ -197,36 +197,42 @@ public class StartTask implements Runner {
     }
 
     public void runFindNb() {
-        System.out.println("Run task findNb.");
-        System.out.println("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task findNb.", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m",ANSI_YELLOW);
         System.out.println("Please enter positive number (long):");
         long n = br.readLong();
         if (n > 0) {
             long result = member.getSix().findNb(n);
-            System.out.println("You have entered " + n);
+            colorln("You have entered " + n,ANSI_BLUE);
             if (result >= 0) {
-                System.out.println("Your number n is: " + result);
+                colorln("Your number n is: ",ANSI_YELLOW);
+                colorln(""+result, ANSI_RED);
             } else {
-                System.out.println("There is no such n");
+                colorln("There is no such n", ANSI_YELLOW);
             }
         } else {
-            System.out.println("Please enter a positive number greater than 0");
+            colorln("Please enter a positive number greater than 0", ANSI_RED);
             runFindNb();
         }
         System.out.println();
     }
 
     public void runSolveSum() {
-        System.out.println("Run task solveSum.");
-        System.out.println("This method returns the value of x from the sequence U(n, x) = x + 2x**2 + 3x**3 + .. + nx**n");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task solveSum.", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("This method returns the value of x from the sequence U(n, x) = x + 2x**2 + 3x**3 + .. + nx**n", ANSI_YELLOW);
         System.out.println("Please input m > 0 (double) :");
         double a = br.readDouble();
         if (a > 0) {
-            System.out.println("You have entered " + a);
+            colorln("You have entered " + a,ANSI_BLUE);
             double result = member.getFive().solveSum(a);
-            System.out.println("The number x is equal: " + result);
+            colorln("The number x is equal: ",ANSI_YELLOW);
+            colorln(""+result,ANSI_RED);
         } else {
-            System.out.println("Please input m larger then 0");
+            colorln("Please input m larger then 0",ANSI_RED);
             runSolveSum();
         }
     }
@@ -267,12 +273,16 @@ public class StartTask implements Runner {
     }
 
     public void runArtificialRain() {
-        System.out.println("Run task artificialRain.");
-        System.out.println("Methods of deriving the number that conveys the maximum coverage of the array section");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task artificialRain.", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Methods of deriving the number that conveys the maximum coverage of the array section", ANSI_YELLOW);
         System.out.println("Please input an array of integers:");
         int[] intArr = br.readIntArr();
         int result = member.getFive().artificialRain(intArr);
-        System.out.println("The maximum number of numbers that will be covered by artificial rain is equal to " + result);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The maximum number of numbers that will be covered by artificial rain is equal to ", ANSI_YELLOW);
+        colorln(""+result, ANSI_RED);
     }
 
     public void runSeriesSum() {
@@ -348,15 +358,18 @@ public class StartTask implements Runner {
     }
 
     public void runPerimeter() {
-        System.out.println("Run task NbaCup.");
-        System.out.println("The function perimeter returns the total perimeter of all the squares.");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task runPerimeter", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function perimeter returns the total perimeter of all the squares.",ANSI_YELLOW);
         System.out.println("Please input some number N where N + 1 is the number of squares: ");
         BigInteger n = br.readBigInteger();
         if (n.compareTo(BigInteger.valueOf(0)) > 0) {
             BigInteger result = member.getFive().perimeter(n);
-            System.out.println("The perimeter you are looking for is equal " + result);
+            colorln("The perimeter you are looking for is equal ",ANSI_YELLOW);
+            colorln(""+result,ANSI_RED);
         } else {
-            System.out.println("Please input number larger than 0");
+            colorln("Please input number larger than 0",ANSI_RED);
             System.out.println();
             runPerimeter();
         }
