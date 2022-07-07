@@ -159,17 +159,22 @@ public class StartTask implements Runner {
     }
 
     public void runWhereIsHe() {
-        System.out.println("Run task WhereIsHe.\nPlease input the total amount of people (int):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task 'WhereIsHe'", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Please input the total amount of people (int):");
         int p = br.readInt();
 
-        System.out.println("Run task WhereIsHe.\nPlease input amount of people before (int):");
+        System.out.println("Please input amount of people before (int):");
         int bef = br.readInt();
 
-        System.out.println("Run task WhereIsHe.\nPlease input amount of people after (int):");
+        System.out.println("Please input amount of people after (int):");
         int aft = br.readInt();
 
+        colorln(DIVIDER, ANSI_BLUE);
         int answer = member.getSeven().whereIsHe(p, bef, aft);
-        System.out.println("The amount of possible positions " + answer);
+        System.out.println("The amount of possible positions ");
+        colorln("" + answer, ANSI_RED);
     }
 
     public void runRainfall() {
