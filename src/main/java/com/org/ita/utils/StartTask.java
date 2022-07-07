@@ -147,10 +147,15 @@ public class StartTask implements Runner {
     }
 
     public void runStringToNumber() {
-        System.out.println("Run task stringToNumber.\nPlease input value (String):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task 'StringToNumber'", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Please input value (String):");
         String a = br.readString();
+        colorln(DIVIDER, ANSI_BLUE);
         int answer = member.getEight().stringToNumber(a);
-        System.out.println("Result " + answer);
+        System.out.println("You've got a following result:");
+        colorln("" + answer, ANSI_RED);
     }
 
     public void runWhereIsHe() {
