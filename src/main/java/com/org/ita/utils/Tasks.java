@@ -15,7 +15,7 @@ public enum Tasks {
     TASK_8_5(5, "Count of positives / sum of negatives",
             "Given an array of integers." +
                     "\n" +
-                    "Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers." +
+                    "Return anCountPositivesSumNegatives array, where the first element is the count of positives numbers and the second element is sum of negative numbers." +
                     "\n" +
                     "If the input array is empty or null, return an empty array."),
     TASK_8_6(6, "Convert a String to a Number!",
