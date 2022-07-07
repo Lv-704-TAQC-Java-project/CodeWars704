@@ -48,6 +48,9 @@ public class StartTask implements Runner {
             case 5:
                 runCountPositivesSumNegatives();
                 break;
+            case 9:
+                runDivisibleBy();
+                break;
             case 10:
                 runNewAvg();
                 break;
@@ -115,6 +118,7 @@ public class StartTask implements Runner {
         boolean numb = member.getEight().amIWilson(n);
         System.out.println("Result: " + numb);
     }
+
     public void runZeros() {
         System.out.println("Run task zeros.\nPlease input the number (int):");
         int factor = br.readInt();
@@ -314,7 +318,18 @@ public class StartTask implements Runner {
         System.out.println("Result " + Arrays.toString(answer));
     }
 
-    public void runPerimeter(){
+    public void runDivisibleBy() {
+        System.out.println("Run task DivisibleBy.\nPlease input an array of integers:");
+        int[] intArr = br.readIntArr();
+
+        System.out.println("Run task DivisibleBy.\nPlease input divider (integer):");
+        int div = br.readInt();
+
+        int[] answer = member.getEight().divisibleBy(intArr, div);
+        System.out.println("Result " + Arrays.toString(answer));
+    }
+
+    public void runPerimeter() {
         System.out.println("Run task NbaCup.");
         System.out.println("The function perimeter returns the total perimeter of all the squares.");
         System.out.println("Please input some number N where N + 1 is the number of squares: ");
