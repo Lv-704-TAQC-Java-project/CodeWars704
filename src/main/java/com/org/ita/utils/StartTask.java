@@ -2,8 +2,6 @@ package com.org.ita.utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.org.ita.utils.Message.*;
 
@@ -111,10 +109,19 @@ public class StartTask implements Runner {
     }
 
     public void runLiters() {
-        System.out.println("Run task liters.\nPlease input time (double):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task liters", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function liters returns the number of litres person should drink, rounded to the smallest value", ANSI_YELLOW);
+        System.out.println("Please input time (hours):");
         double a = br.readDouble();
-        double answer = member.getEight().liters(a);
-        System.out.println("Result - " + answer + " hours");
+        if (a > 0) {
+            double answer = member.getEight().liters(a);
+            colorln("Result - " + answer + " hours", ANSI_BLUE);
+        } else {
+            colorln("Please input number larger than 0. Try again!", ANSI_RED);
+            runLiters();
+        }
     }
 
     public void runGetVolumeOfCuboid() {
@@ -202,15 +209,15 @@ public class StartTask implements Runner {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task findNb.", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
-        colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m",ANSI_YELLOW);
+        colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m", ANSI_YELLOW);
         System.out.println("Please enter positive number (long):");
         long n = br.readLong();
         if (n > 0) {
             long result = member.getSix().findNb(n);
-            colorln("You have entered " + n,ANSI_BLUE);
+            colorln("You have entered " + n, ANSI_BLUE);
             if (result >= 0) {
-                colorln("Your number n is: ",ANSI_YELLOW);
-                colorln(""+result, ANSI_RED);
+                colorln("Your number n is: ", ANSI_YELLOW);
+                colorln("" + result, ANSI_RED);
             } else {
                 colorln("There is no such n", ANSI_YELLOW);
             }
@@ -229,12 +236,12 @@ public class StartTask implements Runner {
         System.out.println("Please input m > 0 (double) :");
         double a = br.readDouble();
         if (a > 0) {
-            colorln("You have entered " + a,ANSI_BLUE);
+            colorln("You have entered " + a, ANSI_BLUE);
             double result = member.getFive().solveSum(a);
-            colorln("The number x is equal: ",ANSI_YELLOW);
-            colorln(""+result,ANSI_RED);
+            colorln("The number x is equal: ", ANSI_YELLOW);
+            colorln("" + result, ANSI_RED);
         } else {
-            colorln("Please input m larger then 0",ANSI_RED);
+            colorln("Please input m larger then 0", ANSI_RED);
             runSolveSum();
         }
     }
@@ -254,7 +261,11 @@ public class StartTask implements Runner {
     }
 
     public void runCountPositivesSumNegatives() {
-        System.out.println("Run task CountPositivesSumNegatives.\nPlease input an array of integers:");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task CountPositivesSumNegatives", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln ("The function CountPositivesSumNegatives array (the 1st element is the count of positives and the 2nd is sum of negatives", ANSI_YELLOW);
+        colorln("Please input an array of integers:", ANSI_RESET);
         int[] intArr = br.readIntArr();
         int[] answer = member.getEight().countPositivesSumNegatives(intArr);
         System.out.println("Result " + Arrays.toString(answer));
@@ -284,7 +295,7 @@ public class StartTask implements Runner {
         int result = member.getFive().artificialRain(intArr);
         colorln(DIVIDER, ANSI_BLUE);
         colorln("The maximum number of numbers that will be covered by artificial rain is equal to ", ANSI_YELLOW);
-        colorln(""+result, ANSI_RED);
+        colorln("" + result, ANSI_RED);
     }
 
     public void runSeriesSum() {
@@ -295,12 +306,26 @@ public class StartTask implements Runner {
     }
 
     public void runNewAvg() {
-        System.out.println("Run task newAvg.\nPlease input an array of numbers (double)");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task NewAvg", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function liters returns the expected donation that will permit to reach the average navg", ANSI_YELLOW);
+        colorln("Please input an array of donations (double):", ANSI_RESET);
         double[] arr = br.readDoubleArr();
-        System.out.println("Please input average navg (double):");
+        colorln("Please input average navg (double):", ANSI_RESET);
         double nabg = br.readDouble();
-        double result = member.getSeven().newAvg(arr, nabg);
-        System.out.println("The expected donation is " + result + " $");
+        double arrAverage = 0;
+        for (Double a : arr) {
+            arrAverage+=a;
+        }
+        if (nabg < arrAverage) {
+            colorln("Expected navr should be bigger than existing one. Try again!", ANSI_RED);
+            System.out.println();
+            runNewAvg();
+        } else {
+            double result = member.getSeven().newAvg(arr, nabg);
+            colorln("The expected donation is " + result + " $", ANSI_PURPLE);
+        }
     }
 
     String resultSheet = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
@@ -335,7 +360,7 @@ public class StartTask implements Runner {
         String[] lstOf1stLetter = br.readStringArrSplitByComma();
         lstOf1stLetter = Arrays.stream(lstOf1stLetter).map(String::trim).toArray(String[]::new);
 
-                String result = member.getSix().stockSummary(lstOfArt, lstOf1stLetter);
+        String result = member.getSix().stockSummary(lstOfArt, lstOf1stLetter);
         colorln(DIVIDER, ANSI_BLUE);
         System.out.println("You've got a following result:");
         colorln(result, ANSI_RED);
@@ -365,15 +390,15 @@ public class StartTask implements Runner {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task runPerimeter", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
-        colorln("The function perimeter returns the total perimeter of all the squares.",ANSI_YELLOW);
+        colorln("The function perimeter returns the total perimeter of all the squares.", ANSI_YELLOW);
         System.out.println("Please input some number N where N + 1 is the number of squares: ");
         BigInteger n = br.readBigInteger();
         if (n.compareTo(BigInteger.valueOf(0)) > 0) {
             BigInteger result = member.getFive().perimeter(n);
-            colorln("The perimeter you are looking for is equal ",ANSI_YELLOW);
-            colorln(""+result,ANSI_RED);
+            colorln("The perimeter you are looking for is equal ", ANSI_YELLOW);
+            colorln("" + result, ANSI_RED);
         } else {
-            colorln("Please input number larger than 0",ANSI_RED);
+            colorln("Please input number larger than 0", ANSI_RED);
             System.out.println();
             runPerimeter();
         }
