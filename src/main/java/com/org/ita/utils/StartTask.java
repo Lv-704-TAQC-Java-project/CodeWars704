@@ -202,10 +202,14 @@ public class StartTask implements Runner {
     }
 
     public void runF() {
-        System.out.println("Run task f.\nPlease input x (double):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task 'F'", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Please input x (double):");
         double x = br.readDouble();
         double answer = member.getSix().f(x);
-        System.out.println("Result " + answer);
+        System.out.println("You've got a following result:");
+        colorln("" + answer, ANSI_RED);
     }
 
     public void runFindNb() {
