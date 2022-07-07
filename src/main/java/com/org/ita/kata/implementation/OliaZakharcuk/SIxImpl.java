@@ -189,22 +189,28 @@ public class SIxImpl implements Six {
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
 
-        if (lstOfArt == null || lstOfArt.length == 0) return "";
-        int[] sumList = new int[lstOf1stLetter.length];
-        String res = "";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
 
-        for (String i : lstOfArt) {
-            String[] splitedLstOfArt = i.split(" ");
-            for (int j = 0; j < lstOf1stLetter.length; j++) {
-                if (lstOf1stLetter[j].charAt(0) == splitedLstOfArt[0].charAt(0)) {
-                    sumList[j] = sumList[j] + Integer.parseInt(splitedLstOfArt[1]);
+        StringBuilder result = new StringBuilder();
+
+        for (String firstLtLetter : lstOf1stLetter) {
+            int counter = 0;
+
+            for (String book : lstOfArt) {
+                String reg = "^" + firstLtLetter + "+.*";
+                if (book.matches(reg)) {
+                    String numOfBooks = book.replaceAll("\\D", "");
+                    counter += Integer.parseInt(numOfBooks);
                 }
             }
+
+            if (result.length() > 0) {
+                result.append(" - ");
+            }
+            result.append(String.format("(%s : %d)", firstLtLetter, counter));
         }
-        for (int i = 0; i < lstOf1stLetter.length; i++) {
-            res = res + "(" + lstOf1stLetter[i] + " : " + sumList[i] + ")";
-            if (i < lstOf1stLetter.length - 1) res = res + " - ";
-        }
-        return res;
+        return result.toString();
     }
 }
