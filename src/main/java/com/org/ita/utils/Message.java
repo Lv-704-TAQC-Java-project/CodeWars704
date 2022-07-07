@@ -10,8 +10,8 @@ public class Message {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String DIVIDER_MAIN = "\n=================================================================================";
-    public static final String DIVIDER = "---------------------------------------------------------------------------------";
+    public static final String DIVIDER_MAIN = "\n" + new String(new char[100]).replace("\0", "=");
+    public static final String DIVIDER = new String(new char[100]).replace("\0", "-");
 
     public static void color(String message, String color) {
         System.out.print(color + message + ANSI_RESET);
