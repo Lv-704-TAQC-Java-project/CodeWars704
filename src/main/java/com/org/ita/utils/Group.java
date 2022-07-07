@@ -27,7 +27,7 @@ public enum Group {
             new com.org.ita.kata.implementation.MyroslavaVynokur.SevenImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.SIxImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.FiveImpl()),
-    MEMBER_AnastasiiaKomarenko(5, "Komarenko Anastasiia", "nastialomarenko",
+    MEMBER_AnastasiiaKomarenko(5, "Komarenko Anastasiia", "nastiakomarenko",
             new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(),
             new com.org.ita.kata.implementation.nastiakomarenko.SevenImpl(),
             new com.org.ita.kata.implementation.nastiakomarenko.SIxImpl(),
