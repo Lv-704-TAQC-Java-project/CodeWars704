@@ -6,7 +6,7 @@ import static com.org.ita.utils.Message.*;
 
 public class ListImplementation implements Runner{
 
-    private static List<String> list = new ArrayList<>();
+    private static final List<String> list = new ArrayList<>();
     Buffer br = new Buffer();
 
     @Override
@@ -29,7 +29,7 @@ public class ListImplementation implements Runner{
         colorln("ID from 1 to " + list.size() + " - select imlementation", ANSI_GREEN);
 
         int a = br.readInt();
-        if (a > 0) {
+        if (a > 0 && a <= Group.values().length) {
             SettingsMenu.setSetImplementation(a);
         } else {
             list.clear();

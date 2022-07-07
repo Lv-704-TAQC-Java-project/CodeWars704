@@ -10,23 +10,44 @@ import static com.org.ita.utils.Message.*;
 public class StartTask implements Runner {
 
     private Group member;
+    private final int DEFAULT_USER = 4;
     Buffer br = new Buffer();
 
     @Override
     public void run() {
+        SettingsMenu.clearScreen();
 
-        if (SettingsMenu.getSetImplementation() == 0) {
-            System.out.println("First pick user");
-            int userId = br.readInt();
-            member = Group.getMemberById(userId);
-        } else {
-            member = Group.getMemberById(SettingsMenu.getSetImplementation());
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Available tasks:", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+
+        Tasks.showAllTasks();
+
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("1..24 - to run a task", ANSI_GREEN);
+        colorln("0 - return to menu", ANSI_YELLOW);
+
+        int number = br.readInt();
+
+        if (number != 0) {
+            if (SettingsMenu.getSetImplementation() == 0) {
+                colorln("You need to pick a user first:", ANSI_RED);
+                int userId = br.readInt();
+                if (userId < 1 || userId > Group.values().length) {
+                    userId = DEFAULT_USER;
+                    colorln("You've selected invalid user ID. Implementation has been set to default value.", ANSI_RED);
+                }
+                colorln("Selected user: " + Group.getMemberNameById(userId), ANSI_GREEN);
+                SettingsMenu.setSetImplementation(userId);
+                member = Group.getMemberById(userId);
+            } else {
+                member = Group.getMemberById(SettingsMenu.getSetImplementation());
+            }
+
+            setMember(member);
+            runTask(number);
         }
 
-        setMember(member);
-        System.out.println("Please pick task");
-        int a = br.readInt();
-        runTask(a);
     }
 
     public void setMember(Group member) {
@@ -202,15 +223,15 @@ public class StartTask implements Runner {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task findNb.", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
-        colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m",ANSI_YELLOW);
+        colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m", ANSI_YELLOW);
         System.out.println("Please enter positive number (long):");
         long n = br.readLong();
         if (n > 0) {
             long result = member.getSix().findNb(n);
-            colorln("You have entered " + n,ANSI_BLUE);
+            colorln("You have entered " + n, ANSI_BLUE);
             if (result >= 0) {
-                colorln("Your number n is: ",ANSI_YELLOW);
-                colorln(""+result, ANSI_RED);
+                colorln("Your number n is: ", ANSI_YELLOW);
+                colorln("" + result, ANSI_RED);
             } else {
                 colorln("There is no such n", ANSI_YELLOW);
             }
@@ -229,12 +250,12 @@ public class StartTask implements Runner {
         System.out.println("Please input m > 0 (double) :");
         double a = br.readDouble();
         if (a > 0) {
-            colorln("You have entered " + a,ANSI_BLUE);
+            colorln("You have entered " + a, ANSI_BLUE);
             double result = member.getFive().solveSum(a);
-            colorln("The number x is equal: ",ANSI_YELLOW);
-            colorln(""+result,ANSI_RED);
+            colorln("The number x is equal: ", ANSI_YELLOW);
+            colorln("" + result, ANSI_RED);
         } else {
-            colorln("Please input m larger then 0",ANSI_RED);
+            colorln("Please input m larger then 0", ANSI_RED);
             runSolveSum();
         }
     }
@@ -284,7 +305,7 @@ public class StartTask implements Runner {
         int result = member.getFive().artificialRain(intArr);
         colorln(DIVIDER, ANSI_BLUE);
         colorln("The maximum number of numbers that will be covered by artificial rain is equal to ", ANSI_YELLOW);
-        colorln(""+result, ANSI_RED);
+        colorln("" + result, ANSI_RED);
     }
 
     public void runSeriesSum() {
@@ -335,7 +356,7 @@ public class StartTask implements Runner {
         String[] lstOf1stLetter = br.readStringArrSplitByComma();
         lstOf1stLetter = Arrays.stream(lstOf1stLetter).map(String::trim).toArray(String[]::new);
 
-                String result = member.getSix().stockSummary(lstOfArt, lstOf1stLetter);
+        String result = member.getSix().stockSummary(lstOfArt, lstOf1stLetter);
         colorln(DIVIDER, ANSI_BLUE);
         System.out.println("You've got a following result:");
         colorln(result, ANSI_RED);
@@ -365,15 +386,15 @@ public class StartTask implements Runner {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task runPerimeter", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
-        colorln("The function perimeter returns the total perimeter of all the squares.",ANSI_YELLOW);
+        colorln("The function perimeter returns the total perimeter of all the squares.", ANSI_YELLOW);
         System.out.println("Please input some number N where N + 1 is the number of squares: ");
         BigInteger n = br.readBigInteger();
         if (n.compareTo(BigInteger.valueOf(0)) > 0) {
             BigInteger result = member.getFive().perimeter(n);
-            colorln("The perimeter you are looking for is equal ",ANSI_YELLOW);
-            colorln(""+result,ANSI_RED);
+            colorln("The perimeter you are looking for is equal ", ANSI_YELLOW);
+            colorln("" + result, ANSI_RED);
         } else {
-            colorln("Please input number larger than 0",ANSI_RED);
+            colorln("Please input number larger than 0", ANSI_RED);
             System.out.println();
             runPerimeter();
         }
