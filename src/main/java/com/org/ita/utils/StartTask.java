@@ -48,6 +48,9 @@ public class StartTask implements Runner {
             case 5:
                 runCountPositivesSumNegatives();
                 break;
+            case 6:
+                runStringToNumber();
+                break;
             case 9:
                 runDivisibleBy();
                 break;
@@ -57,8 +60,14 @@ public class StartTask implements Runner {
             case 11:
                 runSeriesSum();
                 break;
+            case 12:
+                runWhereIsHe();
+                break;
             case 13:
                 runFindNb();
+                break;
+            case 15:
+                runF();
                 break;
             case 16:
                 runRainfall();
