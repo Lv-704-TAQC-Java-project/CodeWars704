@@ -2,8 +2,7 @@ package com.org.ita.utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.StringJoiner;
 
 import static com.org.ita.utils.Message.*;
 
@@ -95,6 +94,9 @@ public class StartTask implements Runner {
             case 13:
                 runFindNb();
                 break;
+            case 14:
+                runBalance();
+                break;
             case 15:
                 runF();
                 break;
@@ -132,10 +134,19 @@ public class StartTask implements Runner {
     }
 
     public void runLiters() {
-        System.out.println("Run task liters.\nPlease input time (double):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task liters", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function liters returns the number of litres person should drink, rounded to the smallest value", ANSI_YELLOW);
+        System.out.println("Please input time (hours):");
         double a = br.readDouble();
-        double answer = member.getEight().liters(a);
-        System.out.println("Result - " + answer + " hours");
+        if (a > 0) {
+            double answer = member.getEight().liters(a);
+            colorln("Result - " + answer + " hours", ANSI_BLUE);
+        } else {
+            colorln("Please input number larger than 0. Try again!", ANSI_RED);
+            runLiters();
+        }
     }
 
     public void runGetVolumeOfCuboid() {
@@ -155,7 +166,7 @@ public class StartTask implements Runner {
     public void runAmIWilson() {
         System.out.println("Run task amIWilson.\nPlease input number (double):");
         double n = br.readDouble();
-        System.out.println("Is " + n + "Wilson?");
+        System.out.println("Is " + n + " Wilson?");
         boolean numb = member.getEight().amIWilson(n);
         System.out.println("Result: " + numb);
     }
@@ -168,24 +179,34 @@ public class StartTask implements Runner {
     }
 
     public void runStringToNumber() {
-        System.out.println("Run task stringToNumber.\nPlease input value (String):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task 'StringToNumber'", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Please input value (String):");
         String a = br.readString();
+        colorln(DIVIDER, ANSI_BLUE);
         int answer = member.getEight().stringToNumber(a);
-        System.out.println("Result " + answer);
+        System.out.println("You've got a following result:");
+        colorln("" + answer, ANSI_RED);
     }
 
     public void runWhereIsHe() {
-        System.out.println("Run task WhereIsHe.\nPlease input the total amount of people (int):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task 'WhereIsHe'", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Please input the total amount of people (int):");
         int p = br.readInt();
 
-        System.out.println("Run task WhereIsHe.\nPlease input amount of people before (int):");
+        System.out.println("Please input amount of people before (int):");
         int bef = br.readInt();
 
-        System.out.println("Run task WhereIsHe.\nPlease input amount of people after (int):");
+        System.out.println("Please input amount of people after (int):");
         int aft = br.readInt();
 
+        colorln(DIVIDER, ANSI_BLUE);
         int answer = member.getSeven().whereIsHe(p, bef, aft);
-        System.out.println("The amount of possible positions " + answer);
+        System.out.println("The amount of possible positions ");
+        colorln("" + answer, ANSI_RED);
     }
 
     public void runRainfall() {
@@ -213,10 +234,14 @@ public class StartTask implements Runner {
     }
 
     public void runF() {
-        System.out.println("Run task f.\nPlease input x (double):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task 'F'", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("Please input x (double):");
         double x = br.readDouble();
         double answer = member.getSix().f(x);
-        System.out.println("Result " + answer);
+        System.out.println("You've got a following result:");
+        colorln("" + answer, ANSI_RED);
     }
 
     public void runFindNb() {
@@ -224,7 +249,9 @@ public class StartTask implements Runner {
         colorln("Run task findNb.", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
         colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m", ANSI_YELLOW);
-        System.out.println("Please enter positive number (long):");
+
+        System.out.println("Please enter positive number (long) like '1071225':");
+
         long n = br.readLong();
         if (n > 0) {
             long result = member.getSix().findNb(n);
@@ -275,7 +302,11 @@ public class StartTask implements Runner {
     }
 
     public void runCountPositivesSumNegatives() {
-        System.out.println("Run task CountPositivesSumNegatives.\nPlease input an array of integers:");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task CountPositivesSumNegatives", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln ("The function CountPositivesSumNegatives array (the 1st element is the count of positives and the 2nd is sum of negatives", ANSI_YELLOW);
+        colorln("Please input an array of integers:", ANSI_RESET);
         int[] intArr = br.readIntArr();
         int[] answer = member.getEight().countPositivesSumNegatives(intArr);
         System.out.println("Result " + Arrays.toString(answer));
@@ -316,12 +347,26 @@ public class StartTask implements Runner {
     }
 
     public void runNewAvg() {
-        System.out.println("Run task newAvg.\nPlease input an array of numbers (double)");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task NewAvg", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function liters returns the expected donation that will permit to reach the average navg", ANSI_YELLOW);
+        colorln("Please input an array of donations (double):", ANSI_RESET);
         double[] arr = br.readDoubleArr();
-        System.out.println("Please input average navg (double):");
+        colorln("Please input average navg (double):", ANSI_RESET);
         double nabg = br.readDouble();
-        double result = member.getSeven().newAvg(arr, nabg);
-        System.out.println("The expected donation is " + result + " $");
+        double arrAverage = 0;
+        for (Double a : arr) {
+            arrAverage+=a;
+        }
+        if (nabg < arrAverage) {
+            colorln("Expected navr should be bigger than existing one. Try again!", ANSI_RED);
+            System.out.println();
+            runNewAvg();
+        } else {
+            double result = member.getSeven().newAvg(arr, nabg);
+            colorln("The expected donation is " + result + " $", ANSI_PURPLE);
+        }
     }
 
     String resultSheet = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
@@ -398,7 +443,35 @@ public class StartTask implements Runner {
             System.out.println();
             runPerimeter();
         }
+    }
 
+    public void runBalance(){
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task runBalance", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function balance returns balance with all costs",ANSI_YELLOW);
+        System.out.println("Please input some text like: ");
+        colorln( "\n" +
+                "1000.00\n" +
+                "125 Market 125.45\n" +
+                "126 Hardware 34.95\n" +
+                "127 Video 7.45\n" +
+                "128 Book 14.32\n" +
+                "129 Gasoline 16.10\"\n" +
+                "The first line shows the original balance.\nEach other line (when not blank) gives information: check number, category, check amount." +
+                "\n" ,ANSI_YELLOW);
+        String balance = "";
+        StringJoiner balanceResult = new StringJoiner("\n");
+        while (true){
+            balance = br.readString();
+            if (balance == null || balance.isEmpty()) break;
+            balanceResult.add(balance);
+        }
+        String result = member.getSix().balance(balanceResult.toString());
+        colorln(DIVIDER, ANSI_BLUE);
+        result = result.replaceAll("\\\\r\\\\n","\n");
+        System.out.println("You've got a following result:");
+        colorln(result, ANSI_RED);
     }
 }
 

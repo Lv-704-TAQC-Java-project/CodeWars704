@@ -14,10 +14,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public int liters(double time) {
-
-        time = 6.7;
-        double lPerhour = time * 0.5;
-        return (int) Math.floor(lPerhour);
+        return (int) Math.floor(time*0.5);
     }
 
     @Override
@@ -93,9 +90,7 @@ public class EigthImpl implements Eight {
     @Override
     public double twoDecimalPlaces(double number) {
 
-        number = 3.3424;
-        double result = (double) Math.round(number * 100) / 100;
-        return result;
+        return (double) Math.round(number * 100) / 100;
     }
 
     @Override
