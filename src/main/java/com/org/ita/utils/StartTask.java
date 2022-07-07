@@ -1,5 +1,6 @@
 package com.org.ita.utils;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 import static com.org.ita.utils.Message.*;
@@ -70,6 +71,9 @@ public class StartTask implements Runner {
                 break;
             case 20:
                 runGap();
+                break;
+            case 22:
+                runPerimeter();
                 break;
             case 23:
                 runSolveSum();
@@ -302,11 +306,28 @@ public class StartTask implements Runner {
         System.out.println("Where (key: value) - 'key' is a book category and 'value' is quantity of books in category.");
     }
 
+
     public void runSquareOrSquareRoot() {
         System.out.println("Run task SquareOrSquareRoot.\nPlease input an array of integers:");
         int[] intArr = br.readIntArr();
         int[] answer = member.getEight().squareOrSquareRoot(intArr);
         System.out.println("Result " + Arrays.toString(answer));
+    }
+
+    public void runPerimeter(){
+        System.out.println("Run task NbaCup.");
+        System.out.println("The function perimeter returns the total perimeter of all the squares.");
+        System.out.println("Please input some number N where N + 1 is the number of squares: ");
+        BigInteger n = br.readBigInteger();
+        if (n.compareTo(BigInteger.valueOf(0)) > 0) {
+            BigInteger result = member.getFive().perimeter(n);
+            System.out.println("The perimeter you are looking for is equal " + result);
+        } else {
+            System.out.println("Please input number larger than 0");
+            System.out.println();
+            runPerimeter();
+        }
+
     }
 }
 
