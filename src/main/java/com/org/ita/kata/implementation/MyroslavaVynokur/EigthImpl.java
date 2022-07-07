@@ -32,8 +32,10 @@ public class EigthImpl implements Eight {
             throw new ArithmeticException("Input can't be 0");
         }
         float result = (mpg / galonLitres) * mileKilometres;
-        return Float.parseFloat(result % 1 != 0 ? (String.format("%.02f", result))
-                : (String.format("%.01f", result)));
+        String resultStr = result % 1 != 0 ? (String.format("%.02f", result))
+                : (String.format("%.01f", result));
+        String answer = resultStr.replaceAll(",", ".");
+        return Float.parseFloat(answer);
     }
 
     @Override
@@ -86,7 +88,9 @@ public class EigthImpl implements Eight {
     @Override
     public double twoDecimalPlaces(double number) {
         DecimalFormat df = new DecimalFormat("0.00");
-        return Double.parseDouble(df.format(number));
+        String resultStr = df.format(number);
+        resultStr = resultStr.replaceAll(",", ".");
+        return Double.parseDouble(resultStr);
     }
 
     @Override
