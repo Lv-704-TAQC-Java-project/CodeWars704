@@ -42,17 +42,7 @@ public class SettingsMenu {
         while (true){
             clearScreen();
             menuTitle();
-            int chooseNumber;
-            boolean invalidNum;
-
-            do {
-                chooseNumber = br.readInt();
-                invalidNum =  chooseNumber < 0 || chooseNumber > 3;
-                if (invalidNum) {
-                    colorln("Invalid input! Number should be in range from 0 to 3.", ANSI_RED);
-                }
-            }
-            while (invalidNum);
+            int chooseNumber = br.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
 
             list.add(new Exit());
             list.add(new ListImplementation());
