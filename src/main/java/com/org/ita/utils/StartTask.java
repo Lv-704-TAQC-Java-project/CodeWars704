@@ -228,7 +228,7 @@ public class StartTask implements Runner {
         colorln("Run task findNb.", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
         colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m", ANSI_YELLOW);
-        System.out.println("Please enter positive number (long):");
+        System.out.println("Please enter positive number (long) like '1071225':");
         long n = br.readLong();
         if (n > 0) {
             long result = member.getSix().findNb(n);
