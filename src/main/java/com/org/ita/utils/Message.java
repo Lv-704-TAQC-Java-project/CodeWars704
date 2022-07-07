@@ -12,6 +12,8 @@ public class Message {
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String DIVIDER_MAIN = "\n" + new String(new char[100]).replace("\0", "=");
     public static final String DIVIDER = new String(new char[100]).replace("\0", "-");
+    private static final String DEFAULT_COLOR = ANSI_BLUE;
+    private static final String ERROR_COLOR = ANSI_RED;
 
     public static void color(String message, String color) {
         System.out.print(color + message + ANSI_RESET);
@@ -19,6 +21,16 @@ public class Message {
 
     public static void colorln(String message, String color) {
         System.out.println(color + message + ANSI_RESET);
+    }
+
+    public static void colorErrorLn(String message) {
+        System.out.println(ERROR_COLOR + message + ANSI_RESET);
+    }
+
+    public static void colorHeader(String header) {
+        colorln(DIVIDER, DEFAULT_COLOR);
+        colorln(header, DEFAULT_COLOR);
+        colorln(DIVIDER, DEFAULT_COLOR);
     }
 
     public static void colorHeader(String header, String color) {
