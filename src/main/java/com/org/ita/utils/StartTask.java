@@ -134,7 +134,7 @@ public class StartTask implements Runner {
     public void runAmIWilson() {
         System.out.println("Run task amIWilson.\nPlease input number (double):");
         double n = br.readDouble();
-        System.out.println("Is " + n + "Wilson?");
+        System.out.println("Is " + n + " Wilson?");
         boolean numb = member.getEight().amIWilson(n);
         System.out.println("Result: " + numb);
     }
