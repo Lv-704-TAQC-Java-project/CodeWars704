@@ -18,8 +18,54 @@ public class FiveImpl implements Five {
     }
 
     @Override
-    public int artificialRain(int[] v) {
-        return 0;
+    public int artificialRain(int[] numbers) {
+        int[] flowRight = computeRightFlow(numbers);
+        int[] flowLeft = computeLeftFlow(numbers);
+
+        int maxWateredPlains = 0;
+
+        for (int i = 0; i < flowLeft.length; i++) {
+            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
+        }
+        return maxWateredPlains;
+    }
+
+    static int[] computeLeftFlow(int[] numbers) {
+        int[] result = new int[numbers.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            if (ableToFlowLeft(numbers, i)) {
+                result[i] = result[i - 1] + 1;
+            } else {
+                result[i] = 0;
+            }
+        }
+        return result;
+    }
+
+    static boolean ableToFlowLeft(int[] numbers, int i) {
+        if (i == 0)
+            return false;
+        return numbers[i - 1] <= numbers[i];
+    }
+
+    static int[] computeRightFlow(int[] numbers) {
+        int[] result = new int[numbers.length];
+
+        for (int i = numbers.length - 1; i >= 0; i--) {
+            if (ableToFlowRight(numbers, i)) {
+                result[i] = result[i + 1] + 1;
+            } else {
+                result[i] = 0;
+            }
+        }
+        return result;
+    }
+
+    static boolean ableToFlowRight(int[] numbers, int i) {
+        if (numbers.length - 1 == i)
+            return false;
+        return numbers[i + 1] <= numbers[i];
     }
 
     @Override
