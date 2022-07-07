@@ -20,4 +20,10 @@ public class Message {
     public static void colorln(String message, String color) {
         System.out.println(color + message + ANSI_RESET);
     }
+
+    public static void colorHeader(String header, String color) {
+        colorln(DIVIDER, color);
+        colorln(header, color);
+        colorln(DIVIDER, color);
+    }
 }
