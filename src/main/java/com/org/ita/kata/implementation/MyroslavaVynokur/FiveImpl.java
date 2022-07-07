@@ -20,7 +20,31 @@ public class FiveImpl implements Five {
 
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+
+        int length = v.length;
+        int result = 0;
+        int[] left = new int[length];
+        int[] right = new int[length];
+        for (int i = 0; i < length; i++) {
+            left[i] = 0;
+            right[i] = 0;
+        }
+
+        for (int i = 1; i < length; i++) {
+            if (v[i] >= v[i - 1]) {
+                left[i] += left[i - 1] + 1;
+            }
+            if (v[length - i - 1] >= v[length - i]) {
+                right[length - 1 - i] += right[length - i] + 1;
+            }
+        }
+
+        for (int i = 0; i < length; i++) {
+            if (result < left[i] + right[i] + 1) {
+                result = left[i] + right[i] + 1;
+            }
+        }
+        return result;
     }
 
     @Override
