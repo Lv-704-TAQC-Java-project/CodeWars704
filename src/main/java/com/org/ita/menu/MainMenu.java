@@ -1,6 +1,6 @@
 package com.org.ita.menu;
 
-import com.org.ita.info.GroupInfo;
+import com.org.ita.utils.info.GroupInfo;
 import com.org.ita.utils.*;
 
 import java.util.ArrayList;

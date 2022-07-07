@@ -1,4 +1,4 @@
-package com.org.ita.info;
+package com.org.ita.utils.info;
 
 public enum TaskInfo {
     TASK_8_1(1, "Keep Hydrated!",
