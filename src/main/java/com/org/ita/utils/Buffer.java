@@ -122,4 +122,19 @@ public class Buffer implements Reader {
             return this.readDoubleArr();
         }
     }
+
+    public int getValidIntFromUserInput(String invalidMessage, int start, int end) {
+        int number;
+        boolean invalidNum;
+
+        do {
+            number = this.readInt();
+            invalidNum = number < start || number > end;
+            if (invalidNum) {
+                colorln(invalidMessage, ANSI_RED);
+            }
+        } while (invalidNum);
+
+        return number;
+    }
 }
