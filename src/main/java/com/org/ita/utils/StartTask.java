@@ -9,23 +9,44 @@ import static com.org.ita.utils.Message.*;
 public class StartTask implements Runner {
 
     private Group member;
+    private final int DEFAULT_USER = 4;
     Buffer br = new Buffer();
 
     @Override
     public void run() {
+        SettingsMenu.clearScreen();
 
-        if (SettingsMenu.getSetImplementation() == 0) {
-            System.out.println("First pick user");
-            int userId = br.readInt();
-            member = Group.getMemberById(userId);
-        } else {
-            member = Group.getMemberById(SettingsMenu.getSetImplementation());
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Available tasks:", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+
+        Tasks.showAllTasks();
+
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("1..24 - to run a task", ANSI_GREEN);
+        colorln("0 - return to menu", ANSI_YELLOW);
+
+        int number = br.readInt();
+
+        if (number != 0) {
+            if (SettingsMenu.getSetImplementation() == 0) {
+                colorln("You need to pick a user first:", ANSI_RED);
+                int userId = br.readInt();
+                if (userId < 1 || userId > Group.values().length) {
+                    userId = DEFAULT_USER;
+                    colorln("You've selected invalid user ID. Implementation has been set to default value.", ANSI_RED);
+                }
+                colorln("Selected user: " + Group.getMemberNameById(userId), ANSI_GREEN);
+                SettingsMenu.setSetImplementation(userId);
+                member = Group.getMemberById(userId);
+            } else {
+                member = Group.getMemberById(SettingsMenu.getSetImplementation());
+            }
+
+            setMember(member);
+            runTask(number);
         }
 
-        setMember(member);
-        System.out.println("Please pick task");
-        int a = br.readInt();
-        runTask(a);
     }
 
     public void setMember(Group member) {
@@ -228,7 +249,9 @@ public class StartTask implements Runner {
         colorln("Run task findNb.", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
         colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m", ANSI_YELLOW);
+
         System.out.println("Please enter positive number (long) like '1071225':");
+
         long n = br.readLong();
         if (n > 0) {
             long result = member.getSix().findNb(n);
