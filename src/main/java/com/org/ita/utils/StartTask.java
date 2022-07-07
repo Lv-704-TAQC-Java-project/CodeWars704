@@ -9,16 +9,13 @@ import static com.org.ita.utils.Message.*;
 public class StartTask implements Runner {
 
     private Group member;
-    private final int DEFAULT_USER = 4;
+    private final int GROUP_SIZE = Group.values().length;
     Buffer br = new Buffer();
 
     @Override
     public void run() {
         SettingsMenu.clearScreen();
-
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Available tasks:", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Available tasks:", ANSI_BLUE);
 
         Tasks.showAllTasks();
 
@@ -26,27 +23,22 @@ public class StartTask implements Runner {
         colorln("1..24 - to run a task", ANSI_GREEN);
         colorln("0 - return to menu", ANSI_YELLOW);
 
-        int number = br.readInt();
+        int number = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 24);
 
         if (number != 0) {
             if (SettingsMenu.getSetImplementation() == 0) {
                 colorln("You need to pick a user first:", ANSI_RED);
-                int userId = br.readInt();
-                if (userId < 1 || userId > Group.values().length) {
-                    userId = DEFAULT_USER;
-                    colorln("You've selected invalid user ID. Implementation has been set to default value.", ANSI_RED);
-                }
+                int userId = br.getValidIntFromUserInput("Invalid user ID. Choose in range from 1 to " + GROUP_SIZE, 1, GROUP_SIZE);
+
                 colorln("Selected user: " + Group.getMemberNameById(userId), ANSI_GREEN);
                 SettingsMenu.setSetImplementation(userId);
-                member = Group.getMemberById(userId);
-            } else {
-                member = Group.getMemberById(SettingsMenu.getSetImplementation());
             }
+
+            member = Group.getMemberById(SettingsMenu.getSetImplementation());
 
             setMember(member);
             runTask(number);
         }
-
     }
 
     public void setMember(Group member) {
