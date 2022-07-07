@@ -54,6 +54,9 @@ public class StartTask implements Runner {
             case 7:
                 runAmIWilson();
                 break;
+            case 8:
+                runTwoDecimalPlaces();
+                break;
             case 9:
                 runDivisibleBy();
                 break;
