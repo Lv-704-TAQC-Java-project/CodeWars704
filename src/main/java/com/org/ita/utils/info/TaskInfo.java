@@ -1,6 +1,6 @@
-package com.org.ita.utils;
+package com.org.ita.utils.info;
 
-public enum Tasks {
+public enum TaskInfo {
     TASK_8_1(1, "Keep Hydrated!",
             "You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value."),
     TASK_8_2(2, "Volume of a cuboid",
@@ -15,7 +15,7 @@ public enum Tasks {
     TASK_8_5(5, "Count of positives / sum of negatives",
             "Given an array of integers." +
                     "\n" +
-                    "Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers." +
+                    "Return anCountPositivesSumNegatives array, where the first element is the count of positives numbers and the second element is sum of negative numbers." +
                     "\n" +
                     "If the input array is empty or null, return an empty array."),
     TASK_8_6(6, "Convert a String to a Number!",
@@ -271,14 +271,14 @@ public enum Tasks {
     private final String taskName;
     private final String description;
 
-    Tasks(int id, String taskName, String description) {
+    TaskInfo(int id, String taskName, String description) {
         this.id = id;
         this.taskName = taskName;
         this.description = description;
     }
 
-    public static Tasks getTaskById(int id) {
-        for (Tasks task : values()) {
+    public static TaskInfo getTaskById(int id) {
+        for (TaskInfo task : values()) {
             if (task.id == id) {
                 return task;
             }
@@ -286,13 +286,20 @@ public enum Tasks {
         return null;
     }
 
+
     public static String getDescriptionById(int id) {
-        for (Tasks task : values()) {
+        for (TaskInfo task : values()) {
             if (task.id == id) {
                 return task.description;
             }
         }
         return " ";
+    }
+
+    public static void showAllTasks() {
+        for (TaskInfo task : values()) {
+            System.out.println(task.getId() + ") " + task.getTaskName());
+        }
     }
 
     public String getDescription() {

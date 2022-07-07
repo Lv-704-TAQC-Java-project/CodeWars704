@@ -28,12 +28,11 @@ public class EigthImpl implements Eight {
     public float mpgToKPM(float mpg) {
         final float galonLitres = 4.54609188f;
         final float mileKilometres = 1.609344f;
-        if (mpg <= 0) {
-            throw new ArithmeticException("Input can't be 0");
-        }
         float result = (mpg / galonLitres) * mileKilometres;
-        return Float.parseFloat(result % 1 != 0 ? (String.format("%.02f", result))
-                : (String.format("%.01f", result)));
+        String resultStr = result % 1 != 0 ? (String.format("%.02f", result))
+                : (String.format("%.01f", result));
+        String answer = resultStr.replaceAll(",", ".");
+        return Float.parseFloat(answer);
     }
 
     @Override
@@ -85,8 +84,10 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        final DecimalFormat df = new DecimalFormat("0.00");
-        return Double.parseDouble(df.format(number));
+        DecimalFormat df = new DecimalFormat("0.00");
+        String resultStr = df.format(number);
+        resultStr = resultStr.replaceAll(",", ".");
+        return Double.parseDouble(resultStr);
     }
 
     @Override

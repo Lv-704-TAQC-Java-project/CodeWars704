@@ -38,7 +38,7 @@ public class SIxImpl implements Six {
         String[] lines = book.split("\\n|\\r");
         String reg = "[ !=,:;?*{}]";
         String balance = lines[0].replaceAll(reg, "");
-        allBalance = allBalance + "Original Balance: " + balance + "\n";
+        allBalance = allBalance + "Original Balance: " + balance + "\\r\\n";
         double total = 0;
         int count = 0;
         for (int i = 1; i < lines.length; i++) {
@@ -59,11 +59,11 @@ public class SIxImpl implements Six {
             count++;
             balance = String.valueOf((Double.parseDouble(balance) - Double.parseDouble(c)));
             balance = String.format(Locale.ENGLISH, "%.2f", Double.parseDouble(balance));
-            allBalance += a + " " + b + " " + c + " Balance " + balance + "\n";
+            allBalance += a + " " + b + " " + c + " Balance " + balance + "\\r\\n";
 
         }
         double avg = total / count;
-        allBalance += "Total expense  " + String.format(Locale.ENGLISH, "%.2f", total) + "\n";
+        allBalance += "Total expense  " + String.format(Locale.ENGLISH, "%.2f", total) + "\\r\\n";
         allBalance += "Average expense  " + String.format(Locale.ENGLISH, "%.2f", avg);
         return allBalance;
     }
