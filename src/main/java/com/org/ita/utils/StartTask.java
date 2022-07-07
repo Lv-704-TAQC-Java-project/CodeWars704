@@ -349,10 +349,14 @@ public class StartTask implements Runner {
     }
 
     public void runSeriesSum() {
-        System.out.println("Run task seriesSum.\nPlease input the number (int):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task seriesSum.", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("This function returns the sum of following series upto nth term(parameter).", ANSI_YELLOW);
+        System.out.println("Please input the number (int):");
         int n = br.readInt();
         String answer = member.getSeven().seriesSum(n);
-        System.out.println("The sum of following series " + answer);
+        colorln("The sum of following series " + answer, ANSI_GREEN);
     }
 
     public void runNewAvg() {
