@@ -24,7 +24,8 @@ public class EigthImpl implements Eight {
         float n = (float) (mpg * 1.609344 / 4.54609188);
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         String result = decimalFormat.format(n);
-        return Float.valueOf(result);
+        result = result.replace(",",".");
+        return Float.parseFloat(result);
     }
 
     @Override
