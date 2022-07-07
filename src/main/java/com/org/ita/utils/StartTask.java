@@ -72,6 +72,9 @@ public class StartTask implements Runner {
             case 13:
                 runFindNb();
                 break;
+            case 14:
+                runBalance();
+                break;
             case 15:
                 runF();
                 break;
@@ -373,7 +376,30 @@ public class StartTask implements Runner {
             System.out.println();
             runPerimeter();
         }
+    }
 
+    public void runBalance(){
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task runBalance", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("The function balance returns balance with all costs",ANSI_YELLOW);
+        System.out.println("Please input some text like: ");
+        colorln( "\n" +
+                "1000.00\n" +
+                "125 Market 125.45\n" +
+                "126 Hardware 34.95\n" +
+                "127 Video 7.45\n" +
+                "128 Book 14.32\n" +
+                "129 Gasoline 16.10\"\n" +
+                "The first line shows the original balance.\nEach other line (when not blank) gives information: check number, category, check amount." +
+                "\n" ,ANSI_YELLOW);
+        String balance = br.readString();
+
+        System.out.println(balance);
+        String result = member.getSix().balance(balance);
+        colorln(DIVIDER, ANSI_BLUE);
+        System.out.println("You've got a following result:");
+        colorln(result, ANSI_RED);
     }
 }
 
