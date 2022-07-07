@@ -2,6 +2,8 @@ package com.org.ita.utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.org.ita.utils.Message.*;
 
@@ -325,13 +327,15 @@ public class StartTask implements Runner {
         System.out.println("Where 3, 4, 5 letters represent a book code and digits after a 'space'");
         System.out.println("indicate the quantity of books by this code in stock.");
         String[] lstOfArt = br.readStringArrSplitByComma();
+        lstOfArt = Arrays.stream(lstOfArt).map(String::trim).toArray(String[]::new);
 
         colorln(DIVIDER, ANSI_BLUE);
         System.out.println("Enter an array of strings (strings are divided by comma) in the following format:");
         colorln("A, B, C, W", ANSI_YELLOW);
         String[] lstOf1stLetter = br.readStringArrSplitByComma();
+        lstOf1stLetter = Arrays.stream(lstOf1stLetter).map(String::trim).toArray(String[]::new);
 
-        String result = member.getSix().stockSummary(lstOfArt, lstOf1stLetter);
+                String result = member.getSix().stockSummary(lstOfArt, lstOf1stLetter);
         colorln(DIVIDER, ANSI_BLUE);
         System.out.println("You've got a following result:");
         colorln(result, ANSI_RED);
