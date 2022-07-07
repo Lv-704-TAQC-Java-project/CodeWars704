@@ -29,7 +29,7 @@ public class ImplementationMenu implements Runner {
 
         int a = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 9);
         if (a > 0 && a <= GroupInfo.values().length) {
-            MainMenu.setSetImplementation(a);
+            MainMenu.setCurrentImplementation(a);
         }
 
     }
