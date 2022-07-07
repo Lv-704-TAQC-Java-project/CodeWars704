@@ -1,6 +1,7 @@
 package com.org.ita.utils;
 
 import java.util.Arrays;
+
 import static com.org.ita.utils.Message.*;
 
 public class StartTask implements Runner {
@@ -33,12 +34,15 @@ public class StartTask implements Runner {
         switch (taskId) {
             case 1:
                 runLiters();
-                break;  
+                break;
             case 2:
                 runGetVolumeOfCuboid();
                 break;
             case 3:
                 runMpgToKPM();
+                break;
+            case 4:
+                runSquareOrSquareRoot();
                 break;
             case 5:
                 runCountPositivesSumNegatives();
@@ -107,7 +111,7 @@ public class StartTask implements Runner {
         boolean numb = member.getEight().amIWilson(n);
         System.out.println("Result: " + numb);
     }
-    public void runZeros(){
+    public void runZeros() {
         System.out.println("Run task zeros.\nPlease input the number (int):");
         int factor = br.readInt();
         int answer = member.getFive().zeros(factor);
@@ -165,7 +169,7 @@ public class StartTask implements Runner {
         double answer = member.getSix().f(x);
         System.out.println("Result " + answer);
     }
-    
+
     public void runFindNb() {
         System.out.println("Run task findNb.");
         System.out.println("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m");
@@ -200,7 +204,7 @@ public class StartTask implements Runner {
             runSolveSum();
         }
     }
-   
+
     public void runMpgToKPM() {
         System.out.println("Run task mpgToKPM.\nPlease input x (float):");
         float x = br.readFloat();
@@ -245,7 +249,7 @@ public class StartTask implements Runner {
         System.out.println("The maximum number of numbers that will be covered by artificial rain is equal to " + result);
     }
 
-    public void runSeriesSum(){
+    public void runSeriesSum() {
         System.out.println("Run task seriesSum.\nPlease input the number (int):");
         int n = br.readInt();
         String answer = member.getSeven().seriesSum(n);
@@ -276,7 +280,7 @@ public class StartTask implements Runner {
         System.out.println("Result for the team " + team + " : " + teamScore);
     }
 
-    public void runStockSummary()  {
+    public void runStockSummary() {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task 'Help the bookseller!'", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
@@ -296,6 +300,13 @@ public class StartTask implements Runner {
         System.out.println("You've got a following result:");
         colorln(result, ANSI_RED);
         System.out.println("Where (key: value) - 'key' is a book category and 'value' is quantity of books in category.");
+    }
+
+    public void runSquareOrSquareRoot() {
+        System.out.println("Run task SquareOrSquareRoot.\nPlease input an array of integers:");
+        int[] intArr = br.readIntArr();
+        int[] answer = member.getEight().squareOrSquareRoot(intArr);
+        System.out.println("Result " + Arrays.toString(answer));
     }
 }
 
