@@ -2,6 +2,7 @@ package com.org.ita.utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 import static com.org.ita.utils.Message.*;
 
@@ -393,11 +394,16 @@ public class StartTask implements Runner {
                 "129 Gasoline 16.10\"\n" +
                 "The first line shows the original balance.\nEach other line (when not blank) gives information: check number, category, check amount." +
                 "\n" ,ANSI_YELLOW);
-        String balance = br.readString();
-
-        System.out.println(balance);
-        String result = member.getSix().balance(balance);
+        String balance = "";
+        StringJoiner balanceResult = new StringJoiner("\n");
+        while (true){
+            balance = br.readString();
+            if (balance == null || balance.isEmpty()) break;
+            balanceResult.add(balance);
+        }
+        String result = member.getSix().balance(balanceResult.toString());
         colorln(DIVIDER, ANSI_BLUE);
+        result = result.replaceAll("\\\\r\\\\n","\n");
         System.out.println("You've got a following result:");
         colorln(result, ANSI_RED);
     }
