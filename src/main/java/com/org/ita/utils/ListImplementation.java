@@ -31,8 +31,8 @@ public class ListImplementation implements Runner{
         int a = br.readInt();
         if (a > 0 && a <= Group.values().length) {
             SettingsMenu.setSetImplementation(a);
-        } else {
-            list.clear();
         }
+
+        list.clear();
     }
 }

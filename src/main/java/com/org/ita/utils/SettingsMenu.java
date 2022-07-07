@@ -27,7 +27,7 @@ public class SettingsMenu {
         if (setImplementation == 0) {
             implement = "(No implementation selected)";
         } else {
-            implement = "(Current implementation: " + Group.getMemberGitHubById(setImplementation) + ")";
+            implement = "(Current implementation: " + Group.getMemberNameById(setImplementation) + ")";
         }
         colorln(implement, setImplementation == 0 ? ANSI_YELLOW : ANSI_GREEN);
 
