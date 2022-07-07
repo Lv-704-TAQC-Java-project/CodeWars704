@@ -1,11 +1,11 @@
-package com.org.ita.utils;
+package com.org.ita.info;
 
 import com.org.ita.kata.Eight;
 import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
 import com.org.ita.kata.Five;
 
-public enum Group {
+public enum GroupInfo {
 
     MEMBER_AnnaNezhuvaka(1, "Anna Nezhuvaka", "avlrvn",
             new com.org.ita.kata.implementation.avlrvn.EigthImpl(),
@@ -61,7 +61,7 @@ public enum Group {
     private final Six six;
     private final Five five;
 
-    Group(int id, String name, String gitHub, Eight eight, Seven seven, Six six, Five five) {
+    GroupInfo(int id, String name, String gitHub, Eight eight, Seven seven, Six six, Five five) {
         this.id = id;
         this.Name = name;
         this.gitHub = gitHub;
@@ -72,7 +72,7 @@ public enum Group {
     }
 
     public static String getMemberNameById(int id) {
-        for (Group member : values()) {
+        for (GroupInfo member : values()) {
             if (member.id == id) {
                 return member.getName();
             }
@@ -81,7 +81,7 @@ public enum Group {
     }
 
     public static String getMemberGitHubById(int id) {
-        for (Group member : values()) {
+        for (GroupInfo member : values()) {
             if (member.id == id) {
                 return member.getGitHub();
             }
@@ -89,8 +89,8 @@ public enum Group {
         return null;
     }
 
-    public static Group getMemberById(int id) {
-        for (Group member : values()) {
+    public static GroupInfo getMemberById(int id) {
+        for (GroupInfo member : values()) {
             if (member.id == id) {
                 return member;
             }

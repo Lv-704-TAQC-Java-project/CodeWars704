@@ -1,6 +1,6 @@
-package com.org.ita.utils;
+package com.org.ita.info;
 
-public enum Tasks {
+public enum TaskInfo {
     TASK_8_1(1, "Keep Hydrated!",
             "You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value."),
     TASK_8_2(2, "Volume of a cuboid",
@@ -271,14 +271,14 @@ public enum Tasks {
     private final String taskName;
     private final String description;
 
-    Tasks(int id, String taskName, String description) {
+    TaskInfo(int id, String taskName, String description) {
         this.id = id;
         this.taskName = taskName;
         this.description = description;
     }
 
-    public static Tasks getTaskById(int id) {
-        for (Tasks task : values()) {
+    public static TaskInfo getTaskById(int id) {
+        for (TaskInfo task : values()) {
             if (task.id == id) {
                 return task;
             }
@@ -288,7 +288,7 @@ public enum Tasks {
 
 
     public static String getDescriptionById(int id) {
-        for (Tasks task : values()) {
+        for (TaskInfo task : values()) {
             if (task.id == id) {
                 return task.description;
             }
@@ -297,7 +297,7 @@ public enum Tasks {
     }
 
     public static void showAllTasks() {
-        for (Tasks task : values()) {
+        for (TaskInfo task : values()) {
             System.out.println(task.getId() + ") " + task.getTaskName());
         }
     }

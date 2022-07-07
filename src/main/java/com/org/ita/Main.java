@@ -1,10 +1,10 @@
 package com.org.ita;
 
-import com.org.ita.utils.SettingsMenu;
+import com.org.ita.menu.MainMenu;
 
 public class Main {
     public static void main(String[] args) {
-        SettingsMenu settingsMenu = new SettingsMenu();
-        settingsMenu.run();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.run();
     }
 }

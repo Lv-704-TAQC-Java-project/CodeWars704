@@ -1,20 +1,22 @@
-package com.org.ita.utils;
+package com.org.ita.menu;
 
-import java.io.IOException;
+import com.org.ita.info.TaskInfo;
+import com.org.ita.utils.Buffer;
+import com.org.ita.utils.Runner;
 
 import static com.org.ita.utils.Message.*;
 import static com.org.ita.utils.Message.ANSI_BLUE;
 
-public class ShowListOfTask implements Runner {
+public class TaskDescriptionMenu implements Runner {
 
     Buffer br = new Buffer();
 
     @Override
     public void run() {
-        SettingsMenu.clearScreen();
+        MainMenu.clearScreen();
         colorHeader("Select task to view a description:", ANSI_BLUE);
 
-        Tasks.showAllTasks();
+        TaskInfo.showAllTasks();
 
         colorln(DIVIDER, ANSI_BLUE);
         colorln("1..24 - to view task description", ANSI_GREEN);
@@ -29,13 +31,13 @@ public class ShowListOfTask implements Runner {
 
     private void description(int num) {
         colorln(DIVIDER_MAIN, ANSI_BLUE);
-        System.out.println(Tasks.getTaskById(num));
+        System.out.println(TaskInfo.getTaskById(num));
         colorln(DIVIDER, ANSI_BLUE);
-        System.out.println(Tasks.getDescriptionById(num));
+        System.out.println(TaskInfo.getDescriptionById(num));
         colorln(DIVIDER, ANSI_BLUE);
         System.out.println("Click enter to return: ");
 
         br.readString();
-        new ShowListOfTask().run();
+        new TaskDescriptionMenu().run();
     }
 }

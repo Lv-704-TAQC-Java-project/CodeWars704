@@ -1,9 +1,13 @@
-package com.org.ita.utils;
+package com.org.ita.menu;
+
+import com.org.ita.utils.Buffer;
+import com.org.ita.info.GroupInfo;
+import com.org.ita.utils.Runner;
 
 import static com.org.ita.utils.Message.*;
 
 
-public class ListImplementation implements Runner{
+public class ImplementationMenu implements Runner {
 
     Buffer br = new Buffer();
     String tableFormat = "%-2s  %-23s %-16s\n";
@@ -11,21 +15,21 @@ public class ListImplementation implements Runner{
 
     @Override
     public void run() {
-        SettingsMenu.clearScreen();
+        MainMenu.clearScreen();
         colorHeader("Available implementations:", ANSI_BLUE);
 
         System.out.format(tableHeader, "ID", "FullName", "GitHub");
-        for (Group member: Group.values()) {
+        for (GroupInfo member: GroupInfo.values()) {
             System.out.format(tableFormat, member.getId(), member.getName(), member.getGitHub());
         }
 
         colorln(DIVIDER, ANSI_BLUE);
         colorln("0 - return to main manu", ANSI_YELLOW);
-        colorln("ID from 1 to " + Group.values().length + " - select imlementation", ANSI_GREEN);
+        colorln("ID from 1 to " + GroupInfo.values().length + " - select imlementation", ANSI_GREEN);
 
         int a = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 9);
-        if (a > 0 && a <= Group.values().length) {
-            SettingsMenu.setSetImplementation(a);
+        if (a > 0 && a <= GroupInfo.values().length) {
+            MainMenu.setSetImplementation(a);
         }
 
     }
