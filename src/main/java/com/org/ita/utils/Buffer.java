@@ -75,8 +75,8 @@ public class Buffer implements Reader {
             return Buffer.br.readLine().trim().split("\\s+");
         } catch (IOException e) {
             System.out.println("Input should be String");
+            return this.readStringArr();
         }
-        return this.readStringArr();
     }
 
     @Override
@@ -85,8 +85,8 @@ public class Buffer implements Reader {
             return Buffer.br.readLine().trim().split(",");
         } catch (IOException e) {
             System.out.println("Input should be String");
+            return this.readStringArr();
         }
-        return this.readStringArr();
     }
 
     @Override
@@ -114,9 +114,9 @@ public class Buffer implements Reader {
             }
 
             return arr;
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Input should be double");
+            return this.readDoubleArr();
         }
-        return this.readDoubleArr();
     }
 }
