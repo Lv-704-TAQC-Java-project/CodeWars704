@@ -291,7 +291,7 @@ public class StartTask implements Runner {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task mpgToKPM.", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
-        colorln("This function converts miles per imperial gallon into kilometers per liter.", ANSI_BLUE);
+        colorln("This function converts miles per imperial gallon into kilometers per liter.", ANSI_YELLOW);
         System.out.println("Please input x (float):");
         float x = br.readFloat();
         float answer = member.getEight().mpgToKPM(x);
@@ -317,7 +317,12 @@ public class StartTask implements Runner {
     }
 
     public void runGap() {
-        System.out.println("Run task Gap.\nPlease input the gap we are looking for (int):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task Gap.", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("This function should return the first pair of two prime numbers spaced with a gap of g between \n" +
+                "the limits m, n if these numbers exist notherwise null", ANSI_YELLOW);
+        System.out.println("Please input the gap we are looking for (int):");
         int g = br.readInt();
 
         System.out.println("Please input the start of the search (long):");
@@ -327,7 +332,7 @@ public class StartTask implements Runner {
         long n = br.readLong();
 
         long[] answer = member.getFive().gap(g, m, n);
-        System.out.println("Result " + Arrays.toString(answer) + " gap");
+        colorln("Result " + Arrays.toString(answer) + " gap", ANSI_GREEN);
     }
 
     public void runArtificialRain() {
