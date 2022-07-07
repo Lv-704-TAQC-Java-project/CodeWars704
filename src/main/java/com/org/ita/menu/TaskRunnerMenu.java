@@ -1,8 +1,8 @@
 package com.org.ita.menu;
 
-import com.org.ita.info.TaskInfo;
+import com.org.ita.utils.info.TaskInfo;
 import com.org.ita.utils.Buffer;
-import com.org.ita.info.GroupInfo;
+import com.org.ita.utils.info.GroupInfo;
 import com.org.ita.utils.Runner;
 
 import java.math.BigInteger;

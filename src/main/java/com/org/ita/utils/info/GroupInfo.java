@@ -1,4 +1,4 @@
-package com.org.ita.info;
+package com.org.ita.utils.info;
 
 import com.org.ita.kata.Eight;
 import com.org.ita.kata.Seven;
