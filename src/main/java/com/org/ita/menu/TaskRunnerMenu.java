@@ -147,17 +147,18 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runGetVolumeOfCuboid() {
-        System.out.println("Run task getVolumeOfCuboid.\nPlease input length of cuboid (double):");
-        double a = br.readDouble();
+        colorHeader("Run task getVolumeOfCuboid.");
+        System.out.println("Please input length of cuboid (double):");
+        double a = br.getPositiveDoubleInput();
 
-        System.out.println("Run task getVolumeOfCuboid.\nPlease input width of cuboid (double):");
-        double b = br.readDouble();
+        System.out.println("Please input width of cuboid (double):");
+        double b = br.getPositiveDoubleInput();
 
-        System.out.println("Run task getVolumeOfCuboid.\nPlease input height of cuboid (double):");
-        double c = br.readDouble();
+        System.out.println("Please input height of cuboid (double):");
+        double c = br.getPositiveDoubleInput();
 
         double volume = member.getEight().getVolumeOfCuboid(a, b, c);
-        System.out.println("Result - " + volume + " volume");
+        colorln("Result: " + volume + " volume", ANSI_YELLOW);
     }
 
     public void runAmIWilson() {
