@@ -288,10 +288,14 @@ public class StartTask implements Runner {
     }
 
     public void runMpgToKPM() {
-        System.out.println("Run task mpgToKPM.\nPlease input x (float):");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task mpgToKPM.", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("This function converts miles per imperial gallon into kilometers per liter.", ANSI_BLUE);
+        System.out.println("Please input x (float):");
         float x = br.readFloat();
         float answer = member.getEight().mpgToKPM(x);
-        System.out.println("Result " + answer + " kilometers per liter");
+        colorln("Result " + answer + " kilometers per liter", ANSI_GREEN);
     }
 
     public void runTwoDecimalPlaces() {
