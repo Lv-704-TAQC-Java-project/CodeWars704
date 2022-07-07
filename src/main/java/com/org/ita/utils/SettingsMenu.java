@@ -22,11 +22,16 @@ public class SettingsMenu {
 
     private void menuTitle() {
         colorln(DIVIDER_MAIN, ANSI_BLUE);
-        System.out.println("1) View a list of all implementations (ID, First name Last name, github nickname)");
-        String implement = "";
-        if (setImplementation == 0) implement = "(You didn't choose implementation)";
-        else implement = "(You choose implementation: " + Group.getMemberGitHubById(setImplementation) + ")";
-        System.out.println("2) Set an implementation " + implement);
+        System.out.print("1) Select implementation ");
+        
+        String implement;
+        if (setImplementation == 0) {
+            implement = "(You didn't choose implementation)";
+        } else {
+            implement = "(You choose implementation: " + Group.getMemberGitHubById(setImplementation) + ")";
+        }
+
+        colorln(implement, setImplementation == 0 ? ANSI_YELLOW : ANSI_GREEN);
         System.out.println("3) Show list of tasks");
         System.out.println("4) Start a task");
         System.out.println("0) Exit");
