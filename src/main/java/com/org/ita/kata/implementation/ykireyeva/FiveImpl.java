@@ -33,6 +33,19 @@ public class FiveImpl implements Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        long[] res = new long[]{Long.MAX_VALUE, 0, 0};
+        StringBuilder l = new StringBuilder(Long.toString(n));
+        for (int i = l.length() - 1; i >= 0; i--) {
+            for (int j = l.length() - 1; j >= 0; j--) {
+                char x = l.charAt(i);
+                l.deleteCharAt(i);
+                l.insert(j, x);
+                if (Long.parseLong(l.toString()) <= res[0]) {
+                    res = new long[]{Long.parseLong(l.toString()), i, j};
+                }
+                l = new StringBuilder(Long.toString(n));
+            }
+        }
+        return res;
     }
 }
