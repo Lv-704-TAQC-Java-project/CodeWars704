@@ -131,9 +131,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runLiters() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task liters", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task liters");
         colorln("The function liters returns the number of litres person should drink, rounded to the smallest value", ANSI_YELLOW);
         System.out.println("Please input time (hours):");
         double a = br.readDouble();
@@ -162,7 +160,8 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runAmIWilson() {
-        System.out.println("Run task amIWilson.\nPlease input number (double):");
+        colorHeader("Run task amIWilson.");
+        System.out.println("Please input number (double):");
         double n = br.readDouble();
         System.out.println("Is " + n + " Wilson?");
         boolean numb = member.getEight().amIWilson(n);
@@ -170,16 +169,15 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runZeros() {
-        System.out.println("Run task zeros.\nPlease input the number (int):");
+        colorHeader("Run task zeros.");
+        System.out.println("Please input the number (int):");
         int factor = br.readInt();
         int answer = member.getFive().zeros(factor);
         System.out.println("The amount of trailing zeros in factorial " + answer);
     }
 
     public void runStringToNumber() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task 'StringToNumber'", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task 'StringToNumber'.");
         System.out.println("Please input value (String):");
         String a = br.readString();
         colorln(DIVIDER, ANSI_BLUE);
@@ -189,9 +187,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runWhereIsHe() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task 'WhereIsHe'", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task 'WhereIsHe'");
         System.out.println("Please input the total amount of people (int):");
         int p = br.readInt();
 
@@ -208,10 +204,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runRainfall() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task Rainfall", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
-
+        colorHeader("Run task Rainfall");
         colorln("This method should return the average of rainfall for the city and the variance of rainfall for the city\n", ANSI_YELLOW);
 
         System.out.println("Enter string data in the following format:");
@@ -230,7 +223,8 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runSmallest() {
-        System.out.println("Run task getVolumeOfCuboid.\nPlease enter positive number (long):");
+        colorHeader("Run task getVolumeOfCuboid.");
+        System.out.println("Please enter positive number (long):");
         long n = br.readLong();
 
         long[] resultArr = member.getFive().smallest(n);
@@ -240,9 +234,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runF() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task 'F'", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task 'F'");
         System.out.println("Please input x (double):");
         double x = br.readDouble();
         double answer = member.getSix().f(x);
@@ -251,9 +243,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runFindNb() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task findNb.", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task findNb.");
         colorln("This method should return you the number n that belongs to the function - n^3 + (n-1)^3 + ... + 1^3 = m", ANSI_YELLOW);
 
         System.out.println("Please enter positive number (long) like '1071225':");
@@ -276,9 +266,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runSolveSum() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task solveSum.", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task solveSum.");
         colorln("This method returns the value of x from the sequence U(n, x) = x + 2x**2 + 3x**3 + .. + nx**n", ANSI_YELLOW);
         System.out.println("Please input m > 0 (double) :");
         double a = br.readDouble();
@@ -294,9 +282,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runMpgToKPM() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task mpgToKPM.", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task mpgToKPM.");
         colorln("This function converts miles per imperial gallon into kilometers per liter.", ANSI_YELLOW);
         System.out.println("Please input x (float):");
         float x = br.readFloat();
@@ -305,16 +291,15 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runTwoDecimalPlaces() {
-        System.out.println("Run task twoDecimalPlaces.\nPlease input number (double):");
+        colorHeader("Run task twoDecimalPlaces.");
+        System.out.println("Please input number (double):");
         double a = br.readDouble();
         double answer = member.getEight().twoDecimalPlaces(a);
         System.out.println("Result " + answer);
     }
 
     public void runCountPositivesSumNegatives() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task CountPositivesSumNegatives", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task CountPositivesSumNegatives");
         colorln ("The function CountPositivesSumNegatives array (the 1st element is the count of positives and the 2nd is sum of negatives", ANSI_YELLOW);
         colorln("Please input an array of integers:", ANSI_RESET);
         int[] intArr = br.readIntArr();
@@ -323,9 +308,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runGap() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task Gap.", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task Gap.");
         colorln("This function should return the first pair of two prime numbers spaced with a gap of g between \n" +
                 "the limits m, n if these numbers exist notherwise null", ANSI_YELLOW);
         System.out.println("Please input the gap we are looking for (int):");
@@ -342,9 +325,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runArtificialRain() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task artificialRain.", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task artificialRain.");
         colorln("Methods of deriving the number that conveys the maximum coverage of the array section", ANSI_YELLOW);
         System.out.println("Please input an array of integers:");
         int[] intArr = br.readIntArr();
@@ -355,9 +336,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runSeriesSum() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task seriesSum.", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task seriesSum.");
         colorln("This function returns the sum of following series upto nth term(parameter).", ANSI_YELLOW);
         System.out.println("Please input the number (int):");
         int n = br.readInt();
@@ -366,9 +345,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runNewAvg() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task NewAvg", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task NewAvg");
         colorln("The function liters returns the expected donation that will permit to reach the average navg", ANSI_YELLOW);
         colorln("Please input an array of donations (double):", ANSI_RESET);
         double[] arr = br.readDoubleArr();
@@ -389,9 +366,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runNbaCup() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task NbaCup", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task NbaCup");
         colorln("The function NbaCup returns the number of matches team - won, draws, lost, total score, conceded and NBA rank", ANSI_YELLOW);
         System.out.println("Please input NBA scores, e.g.:\n");
         System.out.println("Los Angeles Clippers 104 Dallas Mavericks 88,\n" +
@@ -420,9 +395,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runStockSummary() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task 'Help the bookseller!'", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task 'Help the bookseller!'");
         System.out.println("Enter an array of strings (strings are divided by comma) in the following format:");
         colorln("ABART 20, CDXEF 50, BKWRK 25, BTSQZ 89, DRTYM 60", ANSI_YELLOW);
         System.out.println("Where 3, 4, 5 letters represent a book code and digits after a 'space'");
@@ -445,12 +418,8 @@ public class TaskRunnerMenu implements Runner {
 
 
     public void runSquareOrSquareRoot() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task SquareOrSquareRoot", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
-
+        colorHeader("Run task SquareOrSquareRoot");
         colorln("Return a new array where if the number has an integer square root, take this, otherwise square the number", ANSI_YELLOW);
-
         System.out.println("Please input an array of integers:");
         int[] intArr = br.readIntArr();
 
@@ -459,10 +428,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runDivisibleBy() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task DivisibleBy", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
-
+        colorHeader("Run task DivisibleBy");
         colorln("Task DivisibleBy returns an array of all numbers which are divisible by the given divisor", ANSI_YELLOW);
         System.out.println("Please input an array of integers:");
         int[] intArr = br.readIntArr();
@@ -475,9 +441,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runPerimeter() {
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task runPerimeter", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task runPerimeter");
         colorln("The function perimeter returns the total perimeter of all the squares.", ANSI_YELLOW);
         System.out.println("Please input some number N where N + 1 is the number of squares: ");
         BigInteger n = br.readBigInteger();
@@ -493,9 +457,7 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runBalance(){
-        colorln(DIVIDER, ANSI_BLUE);
-        colorln("Run task runBalance", ANSI_BLUE);
-        colorln(DIVIDER, ANSI_BLUE);
+        colorHeader("Run task runBalance");
         colorln("The function balance returns balance with all costs",ANSI_YELLOW);
         System.out.println("Please input some text like: ");
         colorln( "\n" +
