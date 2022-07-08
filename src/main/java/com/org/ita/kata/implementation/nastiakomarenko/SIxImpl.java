@@ -77,14 +77,22 @@ public class SIxImpl implements Six {
 
     @Override
     public double mean(String town, String str2) {
-        int count = 0, sum=0;
-        for (int i = 0; i < str2.length(); i++) {
-            if (Character.isDigit(str2.charAt(i))) {
-                count++;
-                sum += Integer.parseInt(String.valueOf(str2.charAt(i)));
+        String[] lines = str2.split("\n");
+        double avg = -1;
+        int count = 0;
+        for (int i = 0; i < lines.length; i++) {
+            String[] line = lines[i].split("[: ,]");
+            if (line[0].equals(town)) {
+                avg = 0;
+                for (int j = 2; j < line.length; j += 2) {
+                    avg = avg + Double.parseDouble(line[j]);
+                    count++;
+                }
+                avg = avg / count;
             }
         }
-        return   sum/count;
+        return avg;
+
     }
 
     @Override
