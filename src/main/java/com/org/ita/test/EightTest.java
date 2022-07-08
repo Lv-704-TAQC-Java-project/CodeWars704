@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EightTest {
@@ -69,19 +70,10 @@ public class EightTest {
         for (Object[] objects : impl) {
             for (Object[] value : dataProvider) {
 
-                int g = objects.length + value.length;
-
                 List<Object> list = new ArrayList<>();
-
-                for (int j = 0; j < objects.length; j++) {
-                    list.add(objects[j]);
-                }
-
-                for (int k = 0; k < value.length; k++) {
-                    list.add(value[k]);
-                }
+                Collections.addAll(list, objects);
+                Collections.addAll(list, value);
                 merged[countLines] = list.toArray();
-
                 countLines++;
                 list.clear();
             }
