@@ -5,44 +5,96 @@ import com.org.ita.kata.Eight;
 import java.util.Arrays;
 
 public class EigthImpl implements Eight {
+    public static double factorial(double number) {
+        if (number <= 1) {
+            return 1;
+        } else {
+            return number * factorial(number - 1);
+        }
+
+    }
+
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) Math.floor(time * 0.5);
+
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+
+        return length * width * height;
     }
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        //const
+        double gallon = 4.54609188; // in litres
+        double mile = 1.609344; // in km
+//parameters
+
+        double res = mpg * (mile / gallon);
+        if (res % 10 == 0) {
+            return Math.round(res);
+        } else {
+            double scale = Math.pow(10, 2);
+            double result = Math.ceil(res * scale) / scale;
+            return (float) result;
+        }
+
     }
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+
+        int[] res = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            int a = array[i];
+            if (Math.sqrt(a) % 1 == 0) {
+                res[i] = (int) Math.sqrt(a);
+            } else {
+                res[i] = a * a;
+            }
+
+        }
+        return res;
     }
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        int[] res = new int[2];
+        int count = 0, sum = 0;
+        if (input != null && input.length > 0) {
+            for (int i = 0; i < input.length; i++) {
+                if (input[i] > 0) {
+                    count++;
+                } else {
+                    sum += input[i];
+                }
+            }
+            res[0] = count;
+            res[1] = sum;
+        } else {
+            System.out.println("0");
+        }
+        return res;
     }
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+       return Integer.parseInt(str);
+
     }
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        return (factorial(n - 1) + 1) % (n * n) == 0;
     }
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+
+        return (double) Math.round(number * 100) / 100;
     }
 
     @Override
@@ -52,6 +104,7 @@ public class EigthImpl implements Eight {
             if (numbers[i] % divider == 0) {
                 newArray = Arrays.copyOf(newArray, newArray.length + 1);
                 newArray[newArray.length - 1] = numbers[i];
+
             }
         }
         return newArray;
