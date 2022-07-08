@@ -27,17 +27,17 @@ public class EightTest {
     //pass test data from data-provider.
     // 3 tests passes
 
-    @Test(dataProvider = "data-provider")
-    public void testLiters(double data, double expected) {
-        member = GroupInfo.getMemberById(4);
-        assert member != null;
-        double actual = member.getEight().liters(data);
-        Assert.assertEquals(actual, expected);
-    }
+//    @Test(dataProvider = "data-provider")
+//    public void testLiters(double data, double expected) {
+//        member = GroupInfo.getMemberById(4);
+//        assert member != null;
+//        double actual = member.getEight().liters(data);
+//        Assert.assertEquals(actual, expected);
+//    }
 
     //Array of Eight implemantations
 
-    Object[][] EightImpl(){
+    Object[][] EightImpl() {
         return new Object[][]{
                 {new com.org.ita.kata.implementation.avlrvn.EigthImpl()},
                 {new com.org.ita.kata.implementation.clarmmym.EigthImpl()},
@@ -68,18 +68,20 @@ public class EightTest {
 
         for (Object[] objects : impl) {
             for (Object[] value : dataProvider) {
+
                 int g = objects.length + value.length;
+
                 List<Object> list = new ArrayList<>();
 
                 for (int j = 0; j < objects.length; j++) {
-                    list.add(j, impl[j]);
+                    list.add(objects[j]);
                 }
 
                 for (int k = 0; k < value.length; k++) {
-                    list.add(list.size(), value);
+                    list.add(value[k]);
                 }
-
                 merged[countLines] = list.toArray();
+
                 countLines++;
                 list.clear();
             }
@@ -101,20 +103,5 @@ public class EightTest {
         double actual = eightImpl.liters(data);
         Assert.assertEquals(actual, expected);
     }
-
-    /*
-
-Exception:
-[public void com.org.ita.test.EightTest.testLiters(com.org.ita.kata.Eight,double,double)]
-has no parameters defined but was found to be using a data provider
-(either explicitly specified or inherited from class level annotation).
-Data provider mismatch
-Method: testLiters([Parameter{index=0, type=com.org.ita.kata.Eight, declaredAnnotations=[]},
-Parameter{index=1, type=double, declaredAnnotations=[]}, Parameter{index=2, type=double, declaredAnnotations=[]}])
-Arguments: [([Ljava.lang.Object;) [com.org.ita.kata.implementation.avlrvn.EigthImpl@57175e74],
-([Ljava.lang.Object;) [12, 6.0],([Ljava.lang.Object;) [12, 6.0]]
-
-     */
-
 
 }
