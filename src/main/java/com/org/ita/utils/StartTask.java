@@ -202,11 +202,19 @@ public class StartTask implements Runner {
     }
 
     public void runRainfall() {
-        System.out.println("Run task Rainfall.\nPlease input the town (string):");
-        String town = br.readString();
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task Rainfall", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
 
-        System.out.println("Run task Rainfall.\nPlease input data of rain (string):");
+        colorln("This method should return the average of rainfall for the city and the variance of rainfall for the city\n", ANSI_YELLOW);
+
+        System.out.println("Enter string data in the following format:");
+        colorln("Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9 \\n", ANSI_YELLOW);
+
         String data = br.readString();
+
+        System.out.println("Please input the town (string):");
+        String town = br.readString();
 
         double mean = member.getSix().mean(town, data);
         double variance = member.getSix().variance(town, data);
@@ -431,21 +439,33 @@ public class StartTask implements Runner {
 
 
     public void runSquareOrSquareRoot() {
-        System.out.println("Run task SquareOrSquareRoot.\nPlease input an array of integers:");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task SquareOrSquareRoot", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+
+        colorln("Return a new array where if the number has an integer square root, take this, otherwise square the number", ANSI_YELLOW);
+
+        System.out.println("Please input an array of integers:");
         int[] intArr = br.readIntArr();
+
         int[] answer = member.getEight().squareOrSquareRoot(intArr);
         System.out.println("Result " + Arrays.toString(answer));
     }
 
     public void runDivisibleBy() {
-        System.out.println("Run task DivisibleBy.\nPlease input an array of integers:");
+        colorln(DIVIDER, ANSI_BLUE);
+        colorln("Run task DivisibleBy", ANSI_BLUE);
+        colorln(DIVIDER, ANSI_BLUE);
+
+        colorln("Task DivisibleBy returns an array of all numbers which are divisible by the given divisor", ANSI_YELLOW);
+        System.out.println("Please input an array of integers:");
         int[] intArr = br.readIntArr();
 
-        System.out.println("Run task DivisibleBy.\nPlease input divider (integer):");
+        System.out.println("Please input divider (integer):");
         int div = br.readInt();
 
         int[] answer = member.getEight().divisibleBy(intArr, div);
-        System.out.println("Result " + Arrays.toString(answer));
+        colorln("Result " + Arrays.toString(answer), ANSI_BLUE);
     }
 
     public void runPerimeter() {
