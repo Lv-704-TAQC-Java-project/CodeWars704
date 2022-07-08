@@ -2,19 +2,37 @@ package com.org.ita.kata.implementation.dankomax;
 
 import com.org.ita.kata.Seven;
 
+import java.util.Arrays;
+
 public class SevenImpl implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
-        return 0;
+        double currentDonationSum = Arrays.stream(arr).sum();
+        long nextDonation = (long) Math.ceil((navg * (arr.length + 1)) - currentDonationSum);
+
+        if (nextDonation <= 0) {
+            throw new IllegalArgumentException("Next donation must be positive.");
+        }
+
+        return nextDonation;
     }
 
     @Override
     public String seriesSum(int n) {
-        return null;
+        final int PROGRESSION_DELTA = 3;
+        int currentDelimiter = 1;
+        double progressionSum = 0;
+
+        for (int i = 0; i < n; i++) {
+            progressionSum += 1.0 / currentDelimiter;
+            currentDelimiter += PROGRESSION_DELTA;
+        }
+
+        return String.format("%.2f", progressionSum);
     }
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        return (p - bef > aft) ? aft + 1 : p - bef;
     }
 }
