@@ -13,11 +13,10 @@ public class SevenImpl implements Seven {
         }
         double lastDonat = (avg - sum);
         if (lastDonat <= 0) {
-            throw new IllegalArgumentException("Exception");
+            throw new IllegalArgumentException("error");
         }
         return (long) Math.ceil(lastDonat);
     }
-
     @Override
     public String seriesSum(int n) {
 

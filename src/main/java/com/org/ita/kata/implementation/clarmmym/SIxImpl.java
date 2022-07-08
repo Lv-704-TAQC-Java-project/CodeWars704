@@ -76,6 +76,9 @@ public class SIxImpl implements Six {
     @Override
     public double variance(String town, String strng) {
         double avg = mean(town, strng);
+        if (avg == -1) {
+            return -1;
+        }
         double[] data = dataNumbers(town, strng);
 
         double vars = 0;
@@ -88,13 +91,17 @@ public class SIxImpl implements Six {
 
     private double[] dataNumbers(String town, String strng) {
         final int MONTH = 12;
-        String regex = "^" + town + ".+$";
+        String regex = "^" + town + ":.+$";
         String townData = "";
         Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(strng);
 
         while (matcher.find()) {
             townData = matcher.group();
+        }
+
+        if (townData.equals("")) {
+            return new double[]{-1};
         }
 
         double[] nb = new double[MONTH];

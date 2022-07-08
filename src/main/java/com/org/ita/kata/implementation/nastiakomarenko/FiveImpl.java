@@ -52,20 +52,16 @@ public class FiveImpl implements Five {
 
     @Override
     public int zeros(int factor) {
+            int count = 0;
+            double Max = Math.log(factor) / Math.log(5);
+            for (int k = 1; k < Max; k++) {
+                count = count + (int) (factor / Math.pow(5, k));
+            }
+            return count;
 
-        int number = getFactorial(factor);
-        String str = String.valueOf(number);
-        int zeros = str.length() - str.replaceAll("0", "").length();
-       return zeros;
 
     }
-    public static int getFactorial(int f) {
-        if (f <= 1) {
-            return 1;
-        } else {
-            return f * getFactorial(f - 1);
-        }
-    }
+
 
     @Override
     public BigInteger perimeter(BigInteger n) {

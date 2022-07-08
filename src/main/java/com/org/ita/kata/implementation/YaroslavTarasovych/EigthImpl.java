@@ -24,7 +24,8 @@ public class EigthImpl implements Eight {
         float n = (float) (mpg * 1.609344 / 4.54609188);
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         String result = decimalFormat.format(n);
-        return Float.valueOf(result);
+        result = result.replace(",",".");
+        return Float.parseFloat(result);
     }
 
     @Override
@@ -64,7 +65,7 @@ public class EigthImpl implements Eight {
     @Override
     public boolean amIWilson(double n) {
         BigDecimal factorial = new BigDecimal(String.valueOf(1));
-        if (n == 0 || n == 1) {
+        if (n == 0 || n == 1 || n == 2) {
             return false;
         } else {
             BigDecimal bi = new BigDecimal(String.valueOf(n - 1));
@@ -82,7 +83,7 @@ public class EigthImpl implements Eight {
     @Override
     public double twoDecimalPlaces(double number) {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        String result = decimalFormat.format(number);
+        String result = decimalFormat.format(number).replaceAll(",",".");
         return Double.valueOf(result);
     }
 
