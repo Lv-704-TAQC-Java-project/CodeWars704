@@ -123,6 +123,21 @@ public class Buffer implements Reader {
         }
     }
 
+    public double getPositiveDoubleInput() {
+        double number;
+        boolean invalidNum;
+
+        do {
+            number = this.readDouble();
+            invalidNum = number < 0;
+            if (invalidNum) {
+                colorErrorLn("Enter positive number.");
+            }
+        } while (invalidNum);
+
+        return number;
+    }
+
     public int getValidIntFromUserInput(String invalidMessage, int start, int end) {
         int number;
         boolean invalidNum;
