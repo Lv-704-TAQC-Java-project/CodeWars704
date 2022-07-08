@@ -223,14 +223,18 @@ public class TaskRunnerMenu implements Runner {
     }
 
     public void runSmallest() {
-        colorHeader("Run task getVolumeOfCuboid.");
+        colorHeader("Run task Smallest");
         System.out.println("Please enter positive number (long):");
         long n = br.readLong();
 
         long[] resultArr = member.getFive().smallest(n);
         System.out.println("You have entered " + n);
-        System.out.println("The smallest number you got by one swap is: " + resultArr[0]);
-        System.out.println("You can get this number by taking digit from index " + resultArr[1] + " and inserting it at index " + resultArr[2]);
+        System.out.print("The smallest number you got by one swap is: ");
+        colorln(Long.toString(resultArr[0]), ANSI_YELLOW);
+        System.out.print("You can get this number by taking digit from index ");
+        color(Long.toString(resultArr[1]), ANSI_YELLOW);
+        System.out.print(" and inserting it at index ");
+        color(Long.toString(resultArr[2]), ANSI_YELLOW);
     }
 
     public void runF() {
