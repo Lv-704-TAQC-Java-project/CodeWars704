@@ -27,7 +27,7 @@ public class ImplementationMenu implements Runner {
         colorln("0 - return to main manu", ANSI_YELLOW);
         colorln("ID from 1 to " + GroupInfo.values().length + " - select imlementation", ANSI_GREEN);
 
-        int a = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 9);
+        int a = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to " + GroupInfo.values().length + ".", 0, 9);
         if (a > 0 && a <= GroupInfo.values().length) {
             MainMenu.setCurrentImplementation(a);
         }
