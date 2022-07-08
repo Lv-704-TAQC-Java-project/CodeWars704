@@ -65,7 +65,7 @@ public class EigthImpl implements Eight {
     @Override
     public boolean amIWilson(double n) {
         BigDecimal factorial = new BigDecimal(String.valueOf(1));
-        if (n == 0 || n == 1) {
+        if (n == 0 || n == 1 || n == 2) {
             return false;
         } else {
             BigDecimal bi = new BigDecimal(String.valueOf(n - 1));
