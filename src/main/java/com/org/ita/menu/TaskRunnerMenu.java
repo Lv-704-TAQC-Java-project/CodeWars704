@@ -215,15 +215,24 @@ public class TaskRunnerMenu implements Runner {
         colorln("This method should return the average of rainfall for the city and the variance of rainfall for the city\n", ANSI_YELLOW);
 
         System.out.println("Enter string data in the following format:");
-        colorln("Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9 \\n", ANSI_YELLOW);
+        colorln("Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
+                "\n" +
+                "London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9" +
+                "\n", ANSI_YELLOW);
 
-        String data = br.readString();
+        String data = "";
+        StringJoiner dataFormated = new StringJoiner("\n");
+        while (true) {
+            data = br.readString();
+            if (data == null || data.isEmpty()) break;
+            dataFormated.add(data);
+        }
 
         System.out.println("Please input the town (string):");
         String town = br.readString();
 
-        double mean = member.getSix().mean(town, data);
-        double variance = member.getSix().variance(town, data);
+        double mean = member.getSix().mean(town, dataFormated.toString());
+        double variance = member.getSix().variance(town, dataFormated.toString());
 
         System.out.println("Mean of your data is " + mean);
         System.out.println("Variance of your data is " + variance);
@@ -315,7 +324,7 @@ public class TaskRunnerMenu implements Runner {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task CountPositivesSumNegatives", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
-        colorln ("The function CountPositivesSumNegatives array (the 1st element is the count of positives and the 2nd is sum of negatives", ANSI_YELLOW);
+        colorln("The function CountPositivesSumNegatives array (the 1st element is the count of positives and the 2nd is sum of negatives", ANSI_YELLOW);
         colorln("Please input an array of integers:", ANSI_RESET);
         int[] intArr = br.readIntArr();
         int[] answer = member.getEight().countPositivesSumNegatives(intArr);
@@ -376,7 +385,7 @@ public class TaskRunnerMenu implements Runner {
         double nabg = br.readDouble();
         double arrAverage = 0;
         for (Double a : arr) {
-            arrAverage+=a;
+            arrAverage += a;
         }
         if (nabg < arrAverage) {
             colorln("Expected navr should be bigger than existing one. Try again!", ANSI_RED);
@@ -402,7 +411,7 @@ public class TaskRunnerMenu implements Runner {
 
         String NBAresults = "";
         StringJoiner NBAFormated = new StringJoiner("\n");
-        while (true){
+        while (true) {
             NBAresults = br.readString();
             if (NBAresults == null || NBAresults.isEmpty()) break;
             NBAFormated.add(NBAresults);
@@ -412,7 +421,7 @@ public class TaskRunnerMenu implements Runner {
         String teamName = br.readString();
         String teamScore = member.getSix().nbaCup(NBAFormated.toString(), teamName);
         try {
-            teamScore = teamScore.replaceAll("\\\\r\\\\n","\n");
+            teamScore = teamScore.replaceAll("\\\\r\\\\n", "\n");
             System.out.println("Result: " + teamScore);
         } catch (NullPointerException e) {
             colorln("This task is not implemented yet", ANSI_RED);
@@ -492,13 +501,13 @@ public class TaskRunnerMenu implements Runner {
         }
     }
 
-    public void runBalance(){
+    public void runBalance() {
         colorln(DIVIDER, ANSI_BLUE);
         colorln("Run task runBalance", ANSI_BLUE);
         colorln(DIVIDER, ANSI_BLUE);
-        colorln("The function balance returns balance with all costs",ANSI_YELLOW);
+        colorln("The function balance returns balance with all costs", ANSI_YELLOW);
         System.out.println("Please input some text like: ");
-        colorln( "\n" +
+        colorln("\n" +
                 "1000.00\n" +
                 "125 Market 125.45\n" +
                 "126 Hardware 34.95\n" +
@@ -506,17 +515,17 @@ public class TaskRunnerMenu implements Runner {
                 "128 Book 14.32\n" +
                 "129 Gasoline 16.10\"\n" +
                 "The first line shows the original balance.\nEach other line (when not blank) gives information: check number, category, check amount." +
-                "\n" ,ANSI_YELLOW);
+                "\n", ANSI_YELLOW);
         String balance = "";
         StringJoiner balanceResult = new StringJoiner("\n");
-        while (true){
+        while (true) {
             balance = br.readString();
             if (balance == null || balance.isEmpty()) break;
             balanceResult.add(balance);
         }
         String result = member.getSix().balance(balanceResult.toString());
         colorln(DIVIDER, ANSI_BLUE);
-        result = result.replaceAll("\\\\r\\\\n","\n");
+        result = result.replaceAll("\\\\r\\\\n", "\n");
         System.out.println("You've got a following result:");
         colorln(result, ANSI_RED);
     }
