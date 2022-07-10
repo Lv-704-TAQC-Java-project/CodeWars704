@@ -5,22 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class FiveImplTest {
-    public Five[] IMPLEMENTATIONS = new Five[]{
-            new com.org.ita.kata.implementation.avlrvn.FiveImpl(),
-            new com.org.ita.kata.implementation.clarmmym.FiveImpl(),
-            new com.org.ita.kata.implementation.dankomax.FiveImpl(),
-            new com.org.ita.kata.implementation.MyroslavaVynokur.FiveImpl(),
-            new com.org.ita.kata.implementation.nastiakomarenko.FiveImpl(),
-            new com.org.ita.kata.implementation.OlhaPivniuk.FiveImpl(),
-            new com.org.ita.kata.implementation.OliaZakharcuk.FiveImpl(),
-            new com.org.ita.kata.implementation.YaroslavTarasovych.FiveImpl(),
-            new com.org.ita.kata.implementation.ykireyeva.FiveImpl()
-    };
+public class FiveImplTest extends BasicImplTest {
 
     @DataProvider(name = "solveSumTestData")
     public Object[][] solveSumTestData() {
-
         Object[][] baseTestData = new Object[][]{
                 {0.5, 2.0},
                 {0.6096117967977924, 4.0},
@@ -234,23 +222,12 @@ public class FiveImplTest {
                 {0.9955635845425129, 50583.0},
                 {0.9975478836957062, 165902.0}
         };
-
-        int fullTestDataLength = IMPLEMENTATIONS.length * baseTestData.length;
-        Object[][] fullTestData = new Object[fullTestDataLength][3];
-
-        int count = 0;
-        for (Five implementation : IMPLEMENTATIONS) {
-            for (Object[] baseTest : baseTestData) {
-                fullTestData[count] = new Object[]{implementation, baseTest[0], baseTest[1]};
-                count++;
-            }
-        }
-
-        return fullTestData;
+        return userImpl.combineFiveWithTestData(baseTestData);
     }
 
     @Test(dataProvider = "solveSumTestData", timeOut = 1000)
-    public void solveTest(Five impl, double result, double number) {
-        Assert.assertEquals(impl.solveSum(number), result, 1e-13);
+    public void solveTest(Five impl, double expected, double number) {
+        double actual = impl.solveSum(number);
+        Assert.assertEquals(actual, expected, 1e-13);
     }
 }
