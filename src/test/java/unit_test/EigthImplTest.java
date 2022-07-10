@@ -47,8 +47,8 @@ public class EigthImplTest {
 
         int count = 0;
         for (Eight implementation : IMPLEMENTATIONS) {
-            for (Object[] baseTestDatum : baseTestData) {
-                fullTestData[count] = new Object[]{implementation, baseTestDatum[0], baseTestDatum[1]};
+            for (Object[] baseTest : baseTestData) {
+                fullTestData[count] = new Object[]{implementation, baseTest[0], baseTest[1]};
                 count++;
             }
         }
