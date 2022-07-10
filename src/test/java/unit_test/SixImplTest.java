@@ -6,22 +6,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class SixImplTest {
-    public Six[] IMPLEMENTATIONS = new Six[]{
-            new com.org.ita.kata.implementation.avlrvn.SIxImpl(),
-            new com.org.ita.kata.implementation.clarmmym.SIxImpl(),
-            new com.org.ita.kata.implementation.dankomax.SIxImpl(),
-            new com.org.ita.kata.implementation.MyroslavaVynokur.SIxImpl(),
-            new com.org.ita.kata.implementation.nastiakomarenko.SIxImpl(),
-            new com.org.ita.kata.implementation.OlhaPivniuk.SIxImpl(),
-            new com.org.ita.kata.implementation.OliaZakharcuk.SIxImpl(),
-            new com.org.ita.kata.implementation.YaroslavTarasovych.SIxImpl(),
-            new com.org.ita.kata.implementation.ykireyeva.SIxImpl()
-    };
+public class SixImplTest extends BasicImplTest {
 
     @DataProvider(name = "fTestData")
     public Object[][] fTestData() {
-
         Object[][] baseTestData = new Object[][]{
                 {1.2999999915500002E-8, 2.6E-8},
                 {6.999999997549999E-10, 1.4E-9},
@@ -88,23 +76,12 @@ public class SixImplTest {
                 {8.99999999595E-10, 1.8E-9},
                 {4.9999875000625E-6, 1.0E-5}
         };
-
-        int fullTestDataLength = IMPLEMENTATIONS.length * baseTestData.length;
-        Object[][] fullTestData = new Object[fullTestDataLength][3];
-
-        int count = 0;
-        for (Six implementation : IMPLEMENTATIONS) {
-            for (Object[] baseTest : baseTestData) {
-                fullTestData[count] = new Object[]{implementation, baseTest[0], baseTest[1]};
-                count++;
-            }
-        }
-
-        return fullTestData;
+        return userImpl.combineSixWithTestData(baseTestData);
     }
 
     @Test(dataProvider = "fTestData")
-    public void fTest(Six impl, double result, double number) {
-        Assert.assertEquals(impl.f(number), result, 1e-16);
+    public void fTest(Six impl, double expected, double number) {
+        double actual = impl.f(number);
+        Assert.assertEquals(actual, expected, 1e-16);
     }
 }
