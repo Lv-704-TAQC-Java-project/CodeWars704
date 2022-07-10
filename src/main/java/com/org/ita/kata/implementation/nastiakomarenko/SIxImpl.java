@@ -20,21 +20,28 @@ public class SIxImpl implements Six {
 
     @Override
     public double mean(String town, String str2) {
-        String[] lines = str2.split("\n");
-        double avg = -1;
-        int count = 0;
-        for (int i = 0; i < lines.length; i++) {
-            String[] line = lines[i].split("[: ,]");
-            if (line[0].equals(town)) {
-                avg = 0;
-                for (int j = 2; j < line.length; j += 2) {
-                    avg = avg + Double.parseDouble(line[j]);
-                    count++;
+        int size = 0;
+        double sum = 0;
+        String[] Data = str2.split("\n");
+        for (String k : Data) {
+            if (k.contains(town)) {
+                String[] towns = k.split(":");
+                String[] renge = towns[1].split(",");
+                for (String j : renge) {
+                    String[] splitedNumbers = j.split(" ");
+                    sum = sum + Double.parseDouble(splitedNumbers[1]);
+                    size++;
                 }
-                avg = avg / count;
             }
         }
-        return avg;
+
+        if (size == 0) {
+            return -1.0;
+        }
+
+        sum = sum / size;
+
+        return sum;
 
     }
 
