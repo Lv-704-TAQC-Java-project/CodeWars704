@@ -1,7 +1,10 @@
 package com.org.ita;
 
+import com.org.ita.menu.MainMenu;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Run!!!");
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.run();
     }
 }

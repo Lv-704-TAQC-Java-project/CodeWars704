@@ -4,36 +4,62 @@ import com.org.ita.kata.Eight;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class EigthImpl implements Eight {
+
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) (time * 0.5);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        return Float.parseFloat(new DecimalFormat("0.00")
+                .format(mpg / 2.8248094)
+                .replace(",", "."));
     }
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        return Arrays.stream(array)
+                .map(x -> (x % Math.sqrt(x) == 0) ? (int) Math.sqrt(x) : x * x)
+                .toArray();
     }
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        int[] outputArray = new int[2];
+        int countOfPositives = 0;
+        int sumOfNegatives = 0;
+
+        if (input == null || input.length == 0) {
+            return new int[0];
+        }
+
+        for (int i : input) {
+            if (i > 0) {
+                countOfPositives++;
+            } else {
+                sumOfNegatives += i;
+            }
+        }
+
+        outputArray[0] = countOfPositives;
+        outputArray[1] = sumOfNegatives;
+
+        return outputArray;
     }
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str.trim());
     }
 
     @Override
@@ -58,11 +84,15 @@ public class EigthImpl implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        return Double.parseDouble(new DecimalFormat("#.##")
+                .format(number)
+                .replace(",", "."));
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers)
+                .filter(x -> x % divider == 0)
+                .toArray();
     }
 }
