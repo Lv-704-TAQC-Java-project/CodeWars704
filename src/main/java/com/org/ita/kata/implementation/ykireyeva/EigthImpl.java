@@ -2,6 +2,9 @@ package com.org.ita.kata.implementation.ykireyeva;
 
 import com.org.ita.kata.Eight;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
@@ -35,19 +38,20 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        long fact;
-
-        if (n == 1) {
+        BigDecimal bi1 = new BigDecimal("1");
+        if (n == 0 || n == 1) {
             return false;
         }
-        fact = findFactorial(n - 1);
-        return ((fact + 1) / (n * n)) % 1 == 0;
+        BigDecimal num = findFactorial(n - 1)
+                .add(bi1)
+                .divide((BigDecimal.valueOf((long) (n * n))),  4, RoundingMode.CEILING);
+        return num.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0;
     }
 
-    private static long findFactorial(double n) {
-        long factorial = 1;
+    private static BigDecimal findFactorial(double n) {
+        BigDecimal factorial = BigDecimal.valueOf(1);
         for (int i = 2; i <= n; i++) {
-            factorial *= i;
+            factorial = factorial.multiply(BigDecimal.valueOf(i));
         }
         return factorial;
     }
