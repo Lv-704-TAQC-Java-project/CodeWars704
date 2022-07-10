@@ -15,20 +15,13 @@ public class SIxImpl implements Six {
 
     @Override
     public double f(double x) {
-         x =(Math.exp(1)) - 15;
-        double answer =0;
-        if(x<0){
-            double mult = x *(-1);
-             answer = (double) Math.sqrt(1 + mult) - 1;
-
-            System.out.println(answer);
-        }else {
-             answer = (double) Math.sqrt(1 + x) - 1;
-        }
-
-        return answer;
+        BigDecimal bigDecimal = new BigDecimal(x);
+        bigDecimal = bigDecimal.add(BigDecimal.valueOf(1));
+        MathContext mc = new MathContext(50);
+        bigDecimal = bigDecimal.sqrt(mc);
+        bigDecimal = bigDecimal.subtract(BigDecimal.valueOf(1));
+        return Double.parseDouble(String.valueOf(bigDecimal));
     }
-
     @Override
     public double mean(String town, String strng) {
         return 0;
