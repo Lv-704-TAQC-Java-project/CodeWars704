@@ -7,12 +7,7 @@ import implementation_test.data_provider.EightData;
 
 public class EightImplTest {
 
-    @DataProvider(name = "amIWilsonTestData")
-    public Object[][] amIWilsonTestData() {
-        return EightData.amIWilsonTestData();
-    }
-
-    @Test(dataProvider = "amIWilsonTestData")
+    @Test(dataProvider = "amIWilsonTestData", dataProviderClass = EightData.class)
     public void amIWilsonTest(Eight impl, boolean expected, double number) {
         boolean actual = impl.amIWilson(number);
         Assert.assertEquals(actual, expected);
