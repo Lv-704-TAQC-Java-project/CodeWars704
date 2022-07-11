@@ -2,9 +2,9 @@ package com.org.ita.kata.implementation.nastiakomarenko;
 
 import com.org.ita.kata.Six;
 
-import java.text.DecimalFormat;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 
 public class SIxImpl implements Six {
     @Override
@@ -55,71 +55,72 @@ public class SIxImpl implements Six {
         String finalStr = ORIGINAL_BALANCE + (new DecimalFormat("#.00").format(originalBalance)) + "\n" + completedString +
                 TOTAL_EXPENSE + new DecimalFormat("0.00").format(totalExpense) +
                 "\n" + AVERAGE_EXPENSE + (new DecimalFormat("0.00").format(averageExpense));
-        String result = finalStr.replaceAll(" ", "_");
-        return result;
+        return finalStr;
         }
 
     @Override
     public double f(double x) {
-        x = (Math.exp(1)) - 15;
-        double answer = 0;
-        if (x < 0) {
-            double mult = x * (-1);
-            answer = Math.sqrt(1 + mult) - 1;
+        BigDecimal bigDecimal = new BigDecimal(x);
+        bigDecimal = bigDecimal.add(BigDecimal.valueOf(1));
+        MathContext mc = new MathContext(50);
+        bigDecimal = bigDecimal.sqrt(mc);
+        bigDecimal = bigDecimal.subtract(BigDecimal.valueOf(1));
+        return Double.parseDouble(String.valueOf(bigDecimal));
 
-            System.out.println(answer);
-        } else {
-            answer = Math.sqrt(1 + x) - 1;
-        }
-
-        return answer;
     }
-
     @Override
     public double mean(String town, String str2) {
-        String[] lines = str2.split("\n");
-        double avg = -1;
-        int count = 0;
-        for (int i = 0; i < lines.length; i++) {
-            String[] line = lines[i].split("[: ,]");
-            if (line[0].equals(town)) {
-                avg = 0;
-                for (int j = 2; j < line.length; j += 2) {
-                    avg = avg + Double.parseDouble(line[j]);
-                    count++;
+        int size = 0;
+        double sum = 0;
+        String[] Data = str2.split("\n");
+        for (String k : Data) {
+            if (k.contains(town)) {
+                String[] towns = k.split(":");
+                String[] renge = towns[1].split(",");
+                for (String j : renge) {
+                    String[] splitedNumbers = j.split(" ");
+                    sum = sum + Double.parseDouble(splitedNumbers[1]);
+                    size++;
                 }
-                avg = avg / count;
             }
         }
-        return avg;
+
+        if (size == 0) {
+            return -1.0;
+        }
+
+        sum = sum / size;
+
+        return sum;
 
     }
 
     @Override
     public double variance(String town, String str2) {
 
-        double count = 0.0, sum=0.0;
-        for (int i = 0; i < str2.length(); i++) {
-            if (Character.isDigit(str2.charAt(i))) {
-                count++;
-                sum += Double.parseDouble(String.valueOf(str2.charAt(i)));
-            }
-        }
-        double average = sum/count;
-        double arr[] = new double[(int) count];
-        int index=0;
-        for (int j = 0; j < str2.length(); j++) {
-            if (Character.isDigit(str2.charAt(j))) {
-                arr[index]= (Double.parseDouble(String.valueOf(str2.charAt(j)))-average);
-                index++;
+        double temp;
+        int size = 0;
+        double sum = 0;
+
+        String[] data = str2.split("\n");
+        for (String k : data) {
+            if (k.contains(town)) {
+                String[] towns = k.split(":");
+                String[] renge = towns[1].split(",");
+                for (String j : renge) {
+                    String[] splitedNumbers = j.split(" ");
+                    temp = Double.parseDouble(splitedNumbers[1]) - mean(town, str2);
+                    sum = sum + Math.pow(temp, 2);
+                    size++;
+                }
             }
         }
 
-        double result=0;
-        for(int m=0;m<index;m++){
-            result+=(arr[m]*arr[m]);
+        if (size == 0) {
+            return -1.0;
         }
-        return result/count;
+
+        return sum / size;
 
     }
 

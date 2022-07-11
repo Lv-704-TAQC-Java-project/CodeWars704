@@ -74,15 +74,17 @@ public class SIxImpl implements Six {
         double sum = 0;
         String[] splitedData = strng.split("\n");
         for (String k : splitedData) {
-            if (k.contains(town)) {
-                String[] splitedTowns = k.split(":");
-                String[] splitedRenge = splitedTowns[1].split(",");
-                for (String j : splitedRenge) {
-                    String[] splitedNumbers = j.split(" ");
-                    sum = sum + Double.parseDouble(splitedNumbers[1]);
-                    size++;
+            String[] splitedTowns = k.split(":");
+            for(String i : splitedTowns)
+                if (i.equals(town)) {
+
+                    String[] splitedRenge = splitedTowns[1].split(",");
+                    for (String j : splitedRenge) {
+                        String[] splitedNumbers = j.split(" ");
+                        sum = sum + Double.parseDouble(splitedNumbers[1]);
+                        size++;
+                    }
                 }
-            }
         }
 
         if (size == 0) {
@@ -103,16 +105,17 @@ public class SIxImpl implements Six {
 
         String[] splitedData = strng.split("\n");
         for (String k : splitedData) {
-            if (k.contains(town)) {
-                String[] splitedTowns = k.split(":");
-                String[] splitedRenge = splitedTowns[1].split(",");
-                for (String j : splitedRenge) {
-                    String[] splitedNumbers = j.split(" ");
-                    temp = Double.parseDouble(splitedNumbers[1]) - mean(town, strng);
-                    sum = sum + Math.pow(temp, 2);
-                    size++;
+            String[] splitedTowns = k.split(":");
+            for(String i : splitedTowns)
+                if (i.equals(town)) {
+                    String[] splitedRenge = splitedTowns[1].split(",");
+                    for (String j : splitedRenge) {
+                        String[] splitedNumbers = j.split(" ");
+                        temp = Double.parseDouble(splitedNumbers[1]) - mean(town, strng);
+                        sum = sum + Math.pow(temp, 2);
+                        size++;
+                    }
                 }
-            }
         }
 
         if (size == 0) {
