@@ -7,6 +7,10 @@ import java.util.Arrays;
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
+        if (time < 0) {
+            return 0;
+        }
+
         final double LITERS_PER_HOUR = 0.5;
 
         return (int) Math.floor(time * LITERS_PER_HOUR);
