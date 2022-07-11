@@ -151,6 +151,10 @@ public class SIxImpl implements Six {
             return toFind + ":This team didn't play!";
         }
 
+        if (!resultSheet.contains(toFind + " ")) {
+            return toFind + ":This team didn't play!";
+        }
+
         return toFind == "" ? "" : toFind + ":W=" + won + ";D=" + draws
                 + ";L=" + lost + ";Scored=" + pointsScored + ";Conceded=" + pointsConceded + ";Points=" + rank;
     }
