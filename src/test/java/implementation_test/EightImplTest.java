@@ -30,7 +30,7 @@ public class EightImplTest {
     @Test(dataProvider = "squareOrSquareRootTestData", dataProviderClass = EightData.class)
     public void testSquareOrSquareRoot(Eight eightImpl, int[] data, int[] expected) {
         int[] actual = eightImpl.squareOrSquareRoot(data);
-        Assert.assertEquals(Arrays.toString(actual), Arrays.toString(expected),"Error: your array was " + Arrays.toString(data)+"Should be "+Arrays.toString(expected));
+        Assert.assertEquals(Arrays.toString(actual), Arrays.toString(expected),"Error: your array was " + Arrays.toString(actual)+"Should be "+Arrays.toString(expected));
     }
 
 }
