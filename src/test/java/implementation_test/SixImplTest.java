@@ -15,8 +15,8 @@ public class SixImplTest {
     }
 
     @Test(dataProvider = "data-provider-findNb", dataProviderClass = SixData.class)
-    public void testFindNb(Six sixImpl, long data, long expected) {
-        long actual = sixImpl.findNb(data);
+    public void testFindNb(Six sixImpl, long number, long expected) {
+        long actual = sixImpl.findNb(number);
         Assert.assertEquals(actual, expected);
     }
 
