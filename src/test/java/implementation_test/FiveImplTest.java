@@ -14,8 +14,8 @@ public class FiveImplTest {
     }
 
     @Test(dataProvider = "data-provider-zeros", dataProviderClass =  FiveData.class, timeOut = 1000)
-    public void testZeros(Five fiveImpl, int data, int expected) {
-        int actual = fiveImpl.zeros(data);
+    public void testZeros(Five fiveImpl, int number, int expected) {
+        int actual = fiveImpl.zeros(number);
         Assert.assertEquals(actual, expected);
     }
 
