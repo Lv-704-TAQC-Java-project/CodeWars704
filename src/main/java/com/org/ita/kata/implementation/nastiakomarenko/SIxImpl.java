@@ -55,8 +55,7 @@ public class SIxImpl implements Six {
         String finalStr = ORIGINAL_BALANCE + (new DecimalFormat("#.00").format(originalBalance)) + "\n" + completedString +
                 TOTAL_EXPENSE + new DecimalFormat("0.00").format(totalExpense) +
                 "\n" + AVERAGE_EXPENSE + (new DecimalFormat("0.00").format(averageExpense));
-        String result = finalStr.replaceAll(" ", "_");
-        return result;
+        return finalStr;
         }
 
     @Override
