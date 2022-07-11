@@ -1,4 +1,4 @@
-package com.org.ita.kata.implementation.Eight;
+package com.org.ita.kata.implementation.eight;
 
 import com.org.ita.kata.Eight;
 import org.testng.Assert;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 
 public class SquareOrSquareRootTest {
-    @DataProvider(name = "classes")
+    @DataProvider(name = "classEight")
     public Object[][] dataProviderFunc(){
         return new Object[][]{{ new com.org.ita.kata.implementation.avlrvn.EigthImpl(), "avlrvn"},
                 {new com.org.ita.kata.implementation.clarmmym.EigthImpl(), "clarmmym"},
@@ -22,7 +22,7 @@ public class SquareOrSquareRootTest {
                 {new com.org.ita.kata.implementation.ykireyeva.EigthImpl(), "ykireyeva"}};
     }
 
-    @Test(dataProvider = "classes")
+    @Test(dataProvider = "classEight")
     public void Test1(Eight eight, String implementation){
             Eight work = eight;
             int[] input = new int[] { 4, 3, 9, 7, 2, 1 };
@@ -31,7 +31,7 @@ public class SquareOrSquareRootTest {
 
     }
 
-    @Test(dataProvider = "classes")
+    @Test(dataProvider = "classEight")
     public void Test2(Eight eight, String implementation){
         Eight work = eight;
 
@@ -41,7 +41,7 @@ public class SquareOrSquareRootTest {
 
     }
 
-    @Test(dataProvider = "classes")
+    @Test(dataProvider = "classEight")
     public void Test3(Eight eight, String implementation){
         Eight work = eight;
 

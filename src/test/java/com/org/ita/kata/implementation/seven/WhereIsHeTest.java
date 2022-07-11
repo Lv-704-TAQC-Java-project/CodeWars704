@@ -1,4 +1,4 @@
-package com.org.ita.kata.implementation.Seven;
+package com.org.ita.kata.implementation.seven;
 import com.org.ita.kata.Seven;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 
 public class WhereIsHeTest {
-    @DataProvider(name = "classes")
+    @DataProvider(name = "classSeven")
     public Object[][] dataProviderFunc(){
         return new Object[][]{{ new com.org.ita.kata.implementation.avlrvn.SevenImpl(), "avlrvn"},
                 {new com.org.ita.kata.implementation.clarmmym.SevenImpl(), "clarmmym"},
@@ -19,7 +19,7 @@ public class WhereIsHeTest {
                 {new com.org.ita.kata.implementation.ykireyeva.SevenImpl(), "ykireyeva"}};
     }
 
-    @Test(dataProvider = "classes")
+    @Test(dataProvider = "classSeven")
     public void Test1(Seven seven, String implementation){
         Seven work = seven;
         int[] input = new int[] { 3, 1, 1};
@@ -27,7 +27,7 @@ public class WhereIsHeTest {
         Assert.assertEquals(work.whereIsHe(input[0], input[1], input[2]), expected, "Error test 1 "+implementation);
     }
 
-    @Test(dataProvider = "classes")
+    @Test(dataProvider = "classSeven")
     public void Test2(Seven seven, String implementation){
         Seven work = seven;
         int[] input = new int[] { 5, 2, 3};
@@ -35,7 +35,7 @@ public class WhereIsHeTest {
         Assert.assertEquals(work.whereIsHe(input[0], input[1], input[2]), expected, "Error test 2 "+implementation);
     }
 
-    @Test(dataProvider = "classes")
+    @Test(dataProvider = "classSeven")
     public void Test3(Seven seven, String implementation){
         Seven work = seven;
         int[] input = new int[] { 6, 2, 3};
