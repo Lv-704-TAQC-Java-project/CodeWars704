@@ -10,10 +10,10 @@ import java.util.List;
 public class EigthImpl implements Eight {
     @Override
     public int liters(double time) {
-        if (time <= 0) {
-            throw new ArithmeticException("time can not be 0");
+        if(time > 0){
+            return (int) Math.floor(time * 0.5);
         }
-        return (int) Math.floor(time * 0.5);
+        return 0;
     }
 
     @Override

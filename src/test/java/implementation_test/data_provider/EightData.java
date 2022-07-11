@@ -46,4 +46,25 @@ public class EightData {
 
         return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
     }
+    
+    @DataProvider(name = "positiveDataLiters")
+    public static Object[][] testDataLitersP() {
+        Object[][] baseTestData = new Object[][]{
+                {0, 0},
+                {0.789, 0},
+                {14.64, 7.0},
+                {80, 40},
+                {1600.20, 800.0},
+        };
+        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+    }
+
+    @DataProvider(name = "negativeDataLiters")
+    public static Object[][] testDataLitersN() {
+        Object[][] baseTestData = new Object[][]{
+                {-500.00, 0},
+                {-1, 0},
+        };
+        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+    }
 }
