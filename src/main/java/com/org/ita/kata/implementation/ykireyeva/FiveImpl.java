@@ -6,7 +6,6 @@ import java.math.BigInteger;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
-
 public class FiveImpl implements Five {
     @Override
     public int artificialRain(int[] v) {
@@ -87,6 +86,19 @@ public class FiveImpl implements Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        long[] res = new long[]{Long.MAX_VALUE, 0, 0};
+        StringBuilder str = new StringBuilder(Long.toString(n));
+        for (int i = str.length() - 1; i >= 0; i--) {
+            for (int j = str.length() - 1; j >= 0; j--) {
+                char elToReplace = str.charAt(i);
+                str.deleteCharAt(i);
+                str.insert(j, elToReplace);
+                if (Long.parseLong(str.toString()) <= res[0]) {
+                    res = new long[]{Long.parseLong(str.toString()), i, j};
+                }
+                str = new StringBuilder(Long.toString(n));
+            }
+        }
+        return res;
     }
 }
