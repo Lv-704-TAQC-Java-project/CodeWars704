@@ -13,6 +13,12 @@ public class EightImplTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(dataProvider = "data-provider-divisibleBy", dataProviderClass = EightData.class)
+    public void testDivisibleBy(Eight impl, int[] data, int divisor, int[] expected) {
+        int[] actual = impl.divisibleBy(data, divisor);
+        Assert.assertEquals(actual, expected);
+    }
+    
     @Test(dataProvider = "positiveDataLiters", dataProviderClass = EightData.class)
     public void testLitersPositive(Eight eightImpl, double data, double expected) {
         double actual = eightImpl.liters(data);
@@ -24,6 +30,5 @@ public class EightImplTest {
         double actual = eightImpl.liters(data);
         Assert.assertEquals(actual, expected);
     }
-
 
 }

@@ -46,4 +46,19 @@ public class FiveData {
         };
         return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
     }
+
+    @DataProvider(name = "data-provider-zeros")
+    public static Object[][] dataProviderFindNb() {
+        Object[][] baseTestData = new Object[][]{
+                {6, 1},
+                {14, 2},
+                {0, 0},
+                {1000, 249},
+                {100000, 24999},
+                {509807639, 127451905},
+                {1000000000, 249999998},
+                {645925310, 161481322}
+        };
+        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+    }
 }
