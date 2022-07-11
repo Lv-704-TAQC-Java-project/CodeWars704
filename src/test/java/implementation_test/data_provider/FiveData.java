@@ -1,14 +1,14 @@
-package unit_test;
+package implementation_test.data_provider;
 
-import com.org.ita.kata.Five;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import implementation_test.UserImplementation;
 
-public class FiveImplTest extends BasicImplTest {
+import static implementation_test.UserImplementation.FIVE_IMPLEMENTATION;
+
+public class FiveData {
 
     @DataProvider(name = "solveSumTestData")
-    public Object[][] solveSumTestData() {
+    public static Object[][] solveSumTestData() {
         Object[][] baseTestData = new Object[][]{
                 {0.5, 2.0},
                 {0.6096117967977924, 4.0},
@@ -222,12 +222,6 @@ public class FiveImplTest extends BasicImplTest {
                 {0.9955635845425129, 50583.0},
                 {0.9975478836957062, 165902.0}
         };
-        return userImpl.combineFiveWithTestData(baseTestData);
-    }
-
-    @Test(dataProvider = "solveSumTestData", timeOut = 1000)
-    public void solveTest(Five impl, double expected, double number) {
-        double actual = impl.solveSum(number);
-        Assert.assertEquals(actual, expected, 1e-13);
+        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
     }
 }

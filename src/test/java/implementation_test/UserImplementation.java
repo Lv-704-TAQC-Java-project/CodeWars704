@@ -1,4 +1,4 @@
-package unit_test;
+package implementation_test;
 
 import com.org.ita.kata.Eight;
 import com.org.ita.kata.Five;
@@ -7,7 +7,7 @@ import com.org.ita.kata.Six;
 
 public class UserImplementation {
 
-    private final Eight[] EIGHT_IMPLEMENTATION = new Eight[]{
+    public static final Eight[] EIGHT_IMPLEMENTATION = new Eight[]{
             new com.org.ita.kata.implementation.avlrvn.EigthImpl(),
             new com.org.ita.kata.implementation.clarmmym.EigthImpl(),
             new com.org.ita.kata.implementation.dankomax.EigthImpl(),
@@ -19,7 +19,7 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.ykireyeva.EigthImpl()
     };
 
-    private final Seven[] SEVEN_IMPLEMENTATION = new Seven[]{
+    public static final Seven[] SEVEN_IMPLEMENTATION = new Seven[]{
             new com.org.ita.kata.implementation.avlrvn.SevenImpl(),
             new com.org.ita.kata.implementation.clarmmym.SevenImpl(),
             new com.org.ita.kata.implementation.dankomax.SevenImpl(),
@@ -31,7 +31,7 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.ykireyeva.SevenImpl()
     };
 
-    private final Six[] SIX_IMPLEMENTATION = new Six[]{
+    public static final Six[] SIX_IMPLEMENTATION = new Six[]{
             new com.org.ita.kata.implementation.avlrvn.SIxImpl(),
             new com.org.ita.kata.implementation.clarmmym.SIxImpl(),
             new com.org.ita.kata.implementation.dankomax.SIxImpl(),
@@ -43,9 +43,9 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.ykireyeva.SIxImpl()
     };
 
-    private final Five[] FIVE_IMPLEMENTATION = new Five[]{
+    public static final Five[] FIVE_IMPLEMENTATION = new Five[]{
             new com.org.ita.kata.implementation.avlrvn.FiveImpl(),
-//            new com.org.ita.kata.implementation.clarmmym.FiveImpl(),          //100% processor load issue
+            new com.org.ita.kata.implementation.clarmmym.FiveImpl(),          //100% processor load issue
             new com.org.ita.kata.implementation.dankomax.FiveImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.FiveImpl(),
             new com.org.ita.kata.implementation.nastiakomarenko.FiveImpl(),
@@ -55,7 +55,7 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.ykireyeva.FiveImpl()
     };
 
-    public Object[][] combineImplWithTests(Object[] implementations, Object[][] baseTestData) {
+    public static Object[][] combineImplWithTests(Object[] implementations, Object[][] baseTestData) {
         int fullTestDataLength = implementations.length * baseTestData.length;
         Object[][] fullTestData = new Object[fullTestDataLength][baseTestData[0].length + 1];
 

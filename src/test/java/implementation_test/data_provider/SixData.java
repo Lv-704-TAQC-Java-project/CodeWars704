@@ -1,15 +1,14 @@
-package unit_test;
+package implementation_test.data_provider;
 
-import com.org.ita.kata.Six;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import implementation_test.UserImplementation;
 
+import static implementation_test.UserImplementation.SIX_IMPLEMENTATION;
 
-public class SixImplTest extends BasicImplTest {
+public class SixData {
 
     @DataProvider(name = "fTestData")
-    public Object[][] fTestData() {
+    public static Object[][] fTestData() {
         Object[][] baseTestData = new Object[][]{
                 {1.2999999915500002E-8, 2.6E-8},
                 {6.999999997549999E-10, 1.4E-9},
@@ -76,12 +75,6 @@ public class SixImplTest extends BasicImplTest {
                 {8.99999999595E-10, 1.8E-9},
                 {4.9999875000625E-6, 1.0E-5}
         };
-        return userImpl.combineSixWithTestData(baseTestData);
-    }
-
-    @Test(dataProvider = "fTestData")
-    public void fTest(Six impl, double expected, double number) {
-        double actual = impl.f(number);
-        Assert.assertEquals(actual, expected, 1e-16);
+        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
     }
 }
