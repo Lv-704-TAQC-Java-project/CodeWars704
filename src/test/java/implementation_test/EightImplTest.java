@@ -27,7 +27,6 @@ public class EightImplTest {
         Assert.assertEquals(actual, expected);
     }
 
-
     @Test(dataProvider = "squareOrSquareRootTestData", dataProviderClass = EightData.class)
     public void testSquareOrSquareRoot(Eight eightImpl, int[] a, int[] b) {
         int[] res = Arrays.copyOf(a, a.length);
@@ -35,6 +34,7 @@ public class EightImplTest {
         String actual = Arrays.toString(eightImpl.squareOrSquareRoot(res));
         Assert.assertEquals(actual, Arrays.toString(expected),"Error: your array was " + Arrays.toString(res));
     }
+
     @Test(dataProvider = "data-provider-countPositivesSumNegatives", dataProviderClass = EightData.class)
     public void testCountPositivesSumNegatives(Eight eightImpl, int[] numbers, int[] expected) {
         int[] actual = eightImpl.countPositivesSumNegatives(numbers);
