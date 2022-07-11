@@ -14,16 +14,21 @@ public class EightImplTest {
     }
 
     @Test(dataProvider = "positiveDataLiters", dataProviderClass = EightData.class)
-    public void testLitersPositive(Eight eightImpl, double data, double expected) {
+    public void positiveTestLiters(Eight eightImpl, double data, double expected) {
         double actual = eightImpl.liters(data);
         Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "negativeDataLiters", dataProviderClass = EightData.class)
-    public void testLitersnegative(Eight eightImpl, double data, double expected) {
+    public void negativeTestLiters(Eight eightImpl, double data, double expected) {
         double actual = eightImpl.liters(data);
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(dataProvider = "positiveDataDivisibleBy", dataProviderClass = EightData.class)
+    public void positiveTestDivisibleBy(Eight eightImpl, int[] numbers, int divider, int[] expected) {
+        int[] actual = eightImpl.divisibleBy(numbers, divider);
+        Assert.assertEquals(actual, expected);
+    }
 
 }

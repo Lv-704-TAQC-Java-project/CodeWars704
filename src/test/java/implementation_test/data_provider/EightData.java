@@ -45,4 +45,15 @@ public class EightData {
         return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
     }
 
+    @DataProvider(name = "positiveDataDivisibleBy")
+    public static Object[][] testDataDivisibleByP() {
+        Object[][] baseTestData = new Object[][]{
+                {new int[]{1, 2, 3, 4, 5, 6}, 2, new int[]{2, 4, 6}},
+                {new int[]{1, 2, 3, 4, 5, 6}, 3, new int[]{3, 6}},
+                {new int[]{0, 1, 2, 3, 4, 5, 6}, 4, new int[]{0, 4}},
+                {new int[]{0, 1, 0}, 2, new int[]{0, 0}}
+        };
+        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+    }
+
 }
