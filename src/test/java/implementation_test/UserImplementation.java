@@ -17,6 +17,7 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(),
             new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(),
             new com.org.ita.kata.implementation.ykireyeva.EigthImpl()
+
     };
 
     public static final Seven[] SEVEN_IMPLEMENTATION = new Seven[]{

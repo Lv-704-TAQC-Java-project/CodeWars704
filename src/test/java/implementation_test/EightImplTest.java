@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import implementation_test.data_provider.EightData;
 
+import java.util.Arrays;
+
 public class EightImplTest {
 
     @Test(dataProvider = "amIWilsonTestData", dataProviderClass = EightData.class)
@@ -25,6 +27,14 @@ public class EightImplTest {
         Assert.assertEquals(actual, expected);
     }
 
+
+    @Test(dataProvider = "squareOrSquareRootTestData", dataProviderClass = EightData.class)
+    public void testSquareOrSquareRoot(Eight eightImpl, int[] a, int[] b) {
+        int[] res = Arrays.copyOf(a, a.length);
+        int[] expected = Arrays.copyOf(b, b.length);
+        String actual = Arrays.toString(eightImpl.squareOrSquareRoot(res));
+        Assert.assertEquals(actual, Arrays.toString(expected),"Error: your array was " + Arrays.toString(res));
+    }
     @Test(dataProvider = "data-provider-countPositivesSumNegatives", dataProviderClass = EightData.class)
     public void testCountPositivesSumNegatives(Eight eightImpl, int[] numbers, int[] expected) {
         int[] actual = eightImpl.countPositivesSumNegatives(numbers);
@@ -34,6 +44,7 @@ public class EightImplTest {
     public void testDivisibleBy(Eight eightImpl, int[] numbers, int divider, int[] expected) {
         int[] actual = eightImpl.divisibleBy(numbers, divider);
         Assert.assertEquals(actual, expected);
+
     }
 
 }

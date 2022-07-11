@@ -47,6 +47,29 @@ public class FiveData {
         return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
     }
 
+
+    @DataProvider(name = "GapTestDataValid")
+    public static Object[][] GapTestDataValid() {
+        Object[][] baseTestData = new Object[][]{
+                { new int[]{2,100,110}, "[101, 103]"},
+                { new int[]{4,100,110}, "[103, 107]"},
+                { new int[]{8,300,400}, "[359, 367]"},
+                { new int[]{10,300,400}, "[337, 347]"},
+                { new int[]{2,823972,824972}, "[824189, 824191]"},
+                { new int[]{2,850053,851053}, "[850061, 850063]"},
+                { new int[]{2,999506,1000506}, "[999611, 999613]"},
+                { new int[]{4,30000,100000}, "[30109, 30113]"},
+                { new int[]{2,1201,2201}, "[1229, 1231]"},
+                { new int[]{2,656084,657084}, "[656321, 656323]"}
+        };
+        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+    }
+    @DataProvider(name = "GapTestDataNotValid")
+    public static Object[][] GapTestDataNotValid() {
+        Object[][] baseTestData = new Object[][]{
+                { new int[]{6,100,110}, null},
+                { new int[]{11,30000,100000}, null}
+        }
     @DataProvider(name = "data-provider-zeros")
     public static Object[][] dataProviderFindNb() {
         Object[][] baseTestData = new Object[][]{
