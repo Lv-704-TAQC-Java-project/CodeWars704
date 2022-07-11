@@ -48,9 +48,9 @@ public class EightData {
     @DataProvider(name = "squareOrSquareRootTestData")
     public static Object[][] TestSquareOrSquareRoot() {
         Object[][] baseTestData = new Object[][]{
-                { new int[] { 2, 9, 3, 49, 4, 1 }, new int[] { 4, 3, 9, 7, 2, 1}},
-                { new int[] { 10, 10201, 25, 25, 1, 1 }, new int[] { 100, 101, 5, 5, 1, 1 }},
-                { new int[] { 1, 4, 9, 2, 25, 36 }, new int[] { 1, 2, 3, 4, 5, 6 }},
+                { new int[] { 4, 3, 9, 7, 2, 1}, new int[] { 2, 9, 3, 49, 4, 1 }},
+                { new int[] { 100, 101, 5, 5, 1, 1 }, new int[] { 10, 10201, 25, 25, 1, 1 }},
+                { new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { 1, 4, 9, 2, 25, 36 }},
                 { new int[] { 51, 21, 26, 6, 90 }, new int[] { 2601, 441, 676, 36, 8100}},
                 { new int[] { 96, 36, 65}, new int[] { 9216, 6, 4225 }},
                 { new int[] { 38, 78, 71, 59, 32, 33, 88 }, new int[] { 1444, 6084, 5041, 3481, 1024, 1089, 7744 }},
