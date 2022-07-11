@@ -77,4 +77,22 @@ public class SixData {
         };
         return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
     }
+
+    @DataProvider(name = "data-provider-findNb")
+    public static Object[][] dataProviderFindNb() {
+        Object[][] baseTestData = new Object[][]
+                {
+                        {4, -1},
+                        {24723578342962L, -1},
+                        {135440716410000L, 4824},
+                        {40539911473216L, 3568},
+                        {108806345136785L, -1},
+                        {135440716410000L, 4824},
+                        {2077755840805829284L, 53692},
+                        {1915123148621265025L, 52609},
+                        {1724640336594140626L, -1}
+                };
+
+        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+    }
 }
