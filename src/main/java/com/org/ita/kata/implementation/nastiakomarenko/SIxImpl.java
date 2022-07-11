@@ -4,6 +4,9 @@ import com.org.ita.kata.Six;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class SIxImpl implements Six {
