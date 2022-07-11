@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import implementation_test.data_provider.EightData;
 
+import java.util.Arrays;
+
 public class EightImplTest {
 
     @Test(dataProvider = "amIWilsonTestData", dataProviderClass = EightData.class)
@@ -25,5 +27,10 @@ public class EightImplTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(dataProvider = "squareOrSquareRootTestData", dataProviderClass = EightData.class)
+    public void testSquareOrSquareRoot(Eight eightImpl, int[] data, int[] expected) {
+        int[] actual = eightImpl.squareOrSquareRoot(data);
+        Assert.assertEquals(Arrays.toString(actual), Arrays.toString(expected),"Error: your array was " + Arrays.toString(data));
+    }
 
 }

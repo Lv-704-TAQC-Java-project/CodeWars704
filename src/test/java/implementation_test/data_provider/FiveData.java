@@ -4,6 +4,7 @@ import org.testng.annotations.DataProvider;
 import implementation_test.UserImplementation;
 
 import static implementation_test.UserImplementation.FIVE_IMPLEMENTATION;
+import static implementation_test.UserImplementation.SEVEN_IMPLEMENTATION;
 
 public class FiveData {
 
@@ -43,6 +44,31 @@ public class FiveData {
                 {0.99848136776115, 432947.0},
                 {0.9985501958215017, 475063.0},
                 {0.9985867860840736, 500000.0},
+        };
+        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+    }
+
+    @DataProvider(name = "GapTestDataValid")
+    public static Object[][] GapTestDataValid() {
+        Object[][] baseTestData = new Object[][]{
+                { new int[]{2,100,110}, "[101, 103]"},
+                { new int[]{4,100,110}, "[103, 107]"},
+                { new int[]{8,300,400}, "[359, 367]"},
+                { new int[]{10,300,400}, "[337, 347]"},
+                { new int[]{2,823972,824972}, "[824189, 824191]"},
+                { new int[]{2,850053,851053}, "[850061, 850063]"},
+                { new int[]{2,999506,1000506}, "[999611, 999613]"},
+                { new int[]{4,30000,100000}, "[30109, 30113]"},
+                { new int[]{2,1201,2201}, "[1229, 1231]"},
+                { new int[]{2,656084,657084}, "[656321, 656323]"}
+        };
+        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+    }
+    @DataProvider(name = "GapTestDataNotValid")
+    public static Object[][] GapTestDataNotValid() {
+        Object[][] baseTestData = new Object[][]{
+                { new int[]{6,100,110}, null},
+                { new int[]{11,30000,100000}, null}
         };
         return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
     }
