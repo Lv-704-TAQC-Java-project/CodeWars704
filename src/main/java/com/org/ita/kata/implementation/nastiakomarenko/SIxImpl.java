@@ -2,9 +2,9 @@ package com.org.ita.kata.implementation.nastiakomarenko;
 
 import com.org.ita.kata.Six;
 
-import java.text.DecimalFormat;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 
 public class SIxImpl implements Six {
     @Override
@@ -60,20 +60,14 @@ public class SIxImpl implements Six {
 
     @Override
     public double f(double x) {
-        x = (Math.exp(1)) - 15;
-        double answer = 0;
-        if (x < 0) {
-            double mult = x * (-1);
-            answer = Math.sqrt(1 + mult) - 1;
+        BigDecimal bigDecimal = new BigDecimal(x);
+        bigDecimal = bigDecimal.add(BigDecimal.valueOf(1));
+        MathContext mc = new MathContext(50);
+        bigDecimal = bigDecimal.sqrt(mc);
+        bigDecimal = bigDecimal.subtract(BigDecimal.valueOf(1));
+        return Double.parseDouble(String.valueOf(bigDecimal));
 
-            System.out.println(answer);
-        } else {
-            answer = Math.sqrt(1 + x) - 1;
-        }
-
-        return answer;
     }
-
     @Override
     public double mean(String town, String str2) {
         String[] lines = str2.split("\n");
