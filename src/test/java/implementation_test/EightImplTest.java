@@ -12,27 +12,21 @@ public class EightImplTest {
         boolean actual = impl.amIWilson(number);
         Assert.assertEquals(actual, expected);
     }
-
-    @Test(dataProvider = "data-provider-divisibleBy", dataProviderClass = EightData.class)
-    public void testDivisibleBy(Eight impl, int[] data, int divisor, int[] expected) {
-        int[] actual = impl.divisibleBy(data, divisor);
-        Assert.assertEquals(actual, expected);
-    }
     
-    @Test(dataProvider = "positiveDataLiters", dataProviderClass = EightData.class)
+    @Test(dataProvider = "positive-data-Liters", dataProviderClass = EightData.class)
     public void positiveTestLiters(Eight eightImpl, double data, double expected) {
         double actual = eightImpl.liters(data);
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "negativeDataLiters", dataProviderClass = EightData.class)
+    @Test(dataProvider = "negative-data-Liters", dataProviderClass = EightData.class)
     public void negativeTestLiters(Eight eightImpl, double data, double expected) {
         double actual = eightImpl.liters(data);
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "positiveDataDivisibleBy", dataProviderClass = EightData.class)
-    public void positiveTestDivisibleBy(Eight eightImpl, int[] numbers, int divider, int[] expected) {
+    @Test(dataProvider = "data-DivisibleBy", dataProviderClass = EightData.class)
+    public void testDivisibleBy(Eight eightImpl, int[] numbers, int divider, int[] expected) {
         int[] actual = eightImpl.divisibleBy(numbers, divider);
         Assert.assertEquals(actual, expected);
     }
