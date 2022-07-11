@@ -1,6 +1,5 @@
 package implementation_test;
 
-
 import com.org.ita.kata.Seven;
 import implementation_test.data_provider.SevenData;
 import org.testng.Assert;

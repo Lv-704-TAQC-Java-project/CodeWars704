@@ -4,7 +4,6 @@ import org.testng.annotations.DataProvider;
 import implementation_test.UserImplementation;
 
 import static implementation_test.UserImplementation.FIVE_IMPLEMENTATION;
-import static implementation_test.UserImplementation.SEVEN_IMPLEMENTATION;
 
 public class FiveData {
 
