@@ -99,4 +99,17 @@ public class FiveData {
         };
         return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
     }
+
+    @DataProvider(name = "smallestData")
+    public static Object[][] smallestTestData() {
+        Object[][] baseTestData = new Object[][]{
+                {261235, new long[]{126235, 2, 0}},
+                {209917, new long[]{29917, 0, 1}},
+                {285365, new long[]{238565, 3, 1}},
+                {269045, new long[]{26945, 3, 0}},
+                {296837, new long[]{239687, 4, 1}},
+                {1000000, new long[]{1, 0, 6}},
+        };
+        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+    }
 }
