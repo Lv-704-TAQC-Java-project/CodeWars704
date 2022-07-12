@@ -103,7 +103,7 @@ public class SixData {
                 {8.99999999595E-10, 1.8E-9},
                 {4.9999875000625E-6, 1.0E-5}
         };
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "data-provider-findNb")

@@ -22,7 +22,7 @@ public class EightData {
                 {false, 4931},
         };
 
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
     @DataProvider(name = "positive-data-Liters")
