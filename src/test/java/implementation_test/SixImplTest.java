@@ -7,6 +7,8 @@ import implementation_test.data_provider.SixData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 
 public class SixImplTest {
 
@@ -32,6 +34,12 @@ public class SixImplTest {
     public void testNbaCupNegative(Six sixImpl, String sheet, String team, String expected) {
         String actual = sixImpl.nbaCup(sheet, team);
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "stockSummaryData", dataProviderClass = SixData.class)
+    public void testStockSummary(Six sixImpl, String[] lstOfArt, String[] lstOf1stLetter, String expected) {
+        String actual = sixImpl.stockSummary(lstOfArt, lstOf1stLetter);
+        Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.asList(lstOfArt));
     }
 
 }
