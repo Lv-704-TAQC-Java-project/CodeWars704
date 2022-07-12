@@ -30,7 +30,7 @@ public class SIxImpl extends Base implements Six {
     @Override
     public String balance(String book) {
 
-        String ORIGINAL_BALANCE = "Original Balance: ",TOTAL_EXPENSE = "Total expense ",
+        String ORIGINAL_BALANCE = "Original Balance: ", TOTAL_EXPENSE = "Total expense ",
                 AVERAGE_EXPENSE = "Average expense ", BALANCE = " Balance ", ENTER = "\r\n";
 
         StringBuilder sb = new StringBuilder();
@@ -60,7 +60,7 @@ public class SIxImpl extends Base implements Six {
                 TOTAL_EXPENSE + new DecimalFormat("0.00").format(totalExpense) +
                 "\n" + AVERAGE_EXPENSE + (new DecimalFormat("0.00").format(averageExpense));
         return finalStr;
-        }
+    }
 
     @Override
     public double f(double x) {
@@ -72,6 +72,7 @@ public class SIxImpl extends Base implements Six {
         return Double.parseDouble(String.valueOf(bigDecimal));
 
     }
+
     @Override
     public double mean(String town, String str2) {
         int size = 0;

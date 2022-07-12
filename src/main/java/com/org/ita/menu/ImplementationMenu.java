@@ -1,8 +1,8 @@
 package com.org.ita.menu;
 
 import com.org.ita.utils.Buffer;
-import com.org.ita.utils.info.GroupInfo;
 import com.org.ita.utils.Runner;
+import com.org.ita.utils.info.GroupInfo;
 
 import static com.org.ita.utils.Message.*;
 
@@ -19,7 +19,7 @@ public class ImplementationMenu implements Runner {
         colorHeader("Available implementations:", ANSI_BLUE);
 
         System.out.format(tableHeader, "ID", "FullName", "GitHub");
-        for (GroupInfo member: GroupInfo.values()) {
+        for (GroupInfo member : GroupInfo.values()) {
             System.out.format(tableFormat, member.getId(), member.getName(), member.getGitHub());
         }
 

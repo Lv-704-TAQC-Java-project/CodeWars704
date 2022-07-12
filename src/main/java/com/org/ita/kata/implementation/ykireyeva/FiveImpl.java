@@ -5,9 +5,14 @@ import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
-public class FiveImpl  extends Base implements Five {
+public class FiveImpl extends Base implements Five {
+    private static int fibonacci(int n) {
+        if (n <= 1)
+            return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
     @Override
     public int artificialRain(int[] v) {
         return 0;
@@ -53,15 +58,11 @@ public class FiveImpl  extends Base implements Five {
 
     @Override
     public int zeros(int n) {
-        int k = 1;
+        int i = 5;
         int numOfZeros = 0;
-        long fact = LongStream.rangeClosed(1, n)
-                .reduce(1, (x, y) -> x * y);
-        double rest = fact % Math.pow(5, k);
-        while (rest == 0) {
-            fact /= Math.pow(5, k);
-            rest = fact % Math.pow(5, k);
-            numOfZeros++;
+        while (n / i >= 1) {
+            numOfZeros += n / i;
+            i *= 5;
         }
         return numOfZeros;
     }
@@ -71,12 +72,6 @@ public class FiveImpl  extends Base implements Five {
         int sum = IntStream.rangeClosed(1, n.intValue() + 1)
                 .map(FiveImpl::fibonacci).sum();
         return BigInteger.valueOf(4L * sum);
-    }
-
-    private static int fibonacci(int n) {
-        if (n <= 1)
-            return n;
-        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     @Override

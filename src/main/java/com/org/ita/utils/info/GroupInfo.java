@@ -1,9 +1,9 @@
 package com.org.ita.utils.info;
 
 import com.org.ita.kata.Eight;
+import com.org.ita.kata.Five;
 import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
-import com.org.ita.kata.Five;
 
 public enum GroupInfo {
 

@@ -1,9 +1,9 @@
 package com.org.ita.menu;
 
-import com.org.ita.utils.info.TaskInfo;
 import com.org.ita.utils.Buffer;
-import com.org.ita.utils.info.GroupInfo;
 import com.org.ita.utils.Runner;
+import com.org.ita.utils.info.GroupInfo;
+import com.org.ita.utils.info.TaskInfo;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -13,9 +13,9 @@ import static com.org.ita.utils.Message.*;
 
 public class TaskRunnerMenu implements Runner {
 
-    private GroupInfo member;
     private final int GROUP_SIZE = GroupInfo.values().length;
     Buffer br = new Buffer();
+    private GroupInfo member;
 
     @Override
     public void run() {
@@ -313,7 +313,7 @@ public class TaskRunnerMenu implements Runner {
 
     public void runCountPositivesSumNegatives() {
         colorHeader("Run task CountPositivesSumNegatives");
-        colorln ("The function CountPositivesSumNegatives array (the 1st element is the count of positives and the 2nd is sum of negatives", ANSI_YELLOW);
+        colorln("The function CountPositivesSumNegatives array (the 1st element is the count of positives and the 2nd is sum of negatives", ANSI_YELLOW);
         colorln("Please input an array of integers:", ANSI_RESET);
         int[] intArr = br.readIntArr();
         int[] answer = member.getEight().countPositivesSumNegatives(intArr);
@@ -400,7 +400,7 @@ public class TaskRunnerMenu implements Runner {
         String teamName = br.readString();
         String teamScore = member.getSix().nbaCup(NBAFormated.toString(), teamName);
         try {
-            teamScore = teamScore.replaceAll("\\\\r\\\\n","\n");
+            teamScore = teamScore.replaceAll("\\\\r\\\\n", "\n");
             System.out.println("Result: " + teamScore);
         } catch (NullPointerException e) {
             colorln("This task is not implemented yet", ANSI_RED);
@@ -470,11 +470,11 @@ public class TaskRunnerMenu implements Runner {
         }
     }
 
-    public void runBalance(){
+    public void runBalance() {
         colorHeader("Run task runBalance");
-        colorln("The function balance returns balance with all costs",ANSI_YELLOW);
+        colorln("The function balance returns balance with all costs", ANSI_YELLOW);
         System.out.println("Please input some text like: ");
-        colorln( "\n" +
+        colorln("\n" +
                 "1000.00\n" +
                 "125 Market 125.45\n" +
                 "126 Hardware 34.95\n" +
@@ -482,17 +482,17 @@ public class TaskRunnerMenu implements Runner {
                 "128 Book 14.32\n" +
                 "129 Gasoline 16.10\"\n" +
                 "The first line shows the original balance.\nEach other line (when not blank) gives information: check number, category, check amount." +
-                "\n" ,ANSI_YELLOW);
+                "\n", ANSI_YELLOW);
         String balance = "";
         StringJoiner balanceResult = new StringJoiner("\n");
-        while (true){
+        while (true) {
             balance = br.readString();
             if (balance == null || balance.isEmpty()) break;
             balanceResult.add(balance);
         }
         String result = member.getSix().balance(balanceResult.toString());
         colorln(DIVIDER, ANSI_BLUE);
-        result = result.replaceAll("\\\\r\\\\n","\n");
+        result = result.replaceAll("\\\\r\\\\n", "\n");
         System.out.println("You've got a following result:");
         colorln(result, ANSI_RED);
     }

@@ -3,8 +3,6 @@ package com.org.ita.kata.implementation.avlrvn;
 import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
-import java.util.Base64;
-
 public class EigthImpl extends Base implements Eight {
 
     @Override

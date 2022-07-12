@@ -1,7 +1,7 @@
 package implementation_test.data_provider;
 
-import org.testng.annotations.DataProvider;
 import implementation_test.UserImplementation;
+import org.testng.annotations.DataProvider;
 
 import static implementation_test.UserImplementation.FIVE_IMPLEMENTATION;
 

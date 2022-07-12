@@ -18,19 +18,6 @@ public class FiveImpl extends Base implements Five {
         return true;
     }
 
-    @Override
-    public int artificialRain(int[] numbers) {
-        int[] flowRight = computeRightFlow(numbers);
-        int[] flowLeft = computeLeftFlow(numbers);
-
-        int maxWateredPlains = 0;
-
-        for (int i = 0; i < flowLeft.length; i++) {
-            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
-        }
-        return maxWateredPlains;
-    }
-
     static int[] computeLeftFlow(int[] numbers) {
         int[] result = new int[numbers.length];
 
@@ -67,6 +54,19 @@ public class FiveImpl extends Base implements Five {
         if (numbers.length - 1 == i)
             return false;
         return numbers[i + 1] <= numbers[i];
+    }
+
+    @Override
+    public int artificialRain(int[] numbers) {
+        int[] flowRight = computeRightFlow(numbers);
+        int[] flowLeft = computeLeftFlow(numbers);
+
+        int maxWateredPlains = 0;
+
+        for (int i = 0; i < flowLeft.length; i++) {
+            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
+        }
+        return maxWateredPlains;
     }
 
     @Override
