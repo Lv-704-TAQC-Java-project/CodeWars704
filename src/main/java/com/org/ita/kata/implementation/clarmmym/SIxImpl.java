@@ -192,6 +192,10 @@ public class SIxImpl implements Six {
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         StringBuilder result = new StringBuilder();
 
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
         for (var firstLetter : lstOf1stLetter) {
             int temp = 0;
             for (var dataOfBook : lstOfArt) {
