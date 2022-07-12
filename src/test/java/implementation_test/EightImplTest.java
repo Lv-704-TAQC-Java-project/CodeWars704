@@ -63,4 +63,10 @@ public class EightImplTest {
         Assert.assertEquals(actual, expected, delta, "Error: your data was " + mpg);
     }
 
+    @Test(dataProvider = "twoDecimalPlacesTestData", dataProviderClass = EightData.class)
+    public void twoDecimalPlacesTest(Eight impl, double number, double expected) {
+        double actual = impl.twoDecimalPlaces(number);
+        Assert.assertEquals(actual, expected);
+    }
+
 }
