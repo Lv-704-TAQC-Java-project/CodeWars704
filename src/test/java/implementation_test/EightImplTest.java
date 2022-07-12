@@ -47,4 +47,12 @@ public class EightImplTest {
 
     }
 
+    @Test(dataProvider = "volumeOfCuboidData", dataProviderClass = EightData.class)
+    public void testVolumeOfCuboid(Eight eightImpl, double length, double width, double height, double expected) {
+        final double delta = 0.0001;
+        double actual = eightImpl.getVolumeOfCuboid(length, width, height);
+        Assert.assertEquals(actual, expected, delta, "Error: your data was " + Arrays.toString(new double[]{length, width,height}));
+
+    }
+
 }

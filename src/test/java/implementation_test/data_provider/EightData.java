@@ -115,5 +115,16 @@ public class EightData {
         return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
     }
 
+    @DataProvider(name = "volumeOfCuboidData")
+    public static Object[][] testDataVolumeOfCuboid() {
+        Object[][] baseTestData = new Object[][]{
+                {0.0, 0.0, 0.0, 0.0},
+                {0.5, 0.5, 0.5, 0.125},
+                {23.61, 58.33, 12.11, 16677.5444},
+                {259, 333, 0.55, 47435.85}
+        };
+        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+    }
+
 
 }
