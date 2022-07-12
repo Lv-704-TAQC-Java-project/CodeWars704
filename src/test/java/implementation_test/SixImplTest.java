@@ -1,8 +1,6 @@
 package implementation_test;
 
-import com.org.ita.kata.Eight;
 import com.org.ita.kata.Six;
-import implementation_test.data_provider.EightData;
 import implementation_test.data_provider.SixData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -34,6 +32,18 @@ public class SixImplTest {
     public void testNbaCupNegative(Six sixImpl, String sheet, String team, String expected) {
         String actual = sixImpl.nbaCup(sheet, team);
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "data-provider-mean", dataProviderClass = SixData.class)
+    public void testRainfallMean(Six sixImpl, String town, String strng, double expected) {
+        double actual = sixImpl.mean(town, strng);
+        Assert.assertEquals(actual, expected, 1e-2);
+    }
+
+    @Test(dataProvider = "data-provider-variance", dataProviderClass = SixData.class)
+    public void testRainfallVariance(Six sixImpl, String town, String strng, double expected) {
+        double actual = sixImpl.variance(town, strng);
+        Assert.assertEquals(actual, expected, 1e-2);
     }
 
     @Test(dataProvider = "stockSummaryData", dataProviderClass = SixData.class)
