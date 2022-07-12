@@ -5,6 +5,12 @@ import com.org.ita.kata.Five;
 import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.lang3.SerializationUtils;
+
 public class UserImplementation {
 
     public static final Eight[] EIGHT_IMPLEMENTATION = new Eight[]{
@@ -52,21 +58,42 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.ykireyeva.FiveImpl()
     };
 
-    public static Object[][] combineImplWithTests(Object[] implementations, Object[][] baseTestData) {
-        int fullTestDataLength = implementations.length * baseTestData.length;
-        Object[][] fullTestData = new Object[fullTestDataLength][baseTestData[0].length + 1];
+//    public static Object[][] combineImplWithTests(Object[] implementations, Object[][] baseTestData) {
+//        int fullTestDataLength = implementations.length * baseTestData.length;
+//        Object[][] fullTestData = new Object[fullTestDataLength][baseTestData[0].length + 1];
+//        Object[][] baseTestDataCopy = Arrays.copyOf(baseTestData, baseTestData.length);
+//        int count = 0;
+//        for (Object impl : implementations) {
+//            for (Object[] baseTest : baseTestDataCopy) {
+//                Object[] baseTestCopy = Arrays.copyOf(baseTest, baseTest.length);
+//                for (int i = 0; i < baseTestCopy.length + 1; i++) {
+//                    fullTestData[count][i] = i == 0 ? impl : baseTestCopy[i - 1];
+//                }
+//                count++;
+//            }
+//        }
+//
+//        return fullTestData;
+//    }
 
-        int count = 0;
-        for (Object impl : implementations) {
-            for (Object[] baseTest : baseTestData) {
-                for (int i = 0; i < baseTest.length + 1; i++) {
-                    fullTestData[count][i] = i == 0 ? impl : baseTest[i - 1];
-                }
-                count++;
+    public static Object[][] combineImplWithTests(Object[] impl, Object[][] _data) {
+        List<Object[]> listObjects = new ArrayList<>();
+        for (Object obj_impl : impl) {
+            Object[][] data = SerializationUtils.clone(_data);
+            for (Object[] obj_data : data) {
+                int totalLength = obj_data.length + 1;
+                Object[] objArr = new Object[totalLength];
+
+                Object[] objDataClone = Arrays.stream(obj_data).toArray();
+                System.arraycopy(new Object[] {obj_impl}, 0, objArr, 0, 1);
+                System.arraycopy(objDataClone, 0, objArr, 1, totalLength - 1);
+
+                listObjects.add(objArr);
             }
         }
 
-        return fullTestData;
+        return listObjects.toArray(new Object[0][0]);
+
     }
 
     public Object[][] combineEightWithTestData(Object[][] baseTestData) {

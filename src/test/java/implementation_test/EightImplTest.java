@@ -29,10 +29,13 @@ public class EightImplTest {
 
     @Test(dataProvider = "squareOrSquareRootTestData", dataProviderClass = EightData.class)
     public void testSquareOrSquareRoot(Eight eightImpl, int[] a, int[] b) {
-        int[] res = Arrays.copyOf(a, a.length);
-        int[] expected = Arrays.copyOf(b, b.length);
-        String actual = Arrays.toString(eightImpl.squareOrSquareRoot(res));
-        Assert.assertEquals(actual, Arrays.toString(expected),"Error: your array was " + Arrays.toString(res));
+//        int[] res = Arrays.copyOf(a, a.length);
+//        int[] expected = Arrays.copyOf(b, b.length);
+//        String actual = Arrays.toString(eightImpl.squareOrSquareRoot(res));
+//        Assert.assertEquals(actual, Arrays.toString(expected),"Error: your array was " + Arrays.toString(res));
+
+        String actual = Arrays.toString(eightImpl.squareOrSquareRoot(a));
+        Assert.assertEquals(actual, Arrays.toString(b),"Error: your array was " + Arrays.toString(a));
     }
 
     @Test(dataProvider = "data-provider-countPositivesSumNegatives", dataProviderClass = EightData.class)
