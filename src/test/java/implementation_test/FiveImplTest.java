@@ -16,7 +16,7 @@ public class FiveImplTest {
     }
 
 
-    @Test(dataProvider = "GapTestDataValid", dataProviderClass = FiveData.class, timeOut = 1000)
+    @Test(dataProvider = "GapTestDataValid", dataProviderClass = FiveData.class, timeOut = 1600)
     public void testGap(Five fiveImpl, int[] data, String expected) {
         String actual = Arrays.toString(fiveImpl.gap(data[0], data[1], data[2]));
         Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.toString(data));
