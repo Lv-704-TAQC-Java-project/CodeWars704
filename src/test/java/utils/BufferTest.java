@@ -9,7 +9,7 @@ import java.io.*;
 
 public class BufferTest {
 
-    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    // public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     @Test (dataProvider = "data-provider-readString", dataProviderClass = BufferData.class)
     public void testReadString(String input, String expected) {
