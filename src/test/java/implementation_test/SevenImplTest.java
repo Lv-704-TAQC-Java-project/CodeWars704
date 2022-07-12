@@ -27,4 +27,10 @@ public class SevenImplTest {
         Assert.assertEquals(actual, expected,"Error: your array was " + Arrays.toString(data));
     }
 
+    @Test(dataProvider = "seriesSumTestData", dataProviderClass = SevenData.class)
+    public void testSeriesSum(Seven eightImpl, int data, String expected) {
+        String actual = eightImpl.seriesSum(data);
+        Assert.assertEquals(actual, expected,"Error: your array was " + data);
+    }
+
 }
