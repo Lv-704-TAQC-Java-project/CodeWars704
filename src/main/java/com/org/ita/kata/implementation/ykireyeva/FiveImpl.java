@@ -1,12 +1,13 @@
 package com.org.ita.kata.implementation.ykireyeva;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
-public class FiveImpl implements Five {
+public class FiveImpl  extends Base implements Five {
     @Override
     public int artificialRain(int[] v) {
         return 0;

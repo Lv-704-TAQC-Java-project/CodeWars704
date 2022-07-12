@@ -1,5 +1,6 @@
 package com.org.ita.kata.implementation.nastiakomarenko;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     @Override
     public int artificialRain(int[] v) {
         return 0;

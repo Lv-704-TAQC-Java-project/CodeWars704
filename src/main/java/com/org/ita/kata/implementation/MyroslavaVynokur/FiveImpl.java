@@ -1,12 +1,13 @@
 package com.org.ita.kata.implementation.MyroslavaVynokur;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FiveImpl implements Five {
+public class FiveImpl  extends Base implements Five {
     private static boolean isPrime(double n) {
         boolean prime = true;
         for (int k = 2; k <= n / 2; k++) {

@@ -1,10 +1,11 @@
 package com.org.ita.kata.implementation.nastiakomarenko;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
 import java.util.Arrays;
 
-public class EigthImpl implements Eight {
+public class EigthImpl extends Base implements Eight {
     public static double factorial(double number) {
         if (number <= 1) {
             return 1;

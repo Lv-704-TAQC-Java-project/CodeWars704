@@ -1,5 +1,6 @@
 package com.org.ita.kata.implementation.MyroslavaVynokur;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Six;
 
 import java.text.DecimalFormat;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
-public class SIxImpl implements Six {
+public class SIxImpl extends Base implements Six {
     @Override
     public long findNb(long m) {
         long sqrt1 = (long) Math.sqrt(m);

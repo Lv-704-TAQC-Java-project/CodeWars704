@@ -1,11 +1,12 @@
 package com.org.ita.kata.implementation.OliaZakharcuk;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class EigthImpl implements Eight {
+public class EigthImpl extends Base implements Eight {
     private static long factorial(double n) {
         long factorial = 1;
         for (int i = 1; i <= n; i++) {
