@@ -99,15 +99,19 @@ public class SixData {
     static String resultSheet = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
             + "Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,"
             + "Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,"
-            + "Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 106,Boston Celtics 112 Philadelphia 76ers 95,"
-            + "Brooklyn Nets 100 Chicago Bulls 115,Detroit Pistons 92 Utah Jazz 87,Miami Heat 104 Charlotte Hornets 94,"
+            + "Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 112,Boston Celtics 112 Philadelphia 76ers 95,"
+            + "Brooklyn Nets 100 Chicago Bulls 88,Detroit Pistons 92 Utah Jazz 87,Miami Heat 104 Charlotte Hornets 94,"
             + "Toronto Raptors 106 Indiana Pacers 99,Orlando Magic 87 Washington Wizards 88,Golden State Warriors 111 New Orleans Pelicans 95,"
-            + "Atlanta Hawks 94.88 Detroit Pistons 106,Chicago Bulls 97 Cleveland Cavaliers 95,";
+            + "Atlanta Hawks 94.88 Detroit Pistons 106,Chicago Bulls 94 Cleveland Cavaliers 95,"
+            + "Los Angeles Lakers 113 Detroit Pistons 112,Los Angeles Lakers 111 Cleveland Cavaliers 111,Los Angeles Lakers 111 Atlanta Hawks 112,";
 
     @DataProvider(name = "positive-data-NbaCup")
     public static Object[][] testDataNbaCupPositive() {
         Object[][] baseTestData = new Object[][]{
-                {resultSheet, "Los Angeles Clippers", "Los Angeles Clippers:W=2;D=0;L=0;Scored=215;Conceded=192;Points=6"}
+                {resultSheet, "Los Angeles Lakers", "Los Angeles Lakers:W=1;D=1;L=2;Scored=446;Conceded=447;Points=4"},
+                {resultSheet, "Los Angeles Clippers", "Los Angeles Clippers:W=2;D=0;L=0;Scored=215;Conceded=192;Points=6"},
+                {resultSheet, "Oklahoma City Thunder", "Oklahoma City Thunder:W=0;D=1;L=0;Scored=112;Conceded=112;Points=1"},
+                {resultSheet, "Chicago Bulls", "Chicago Bulls:W=0;D=0;L=2;Scored=182;Conceded=195;Points=0"}
         };
         return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
     }
@@ -116,7 +120,8 @@ public class SixData {
     public static Object[][] testDataNbaCupNegative() {
         Object[][] baseTestData = new Object[][]{
                 {resultSheet, "Memphi", "Memphi:This team didn't play!"},
-                {resultSheet, "Atlanta Hawks", "Error(float number):Atlanta Hawks 94.88 Detroit Pistons 106"}
+                {resultSheet, "Atlanta Hawks", "Error(float number):Atlanta Hawks 94.88 Detroit Pistons 106"},
+                {resultSheet, "", ""}
         };
         return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
     }
