@@ -40,4 +40,10 @@ public class FiveImplTest {
         Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.toString(data));
     }
 
+    @Test(dataProvider = "smallestData", dataProviderClass = FiveData.class, timeOut = 1000)
+    public void testSmallest(Five fiveImpl, long data, long[] expected) {
+        Object actual = fiveImpl.smallest(data);
+        Assert.assertEquals(actual, expected, "Error: your number was " + data);
+    }
+
 }
