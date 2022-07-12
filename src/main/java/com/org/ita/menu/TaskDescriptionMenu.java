@@ -1,11 +1,10 @@
 package com.org.ita.menu;
 
-import com.org.ita.utils.info.TaskInfo;
 import com.org.ita.utils.Buffer;
 import com.org.ita.utils.Runner;
+import com.org.ita.utils.info.TaskInfo;
 
 import static com.org.ita.utils.Message.*;
-import static com.org.ita.utils.Message.ANSI_BLUE;
 
 public class TaskDescriptionMenu implements Runner {
 

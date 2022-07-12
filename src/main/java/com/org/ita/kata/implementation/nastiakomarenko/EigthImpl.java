@@ -30,9 +30,9 @@ public class EigthImpl extends Base implements Eight {
     @Override
     public float mpgToKPM(float mpg) {
         //const
-         float gallon = 4.54609188f;
-         float mile = 1.609344f;
-         float round = 100f;
+        float gallon = 4.54609188f;
+        float mile = 1.609344f;
+        float round = 100f;
 
         return Math.round(mpg / gallon * mile * round) / round;
 
@@ -76,7 +76,7 @@ public class EigthImpl extends Base implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-       return Integer.parseInt(str);
+        return Integer.parseInt(str);
 
     }
 

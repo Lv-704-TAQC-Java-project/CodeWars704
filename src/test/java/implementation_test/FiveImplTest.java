@@ -1,9 +1,9 @@
 package implementation_test;
 
 import com.org.ita.kata.Five;
+import implementation_test.data_provider.FiveData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import implementation_test.data_provider.FiveData;
 
 import java.util.Arrays;
 

@@ -5,10 +5,11 @@ import com.org.ita.kata.Six;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.text.DecimalFormat;
-public class SIxImpl  extends Base implements Six {
+
+public class SIxImpl extends Base implements Six {
     @Override
     public long findNb(long m) {
 
@@ -38,7 +39,7 @@ public class SIxImpl  extends Base implements Six {
         double average;
         double newBalance = Double.parseDouble(originalBalance);
 
-        for (int i = 1; i < bookLines.length; i++){
+        for (int i = 1; i < bookLines.length; i++) {
             String[] currentBookLine = bookLines[i].split("\\s+");
             totalExp += Double.parseDouble(currentBookLine[2]);
             newBalance -= Double.parseDouble(currentBookLine[2]);
@@ -50,7 +51,7 @@ public class SIxImpl  extends Base implements Six {
         }
         average = totalExp / (bookLines.length - 1);
 
-        return "Original Balance: " + (new DecimalFormat("#.00").format(Double.parseDouble(originalBalance))) + "\\r\\n" + tempString.toString() +
+        return "Original Balance: " + (new DecimalFormat("#.00").format(Double.parseDouble(originalBalance))) + "\\r\\n" + tempString +
                 "Total expense  " + new DecimalFormat("0.00").format(totalExp) +
                 "\\r\\n" + "Average expense  " + (new DecimalFormat("0.00").format(average));
     }
@@ -76,7 +77,7 @@ public class SIxImpl  extends Base implements Six {
         String[] splitedData = strng.split("\n");
         for (String k : splitedData) {
             String[] splitedTowns = k.split(":");
-            for(String i : splitedTowns)
+            for (String i : splitedTowns)
                 if (i.equals(town)) {
 
                     String[] splitedRenge = splitedTowns[1].split(",");
@@ -107,7 +108,7 @@ public class SIxImpl  extends Base implements Six {
         String[] splitedData = strng.split("\n");
         for (String k : splitedData) {
             String[] splitedTowns = k.split(":");
-            for(String i : splitedTowns)
+            for (String i : splitedTowns)
                 if (i.equals(town)) {
                     String[] splitedRenge = splitedTowns[1].split(",");
                     for (String j : splitedRenge) {

@@ -4,12 +4,11 @@ import com.org.ita.kata.Eight;
 import com.org.ita.kata.Five;
 import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
+import org.apache.commons.lang3.SerializationUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.apache.commons.lang3.SerializationUtils;
 
 public class UserImplementation {
 
@@ -85,7 +84,7 @@ public class UserImplementation {
                 Object[] objArr = new Object[totalLength];
 
                 Object[] objDataClone = Arrays.stream(obj_data).toArray();
-                System.arraycopy(new Object[] {obj_impl}, 0, objArr, 0, 1);
+                System.arraycopy(new Object[]{obj_impl}, 0, objArr, 0, 1);
                 System.arraycopy(objDataClone, 0, objArr, 1, totalLength - 1);
 
                 listObjects.add(objArr);

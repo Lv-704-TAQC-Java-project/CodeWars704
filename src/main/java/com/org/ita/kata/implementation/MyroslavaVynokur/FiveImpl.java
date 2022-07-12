@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FiveImpl  extends Base implements Five {
+public class FiveImpl extends Base implements Five {
     private static boolean isPrime(double n) {
         boolean prime = true;
         for (int k = 2; k <= n / 2; k++) {

@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class SIxImpl  extends Base implements Six {
+public class SIxImpl extends Base implements Six {
     @Override
     public long findNb(long m) {
         BigInteger big = new BigInteger(String.valueOf(0));
