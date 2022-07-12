@@ -2,8 +2,10 @@ package com.org.ita.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.util.Scanner;
 
 import static com.org.ita.utils.Message.*;
 
@@ -103,6 +105,21 @@ public class Buffer implements Reader {
         } catch (IOException | NumberFormatException e) {
             colorln("Input should be int", ANSI_RED);
             return this.readIntArr();
+        }
+    }
+
+    @Override
+    public int[] readIntArr(InputStream is) {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            String[] in = scanner.nextLine().trim().split("\\s+");
+            int[] arr = new int[in.length];
+            for (int i = 0; i < arr.length; i++)
+                arr[i] = Integer.parseInt(in[i]);
+            return arr;
+        } catch (NumberFormatException e) {
+            colorln("Input should be int", ANSI_RED);
+            return this.readIntArr(System.in);
         }
     }
 
