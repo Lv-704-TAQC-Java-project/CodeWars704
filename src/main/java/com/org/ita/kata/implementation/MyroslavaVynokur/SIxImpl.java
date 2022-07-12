@@ -108,14 +108,13 @@ public class SIxImpl extends Base implements Six {
                 teamRecords.add(allRecord);
             }
         }
-
         List<String> teamScores = new ArrayList<>();
         List<String> opponentScores = new ArrayList<>();
 
         for (String teamRecord : teamRecords) {
-            Pattern p = Pattern.compile("\\b\\d+\\.\\d+\\b");
-            Matcher m = p.matcher(teamRecord);
-            if (m.find()) return "Error(float number):" + teamRecord;
+            if (teamRecord.contains(".") && !toFind.isEmpty()) {
+                return "Error(float number):" + teamRecord;
+            }
 
             List<String> elementsLine = Arrays.stream(teamRecord.split(" ")).collect(Collectors.toList());
 
@@ -139,7 +138,8 @@ public class SIxImpl extends Base implements Six {
             if (teamScoresInt.get(i) - opponentScoresInt.get(i) > 0) {
                 won++;
                 rank += 3;
-            } else {
+            }
+            if (teamScoresInt.get(i) - opponentScoresInt.get(i) < 0) {
                 lost++;
             }
             if (teamScoresInt.get(i) - opponentScoresInt.get(i) == 0) {
@@ -148,15 +148,11 @@ public class SIxImpl extends Base implements Six {
             }
         }
 
-        if ((won == 0) & (draws == 0) & (lost == 0) & toFind != "") {
+        if (((won == 0) & (draws == 0) & (lost == 0) & toFind != "") || !resultSheet.contains(toFind + " ")) {
             return toFind + ":This team didn't play!";
         }
 
-        if (!resultSheet.contains(toFind + " ")) {
-            return toFind + ":This team didn't play!";
-        }
-
-        return toFind == "" ? "" : toFind + ":W=" + won + ";D=" + draws
+        return toFind.isEmpty() ? "" : toFind + ":W=" + won + ";D=" + draws
                 + ";L=" + lost + ";Scored=" + pointsScored + ";Conceded=" + pointsConceded + ";Points=" + rank;
     }
 
