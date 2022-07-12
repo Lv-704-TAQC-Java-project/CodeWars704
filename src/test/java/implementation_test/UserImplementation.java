@@ -13,7 +13,6 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.dankomax.EigthImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(),
             new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(),
-            new com.org.ita.kata.implementation.OlhaPivniuk.EigthImpl(),
             new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(),
             new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(),
             new com.org.ita.kata.implementation.ykireyeva.EigthImpl()
@@ -26,7 +25,6 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.dankomax.SevenImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.SevenImpl(),
             new com.org.ita.kata.implementation.nastiakomarenko.SevenImpl(),
-            new com.org.ita.kata.implementation.OlhaPivniuk.SevenImpl(),
             new com.org.ita.kata.implementation.OliaZakharcuk.SevenImpl(),
             new com.org.ita.kata.implementation.YaroslavTarasovych.SevenImpl(),
             new com.org.ita.kata.implementation.ykireyeva.SevenImpl()
@@ -38,7 +36,6 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.dankomax.SIxImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.SIxImpl(),
             new com.org.ita.kata.implementation.nastiakomarenko.SIxImpl(),
-            new com.org.ita.kata.implementation.OlhaPivniuk.SIxImpl(),
             new com.org.ita.kata.implementation.OliaZakharcuk.SIxImpl(),
             new com.org.ita.kata.implementation.YaroslavTarasovych.SIxImpl(),
             new com.org.ita.kata.implementation.ykireyeva.SIxImpl()
@@ -50,7 +47,6 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.dankomax.FiveImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.FiveImpl(),
             new com.org.ita.kata.implementation.nastiakomarenko.FiveImpl(),
-            new com.org.ita.kata.implementation.OlhaPivniuk.FiveImpl(),
             new com.org.ita.kata.implementation.OliaZakharcuk.FiveImpl(),
             new com.org.ita.kata.implementation.YaroslavTarasovych.FiveImpl(),
             new com.org.ita.kata.implementation.ykireyeva.FiveImpl()
