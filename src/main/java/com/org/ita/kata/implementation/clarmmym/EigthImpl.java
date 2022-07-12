@@ -12,21 +12,6 @@ public class EigthImpl implements Eight {
 
     }
 
-    private static int factorial(double number) {
-        int fact = 1;
-        for (int i = 2; i <= number; i++) {
-            fact = fact * i;
-        }
-        return fact;
-    }
-
-    private static boolean isWhole(double number) {
-        return (number % 1 == 0);
-    }
-
-    private static double wilsonFormula(double p) {
-        return (factorial(p - 1) + 1) / (p * p);
-    }
 
     @Override
     public int liters(double time) {
@@ -99,12 +84,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        boolean result = false;
-
-        if (n > 0) {
-            result = isWhole(wilsonFormula(n));
-        }
-        return result;
+        return n == 5.0 || n == 13.0 || n == 563.0;
     }
 
     @Override
