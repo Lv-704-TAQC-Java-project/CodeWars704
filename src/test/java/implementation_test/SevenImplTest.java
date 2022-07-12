@@ -21,4 +21,10 @@ public class SevenImplTest {
         Assert.assertEquals(actual, expected,"Error: your array was " + Arrays.toString(data));
     }
 
+    @Test(expectedExceptions = IllegalArgumentException.class,dataProvider = "newAVGTestDataNegative", dataProviderClass = SevenData.class)
+    public void testNewAVGNegative( Seven sevenImpl, double[] data, double navg, double expected) {
+        long actual = sevenImpl.newAvg(data, navg);
+        Assert.assertEquals(actual, expected,"Error: your array was " + Arrays.toString(data));
+    }
+
 }
