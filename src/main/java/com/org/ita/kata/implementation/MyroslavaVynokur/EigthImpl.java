@@ -22,7 +22,7 @@ public class EigthImpl extends Base implements Eight {
         double volume = length * width * height;
         if (volume > 0) {
             return volume;
-        } else throw new ArithmeticException("Input numbers should be bigger than 0");
+        } else return 0;
     }
 
     @Override
