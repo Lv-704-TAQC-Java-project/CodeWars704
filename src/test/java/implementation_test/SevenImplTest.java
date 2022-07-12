@@ -15,4 +15,10 @@ public class SevenImplTest {
         Assert.assertEquals(actual, expected,"Error: your array was " + Arrays.toString(data));
     }
 
+    @Test(dataProvider = "newAVGTestData", dataProviderClass = SevenData.class)
+    public void testNewAVG(Seven sevenImpl, double[] data, double navg, double expected) {
+        long actual = sevenImpl.newAvg(data, navg);
+        Assert.assertEquals(actual, expected,"Error: your array was " + Arrays.toString(data));
+    }
+
 }
