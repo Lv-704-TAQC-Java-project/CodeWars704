@@ -47,7 +47,6 @@ public class EightImplTest {
     public void testDivisibleBy(Eight eightImpl, int[] numbers, int divider, int[] expected) {
         int[] actual = eightImpl.divisibleBy(numbers, divider);
         Assert.assertEquals(actual, expected);
-
     }
 
     @Test(dataProvider = "volumeOfCuboidData", dataProviderClass = EightData.class)
@@ -55,7 +54,6 @@ public class EightImplTest {
         final double delta = 0.0001;
         double actual = eightImpl.getVolumeOfCuboid(length, width, height);
         Assert.assertEquals(actual, expected, delta, "Error: your data was " + Arrays.toString(new double[]{length, width,height}));
-
     }
 
     @Test(dataProvider = "mpgToKPMData", dataProviderClass = EightData.class)
