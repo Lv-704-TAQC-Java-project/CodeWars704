@@ -126,5 +126,15 @@ public class EightData {
         return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
     }
 
+    @DataProvider(name = "mpgToKPMData")
+    public static Object[][] testDataMpgToKpm() {
+        Object[][] baseTestData = new Object[][]{
+                {0, 0f},
+                {10, 3.54f},
+                {30, 10.62f},
+                {150, 53.1f}
+        };
+        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+    }
 
 }

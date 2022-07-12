@@ -55,4 +55,11 @@ public class EightImplTest {
 
     }
 
+    @Test(dataProvider = "mpgToKPMData", dataProviderClass = EightData.class)
+    public void testMpgToKpm(Eight eightImpl, float mpg, double expected) {
+        final double delta = 0.0001;
+        float actual = eightImpl.mpgToKPM(mpg);
+        Assert.assertEquals(actual, expected, delta, "Error: your data was " + mpg);
+    }
+
 }
