@@ -1,10 +1,11 @@
 package com.org.ita.kata.implementation.clarmmym;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Seven;
 
 import java.util.Arrays;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
         long result = (long) (((arr.length + 1) * navg) - Arrays.stream(arr).sum());

@@ -1,5 +1,6 @@
 package com.org.ita.kata.implementation.MyroslavaVynokur;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
 import java.text.DecimalFormat;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EigthImpl implements Eight {
+public class EigthImpl extends Base implements Eight {
     @Override
     public int liters(double time) {
         if(time > 0){
@@ -21,7 +22,7 @@ public class EigthImpl implements Eight {
         double volume = length * width * height;
         if (volume > 0) {
             return volume;
-        } else throw new ArithmeticException("Input numbers should be bigger than 0");
+        } else return 0;
     }
 
     @Override

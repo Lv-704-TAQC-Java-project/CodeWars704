@@ -1,10 +1,11 @@
 package com.org.ita.kata.implementation.dankomax;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     private static boolean isPrime(long n) {
         if (n <= 1) {
             return false;
