@@ -22,7 +22,7 @@ public class FiveImplTest {
         Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.toString(data));
     }
 
-    @Test(dataProvider = "GapTestDataNotValid", dataProviderClass = FiveData.class, timeOut = 1000)
+    @Test(dataProvider = "GapTestDataNotValid", dataProviderClass = FiveData.class, timeOut = 1600)
     public void testGapNull(Five fiveImpl, int[] data, Object expected) {
         Object actual = fiveImpl.gap(data[0], data[1], data[2]);
         Assert.assertNull(actual, "Error: your array was " + Arrays.toString(data));
