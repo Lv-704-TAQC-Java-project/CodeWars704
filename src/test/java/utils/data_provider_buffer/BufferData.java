@@ -116,4 +116,17 @@ public class BufferData {
                 {""}
         };
     }
+
+    @DataProvider(name = "readFloatTestData")
+    public static Object[][] readFloatTestData() {
+        return new Object[][]{
+                {"0", 0.0f},
+                {"1", 1f},
+                {"555", 555f},
+                {"678935627854", 678935627854f},
+                {"0.00068925", 0.00068925f},
+                {"0.5698632568954123658", 0.5698632568954123658f},
+                {"5986523598.235897536", 5986523598.235897536f}
+        };
+    }
 }
