@@ -47,8 +47,7 @@ public class BufferTest {
     public void testNegativeReadIntArr(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Buffer br = new Buffer();
-        int[] arr = br.readIntArr();
-        Assert.assertNull(arr);
+        br.readIntArr();
     }
 
     @Test(dataProvider = "positive-data-readDoubleArr", dataProviderClass = BufferData.class)
@@ -65,8 +64,7 @@ public class BufferTest {
     public void testNegativeReadDoubleArr(String input) {
             System.setIn(new ByteArrayInputStream(input.getBytes()));
             Buffer br = new Buffer();
-            double[] arr = br.readDoubleArr();
-            Assert.assertNull(arr);
+            br.readDoubleArr();
     }
 
     @Test(dataProvider = "readLongTestData", dataProviderClass = BufferData.class)
