@@ -52,4 +52,10 @@ public class SixImplTest {
         Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.asList(lstOfArt));
     }
 
+    @Test(dataProvider = "stockSummaryDataNegative", dataProviderClass = SixData.class)
+    public void testStockSummaryNegative(Six sixImpl, String[] lstOfArt, String[] lstOf1stLetter, String expected) {
+        String actual = sixImpl.stockSummary(lstOfArt, lstOf1stLetter);
+        Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.asList(lstOfArt));
+    }
+
 }
