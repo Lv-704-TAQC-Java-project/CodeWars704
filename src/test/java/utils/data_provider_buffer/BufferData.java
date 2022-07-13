@@ -129,4 +129,17 @@ public class BufferData {
                 {"5986523598.235897536", 5986523598.235897536f}
         };
     }
+
+    @DataProvider(name = "readFloatNegativeTestData")
+    public static Object[][] readFloatNegativeTestData() {
+        return new Object[][]{
+                {""},
+                {" "},
+                {"gjlkg"},
+                {"74653@56"},
+                {"0.0g"},
+                {"789.52-"},
+                {"gjgk.kjgjhh"}
+        };
+    }
 }

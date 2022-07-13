@@ -117,4 +117,11 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readFloatNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadFloatNegative(String input) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        bf.readFloat();
+    }
+
 }
