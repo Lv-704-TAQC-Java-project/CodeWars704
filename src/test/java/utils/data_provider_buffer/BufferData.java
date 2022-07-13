@@ -52,4 +52,27 @@ public class BufferData {
                 {"0fgh"}
         };
     }
+
+    @DataProvider(name = "readStringArrSplitByCommaTestData")
+    public static Object[][] readStringArrSplitByCommaTestData() {
+        return new Object[][]{
+                {"1,2,3", new String[]{"1","2","3"}},
+                {"Hello, world, !", new String[]{"Hello"," world","!"}},
+                {"Lorem Ipsum has been the industry's standard"+
+                        " dummy text ever since the 1500s, when an unknown "+
+                        "printer took a galley of type and scrambled it to make a type specimen book.",
+                    new String[]{"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book."}},
+                {"Some word", new String[]{"Some word"}},
+                {"", new String[]{""}},
+                {"Sections,, 1.10.32", new String[]{"Sections",""," 1.10.32"}}
+        };
+    }
+
+    @DataProvider(name = "readStringArrSplitByCommaNegativeTestData")
+    public static Object[][] readStringArrSplitByCommaNegativeTestData() {
+        return new Object[][]{
+                {""}
+        };
+    }
 }

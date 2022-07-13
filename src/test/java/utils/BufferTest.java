@@ -8,8 +8,6 @@ import utils.data_provider_buffer.BufferData;
 import java.io.*;
 import java.math.BigInteger;
 
-import static org.testng.Assert.assertThrows;
-
 public class BufferTest {
 
     @Test (dataProvider = "data-provider-readString", dataProviderClass = BufferData.class)
@@ -37,11 +35,27 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test( expectedExceptions = {NumberFormatException.class, NullPointerException.class}, dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
     public void testReadBigIntegerNegative(String input) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
         bf.readBigInteger();
+    }
+
+    @Test(dataProvider = "readStringArrSplitByCommaTestData", dataProviderClass = BufferData.class)
+    public void testStringArrSplitByComma(String input, String[] expected) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        String[] actual = bf.readStringArrSplitByComma();
+        Assert.assertEquals(actual, expected);
+    }
+
+
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readStringArrSplitByCommaNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadStringArrSplitByCommaNegative(String input) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        bf.readStringArrSplitByComma();
     }
 
 }
