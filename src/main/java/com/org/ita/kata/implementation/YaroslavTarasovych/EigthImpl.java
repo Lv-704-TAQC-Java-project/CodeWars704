@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class EigthImpl extends Base implements Eight {
     @Override
     public int liters(double time) {
-        return (int) Math.floor(time * 0.5);
+        return  (time > 0) ? (int)Math.floor(time * 0.5) : 0;
     }
 
     @Override
