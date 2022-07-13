@@ -17,14 +17,16 @@ public class SevenImplTest {
 
     @Test(dataProvider = "newAVGTestData", dataProviderClass = SevenData.class)
     public void testNewAVG(Seven sevenImpl, double[] data, double navg, double expected) {
+        double delta = 1e-13;
         long actual = sevenImpl.newAvg(data, navg);
-        Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.toString(data));
+        Assert.assertEquals(actual, expected, delta, "Error: your array was " + Arrays.toString(data));
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class, dataProvider = "newAVGTestDataNegative", dataProviderClass = SevenData.class)
     public void testNewAVGNegative(Seven sevenImpl, double[] data, double navg, double expected) {
+        double delta = 1e-13;
         long actual = sevenImpl.newAvg(data, navg);
-        Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.toString(data));
+        Assert.assertEquals(actual, expected, delta, "Error: your array was " + Arrays.toString(data));
     }
 
     @Test(dataProvider = "seriesSumTestData", dataProviderClass = SevenData.class)
