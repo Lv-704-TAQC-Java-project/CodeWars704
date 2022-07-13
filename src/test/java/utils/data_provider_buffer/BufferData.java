@@ -12,11 +12,20 @@ public class BufferData {
         };
     }
 
-    @DataProvider(name = "negative-data-readIntArr")
-    public static Object[][] testNegativeReadIntArr() {
+    @DataProvider(name = "positive-data-readDoubleArr")
+    public static Object[][] testPositiveReadDoubleArr() {
         return new Object[][]{
-                {"hello", "Input should be int"},
-                {"bye", "Input should be int"}
+                {"14.0 30.0 5.0 7.0 9.0 11.0 16.0", new double[]{14.0, 30.0, 5.0, 7.0, 9.0, 11.0, 16.0}},
+                {"139532.80000000002 163691.0 93493.40000000001 34536.700000000004",
+                        new double[]{139532.80000000002, 163691.0, 93493.40000000001, 34536.700000000004}}
+        };
+    }
+
+    @DataProvider(name = "negative-data-readNumbers")
+    public static Object[][] testNegativeReadNumbers() {
+        return new Object[][]{
+                {"hello"},
+                {"bye"}
         };
     }
 

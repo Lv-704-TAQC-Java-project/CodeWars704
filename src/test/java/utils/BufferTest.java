@@ -9,7 +9,7 @@ import java.io.*;
 
 public class BufferTest {
 
-    @Test (dataProvider = "data-provider-readString", dataProviderClass = BufferData.class)
+    @Test(dataProvider = "data-provider-readString", dataProviderClass = BufferData.class)
     public void testReadString(String input, String expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Buffer br = new Buffer();
@@ -20,25 +20,38 @@ public class BufferTest {
     @Test(dataProvider = "positive-data-readIntArr", dataProviderClass = BufferData.class)
     public void testPositiveReadIntArr(String input, int[] expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        int[] actual = new Buffer().readIntArr();
+        Buffer br = new Buffer();
+        int[] actual = br.readIntArr();
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(expectedExceptions = {NullPointerException.class},
-            dataProvider = "negative-data-readIntArr",
+    @Test(expectedExceptions = NullPointerException.class,
+            dataProvider = "negative-data-readNumbers",
             dataProviderClass = BufferData.class)
-    public void testNegativeReadIntArr(String input, String expected) {
+    public void testNegativeReadIntArr(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-
         Buffer br = new Buffer();
-        br.readIntArr();
+        int[] arr = br.readIntArr();
+        Assert.assertNull(arr);
+    }
 
-        OutputStream os = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(os));
-
-        String actual = br.readString();
+    @Test(dataProvider = "positive-data-readDoubleArr", dataProviderClass = BufferData.class)
+    public void testPositiveReadDoubleArr(String input, double[] expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer br = new Buffer();
+        double[] actual = br.readDoubleArr();
         Assert.assertEquals(actual, expected);
-     }
+    }
+
+    @Test(expectedExceptions = NullPointerException.class,
+            dataProvider = "negative-data-readNumbers",
+            dataProviderClass = BufferData.class)
+    public void testNegativeReadDoubleArr(String input) {
+            System.setIn(new ByteArrayInputStream(input.getBytes()));
+            Buffer br = new Buffer();
+            double[] arr = br.readDoubleArr();
+            Assert.assertNull(arr);
+    }
 
     @Test(dataProvider = "readLongTestData", dataProviderClass = BufferData.class)
     public void testReadLong(String input, long expected) {
@@ -48,5 +61,4 @@ public class BufferTest {
         long actual = bf.readLong();
         Assert.assertEquals(actual, expected);
     }
-
 }
