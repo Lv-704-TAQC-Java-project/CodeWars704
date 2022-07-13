@@ -130,6 +130,7 @@ public class BufferData {
         };
     }
 
+
     @DataProvider(name = "readDoubleTestData")
     public static Object[][] readDoubleTestData() {
         return new Object[][]{
@@ -150,6 +151,19 @@ public class BufferData {
                 {"-1235098,60099579"},
                 {" "},
                 {"world"},
+        };
+    }
+
+    @DataProvider(name = "readFloatNegativeTestData")
+    public static Object[][] readFloatNegativeTestData() {
+        return new Object[][]{
+                {""},
+                {" "},
+                {"gjlkg"},
+                {"74653@56"},
+                {"0.0g"},
+                {"789.52-"},
+                {"gjgk.kjgjhh"}
         };
     }
 }
