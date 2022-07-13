@@ -73,15 +73,15 @@ public class FiveImpl extends Base implements Five {
         BigInteger first;
         BigInteger second = BigInteger.valueOf(1);
         BigInteger sum = BigInteger.valueOf(0);
-        BigInteger perimetr = BigInteger.valueOf(0);
+        BigInteger perimeter = BigInteger.valueOf(0);
 
         for (int i = 0; i <= n.intValue(); i++) {
             first = second;
             second = sum;
             sum = first.add(second);
-            perimetr = perimetr.add(sum);
+            perimeter = perimeter.add(sum);
         }
-        return perimetr.multiply(BigInteger.valueOf(4));
+        return perimeter.multiply(BigInteger.valueOf(4));
     }
 
     @Override
