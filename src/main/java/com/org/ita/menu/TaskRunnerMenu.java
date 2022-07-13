@@ -14,12 +14,11 @@ import static com.org.ita.utils.Message.*;
 public class TaskRunnerMenu implements Runner {
 
     private final int GROUP_SIZE = GroupInfo.values().length;
-    Buffer br = new Buffer();
+    final Buffer br = new Buffer();
     private GroupInfo member;
 
     @Override
     public void run() {
-        MainMenu.clearScreen();
         colorHeader("Available tasks:", ANSI_BLUE);
 
         TaskInfo.showAllTasks();
@@ -213,19 +212,19 @@ public class TaskRunnerMenu implements Runner {
                 "London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9" +
                 "\n", ANSI_YELLOW);
 
-        String data = "";
-        StringJoiner dataFormated = new StringJoiner("\n");
+        String data;
+        StringJoiner dataFormatted = new StringJoiner("\n");
         while (true) {
             data = br.readString();
             if (data == null || data.isEmpty()) break;
-            dataFormated.add(data);
+            dataFormatted.add(data);
         }
 
         System.out.println("Please input the town (string):");
         String town = br.readString();
 
-        double mean = member.getSix().mean(town, dataFormated.toString());
-        double variance = member.getSix().variance(town, dataFormated.toString());
+        double mean = member.getSix().mean(town, dataFormatted.toString());
+        double variance = member.getSix().variance(town, dataFormatted.toString());
 
         System.out.println("Mean of your data is " + mean);
         System.out.println("Variance of your data is " + variance);
@@ -323,7 +322,7 @@ public class TaskRunnerMenu implements Runner {
     public void runGap() {
         colorHeader("Run task Gap.");
         colorln("This function should return the first pair of two prime numbers spaced with a gap of g between \n" +
-                "the limits m, n if these numbers exist notherwise null", ANSI_YELLOW);
+                "the limits m, n if these numbers exist otherwise null", ANSI_YELLOW);
         System.out.println("Please input the gap we are looking for (int):");
         int g = br.readInt();
 
@@ -363,17 +362,17 @@ public class TaskRunnerMenu implements Runner {
         colorln("Please input an array of donations (double):", ANSI_RESET);
         double[] arr = br.readDoubleArr();
         colorln("Please input average navg (double):", ANSI_RESET);
-        double nabg = br.readDouble();
+        double navg = br.readDouble();
         double arrAverage = 0;
         for (Double a : arr) {
             arrAverage += a;
         }
-        if (nabg < arrAverage) {
-            colorln("Expected navr should be bigger than existing one. Try again!", ANSI_RED);
+        if (navg < arrAverage) {
+            colorln("Expected navg should be bigger than existing one. Try again!", ANSI_RED);
             System.out.println();
             runNewAvg();
         } else {
-            double result = member.getSeven().newAvg(arr, nabg);
+            double result = member.getSeven().newAvg(arr, navg);
             colorln("The expected donation is " + result + " $", ANSI_PURPLE);
         }
     }
@@ -388,17 +387,17 @@ public class TaskRunnerMenu implements Runner {
                 "Portland Trail Blazers 112 New Orleans Pelicans 94,Sacramento Kings 104 Los Angeles Clippers 111,\n" +
                 "Houston Rockets 85 Denver Nuggets 105,");
 
-        String NBAresults = "";
-        StringJoiner NBAFormated = new StringJoiner("\n");
+        String NBAresults;
+        StringJoiner NBAFormatted = new StringJoiner("\n");
         while (true) {
             NBAresults = br.readString();
             if (NBAresults == null || NBAresults.isEmpty()) break;
-            NBAFormated.add(NBAresults);
+            NBAFormatted.add(NBAresults);
         }
         System.out.println("Please input some team, e.g.:");
         colorln("Los Angeles Clippers", ANSI_YELLOW);
         String teamName = br.readString();
-        String teamScore = member.getSix().nbaCup(NBAFormated.toString(), teamName);
+        String teamScore = member.getSix().nbaCup(NBAFormatted.toString(), teamName);
         try {
             teamScore = teamScore.replaceAll("\\\\r\\\\n", "\n");
             System.out.println("Result: " + teamScore);
@@ -483,7 +482,7 @@ public class TaskRunnerMenu implements Runner {
                 "129 Gasoline 16.10\"\n" +
                 "The first line shows the original balance.\nEach other line (when not blank) gives information: check number, category, check amount." +
                 "\n", ANSI_YELLOW);
-        String balance = "";
+        String balance;
         StringJoiner balanceResult = new StringJoiner("\n");
         while (true) {
             balance = br.readString();
