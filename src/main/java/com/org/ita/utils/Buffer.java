@@ -10,7 +10,11 @@ import static com.org.ita.utils.Message.*;
 
 public class Buffer implements Reader {
 
-    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static BufferedReader br;
+
+    public Buffer() {
+        br = new BufferedReader(new InputStreamReader(System.in));
+    }
 
     @Override
     public double readDouble() {
