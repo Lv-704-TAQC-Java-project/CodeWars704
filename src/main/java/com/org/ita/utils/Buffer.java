@@ -81,7 +81,7 @@ public class Buffer implements Reader {
         try {
             return Buffer.br.readLine().trim().split("\\s+");
         } catch (IOException e) {
-            colorln("Input should be String", ANSI_RED);
+            colorln(e.getMessage(), ANSI_RED);
             return this.readStringArr();
         }
     }

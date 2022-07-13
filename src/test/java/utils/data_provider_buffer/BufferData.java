@@ -6,14 +6,56 @@ import java.math.BigInteger;
 
 public class BufferData {
 
-    @DataProvider(name = "data-provider-readString")
+    @DataProvider(name = "positive-data-readIntArr")
+    public static Object[][] testPositiveReadIntArr() {
+        return new Object[][]{
+                {"1 8 3 4", new int[]{1, 8, 3, 4}},
+                {"1 2 3 4 9 54 9 7", new int[]{1, 2, 3, 4, 9, 54, 9, 7}}
+        };
+    }
+
+    @DataProvider(name = "positive-data-readDoubleArr")
+    public static Object[][] testPositiveReadDoubleArr() {
+        return new Object[][]{
+                {"14.0 30.0 5.0 7.0 9.0 11.0 16.0", new double[]{14.0, 30.0, 5.0, 7.0, 9.0, 11.0, 16.0}},
+                {"139532.80000000002 163691.0 93493.40000000001 34536.700000000004",
+                        new double[]{139532.80000000002, 163691.0, 93493.40000000001, 34536.700000000004}}
+        };
+    }
+
+    @DataProvider(name = "negative-data-readNumbers")
+    public static Object[][] testNegativeReadNumbers() {
+        return new Object[][]{
+                {"hello"},
+                {"bye"}
+        };
+    }
+
+    @DataProvider(name = "readStringTestData")
     public static Object[][] testReadString() {
         return new Object[][]{
                 {"ATQC course", "ATQC course"},
                 {"ATQC", "ATQC"}
         };
     }
-    
+
+    @DataProvider(name = "readStringArrTestData")
+    public static Object[][] testReadStringArr() {
+        return new Object[][]{
+                {"CodeWars 704 Lv 704 Java Project", new String[]{"CodeWars", "704", "Lv", "704", "Java", "Project"}},
+                {"getProperty(\"line.separator\") returns the OS dependent line separator",
+                        new String[]{"getProperty(\"line.separator\")", "returns", "the", "OS", "dependent", "line", "separator" }}
+        };
+    }
+
+    @DataProvider(name = "getValidIntFromUserInputTestData")
+    public static Object[][] testGetValidIntFromUserUnput() {
+        return new Object[][]{
+                {"Invalid message", 0, 10, "5", 5},
+                {"Invalid message", 0, 3, "3", 3}
+        };
+    }
+
     @DataProvider(name = "readLongTestData")
     public static Object[][] readLongTestData() {
         return new Object[][]{
