@@ -130,6 +130,30 @@ public class BufferData {
         };
     }
 
+
+    @DataProvider(name = "readDoubleTestData")
+    public static Object[][] readDoubleTestData() {
+        return new Object[][]{
+                {"0.0", 0.0},
+                {"1", 1},
+                {"16.123", 16.123},
+                {"-386.8527", -386.8527},
+                {"-1.7e308", -1.7e308},
+                {"1.7e308", 1.7e308},
+        };
+    }
+
+    @DataProvider(name = "readDoubleNegativeTestData")
+    public static Object[][] readDoubleNegativeTestData() {
+        return new Object[][]{
+                {"19,8"},
+                {"0,000"},
+                {"-1235098,60099579"},
+                {" "},
+                {"world"},
+        };
+    }
+
     @DataProvider(name = "readFloatNegativeTestData")
     public static Object[][] readFloatNegativeTestData() {
         return new Object[][]{
