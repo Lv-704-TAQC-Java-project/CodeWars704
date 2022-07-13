@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import implementation_test.data_provider.FiveData;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class FiveImplTest {
@@ -43,6 +44,11 @@ public class FiveImplTest {
     @Test(dataProvider = "smallestData", dataProviderClass = FiveData.class, timeOut = 1000)
     public void testSmallest(Five fiveImpl, long data, long[] expected) {
         Object actual = fiveImpl.smallest(data);
+        Assert.assertEquals(actual, expected, "Error: your number was " + data);
+    }
+    @Test(dataProvider = "perimeterData", dataProviderClass = FiveData.class, timeOut = 1000)
+    public void testPerimeter(Five fiveImpl, BigInteger data, BigInteger expected) {
+        Object actual = fiveImpl.perimeter(data);
         Assert.assertEquals(actual, expected, "Error: your number was " + data);
     }
 
