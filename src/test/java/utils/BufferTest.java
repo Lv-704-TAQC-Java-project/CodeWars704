@@ -117,4 +117,19 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(dataProvider = "readDoubleTestData", dataProviderClass = BufferData.class)
+    public void testReadDouble(String input, double expected) {
+        System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
+        Buffer bf = new Buffer();
+        double actual = bf.readDouble();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readDoubleNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadDoubleNegative(String input) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        bf.readDouble();
+    }
+
 }
