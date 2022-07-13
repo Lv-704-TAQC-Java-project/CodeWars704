@@ -92,7 +92,7 @@ public class Buffer implements Reader {
             return Buffer.br.readLine().trim().split(",");
         } catch (IOException e) {
             colorln("Input should be String", ANSI_RED);
-            return this.readStringArr();
+            return this.readStringArrSplitByComma();
         }
     }
 
