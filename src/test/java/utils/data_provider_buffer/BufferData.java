@@ -7,7 +7,8 @@ public class BufferData {
     @DataProvider(name = "data-provider-readString")
     public static Object[][] testReadString() {
         return new Object[][]{
-                {"ATQC course", "ATQC course"}
+                {"ATQC course", "ATQC course"},
+                {"ATQC", "ATQC"}
         };
     }
 }
