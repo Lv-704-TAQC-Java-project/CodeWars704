@@ -103,7 +103,7 @@ public class SixData {
                 {8.99999999595E-10, 1.8E-9},
                 {4.9999875000625E-6, 1.0E-5}
         };
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "data-provider-findNb")
@@ -182,11 +182,23 @@ public class SixData {
                         {new String[]{"CBART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"},
                                 new String[]{"A", "B", "C", "W"}, "(A : 0) - (B : 114) - (C : 70) - (W : 0)"},
                         {new String[]{"ROXANNE 102", "RHODODE 123", "BKWRKAA 125", "BTSQZFG 239", "DRTYMKH 060"},
-                                new String[]{"B", "R", "D", "X"}, "(B : 364) - (R : 225) - (D : 60) - (X : 0)"},
+                                new String[]{"B", "R", "D", "X"}, "(B : 364) - (R : 225) - (D : 60) - (X : 0)"}
+
+                };
+
+        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+    }
+
+    @DataProvider(name = "stockSummaryDataNegative")
+    public static Object[][] dataProviderStockSummaryNegative() {
+        Object[][] baseTestData = new Object[][]
+                {
                         {new String[]{"ROXANNE 102", "RHODODE 123", "BKWRKAA 125", "BTSQZFG 239", "DRTYMKH 060"},
                                 new String[]{}, ""},
                         {new String[]{},
                                 new String[]{"B", "R", "D", "X"}, ""},
+                        {new String[]{},
+                                new String[]{}, ""}
 
                 };
 

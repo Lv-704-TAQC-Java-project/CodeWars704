@@ -29,11 +29,6 @@ public class EightImplTest {
 
     @Test(dataProvider = "squareOrSquareRootTestData", dataProviderClass = EightData.class)
     public void testSquareOrSquareRoot(Eight eightImpl, int[] a, int[] b) {
-//        int[] res = Arrays.copyOf(a, a.length);
-//        int[] expected = Arrays.copyOf(b, b.length);
-//        String actual = Arrays.toString(eightImpl.squareOrSquareRoot(res));
-//        Assert.assertEquals(actual, Arrays.toString(expected),"Error: your array was " + Arrays.toString(res));
-
         String actual = Arrays.toString(eightImpl.squareOrSquareRoot(a));
         Assert.assertEquals(actual, Arrays.toString(b), "Error: your array was " + Arrays.toString(a));
     }
@@ -61,6 +56,12 @@ public class EightImplTest {
         final double delta = 0.0001;
         float actual = eightImpl.mpgToKPM(mpg);
         Assert.assertEquals(actual, expected, delta, "Error: your data was " + mpg);
+    }
+
+    @Test(dataProvider = "twoDecimalPlacesTestData", dataProviderClass = EightData.class)
+    public void twoDecimalPlacesTest(Eight impl, double number, double expected) {
+        double actual = impl.twoDecimalPlaces(number);
+        Assert.assertEquals(actual, expected);
     }
 
 }

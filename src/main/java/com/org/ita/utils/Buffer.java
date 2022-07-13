@@ -17,7 +17,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public double readDouble() {
+    public double readDouble() { //Olenka
         try {
             return Double.parseDouble(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -27,7 +27,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public int readInt() {
+    public int readInt() { //Nastya
         try {
             return Integer.parseInt(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -37,7 +37,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public long readLong() {
+    public long readLong() { //Maksym
         try {
             return Long.parseLong(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -47,7 +47,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public BigInteger readBigInteger() {
+    public BigInteger readBigInteger() { //Yaroslav
         try {
             return new BigInteger(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -57,17 +57,17 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public String readString() {
+    public String readString() { //Myrosia
         try {
             return Buffer.br.readLine();
         } catch (IOException e) {
-            colorln("Input should be int", ANSI_RED);
+            colorln(e.getMessage(), ANSI_RED);
             return this.readString();
         }
     }
 
     @Override
-    public float readFloat() {
+    public float readFloat() {  //Olia
         try {
             return Float.parseFloat(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -77,7 +77,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public String[] readStringArr() {
+    public String[] readStringArr() {  //Myrosia
         try {
             return Buffer.br.readLine().trim().split("\\s+");
         } catch (IOException e) {
@@ -87,7 +87,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public String[] readStringArrSplitByComma() {
+    public String[] readStringArrSplitByComma() {  //Yaroslav
         try {
             return Buffer.br.readLine().trim().split(",");
         } catch (IOException e) {
@@ -97,7 +97,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public int[] readIntArr() {
+    public int[] readIntArr() { //Yaryna
         try {
             String[] in = br.readLine().trim().split("\\s+");
             int[] arr = new int[in.length];
@@ -111,7 +111,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public double[] readDoubleArr() {
+    public double[] readDoubleArr() { //Yaryna
         try {
             String[] in = br.readLine().trim().split("\\s+");
             double[] arr = new double[in.length];
@@ -127,7 +127,7 @@ public class Buffer implements Reader {
         }
     }
 
-    public double getPositiveDoubleInput() {
+    public double getPositiveDoubleInput() { //Maksym
         double number;
         boolean invalidNum;
 
@@ -142,7 +142,7 @@ public class Buffer implements Reader {
         return number;
     }
 
-    public int getValidIntFromUserInput(String invalidMessage, int start, int end) {
+    public int getValidIntFromUserInput(String invalidMessage, int start, int end) { //Myrosia
         int number;
         boolean invalidNum;
 
