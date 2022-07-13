@@ -13,7 +13,7 @@ public class Buffer implements Reader {
     public static BufferedReader br;
 
     public Buffer() {
-       br = new BufferedReader(new InputStreamReader(System.in));
+        br = new BufferedReader(new InputStreamReader(System.in));
     }
 
     @Override

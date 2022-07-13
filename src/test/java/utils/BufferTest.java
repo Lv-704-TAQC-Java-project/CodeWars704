@@ -17,4 +17,13 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(dataProvider = "readLongTestData", dataProviderClass = BufferData.class)
+    public void testReadLong(String input, long expected) {
+        System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
+
+        Buffer bf = new Buffer();
+        long actual = bf.readLong();
+        Assert.assertEquals(actual, expected);
+    }
+
 }
