@@ -2,7 +2,9 @@ package com.org.ita.kata.implementation.nastiakomarenko;
 
 import com.org.ita.kata.Six;
 
-import java.text.DecimalFormat;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SIxImpl implements Six {
     @Override
@@ -12,38 +14,41 @@ public class SIxImpl implements Six {
 
     @Override
     public String balance(String book) {
-
-        String ORIGINAL_BALANCE = "Original Balance: ",TOTAL_EXPENSE = "Total expense ",
-                AVERAGE_EXPENSE = "Average expense ", BALANCE = " Balance ", ENTER = "\r\n";
-
-        StringBuilder sb = new StringBuilder();
-        String cleanedBook = book.replaceAll("([^\\n. \\da-zA-Z])", "");
-        String[] lines = cleanedBook.split("[\\n]+");
-        String str;
-        String[] strArr;
-
-        double totalBalance = Double.parseDouble(lines[0]);
-        double totalExpense = 0;
-
+        String allBalance = "";
+        String[] lines = book.split("\n");
+        String reg = "[ !=,:;?*{}]";
+        String balance = lines[0].replaceAll(reg, "");
+        allBalance = allBalance + "Original Balance: " + balance + "\n";
+        double total = 0;
+        int count = 0;
         for (int i = 1; i < lines.length; i++) {
-            str = lines[i];
-            strArr = str.split("\\s+");
-            totalExpense += Double.parseDouble(strArr[2]);
-            totalBalance -= Double.parseDouble(strArr[2]);
-            sb.append(strArr[0]).append(" ").append(strArr[1]).append(" ")
-                    .append(strArr[2]).append(BALANCE).append((new DecimalFormat("#.##")
-                            .format(totalBalance))).append(ENTER);
-        }
-        double average = totalExpense / (lines.length - 1);
-        double averageExpense = Math.floor(average * 100 / 100);
-        double originalBalance = Double.parseDouble(lines[0]);
+            String text = lines[i].replaceAll(reg, "");
+            Pattern p1 = Pattern.compile("\\d+");
+            Pattern p2 = Pattern.compile("[a-zA-Z]+");
+            Pattern p3 = Pattern.compile("\\d+\\.\\d+");
+            Matcher m1 = p1.matcher(text);
+            Matcher m2 = p2.matcher(text);
+            Matcher m3 = p3.matcher(text);
+            String a = "";
+            String b = "";
+            String c = "";
+            if (m1.find()) a = text.substring(m1.start(), m1.end());
+            if (m2.find()) b = text.substring(m2.start(), m2.end());
+            if (m3.find()) c = text.substring(m3.start(), m3.end());
+            total += Double.parseDouble(c);
+            count++;
+            balance = String.valueOf((Double.parseDouble(balance) - Double.parseDouble(c)));
+            balance = String.format(Locale.ENGLISH, "%.2f", Double.parseDouble(balance));
+            allBalance += a + " " + b + " " + c + " Balance " + balance + "\n";
 
-        String completedString = sb.toString();
-        String finalStr = ORIGINAL_BALANCE + (new DecimalFormat("#.00").format(originalBalance)) + "\n" + completedString +
-                TOTAL_EXPENSE + new DecimalFormat("0.00").format(totalExpense) +
-                "\n" + AVERAGE_EXPENSE + (new DecimalFormat("0.00").format(averageExpense));
-        return finalStr;
         }
+        double avg = total / count;
+        allBalance += "Total expense  " + String.format(Locale.ENGLISH, "%.2f", total) + "\n";
+        allBalance += "Average expense  " + String.format(Locale.ENGLISH, "%.2f", avg);
+        return allBalance;
+
+    }
+
 
     @Override
     public double f(double x) {
