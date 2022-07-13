@@ -109,4 +109,12 @@ public class BufferTest {
         bf.readStringArrSplitByComma();
     }
 
+    @Test(dataProvider = "readFloatTestData", dataProviderClass = BufferData.class)
+    public void testReadFloat(String input, float expected) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        float actual = bf.readFloat();
+        Assert.assertEquals(actual, expected);
+    }
+
 }
