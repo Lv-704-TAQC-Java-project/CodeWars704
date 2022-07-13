@@ -27,9 +27,9 @@ public class EigthImpl extends Base implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        final float galonLitres = 4.54609188f;
+        final float gallonLitres = 4.54609188f;
         final float mileKilometres = 1.609344f;
-        float result = (mpg / galonLitres) * mileKilometres;
+        float result = (mpg / gallonLitres) * mileKilometres;
         String resultStr = result % 1 != 0 ? (String.format("%.02f", result))
                 : (String.format("%.01f", result));
         String answer = resultStr.replaceAll(",", ".");
