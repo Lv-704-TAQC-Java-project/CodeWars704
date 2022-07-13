@@ -12,7 +12,6 @@ public class TaskDescriptionMenu implements Runner {
 
     @Override
     public void run() {
-        MainMenu.clearScreen();
         colorHeader("Select task to view a description:", ANSI_BLUE);
 
         TaskInfo.showAllTasks();

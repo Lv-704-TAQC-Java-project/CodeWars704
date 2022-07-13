@@ -15,7 +15,6 @@ public class ImplementationMenu implements Runner {
 
     @Override
     public void run() {
-        MainMenu.clearScreen();
         colorHeader("Available implementations:", ANSI_BLUE);
 
         System.out.format(tableHeader, "ID", "FullName", "GitHub");

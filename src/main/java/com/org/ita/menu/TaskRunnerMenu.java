@@ -19,7 +19,6 @@ public class TaskRunnerMenu implements Runner {
 
     @Override
     public void run() {
-        MainMenu.clearScreen();
         colorHeader("Available tasks:", ANSI_BLUE);
 
         TaskInfo.showAllTasks();

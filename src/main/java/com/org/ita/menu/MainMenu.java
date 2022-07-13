@@ -23,10 +23,6 @@ public class MainMenu {
         MainMenu.currentImplementation = currentImplementation;
     }
 
-    public static void clearScreen() {
-
-    }
-
     private void menuTitle() {
         colorln(DIVIDER_MAIN, ANSI_BLUE);
         System.out.print("1) Select implementation ");
@@ -48,7 +44,6 @@ public class MainMenu {
     public void run() {
 
         while (true) {
-            clearScreen();
             menuTitle();
             int chooseNumber = br.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
 
