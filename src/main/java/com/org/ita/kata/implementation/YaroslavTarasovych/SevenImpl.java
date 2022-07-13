@@ -29,7 +29,7 @@ public class SevenImpl extends Base implements Seven {
             sum = sum + div;
             a += 3;
         }
-        return String.format("%.2f", sum);
+        return String.format("%.2f", sum).replaceAll(",",".");
     }
 
     @Override
