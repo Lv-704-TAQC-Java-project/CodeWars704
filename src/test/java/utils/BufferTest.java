@@ -3,6 +3,7 @@ package utils;
 import com.org.ita.utils.Buffer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import utils.data_provider_buffer.BufferData;
 
 import java.io.*;
@@ -32,6 +33,19 @@ public class BufferTest {
         Buffer br = new Buffer();
         int actual = br.getValidIntFromUserInput(invalidMessage, start, end);
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "getValidIntFromUserInputTestDataNegative", dataProviderClass = BufferData.class)
+    public void testGetValidIntFromUserInputNegative(String invalidMessage, int start, int end, String number, int expected, String expectedError) {
+        System.setIn(new ByteArrayInputStream(number.getBytes()));
+        Buffer br = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        int actual = br.getValidIntFromUserInput(invalidMessage, start, end);
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedError, "Incorrect error");
+        softAssert.assertEquals(actual, expected, "Expected number was " + expected + "but was" + actual);
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "positive-data-readIntArr", dataProviderClass = BufferData.class)
