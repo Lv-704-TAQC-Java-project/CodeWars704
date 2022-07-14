@@ -139,5 +139,18 @@ public class BufferTest {
         Buffer bf = new Buffer();
         bf.readFloat();
     }
+    @Test(dataProvider = "readIntTestData", dataProviderClass = BufferData.class)
+    public void testReadInt(String input, double expected) {
+        System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
+        Buffer bf = new Buffer();
+        int actual = bf.readInt();
+        Assert.assertEquals(actual, expected);
+    }
 
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readIntNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadIntNegative(String input) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        bf.readInt();
+    }
 }

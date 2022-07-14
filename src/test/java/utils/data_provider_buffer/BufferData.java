@@ -166,4 +166,26 @@ public class BufferData {
                 {"gjgk.kjgjhh"}
         };
     }
+    @DataProvider(name = "readIntTestData")
+    public static Object[][] readIntTestData() {
+        return new Object[][]{
+                {"0", 0},
+                {"1", 1},
+                {"163", 163},
+                {"-38687", -38687},
+                {"23456", -23456},
+                {"112345", 112345},
+        };
+    }
+
+    @DataProvider(name = "readIntNegativeTestData")
+    public static Object[][] readIntNegativeTestData() {
+        return new Object[][]{
+                {"111111111111111234567890o9i87654323"},
+                {"1.5"},
+                {"wrethyft"},
+                {" "},
+                {"hi"},
+        };
+    }
 }
