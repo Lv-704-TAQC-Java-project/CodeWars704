@@ -5,12 +5,64 @@ import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
-public class FiveImpl  extends Base implements Five {
+public class FiveImpl extends Base implements Five {
+    private static int fibonacci(int n) {
+        if (n <= 1)
+            return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        int[] right = countRight(v);
+        int[] left = countLeft(v);
+        int result = 0;
+
+        for (int i = 0; i < left.length; i++) {
+            result = Math.max(left[i] + right[i] + 1, result);
+        }
+
+        return result;
+    }
+
+    static boolean canFlowLeft(int[] v, int i) {
+        if (i == 0)
+            return false;
+        return v[i - 1] <= v[i];
+    }
+
+    static boolean canFlowRight(int[] v, int i) {
+        if (v.length - 1 == i)
+            return false;
+        return v[i + 1] <= v[i];
+    }
+
+
+    static int[] countLeft(int[] v) {
+        int[] result = new int[v.length];
+
+        for (int i = 0; i < v.length; i++) {
+            if (canFlowLeft(v, i)) {
+                result[i] = result[i - 1] + 1;
+            } else {
+                result[i] = 0;
+            }
+        }
+        return result;
+    }
+
+    static int[] countRight(int[] v) {
+        int[] result = new int[v.length];
+
+        for (int i = v.length - 1; i >= 0; i--) {
+            if (canFlowRight(v, i)) {
+                result[i] = result[i + 1] + 1;
+            } else {
+                result[i] = 0;
+            }
+        }
+        return result;
     }
 
     @Override
@@ -53,15 +105,11 @@ public class FiveImpl  extends Base implements Five {
 
     @Override
     public int zeros(int n) {
-        int k = 1;
+        int i = 5;
         int numOfZeros = 0;
-        long fact = LongStream.rangeClosed(1, n)
-                .reduce(1, (x, y) -> x * y);
-        double rest = fact % Math.pow(5, k);
-        while (rest == 0) {
-            fact /= Math.pow(5, k);
-            rest = fact % Math.pow(5, k);
-            numOfZeros++;
+        while (n / i >= 1) {
+            numOfZeros += n / i;
+            i *= 5;
         }
         return numOfZeros;
     }
@@ -71,12 +119,6 @@ public class FiveImpl  extends Base implements Five {
         int sum = IntStream.rangeClosed(1, n.intValue() + 1)
                 .map(FiveImpl::fibonacci).sum();
         return BigInteger.valueOf(4L * sum);
-    }
-
-    private static int fibonacci(int n) {
-        if (n <= 1)
-            return n;
-        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     @Override

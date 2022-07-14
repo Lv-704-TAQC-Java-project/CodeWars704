@@ -18,6 +18,7 @@ public class SevenImpl extends Base implements Seven {
         }
         return (long) Math.ceil(lastDonat);
     }
+
     @Override
     public String seriesSum(int n) {
 

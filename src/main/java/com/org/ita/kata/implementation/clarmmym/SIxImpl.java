@@ -140,6 +140,10 @@ public class SIxImpl extends Base implements Six {
                 continue;
             }
 
+            if(s.contains(".")){
+                return "Error(float number):" + s;
+            }
+
             String[] gameScore = s.split("(?<=\\d) (?=[A-Z])");
             String[] teemResult = gameScore[0].split(" ");
 
@@ -192,6 +196,10 @@ public class SIxImpl extends Base implements Six {
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         StringBuilder result = new StringBuilder();
+
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
 
         for (var firstLetter : lstOf1stLetter) {
             int temp = 0;

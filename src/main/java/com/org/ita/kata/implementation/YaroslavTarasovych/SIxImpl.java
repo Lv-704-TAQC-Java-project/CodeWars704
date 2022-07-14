@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class SIxImpl  extends Base implements Six {
+public class SIxImpl extends Base implements Six {
     @Override
     public long findNb(long m) {
         BigInteger big = new BigInteger(String.valueOf(0));
@@ -135,10 +135,10 @@ public class SIxImpl  extends Base implements Six {
             Matcher m = p.matcher(lines[i]);
             Pattern p1 = Pattern.compile("\\b\\d+\\b");
             Matcher m1 = p1.matcher(lines[i]);
-            Pattern p2 = Pattern.compile("\\b\\d+\\.\\d+\\b");
-            Matcher m2 = p2.matcher(lines[i]);
-            if (m2.find()) return "Error(float number):" + lines[i];
             if (m.find()) {
+                Pattern p2 = Pattern.compile("\\b\\d+\\.\\d+\\b");
+                Matcher m2 = p2.matcher(lines[i]);
+                if (m2.find()) return "Error(float number):" + lines[i];
                 String[] point = new String[2];
                 int pointTeam;
                 int pointOther;
