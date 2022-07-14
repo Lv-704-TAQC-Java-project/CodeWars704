@@ -8,11 +8,11 @@ import java.util.Arrays;
 public class SevenImpl extends Base implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
-        long result = (long) (((arr.length + 1) * navg) - Arrays.stream(arr).sum());
+        double result = ((arr.length + 1) * navg) - Arrays.stream(arr).sum();
         if (result <= 0) {
             throw new IllegalArgumentException();
         }
-        return result;
+        return Math.round(Math.ceil(result));
     }
 
     @Override
@@ -23,7 +23,7 @@ public class SevenImpl extends Base implements Seven {
         for (int i = 0; i < n; i++) {
             sum += 1.0 / (PROGRESSION * i + 1);
         }
-        return String.format("%.2f", sum);
+        return String.format("%.2f", sum).replace(',','.');
     }
 
     @Override

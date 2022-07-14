@@ -12,7 +12,7 @@ import java.util.List;
 public class FiveImpl extends Base implements Five {
     @Override
     public int artificialRain(int[] v) {
-        if(v.length==1){
+        if (v.length == 1) {
             return 1;
         }
 

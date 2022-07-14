@@ -1,19 +1,17 @@
 package com.org.ita.menu;
 
-import com.org.ita.utils.info.TaskInfo;
 import com.org.ita.utils.Buffer;
 import com.org.ita.utils.Runner;
+import com.org.ita.utils.info.TaskInfo;
 
 import static com.org.ita.utils.Message.*;
-import static com.org.ita.utils.Message.ANSI_BLUE;
 
 public class TaskDescriptionMenu implements Runner {
 
-    Buffer br = new Buffer();
+    final Buffer br = new Buffer();
 
     @Override
     public void run() {
-        MainMenu.clearScreen();
         colorHeader("Select task to view a description:", ANSI_BLUE);
 
         TaskInfo.showAllTasks();

@@ -1,10 +1,11 @@
 package implementation_test;
 
 import com.org.ita.kata.Five;
+import implementation_test.data_provider.FiveData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import implementation_test.data_provider.FiveData;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class FiveImplTest {
@@ -16,13 +17,13 @@ public class FiveImplTest {
     }
 
 
-    @Test(dataProvider = "GapTestDataValid", dataProviderClass = FiveData.class, timeOut = 1000)
+    @Test(dataProvider = "GapTestDataValid", dataProviderClass = FiveData.class, timeOut = 2000)
     public void testGap(Five fiveImpl, int[] data, String expected) {
         String actual = Arrays.toString(fiveImpl.gap(data[0], data[1], data[2]));
         Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.toString(data));
     }
 
-    @Test(dataProvider = "GapTestDataNotValid", dataProviderClass = FiveData.class, timeOut = 1000)
+    @Test(dataProvider = "GapTestDataNotValid", dataProviderClass = FiveData.class, timeOut = 2000)
     public void testGapNull(Five fiveImpl, int[] data, Object expected) {
         Object actual = fiveImpl.gap(data[0], data[1], data[2]);
         Assert.assertNull(actual, "Error: your array was " + Arrays.toString(data));
@@ -43,6 +44,11 @@ public class FiveImplTest {
     @Test(dataProvider = "smallestData", dataProviderClass = FiveData.class, timeOut = 1000)
     public void testSmallest(Five fiveImpl, long data, long[] expected) {
         Object actual = fiveImpl.smallest(data);
+        Assert.assertEquals(actual, expected, "Error: your number was " + data);
+    }
+    @Test(dataProvider = "perimeterData", dataProviderClass = FiveData.class, timeOut = 1000)
+    public void testPerimeter(Five fiveImpl, BigInteger data, BigInteger expected) {
+        Object actual = fiveImpl.perimeter(data);
         Assert.assertEquals(actual, expected, "Error: your number was " + data);
     }
 

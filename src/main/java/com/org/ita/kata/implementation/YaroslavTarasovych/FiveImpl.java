@@ -6,34 +6,34 @@ import com.org.ita.kata.Five;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-public class FiveImpl  extends Base implements Five {
+public class FiveImpl extends Base implements Five {
     @Override
     public int artificialRain(int[] v) {
         if (v.length == 1) return 1;
-        int array[] = new int[0];
+        int[] array = new int[0];
         int count = 1;
         boolean next = false;
         int countEqual = 0;
         for (int i = 0; i < v.length - 1; i++) {
-              if (v[i] < v[i + 1] && next) {
-                  array = Arrays.copyOf(array, array.length + 1);
-                  array[array.length - 1] = count;
-                  next = false;
-                  count = 1;
-                  i -= countEqual;
-              }
-              if (v[i] < v[i + 1]) {
-                  count++;
-              }
-              if (v[i] == v[i + 1]) {
-                  count++;
-                  countEqual++;
-              }
-              if (v[i] > v[i + 1]) {
-                  count++;
-                  countEqual = 0;
-                  next = true;
-              }
+            if (v[i] < v[i + 1] && next) {
+                array = Arrays.copyOf(array, array.length + 1);
+                array[array.length - 1] = count;
+                next = false;
+                count = 1;
+                i -= countEqual;
+            }
+            if (v[i] < v[i + 1]) {
+                count++;
+            }
+            if (v[i] == v[i + 1]) {
+                count++;
+                countEqual++;
+            }
+            if (v[i] > v[i + 1]) {
+                count++;
+                countEqual = 0;
+                next = true;
+            }
         }
         array = Arrays.copyOf(array, array.length + 1);
         array[array.length - 1] = count;

@@ -31,7 +31,7 @@ public class SevenImpl extends Base implements Seven {
     public int whereIsHe(int p, int bef, int aft) {
         int count = 0;
         for (int i = bef; i < p; i++) {
-            if (p-i-1 <= aft) {
+            if (p - i - 1 <= aft) {
                 count++;
             }
         }

@@ -4,6 +4,7 @@ import com.org.ita.kata.Base;
 import com.org.ita.kata.Seven;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public class SevenImpl extends Base implements Seven {
     @Override
@@ -29,7 +30,7 @@ public class SevenImpl extends Base implements Seven {
             currentDelimiter += PROGRESSION_DELTA;
         }
 
-        return String.format("%.2f", progressionSum);
+        return String.format(Locale.ENGLISH,"%.2f", progressionSum);
     }
 
     @Override

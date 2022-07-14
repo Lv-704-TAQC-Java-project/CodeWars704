@@ -1,7 +1,7 @@
 package implementation_test.data_provider;
 
-import org.testng.annotations.DataProvider;
 import implementation_test.UserImplementation;
+import org.testng.annotations.DataProvider;
 
 import static implementation_test.UserImplementation.SEVEN_IMPLEMENTATION;
 
@@ -56,10 +56,10 @@ public class SevenData {
     @DataProvider(name = "newAVGTestDataNegative")
     public static Object[][] TestNewAVGNegative() {
         Object[][] baseTestData = new Object[][]{
-                { new double[] {14.0, 30.0, 5.0, 7.0, 9.0, 11.0, 15.0}, 2.0, -75},
-                { new double[] {14.25, 30.76, 5.56, 7.0, 9.0, 11.0, 15.48, 12.987}, 5.0, -61},
-                { new double[] {1400.25, 30000.76, 5.56, 7.0, 9.0, 11.0, 15.48, 120.98}, 2000.0, -13570},
-                { new double[] {138389.90000000002, 127461.40000000001, 40389.8, 82447.20000000001,
+                {new double[]{14.0, 30.0, 5.0, 7.0, 9.0, 11.0, 15.0}, 2.0, -75},
+                {new double[]{14.25, 30.76, 5.56, 7.0, 9.0, 11.0, 15.48, 12.987}, 5.0, -61},
+                {new double[]{1400.25, 30000.76, 5.56, 7.0, 9.0, 11.0, 15.48, 120.98}, 2000.0, -13570},
+                {new double[]{138389.90000000002, 127461.40000000001, 40389.8, 82447.20000000001,
                         116957.50000000001, 37125.0, 99162.8, 182001.6, 2579.5, 200846.80000000002,
                         183629.6, 172881.5, 70074.40000000001, 215840.90000000002, 98472.00000000001,
                         168280.2, 15152.500000000002, 171800.2, 176556.6, 194357.90000000002, 40689.0,

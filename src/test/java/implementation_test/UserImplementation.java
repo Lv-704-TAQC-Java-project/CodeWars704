@@ -4,11 +4,6 @@ import com.org.ita.kata.Eight;
 import com.org.ita.kata.Five;
 import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.commons.lang3.SerializationUtils;
 
 public class UserImplementation {
@@ -58,57 +53,55 @@ public class UserImplementation {
             new com.org.ita.kata.implementation.ykireyeva.FiveImpl()
     };
 
-//    public static Object[][] combineImplWithTests(Object[] implementations, Object[][] baseTestData) {
-//        int fullTestDataLength = implementations.length * baseTestData.length;
-//        Object[][] fullTestData = new Object[fullTestDataLength][baseTestData[0].length + 1];
-//        Object[][] baseTestDataCopy = Arrays.copyOf(baseTestData, baseTestData.length);
-//        int count = 0;
-//        for (Object impl : implementations) {
-//            for (Object[] baseTest : baseTestDataCopy) {
-//                Object[] baseTestCopy = Arrays.copyOf(baseTest, baseTest.length);
-//                for (int i = 0; i < baseTestCopy.length + 1; i++) {
-//                    fullTestData[count][i] = i == 0 ? impl : baseTestCopy[i - 1];
-//                }
-//                count++;
-//            }
-//        }
-//
-//        return fullTestData;
-//    }
-
-    public static Object[][] combineImplWithTests(Object[] impl, Object[][] _data) {
-        List<Object[]> listObjects = new ArrayList<>();
-        for (Object obj_impl : impl) {
-            Object[][] data = SerializationUtils.clone(_data);
-            for (Object[] obj_data : data) {
-                int totalLength = obj_data.length + 1;
-                Object[] objArr = new Object[totalLength];
-
-                Object[] objDataClone = Arrays.stream(obj_data).toArray();
-                System.arraycopy(new Object[] {obj_impl}, 0, objArr, 0, 1);
-                System.arraycopy(objDataClone, 0, objArr, 1, totalLength - 1);
-
-                listObjects.add(objArr);
+    public static Object[][] combineImplWithTests(Object[] implementations, Object[][] baseTestData) {
+        int fullTestDataLength = implementations.length * baseTestData.length;
+        Object[][] fullTestData = new Object[fullTestDataLength][baseTestData[0].length + 1];
+        int count = 0;
+        for (Object impl : implementations) {
+            Object[][] baseTestDataCopy = SerializationUtils.clone(baseTestData);
+            for (Object[] baseTest : baseTestDataCopy) {
+                for (int i = 0; i < baseTest.length + 1; i++) {
+                    fullTestData[count][i] = i == 0 ? impl : baseTest[i - 1];
+                }
+                count++;
             }
         }
 
-        return listObjects.toArray(new Object[0][0]);
-
+        return fullTestData;
     }
 
-    public Object[][] combineEightWithTestData(Object[][] baseTestData) {
+//    public static Object[][] combineImplWithTests(Object[] impl, Object[][] _data) {
+//        List<Object[]> listObjects = new ArrayList<>();
+//        for (Object obj_impl : impl) {
+//            Object[][] data = SerializationUtils.clone(_data);
+//            for (Object[] obj_data : data) {
+//                int totalLength = obj_data.length + 1;
+//                Object[] objArr = new Object[totalLength];
+//
+//                Object[] objDataClone = Arrays.stream(obj_data).toArray();
+//                System.arraycopy(new Object[]{obj_impl}, 0, objArr, 0, 1);
+//                System.arraycopy(objDataClone, 0, objArr, 1, totalLength - 1);
+//
+//                listObjects.add(objArr);
+//            }
+//        }
+//
+//        return listObjects.toArray(new Object[0][0]);
+//    }
+
+    public static Object[][] combineEightWithTestData(Object[][] baseTestData) {
         return combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
     }
 
-    public Object[][] combineSevenWithTestData(Object[][] baseTestData) {
+    public static Object[][] combineSevenWithTestData(Object[][] baseTestData) {
         return combineImplWithTests(SEVEN_IMPLEMENTATION, baseTestData);
     }
 
-    public Object[][] combineSixWithTestData(Object[][] baseTestData) {
+    public static Object[][] combineSixWithTestData(Object[][] baseTestData) {
         return combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
     }
 
-    public Object[][] combineFiveWithTestData(Object[][] baseTestData) {
+    public static Object[][] combineFiveWithTestData(Object[][] baseTestData) {
         return combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
     }
 }
