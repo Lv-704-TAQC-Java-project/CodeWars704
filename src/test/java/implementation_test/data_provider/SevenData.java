@@ -3,7 +3,6 @@ package implementation_test.data_provider;
 import implementation_test.UserImplementation;
 import org.testng.annotations.DataProvider;
 
-import static implementation_test.UserImplementation.SEVEN_IMPLEMENTATION;
 
 public class SevenData {
 

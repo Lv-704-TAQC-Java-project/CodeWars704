@@ -2,10 +2,8 @@ package implementation_test.data_provider;
 
 import implementation_test.UserImplementation;
 import org.testng.annotations.DataProvider;
-
 import java.math.BigInteger;
 
-import static implementation_test.UserImplementation.FIVE_IMPLEMENTATION;
 
 public class FiveData {
 
@@ -52,7 +50,7 @@ public class FiveData {
                 {new int[]{2, 1201, 2201}, "[1229, 1231]"},
                 {new int[]{2, 656084, 657084}, "[656321, 656323]"}
         };
-        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineFiveWithTestData(baseTestData);
     }
 
     @DataProvider(name = "GapTestDataNotValid")
@@ -61,7 +59,7 @@ public class FiveData {
                 {new int[]{6, 100, 110}, null},
                 {new int[]{11, 30000, 100000}, null}
         };
-        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineFiveWithTestData(baseTestData);
     }
 
     @DataProvider(name = "data-provider-zeros")
@@ -76,7 +74,7 @@ public class FiveData {
                 {1000000000, 249999998},
                 {645925310, 161481322}
         };
-        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineFiveWithTestData(baseTestData);
     }
 
     @DataProvider(name = "artificialRainData")
@@ -88,7 +86,7 @@ public class FiveData {
                 {new int[]{0, 0, 1, 0, 0, 0}, 6},
                 {new int[]{0, 0, 0, 0, 0, 0}, 6},
         };
-        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineFiveWithTestData(baseTestData);
     }
 
     @DataProvider(name = "smallestData")
@@ -101,14 +99,15 @@ public class FiveData {
                 {296837, new long[]{239687, 4, 1}},
                 {1000000, new long[]{1, 0, 6}},
         };
-        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineFiveWithTestData(baseTestData);
     }
+
     @DataProvider(name = "perimeterData")
     public static Object[][] perimeterTestData() {
         Object[][] baseTestData = new Object[][]{
                 {BigInteger.valueOf(5),BigInteger.valueOf(80)},
                 {BigInteger.valueOf(7),BigInteger.valueOf(216)}
         };
-        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineFiveWithTestData(baseTestData);
     }
 }
