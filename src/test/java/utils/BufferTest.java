@@ -192,4 +192,25 @@ public class BufferTest {
         Buffer bf = new Buffer();
         bf.readInt();
     }
+
+    @Test(dataProvider = "readPositiveDoubleTestData", dataProviderClass = BufferData.class)
+    public void getPositiveDoubleInputTest(String input, double expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer bf = new Buffer();
+        double actual = bf.getPositiveDoubleInput();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "readPositiveDoubleNegativeTestData", dataProviderClass = BufferData.class)
+    public void readPositiveDoubleNegativeTest(String input, String expectedMessage, double expectedDouble) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer bf = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        double actual = bf.getPositiveDoubleInput();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message is shown");
+        softAssert.assertEquals(actual, expectedDouble, String.format("Expected double was %f, but got %f instead.", expectedDouble, actual));
+        softAssert.assertAll();
+    }
 }

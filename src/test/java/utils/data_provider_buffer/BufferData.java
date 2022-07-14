@@ -99,12 +99,13 @@ public class BufferData {
 
     @DataProvider(name = "readLongNegativeTestData")
     public static Object[][] readLongNegativeTestData() {
+        String errorMessage = "\u001B[31mInput should be of a 'long' type\u001B[0m\n";
         return new Object[][]{
-                {"abra\n2456454884253485", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 2456454884253485L},
-                {"fdas485615\n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
-                {" \n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
-                {"\n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
-//                {"\n25", "\u001B[31mInput should be of a long type\u001B[0m\n", 26L},
+                {"abra\n2456454884253485", errorMessage, 2456454884253485L},
+                {"fdas485615\n25", errorMessage, 25L},
+                {" \n25", errorMessage, 25L},
+                {"\n25", errorMessage, 25L},
+//                {"\n25", "\u001B[31mInput should be of a LONG type\u001B[0m\n", 26L},
         };
     }
 
@@ -223,6 +224,31 @@ public class BufferData {
                 {"wrethyft"},
                 {" "},
                 {"hi"},
+        };
+    }
+
+    @DataProvider(name = "readPositiveDoubleTestData")
+    public static Object[][] readPositiveDoubleTestData() {
+        return new Object[][]{
+                {"0", 0},
+                {"0.0", 0.0},
+                {"16.123", 16.123},
+                {"1.7e308", 1.7e308},
+                {"1", 1},
+                {"1456456158", 1456456158},
+        };
+    }
+
+    @DataProvider(name = "readPositiveDoubleNegativeTestData")
+    public static Object[][] readPositiveDoubleNegativeTestData() {
+        String errorMessage = "\u001B[31mEnter positive number.\u001B[0m\n";
+        return new Object[][]{
+                {"-0.00000000001\n24564548", errorMessage, 24564548},
+                {"-16.123\n16.123", errorMessage, 16.123},
+                {"-1.7e308\n1.7e308", errorMessage, 1.7e308},
+                {"-1\n1", errorMessage, 1},
+                {"-1456456158\n1456456158", errorMessage, 1456456158},
+//                {"-1456456158\n1456456158", "\u001B[31mEnter POSITIVE number.\u001B[0m\n", 14},
         };
     }
 }
