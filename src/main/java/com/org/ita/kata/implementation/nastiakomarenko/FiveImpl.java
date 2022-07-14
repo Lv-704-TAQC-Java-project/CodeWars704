@@ -23,8 +23,50 @@ public class FiveImpl extends Base implements Five {
 
     @Override
     public int artificialRain(int[] v) {
-        return 0;
-    }
+        if(v.length==1){
+            return 1;
+        }
+
+        int result = 0;
+
+        for (int i = 0; i < v.length; i++) {
+            int left = i;
+            int right = i;
+            int current = i;
+
+            int lCount = 0;
+            int rCount = 0;
+
+            while (left != 0) {
+                if (v[left] <= v[current]) {
+                    lCount++;
+                    current = left;
+                    left--;
+                } else {
+                    break;
+                }
+            }
+
+            current = i;
+
+            while (right != v.length - 1) {
+                if (v[right] <= v[current]) {
+                    rCount++;
+                    current = right;
+                    right++;
+                } else {
+                    break;
+                }
+            }
+
+            if (lCount + rCount >= result) {
+                result = lCount + rCount;
+            }
+
+        }
+
+        return result;
+        }
 
     @Override
     public long[] gap(int g, long m, long n) {
