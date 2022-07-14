@@ -2,6 +2,7 @@ package com.org.ita.kata.implementation.MyroslavaVynokur;
 
 import com.org.ita.kata.Base;
 import com.org.ita.kata.Five;
+
 import java.math.BigInteger;
 
 public class FiveImpl extends Base implements Five {
@@ -36,29 +37,30 @@ public class FiveImpl extends Base implements Five {
     }
 
     private static boolean isPrime(double n) {
-        boolean prime = true;
-        for (int k = 2; k <= n / 2; k++) {
-            if ((n % k) == 0) {
-                prime = false;
-                break;
+        if (n <= 1) {
+            return false;
+        }
+        for (long i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
             }
         }
-        return prime;
+        return true;
     }
 
     @Override
     public long[] gap(int g, long m, long n) {
-            long last = Long.MIN_VALUE;
-            for (long i = m; i < n; i++) {
-                if (isPrime(i)) {
-                    if (i - last == g) {
-                        return new long[]{last, i};
-                    }
-                    last = i;
+        long last = Long.MIN_VALUE;
+        for (long i = m; i < n; i++) {
+            if (isPrime(i)) {
+                if (i - last == g) {
+                    return new long[]{last, i};
                 }
+                last = i;
             }
-            return null;
         }
+        return null;
+    }
 
     @Override
     public int zeros(int n) {
