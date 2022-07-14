@@ -8,11 +8,11 @@ import java.util.Arrays;
 public class SevenImpl extends Base implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
-        long result = (long) (((arr.length + 1) * navg) - Arrays.stream(arr).sum());
+        double result = ((arr.length + 1) * navg) - Arrays.stream(arr).sum();
         if (result <= 0) {
             throw new IllegalArgumentException();
         }
-        return result;
+        return Math.round(Math.ceil(result));
     }
 
     @Override
