@@ -1,8 +1,9 @@
 package com.org.ita.kata.implementation.nastiakomarenko;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Seven;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
 
@@ -17,6 +18,7 @@ public class SevenImpl implements Seven {
         }
         return (long) Math.ceil(lastDonat);
     }
+
     @Override
     public String seriesSum(int n) {
 

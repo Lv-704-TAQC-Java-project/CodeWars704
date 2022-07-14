@@ -1,10 +1,11 @@
 package com.org.ita.kata.implementation.nastiakomarenko;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
 import java.util.Arrays;
 
-public class EigthImpl implements Eight {
+public class EigthImpl extends Base implements Eight {
     public static double factorial(double number) {
         if (number <= 1) {
             return 1;
@@ -29,9 +30,9 @@ public class EigthImpl implements Eight {
     @Override
     public float mpgToKPM(float mpg) {
         //const
-         float gallon = 4.54609188f;
-         float mile = 1.609344f;
-         float round = 100f;
+        float gallon = 4.54609188f;
+        float mile = 1.609344f;
+        float round = 100f;
 
         return Math.round(mpg / gallon * mile * round) / round;
 
@@ -75,7 +76,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-       return Integer.parseInt(str);
+        return Integer.parseInt(str);
 
     }
 

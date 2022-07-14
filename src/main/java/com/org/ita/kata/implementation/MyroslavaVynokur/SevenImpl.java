@@ -1,8 +1,9 @@
 package com.org.ita.kata.implementation.MyroslavaVynokur;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Seven;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
         double sum = 0;
@@ -30,7 +31,7 @@ public class SevenImpl implements Seven {
     public int whereIsHe(int p, int bef, int aft) {
         int count = 0;
         for (int i = bef; i < p; i++) {
-            if (p-i-1 <= aft) {
+            if (p - i - 1 <= aft) {
                 count++;
             }
         }

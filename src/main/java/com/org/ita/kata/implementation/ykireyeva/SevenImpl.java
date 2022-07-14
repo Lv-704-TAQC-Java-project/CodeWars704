@@ -1,11 +1,12 @@
 package com.org.ita.kata.implementation.ykireyeva;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Seven;
 
 import java.text.DecimalFormat;
 import java.util.stream.DoubleStream;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
         double sum = DoubleStream.of(arr).reduce(0, Double::sum);

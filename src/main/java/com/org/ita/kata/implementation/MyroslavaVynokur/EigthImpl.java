@@ -1,5 +1,6 @@
 package com.org.ita.kata.implementation.MyroslavaVynokur;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
 import java.text.DecimalFormat;
@@ -7,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EigthImpl implements Eight {
+public class EigthImpl extends Base implements Eight {
     @Override
     public int liters(double time) {
-        if (time <= 0) {
-            throw new ArithmeticException("time can not be 0");
+        if (time > 0) {
+            return (int) Math.floor(time * 0.5);
         }
-        return (int) Math.floor(time * 0.5);
+        return 0;
     }
 
     @Override
@@ -21,14 +22,14 @@ public class EigthImpl implements Eight {
         double volume = length * width * height;
         if (volume > 0) {
             return volume;
-        } else throw new ArithmeticException("Input numbers should be bigger than 0");
+        } else return 0;
     }
 
     @Override
     public float mpgToKPM(float mpg) {
-        final float galonLitres = 4.54609188f;
+        final float gallonLitres = 4.54609188f;
         final float mileKilometres = 1.609344f;
-        float result = (mpg / galonLitres) * mileKilometres;
+        float result = (mpg / gallonLitres) * mileKilometres;
         String resultStr = result % 1 != 0 ? (String.format("%.02f", result))
                 : (String.format("%.01f", result));
         String answer = resultStr.replaceAll(",", ".");
@@ -71,15 +72,7 @@ public class EigthImpl implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        boolean amIWilson = true;
-        for (int k = 2; k <= n / 2; k++) {
-            double end = n % k;
-            if (end == 0) {
-                amIWilson = false;
-                break;
-            }
-        }
-        return n > 1 && (amIWilson);
+        return n == 5 || n == 13 || n == 563;
     }
 
     @Override

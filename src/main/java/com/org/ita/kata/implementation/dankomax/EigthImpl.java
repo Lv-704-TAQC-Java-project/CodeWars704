@@ -1,12 +1,17 @@
 package com.org.ita.kata.implementation.dankomax;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
 import java.util.Arrays;
 
-public class EigthImpl implements Eight {
+public class EigthImpl extends Base implements Eight {
     @Override
     public int liters(double time) {
+        if (time < 0) {
+            return 0;
+        }
+
         final double LITERS_PER_HOUR = 0.5;
 
         return (int) Math.floor(time * LITERS_PER_HOUR);

@@ -1,5 +1,6 @@
 package com.org.ita.kata.implementation.YaroslavTarasovych;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
 import java.math.BigDecimal;
@@ -7,10 +8,10 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
-public class EigthImpl implements Eight {
+public class EigthImpl extends Base implements Eight {
     @Override
     public int liters(double time) {
-        return (int) Math.floor(time * 0.5);
+        return (time >= 0) ? (int) Math.floor(time * 0.5) : 0;
     }
 
     @Override
@@ -24,7 +25,7 @@ public class EigthImpl implements Eight {
         float n = (float) (mpg * 1.609344 / 4.54609188);
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         String result = decimalFormat.format(n);
-        result = result.replace(",",".");
+        result = result.replace(",", ".");
         return Float.parseFloat(result);
     }
 
@@ -83,7 +84,7 @@ public class EigthImpl implements Eight {
     @Override
     public double twoDecimalPlaces(double number) {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        String result = decimalFormat.format(number).replaceAll(",",".");
+        String result = decimalFormat.format(number).replaceAll(",", ".");
         return Double.valueOf(result);
     }
 
