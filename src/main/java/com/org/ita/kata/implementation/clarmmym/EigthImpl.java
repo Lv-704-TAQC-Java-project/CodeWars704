@@ -60,7 +60,6 @@ public class EigthImpl extends Base implements Eight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        int[] result = new int[2];
         if (input != null) {
             if (input.length != 0) {
                 int count = 0;
@@ -74,11 +73,10 @@ public class EigthImpl extends Base implements Eight {
                     }
                 }
 
-                result[0] = count;
-                result[1] = sum;
+                return new int[]{count, sum};
             }
         }
-        return result;
+        return new int[]{};
     }
 
     @Override
