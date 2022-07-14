@@ -18,7 +18,7 @@ public class FiveImpl extends Base implements Five {
 
         int result = 0;
 
-        for (int i = 0; i < v.length; i++) {
+        for (int i = 1; i < v.length; i++) {
             int left = i;
             int right = i;
             int current = i;
@@ -27,9 +27,9 @@ public class FiveImpl extends Base implements Five {
             int rCount = 0;
 
             while (left != 0) {
-                if (v[left] <= v[current]) {
+                if (v[left - 1] <= v[current]) {
                     lCount++;
-                    current = left;
+                    current = left - 1;
                     left--;
                 } else {
                     break;
@@ -39,17 +39,17 @@ public class FiveImpl extends Base implements Five {
             current = i;
 
             while (right != v.length - 1) {
-                if (v[right] <= v[current]) {
+                if (v[right + 1] <= v[current]) {
                     rCount++;
-                    current = right;
+                    current = right + 1;
                     right++;
                 } else {
                     break;
                 }
             }
 
-            if (lCount + rCount >= result) {
-                result = lCount + rCount;
+            if (lCount + rCount + 1 >= result) {
+                result = lCount + rCount + 1;
             }
 
         }
@@ -94,22 +94,11 @@ public class FiveImpl extends Base implements Five {
 
     @Override
     public int zeros(int n) {
-        int countOf2 = 0;
-        int countOf5 = 0;
-        for (int i = 1; i < n; i++) {
-            int currentNumber = i;
-            while (currentNumber % 2 == 0) {
-                countOf2++;
-                currentNumber /= 2;
-
-            }
-            while (currentNumber % 5 == 0) {
-                countOf5++;
-                currentNumber /= 5;
-            }
+        int count = 0;
+        for (int i = 5; i < n; i *= 5) {
+            count += n / i;
         }
-
-        return Math.min(countOf2, countOf5);
+        return count;
     }
 
     @Override
@@ -133,32 +122,7 @@ public class FiveImpl extends Base implements Five {
 
     @Override
     public double solveSum(double m) {
-        double floor = 0;
-        double top = 1;
-        double x = (top - floor) / 2 + floor;
-        double exp = 1e-12;
-
-        double actual = f(x);
-        while (Math.abs(m - actual) > exp) {
-            if (m > actual) {
-                floor = x;
-            } else {
-                top = x;
-            }
-            x = floor + (top - floor) / 2;
-            actual = f(x);
-        }
-        return x;
-    }
-
-    private double f(double x) {
-        int U = 1_000_000;
-        double sum = 0;
-
-        for (int i = 0; i < U; i++) {
-            sum += i * Math.pow(x, i);
-        }
-        return sum;
+        return (2 * m - Math.sqrt(4 * m + 1) + 1) / (2 * m);
     }
 
     @Override
