@@ -12,14 +12,27 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
-public class SIxImpl  extends Base implements Six {
+public class SIxImpl extends Base implements Six {
+    private static ArrayList<Double> stringToList(String town, String str) {
+        Matcher m = Pattern.compile(".*" + town + ":.*").matcher(str);
+        String line;
+        if (m.find()) {
+            line = m.group();
+        } else {
+            return null;
+        }
+        return Arrays.stream(line.replaceAll("[^\\d.]+", " ").trim().split(" "))
+                .map(Double::parseDouble)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
     @Override
     public long findNb(long m) {
         long sum = 0;
         long n = 0;
         while (sum <= m) {
-            sum += n*n*n;
-            if (sum == m){
+            sum += n * n * n;
+            if (sum == m) {
                 return n;
             }
             n++;
@@ -80,19 +93,6 @@ public class SIxImpl  extends Base implements Six {
             sumOfSquare += (d - avg) * (d - avg);
         }
         return sumOfSquare / listOfFall.size();
-    }
-
-    private static ArrayList<Double> stringToList(String town, String str) {
-        Matcher m = Pattern.compile(".*" + town + ":.*").matcher(str);
-        String line;
-        if (m.find()) {
-            line = m.group();
-        } else {
-            return null;
-        }
-        return Arrays.stream(line.replaceAll("[^\\d.]+", " ").trim().split(" "))
-                .map(Double::parseDouble)
-                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override

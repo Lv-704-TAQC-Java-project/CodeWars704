@@ -7,8 +7,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -52,7 +51,6 @@ public class SIxImpl extends Base implements Six {
                     .append((new DecimalFormat("#.##").format(totalBalance))).append(ENTER);
         }
         double averageExpense = totalExpense / (lines.length - 1);
-        double averageExpenseF = Math.floor(averageExpense * 100 / 100);
         double originalBalance = Double.parseDouble(lines[0]);
 
         String completedString = sb.toString();
@@ -148,7 +146,7 @@ public class SIxImpl extends Base implements Six {
             }
         }
 
-        if (((won == 0) & (draws == 0) & (lost == 0) & toFind != "") || !resultSheet.contains(toFind + " ")) {
+        if (((won == 0) & (draws == 0) & (lost == 0) & !Objects.equals(toFind, "")) || !resultSheet.contains(toFind + " ")) {
             return toFind + ":This team didn't play!";
         }
 
@@ -159,25 +157,25 @@ public class SIxImpl extends Base implements Six {
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
 
-        if (lstOfArt == null | lstOfArt.length == 0 | lstOf1stLetter == null | lstOf1stLetter.length == 0) {
+        if (lstOfArt == null || lstOfArt.length == 0 || lstOf1stLetter == null || lstOf1stLetter.length == 0) {
             return "";
         }
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
 
         for (int i = 0; i < lstOf1stLetter.length; i++) {
             int sum = 0;
-            for (int t = 0; t < lstOfArt.length; t++) {
-                if (lstOfArt[t].charAt(0) == lstOf1stLetter[i].charAt(0)) {
-                    String[] element = lstOfArt[t].split(" ");
+            for (String s : lstOfArt) {
+                if (s.charAt(0) == lstOf1stLetter[i].charAt(0)) {
+                    String[] element = s.split(" ");
                     System.out.println(Arrays.toString(element));
                     sum += Integer.parseInt(element[1]);
                 }
             }
-            answer += "(" + lstOf1stLetter[i] + " : " + sum + ")";
+            answer.append("(").append(lstOf1stLetter[i]).append(" : ").append(sum).append(")");
             if ((lstOf1stLetter.length - 1) != i) {
-                answer += " - ";
+                answer.append(" - ");
             }
         }
-        return answer;
+        return answer.toString();
     }
 }
