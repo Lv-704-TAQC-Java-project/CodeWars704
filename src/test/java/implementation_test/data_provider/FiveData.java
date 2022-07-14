@@ -3,6 +3,8 @@ package implementation_test.data_provider;
 import implementation_test.UserImplementation;
 import org.testng.annotations.DataProvider;
 
+import java.math.BigInteger;
+
 import static implementation_test.UserImplementation.FIVE_IMPLEMENTATION;
 
 public class FiveData {
@@ -98,6 +100,14 @@ public class FiveData {
                 {269045, new long[]{26945, 3, 0}},
                 {296837, new long[]{239687, 4, 1}},
                 {1000000, new long[]{1, 0, 6}},
+        };
+        return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
+    }
+    @DataProvider(name = "perimeterData")
+    public static Object[][] perimeterTestData() {
+        Object[][] baseTestData = new Object[][]{
+                {BigInteger.valueOf(5),BigInteger.valueOf(80)},
+                {BigInteger.valueOf(7),BigInteger.valueOf(216)}
         };
         return UserImplementation.combineImplWithTests(FIVE_IMPLEMENTATION, baseTestData);
     }
