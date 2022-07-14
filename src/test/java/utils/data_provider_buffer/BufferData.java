@@ -4,6 +4,8 @@ import org.testng.annotations.DataProvider;
 
 import java.math.BigInteger;
 
+import static com.org.ita.utils.Message.ANSI_RED;
+
 public class BufferData {
 
     @DataProvider(name = "positive-data-readIntArr")
@@ -53,6 +55,16 @@ public class BufferData {
         return new Object[][]{
                 {"Invalid message", 0, 10, "5", 5},
                 {"Invalid message", 0, 3, "3", 3}
+        };
+    }
+
+    @DataProvider(name = "getValidIntFromUserInputTestDataNegative")
+    public static Object[][] testGetValidIntFromUserUnputNegative() {
+        return new Object[][]{
+                {"Input should be int" + ANSI_RED, 0, 10, "\n5", 5, "\u001B[31mInput should be int\u001B[0m" + "\n"},
+                {"Input should be int" + ANSI_RED, 0, 10, "11\n5", 5, "[31mInput should be int[31m[0m" + "\n"},
+                {"Input should be int" + ANSI_RED, 0, 10, "abC\n5", 5, "\u001B[31mInput should be int\u001B[0m" + "\n"}
+
         };
     }
 
