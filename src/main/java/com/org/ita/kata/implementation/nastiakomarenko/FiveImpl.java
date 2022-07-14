@@ -93,6 +93,7 @@ public class FiveImpl extends Base implements Five {
         return arr;
     }
 
+
     @Override
     public int zeros(int factor) {
         int count = 0;
