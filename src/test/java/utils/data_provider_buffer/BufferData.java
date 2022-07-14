@@ -71,6 +71,17 @@ public class BufferData {
         };
     }
 
+    @DataProvider(name = "readLongNegativeTestData")
+    public static Object[][] readLongNegativeTestData() {
+        return new Object[][]{
+                {"abra\n2456454884253485", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 2456454884253485L},
+                {"fdas485615\n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
+                {" \n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
+                {"\n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
+//                {"\n25", "\u001B[31mInput should be of a long type\u001B[0m\n", 26L},
+        };
+    }
+
     @DataProvider(name = "readBigIntegerTestData")
     public static Object[][] readBigIntegerTestData() {
         return new Object[][]{

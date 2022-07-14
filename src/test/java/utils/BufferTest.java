@@ -3,10 +3,12 @@ package utils;
 import com.org.ita.utils.Buffer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import utils.data_provider_buffer.BufferData;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.util.Optional;
 
 public class BufferTest {
 
@@ -75,6 +77,19 @@ public class BufferTest {
         Buffer bf = new Buffer();
         long actual = bf.readLong();
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "readLongNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadLongNegative(String input, String expectedMessage, Long expectedLong) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer bf = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        long actual = bf.readLong();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message is shown");
+        softAssert.assertEquals(actual, (long) expectedLong, String.format("Expected number was %d, but got %d instead.", expectedLong, actual));
+        softAssert.assertAll();
     }
 
 
