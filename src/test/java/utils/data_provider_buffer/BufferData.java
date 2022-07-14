@@ -4,6 +4,8 @@ import org.testng.annotations.DataProvider;
 
 import java.math.BigInteger;
 
+import static com.org.ita.utils.Message.ANSI_RED;
+
 public class BufferData {
 
     @DataProvider(name = "positive-data-readIntArr")
@@ -56,6 +58,16 @@ public class BufferData {
         };
     }
 
+    @DataProvider(name = "getValidIntFromUserInputTestDataNegative")
+    public static Object[][] testGetValidIntFromUserUnputNegative() {
+        return new Object[][]{
+                {"Input should be int" + ANSI_RED, 0, 10, "\n5", 5, "\u001B[31mInput should be int\u001B[0m" + "\n"},
+                {"Input should be int" + ANSI_RED, 0, 10, "11\n5", 5, "[31mInput should be int[31m[0m" + "\n"},
+                {"Input should be int" + ANSI_RED, 0, 10, "abC\n5", 5, "\u001B[31mInput should be int\u001B[0m" + "\n"}
+
+        };
+    }
+
     @DataProvider(name = "readLongTestData")
     public static Object[][] readLongTestData() {
         return new Object[][]{
@@ -68,6 +80,17 @@ public class BufferData {
                 {"7894032459451845645", 7894032459451845645L},
                 {"1894032459451845645", 1894032459451845645L},
                 {"789403245", 789403245L}
+        };
+    }
+
+    @DataProvider(name = "readLongNegativeTestData")
+    public static Object[][] readLongNegativeTestData() {
+        return new Object[][]{
+                {"abra\n2456454884253485", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 2456454884253485L},
+                {"fdas485615\n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
+                {" \n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
+                {"\n25", "\u001B[31mInput should be of a 'long' type\u001B[0m\n", 25L},
+//                {"\n25", "\u001B[31mInput should be of a long type\u001B[0m\n", 26L},
         };
     }
 

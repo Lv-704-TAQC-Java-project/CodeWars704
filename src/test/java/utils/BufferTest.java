@@ -8,6 +8,7 @@ import utils.data_provider_buffer.BufferData;
 import static com.org.ita.utils.Message.*;
 import java.io.*;
 import java.math.BigInteger;
+import java.util.Optional;
 
 public class BufferTest {
 
@@ -33,6 +34,19 @@ public class BufferTest {
         Buffer br = new Buffer();
         int actual = br.getValidIntFromUserInput(invalidMessage, start, end);
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "getValidIntFromUserInputTestDataNegative", dataProviderClass = BufferData.class)
+    public void testGetValidIntFromUserInputNegative(String invalidMessage, int start, int end, String number, int expected, String expectedError) {
+        System.setIn(new ByteArrayInputStream(number.getBytes()));
+        Buffer br = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        int actual = br.getValidIntFromUserInput(invalidMessage, start, end);
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedError, "Incorrect error");
+        softAssert.assertEquals(actual, expected, "Expected number was " + expected + "but was" + actual);
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "positive-data-readIntArr", dataProviderClass = BufferData.class)
@@ -76,6 +90,19 @@ public class BufferTest {
         Buffer bf = new Buffer();
         long actual = bf.readLong();
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "readLongNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadLongNegative(String input, String expectedMessage, Long expectedLong) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer bf = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        long actual = bf.readLong();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message is shown");
+        softAssert.assertEquals(actual, (long) expectedLong, String.format("Expected number was %d, but got %d instead.", expectedLong, actual));
+        softAssert.assertAll();
     }
 
 
