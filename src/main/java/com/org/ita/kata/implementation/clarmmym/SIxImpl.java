@@ -140,6 +140,10 @@ public class SIxImpl extends Base implements Six {
                 continue;
             }
 
+            if(s.contains(".")){
+                return "Error(float number):" + s;
+            }
+
             String[] gameScore = s.split("(?<=\\d) (?=[A-Z])");
             String[] teemResult = gameScore[0].split(" ");
 
