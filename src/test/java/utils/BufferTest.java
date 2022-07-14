@@ -3,8 +3,9 @@ package utils;
 import com.org.ita.utils.Buffer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import utils.data_provider_buffer.BufferData;
-
+import static com.org.ita.utils.Message.*;
 import java.io.*;
 import java.math.BigInteger;
 
@@ -90,7 +91,13 @@ public class BufferTest {
     public void testReadBigIntegerNegative(String input) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
-        bf.readBigInteger();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        BigInteger actual = bf.readBigInteger();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), "\u001B[31mInput should be BI\u001B[0m\n", "Incorrect error");
+        softAssert.assertEquals(actual, new BigInteger(String.valueOf(1)), "Expected number was 25 but rec " + actual);
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "readStringArrSplitByCommaTestData", dataProviderClass = BufferData.class)

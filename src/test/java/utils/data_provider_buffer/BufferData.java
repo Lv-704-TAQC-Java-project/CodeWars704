@@ -86,7 +86,7 @@ public class BufferData {
     @DataProvider(name = "readBigIntegerNegativeTestData")
     public static Object[][] readBigIntegerNegativeTestData() {
         return new Object[][]{
-                {"hello"},
+                {"hello\n"},
                 {"12350986.078099579"},
                 {"-1235098,60099579"},
                 {" "},
