@@ -8,6 +8,7 @@ import utils.data_provider_buffer.BufferData;
 import static com.org.ita.utils.Message.*;
 import java.io.*;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class BufferTest {
@@ -114,16 +115,16 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
-    public void testReadBigIntegerNegative(String input) {
+    @Test(dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadBigIntegerNegative(String input, String expectedMessage, BigInteger expectedBigInteger) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         BigInteger actual = bf.readBigInteger();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), "\u001B[31mInput should be BI\u001B[0m\n", "Incorrect error");
-        softAssert.assertEquals(actual, new BigInteger(String.valueOf(1)), "Expected number was 25 but rec " + actual);
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error");
+        softAssert.assertEquals(actual, expectedBigInteger, String.format("Expected number was %s, but got %s instead.",expectedBigInteger.toString(),actual.toString()));
         softAssert.assertAll();
     }
 
@@ -133,14 +134,6 @@ public class BufferTest {
         Buffer bf = new Buffer();
         String[] actual = bf.readStringArrSplitByComma();
         Assert.assertEquals(actual, expected);
-    }
-
-
-    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readStringArrSplitByCommaNegativeTestData", dataProviderClass = BufferData.class)
-    public void testReadStringArrSplitByCommaNegative(String input) {
-        System.setIn(new ByteArrayInputStream((input).getBytes()));
-        Buffer bf = new Buffer();
-        bf.readStringArrSplitByComma();
     }
 
     @Test(dataProvider = "readFloatTestData", dataProviderClass = BufferData.class)
