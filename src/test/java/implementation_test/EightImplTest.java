@@ -58,6 +58,11 @@ public class EightImplTest {
         float actual = eightImpl.mpgToKPM(mpg);
         Assert.assertEquals(actual, expected, delta, "Error: your data was " + mpg);
     }
+    @Test(dataProvider = "stringToNumber", dataProviderClass = EightData.class)
+    public void testDataStringToNumber(Eight eightImpl, String str, int expected) {
+        int actual = eightImpl.stringToNumber(str);
+        Assert.assertEquals(actual, expected);
+    }
 
     @Test(dataProvider = "twoDecimalPlacesTestData", dataProviderClass = EightData.class)
     public void twoDecimalPlacesTest(Eight impl, double number, double expected) {
