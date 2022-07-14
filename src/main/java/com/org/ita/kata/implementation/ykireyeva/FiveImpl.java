@@ -15,7 +15,54 @@ public class FiveImpl extends Base implements Five {
 
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        int[] right = countRight(v);
+        int[] left = countLeft(v);
+        int result = 0;
+
+        for (int i = 0; i < left.length; i++) {
+            result = Math.max(left[i] + right[i] + 1, result);
+        }
+
+        return result;
+    }
+
+    static boolean canFlowLeft(int[] v, int i) {
+        if (i == 0)
+            return false;
+        return v[i - 1] <= v[i];
+    }
+
+    static boolean canFlowRight(int[] v, int i) {
+        if (v.length - 1 == i)
+            return false;
+        return v[i + 1] <= v[i];
+    }
+
+
+    static int[] countLeft(int[] v) {
+        int[] result = new int[v.length];
+
+        for (int i = 0; i < v.length; i++) {
+            if (canFlowLeft(v, i)) {
+                result[i] = result[i - 1] + 1;
+            } else {
+                result[i] = 0;
+            }
+        }
+        return result;
+    }
+
+    static int[] countRight(int[] v) {
+        int[] result = new int[v.length];
+
+        for (int i = v.length - 1; i >= 0; i--) {
+            if (canFlowRight(v, i)) {
+                result[i] = result[i + 1] + 1;
+            } else {
+                result[i] = 0;
+            }
+        }
+        return result;
     }
 
     @Override
