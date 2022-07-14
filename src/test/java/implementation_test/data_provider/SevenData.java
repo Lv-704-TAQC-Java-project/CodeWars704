@@ -15,7 +15,7 @@ public class SevenData {
                 {,}
         };
 
-        return UserImplementation.combineImplWithTests(SEVEN_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSevenWithTestData(baseTestData);
     }
 
     @DataProvider(name = "WhereIsVasyaTestData")
@@ -32,7 +32,7 @@ public class SevenData {
                 {new int[]{6, 5, 5}, 1},
                 {new int[]{5, 4, 0}, 1}
         };
-        return UserImplementation.combineImplWithTests(SEVEN_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSevenWithTestData(baseTestData);
     }
 
     @DataProvider(name = "newAVGTestData")
@@ -50,7 +50,7 @@ public class SevenData {
                         84109.3, 44625.9, 148099.6, 88079.20000000001, 219531.40000000002, 39114.9, 179360.5,
                         207099.2}, 122556.6, 362797}
         };
-        return UserImplementation.combineImplWithTests(SEVEN_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSevenWithTestData(baseTestData);
     }
 
     @DataProvider(name = "newAVGTestDataNegative")
@@ -68,7 +68,7 @@ public class SevenData {
                         128953.00000000001, 54539.100000000006}, 20683.094444444443, -3620552},
 
         };
-        return UserImplementation.combineImplWithTests(SEVEN_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSevenWithTestData(baseTestData);
     }
 
     @DataProvider(name = "seriesSumTestData")
@@ -81,6 +81,6 @@ public class SevenData {
                 {30, "2.18"},
                 {85, "2.52"}
         };
-        return UserImplementation.combineImplWithTests(SEVEN_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSevenWithTestData(baseTestData);
     }
 }

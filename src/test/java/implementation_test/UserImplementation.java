@@ -4,19 +4,20 @@ import com.org.ita.kata.Eight;
 import com.org.ita.kata.Five;
 import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
+import com.org.ita.kata.implementation.avlrvn.EightImpl;
 import org.apache.commons.lang3.SerializationUtils;
 
 public class UserImplementation {
 
     public static final Eight[] EIGHT_IMPLEMENTATION = new Eight[]{
-            new com.org.ita.kata.implementation.avlrvn.EigthImpl(),
-            new com.org.ita.kata.implementation.clarmmym.EigthImpl(),
-            new com.org.ita.kata.implementation.dankomax.EigthImpl(),
-            new com.org.ita.kata.implementation.MyroslavaVynokur.EigthImpl(),
-            new com.org.ita.kata.implementation.nastiakomarenko.EigthImpl(),
-            new com.org.ita.kata.implementation.OliaZakharcuk.EigthImpl(),
-            new com.org.ita.kata.implementation.YaroslavTarasovych.EigthImpl(),
-            new com.org.ita.kata.implementation.ykireyeva.EigthImpl()
+            new EightImpl(),
+            new com.org.ita.kata.implementation.clarmmym.EightImpl(),
+            new com.org.ita.kata.implementation.dankomax.EightImpl(),
+            new com.org.ita.kata.implementation.MyroslavaVynokur.EightImpl(),
+            new com.org.ita.kata.implementation.nastiakomarenko.EightImpl(),
+            new com.org.ita.kata.implementation.OliaZakharcuk.EightImpl(),
+            new com.org.ita.kata.implementation.YaroslavTarasovych.EightImpl(),
+            new com.org.ita.kata.implementation.ykireyeva.EightImpl()
 
     };
 
@@ -69,25 +70,6 @@ public class UserImplementation {
 
         return fullTestData;
     }
-
-//    public static Object[][] combineImplWithTests(Object[] impl, Object[][] _data) {
-//        List<Object[]> listObjects = new ArrayList<>();
-//        for (Object obj_impl : impl) {
-//            Object[][] data = SerializationUtils.clone(_data);
-//            for (Object[] obj_data : data) {
-//                int totalLength = obj_data.length + 1;
-//                Object[] objArr = new Object[totalLength];
-//
-//                Object[] objDataClone = Arrays.stream(obj_data).toArray();
-//                System.arraycopy(new Object[]{obj_impl}, 0, objArr, 0, 1);
-//                System.arraycopy(objDataClone, 0, objArr, 1, totalLength - 1);
-//
-//                listObjects.add(objArr);
-//            }
-//        }
-//
-//        return listObjects.toArray(new Object[0][0]);
-//    }
 
     public static Object[][] combineEightWithTestData(Object[][] baseTestData) {
         return combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);

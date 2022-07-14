@@ -3,7 +3,7 @@ package com.org.ita.kata.implementation.avlrvn;
 import com.org.ita.kata.Base;
 import com.org.ita.kata.Eight;
 
-public class EigthImpl extends Base implements Eight {
+public class EightImpl extends Base implements Eight {
 
     @Override
     public int liters(double time) {

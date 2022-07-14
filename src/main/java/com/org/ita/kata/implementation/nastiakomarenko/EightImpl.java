@@ -5,7 +5,7 @@ import com.org.ita.kata.Eight;
 
 import java.util.Arrays;
 
-public class EigthImpl extends Base implements Eight {
+public class EightImpl extends Base implements Eight {
     public static double factorial(double number) {
         if (number <= 1) {
             return 1;

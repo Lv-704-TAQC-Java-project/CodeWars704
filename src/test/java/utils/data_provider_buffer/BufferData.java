@@ -250,7 +250,7 @@ public class BufferData {
                 {"-1456456158\n1456456158", errorMessage, 1456456158},
                 {"\n14.56", "\u001B[31mInput should be double\u001B[0m\n", 14.56},
                 {" \n0.1456456158", "\u001B[31mInput should be double\u001B[0m\n", 0.1456456158},
-                {"abra\n1456456158", "\u001B[31mInput should be double\u001B[0m\n", 1456456158},
+                {"abra\n1450006158", "\u001B[31mInput should be double\u001B[0m\n", 1450006158},
 //                {"-1456456158\n1456456158", "\u001B[31mEnter POSITIVE number.\u001B[0m\n", 14},
         };
     }
