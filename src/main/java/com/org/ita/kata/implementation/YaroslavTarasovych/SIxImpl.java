@@ -35,11 +35,11 @@ public class SIxImpl extends Base implements Six {
     @Override
     public String balance(String book) {
 
-        String allBalance = "";
-        String[] lines = book.split("\\n|\\r");
+        StringBuilder allBalance = new StringBuilder();
+        String[] lines = book.split("[\\n\\r]");
         String reg = "[ !=,:;?*{}]";
         String balance = lines[0].replaceAll(reg, "");
-        allBalance = allBalance + "Original Balance: " + balance + "\\r\\n";
+        allBalance.append("Original Balance: ").append(balance).append("\\r\\n");
         double total = 0;
         int count = 0;
         for (int i = 1; i < lines.length; i++) {
@@ -60,13 +60,13 @@ public class SIxImpl extends Base implements Six {
             count++;
             balance = String.valueOf((Double.parseDouble(balance) - Double.parseDouble(c)));
             balance = String.format(Locale.ENGLISH, "%.2f", Double.parseDouble(balance));
-            allBalance += a + " " + b + " " + c + " Balance " + balance + "\\r\\n";
+            allBalance.append(a).append(" ").append(b).append(" ").append(c).append(" Balance ").append(balance).append("\\r\\n");
 
         }
         double avg = total / count;
-        allBalance += "Total expense  " + String.format(Locale.ENGLISH, "%.2f", total) + "\\r\\n";
-        allBalance += "Average expense  " + String.format(Locale.ENGLISH, "%.2f", avg);
-        return allBalance;
+        allBalance.append("Total expense  ").append(String.format(Locale.ENGLISH, "%.2f", total)).append("\\r\\n");
+        allBalance.append("Average expense  ").append(String.format(Locale.ENGLISH, "%.2f", avg));
+        return allBalance.toString();
     }
 
     @Override
@@ -84,8 +84,8 @@ public class SIxImpl extends Base implements Six {
         String[] lines = strng.split("\n");
         double avg = -1;
         int count = 0;
-        for (int i = 0; i < lines.length; i++) {
-            String[] line = lines[i].split("[: ,]");
+        for (String s : lines) {
+            String[] line = s.split("[: ,]");
             if (line[0].equals(town)) {
                 avg = 0;
                 for (int j = 2; j < line.length; j += 2) {
@@ -105,8 +105,8 @@ public class SIxImpl extends Base implements Six {
         int count = 0;
         double var = 0;
         String[] lines = strng.split("\n");
-        for (int i = 0; i < lines.length; i++) {
-            String[] line = lines[i].split("[: ,]");
+        for (String s : lines) {
+            String[] line = s.split("[: ,]");
             if (line[0].equals(town)) {
                 for (int j = 2; j < line.length; j += 2) {
                     var = var + Math.pow(Double.parseDouble(line[j]) - avg, 2);
@@ -129,23 +129,23 @@ public class SIxImpl extends Base implements Six {
         int pointConceded = 0;
         int points = 0;
 
-        for (int i = 0; i < lines.length; i++) {
+        for (String line : lines) {
 
             Pattern p = Pattern.compile("\\b" + toFind + "\\b");
-            Matcher m = p.matcher(lines[i]);
+            Matcher m = p.matcher(line);
             Pattern p1 = Pattern.compile("\\b\\d+\\b");
-            Matcher m1 = p1.matcher(lines[i]);
+            Matcher m1 = p1.matcher(line);
             if (m.find()) {
                 Pattern p2 = Pattern.compile("\\b\\d+\\.\\d+\\b");
-                Matcher m2 = p2.matcher(lines[i]);
-                if (m2.find()) return "Error(float number):" + lines[i];
+                Matcher m2 = p2.matcher(line);
+                if (m2.find()) return "Error(float number):" + line;
                 String[] point = new String[2];
                 int pointTeam;
                 int pointOther;
                 int start = m.start();
                 int j = 0;
                 while (m1.find()) {
-                    point[j] = lines[i].substring(m1.start(), m1.end());
+                    point[j] = line.substring(m1.start(), m1.end());
                     j++;
                 }
                 if (start == 0) {
@@ -176,8 +176,8 @@ public class SIxImpl extends Base implements Six {
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         if (lstOfArt == null || lstOfArt.length == 0) return "";
         int[] sum = new int[lstOf1stLetter.length];
-        for (int i = 0; i < lstOfArt.length; i++) {
-            String[] line = lstOfArt[i].split(" ");
+        for (String s : lstOfArt) {
+            String[] line = s.split(" ");
             for (int j = 0; j < lstOf1stLetter.length; j++) {
                 if (line[0].charAt(0) == lstOf1stLetter[j].charAt(0)) sum[j] += Integer.parseInt(line[1]);
             }
