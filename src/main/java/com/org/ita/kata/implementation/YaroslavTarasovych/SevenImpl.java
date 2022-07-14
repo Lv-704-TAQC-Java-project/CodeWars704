@@ -1,9 +1,10 @@
 package com.org.ita.kata.implementation.YaroslavTarasovych;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Seven;
 
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
         double allSum = navg * (arr.length + 1);
@@ -28,7 +29,7 @@ public class SevenImpl implements Seven {
             sum = sum + div;
             a += 3;
         }
-        return String.format("%.2f", sum);
+        return String.format("%.2f", sum).replaceAll(",",".");
     }
 
     @Override

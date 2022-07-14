@@ -1,10 +1,11 @@
 package com.org.ita.kata.implementation.dankomax;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     private static boolean isPrime(long n) {
         if (n <= 1) {
             return false;
@@ -15,19 +16,6 @@ public class FiveImpl implements Five {
             }
         }
         return true;
-    }
-
-    @Override
-    public int artificialRain(int[] numbers) {
-        int[] flowRight = computeRightFlow(numbers);
-        int[] flowLeft = computeLeftFlow(numbers);
-
-        int maxWateredPlains = 0;
-
-        for (int i = 0; i < flowLeft.length; i++) {
-            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
-        }
-        return maxWateredPlains;
     }
 
     static int[] computeLeftFlow(int[] numbers) {
@@ -66,6 +54,19 @@ public class FiveImpl implements Five {
         if (numbers.length - 1 == i)
             return false;
         return numbers[i + 1] <= numbers[i];
+    }
+
+    @Override
+    public int artificialRain(int[] numbers) {
+        int[] flowRight = computeRightFlow(numbers);
+        int[] flowLeft = computeLeftFlow(numbers);
+
+        int maxWateredPlains = 0;
+
+        for (int i = 0; i < flowLeft.length; i++) {
+            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
+        }
+        return maxWateredPlains;
     }
 
     @Override

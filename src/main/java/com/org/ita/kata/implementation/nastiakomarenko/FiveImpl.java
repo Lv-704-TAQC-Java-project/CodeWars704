@@ -1,18 +1,72 @@
 package com.org.ita.kata.implementation.nastiakomarenko;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
+    private static boolean prime(double n) {
+        boolean prime = true;
+        for (int m = 2; m <= n / 2; m++) {
+            if ((n % m) == 0) {
+                prime = false;
+                break;
+            }
+        }
+        return prime;
+    }
+
     @Override
     public int artificialRain(int[] v) {
-        return 0;
-    }
+        if(v.length==1){
+            return 1;
+        }
+
+        int result = 0;
+
+        for (int i = 0; i < v.length; i++) {
+            int left = i;
+            int right = i;
+            int current = i;
+
+            int lCount = 0;
+            int rCount = 0;
+
+            while (left != 0) {
+                if (v[left] <= v[current]) {
+                    lCount++;
+                    current = left;
+                    left--;
+                } else {
+                    break;
+                }
+            }
+
+            current = i;
+
+            while (right != v.length - 1) {
+                if (v[right] <= v[current]) {
+                    rCount++;
+                    current = right;
+                    right++;
+                } else {
+                    break;
+                }
+            }
+
+            if (lCount + rCount >= result) {
+                result = lCount + rCount;
+            }
+
+        }
+
+        return result;
+        }
 
     @Override
     public long[] gap(int g, long m, long n) {
@@ -33,31 +87,21 @@ public class FiveImpl implements Five {
                 break;
             }
         }
-        if (arr[0] == 0 & arr[1] == 0)
-        {
+        if (arr[0] == 0 & arr[1] == 0) {
             arr = null;
         }
         return arr;
-        }
-    private static boolean prime(double n) {
-        boolean prime = true;
-        for (int m = 2; m <= n / 2; m++) {
-            if ((n % m) == 0) {
-                prime = false;
-                break;
-            }
-        }
-        return prime;
     }
+
 
     @Override
     public int zeros(int factor) {
-            int count = 0;
-            double Max = Math.log(factor) / Math.log(5);
-            for (int k = 1; k < Max; k++) {
-                count = count + (int) (factor / Math.pow(5, k));
-            }
-            return count;
+        int count = 0;
+        double Max = Math.log(factor) / Math.log(5);
+        for (int k = 1; k < Max; k++) {
+            count = count + (int) (factor / Math.pow(5, k));
+        }
+        return count;
 
 
     }
@@ -82,54 +126,54 @@ public class FiveImpl implements Five {
 
     @Override
     public double solveSum(double m) {
-        double  U = Math.sqrt(4 * m + 1);
+        double U = Math.sqrt(4 * m + 1);
         return (2 * m + 1 - U) / (2 * m);
     }
 
     @Override
     public long[] smallest(long n) {
 
-            ArrayList<Integer> listOfDigits = numIntoDigits(n);
-            StringBuilder s = new StringBuilder();
-            long[] arr = new long[3];
-            int min = Integer.MAX_VALUE;
-            int indexOfMin = 0;
-            int newIndex = 0;
-            int resultNumber;
-            for (int i = 1; i < listOfDigits.size(); i++){
-                if (listOfDigits.get(i) < min){
-                    min = listOfDigits.get(i);
-                    indexOfMin = i;
-                }
+        ArrayList<Integer> listOfDigits = numIntoDigits(n);
+        StringBuilder s = new StringBuilder();
+        long[] arr = new long[3];
+        int min = Integer.MAX_VALUE;
+        int indexOfMin = 0;
+        int newIndex = 0;
+        int resultNumber;
+        for (int i = 1; i < listOfDigits.size(); i++) {
+            if (listOfDigits.get(i) < min) {
+                min = listOfDigits.get(i);
+                indexOfMin = i;
             }
-            listOfDigits.remove(indexOfMin);
-            if (min == 0 && indexOfMin == 1){
-                indexOfMin = 0;
-                newIndex = 1;
-            }
-            if (min < listOfDigits.get(0)){
-                listOfDigits.add(0, min);
-            } else {
-                listOfDigits.add(1, min);
-                newIndex = 1;
-            }
-
-            listOfDigits.forEach(s::append);
-            resultNumber = Integer.parseInt(s.toString());
-            arr[0] = resultNumber;
-            arr[1] = indexOfMin;
-            arr[2] = newIndex;
-            System.out.println(Arrays.toString(arr));
-            return arr;
+        }
+        listOfDigits.remove(indexOfMin);
+        if (min == 0 && indexOfMin == 1) {
+            indexOfMin = 0;
+            newIndex = 1;
+        }
+        if (min < listOfDigits.get(0)) {
+            listOfDigits.add(0, min);
+        } else {
+            listOfDigits.add(1, min);
+            newIndex = 1;
         }
 
-        private ArrayList<Integer> numIntoDigits(long n){
-            ArrayList<Integer> list = new ArrayList<>();
-            while (n > 0){
-                list.add((int) (n % 10));
-                n = n/10;
-            }
-            Collections.reverse(list);
-            return list;
+        listOfDigits.forEach(s::append);
+        resultNumber = Integer.parseInt(s.toString());
+        arr[0] = resultNumber;
+        arr[1] = indexOfMin;
+        arr[2] = newIndex;
+        System.out.println(Arrays.toString(arr));
+        return arr;
+    }
+
+    private ArrayList<Integer> numIntoDigits(long n) {
+        ArrayList<Integer> list = new ArrayList<>();
+        while (n > 0) {
+            list.add((int) (n % 10));
+            n = n / 10;
         }
+        Collections.reverse(list);
+        return list;
+    }
 }

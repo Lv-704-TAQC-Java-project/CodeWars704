@@ -1,17 +1,17 @@
 package com.org.ita.kata.implementation.MyroslavaVynokur;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Six;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
-public class SIxImpl implements Six {
+public class SIxImpl extends Base implements Six {
     @Override
     public long findNb(long m) {
         long sqrt1 = (long) Math.sqrt(m);
@@ -51,7 +51,6 @@ public class SIxImpl implements Six {
                     .append((new DecimalFormat("#.##").format(totalBalance))).append(ENTER);
         }
         double averageExpense = totalExpense / (lines.length - 1);
-        double averageExpenseF = Math.floor(averageExpense * 100 / 100);
         double originalBalance = Double.parseDouble(lines[0]);
 
         String completedString = sb.toString();
@@ -107,14 +106,13 @@ public class SIxImpl implements Six {
                 teamRecords.add(allRecord);
             }
         }
-
         List<String> teamScores = new ArrayList<>();
         List<String> opponentScores = new ArrayList<>();
 
         for (String teamRecord : teamRecords) {
-            Pattern p = Pattern.compile("\\b\\d+\\.\\d+\\b");
-            Matcher m = p.matcher(teamRecord);
-            if (m.find()) return "Error(float number):" + teamRecord;
+            if (teamRecord.contains(".") && !toFind.isEmpty()) {
+                return "Error(float number):" + teamRecord;
+            }
 
             List<String> elementsLine = Arrays.stream(teamRecord.split(" ")).collect(Collectors.toList());
 
@@ -138,7 +136,8 @@ public class SIxImpl implements Six {
             if (teamScoresInt.get(i) - opponentScoresInt.get(i) > 0) {
                 won++;
                 rank += 3;
-            } else {
+            }
+            if (teamScoresInt.get(i) - opponentScoresInt.get(i) < 0) {
                 lost++;
             }
             if (teamScoresInt.get(i) - opponentScoresInt.get(i) == 0) {
@@ -147,36 +146,36 @@ public class SIxImpl implements Six {
             }
         }
 
-        if ((won == 0) & (draws == 0) & (lost == 0) & toFind != "") {
+        if (((won == 0) & (draws == 0) & (lost == 0) & !Objects.equals(toFind, "")) || !resultSheet.contains(toFind + " ")) {
             return toFind + ":This team didn't play!";
         }
 
-        return toFind == "" ? "" : toFind + ":W=" + won + ";D=" + draws
+        return toFind.isEmpty() ? "" : toFind + ":W=" + won + ";D=" + draws
                 + ";L=" + lost + ";Scored=" + pointsScored + ";Conceded=" + pointsConceded + ";Points=" + rank;
     }
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
 
-        if (lstOfArt == null | lstOfArt.length == 0 | lstOf1stLetter == null | lstOf1stLetter.length == 0) {
+        if (lstOfArt == null || lstOfArt.length == 0 || lstOf1stLetter == null || lstOf1stLetter.length == 0) {
             return "";
         }
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
 
         for (int i = 0; i < lstOf1stLetter.length; i++) {
             int sum = 0;
-            for (int t = 0; t < lstOfArt.length; t++) {
-                if (lstOfArt[t].charAt(0) == lstOf1stLetter[i].charAt(0)) {
-                    String[] element = lstOfArt[t].split(" ");
+            for (String s : lstOfArt) {
+                if (s.charAt(0) == lstOf1stLetter[i].charAt(0)) {
+                    String[] element = s.split(" ");
                     System.out.println(Arrays.toString(element));
                     sum += Integer.parseInt(element[1]);
                 }
             }
-            answer += "(" + lstOf1stLetter[i] + " : " + sum + ")";
+            answer.append("(").append(lstOf1stLetter[i]).append(" : ").append(sum).append(")");
             if ((lstOf1stLetter.length - 1) != i) {
-                answer += " - ";
+                answer.append(" - ");
             }
         }
-        return answer;
+        return answer.toString();
     }
 }

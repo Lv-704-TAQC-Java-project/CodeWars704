@@ -1,14 +1,16 @@
 package com.org.ita.kata.implementation.nastiakomarenko;
 
+import com.org.ita.kata.Base;
 import com.org.ita.kata.Six;
 
 
 import java.util.Locale;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class SIxImpl implements Six {
+public class SIxImpl extends Base implements Six {
     @Override
     public long findNb(long M) {
 
@@ -54,6 +56,7 @@ public class SIxImpl implements Six {
             balance = String.format(Locale.ENGLISH, "%.2f", Double.parseDouble(balance));
             allBalance += a + " " + b + " " + c + " Balance " + balance + "\n";
 
+
         }
         double avg = total / count;
         allBalance += "Total expense  " + String.format(Locale.ENGLISH, "%.2f", total) + "\n";
@@ -73,6 +76,7 @@ public class SIxImpl implements Six {
         return Double.parseDouble(String.valueOf(bigDecimal));
 
     }
+
     @Override
     public double mean(String town, String str2) {
         int size = 0;

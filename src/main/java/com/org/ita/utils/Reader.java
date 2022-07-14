@@ -1,6 +1,5 @@
 package com.org.ita.utils;
 
-import java.io.IOException;
 import java.math.BigInteger;
 
 public interface Reader {
