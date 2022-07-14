@@ -48,7 +48,7 @@ public class SIxImpl extends Base implements Six {
             totalExpense += Double.parseDouble(oneLineArr[2]);
             totalBalance -= Double.parseDouble(oneLineArr[2]);
             sb.append(oneLineArr[0]).append(SPACE).append(oneLineArr[1]).append(SPACE).append(oneLineArr[2]).append(BALANCE)
-                    .append((new DecimalFormat("#.##").format(totalBalance))).append(ENTER);
+                    .append((new DecimalFormat("#.00").format(totalBalance))).append(ENTER);
         }
         double averageExpense = totalExpense / (lines.length - 1);
         double originalBalance = Double.parseDouble(lines[0]);
