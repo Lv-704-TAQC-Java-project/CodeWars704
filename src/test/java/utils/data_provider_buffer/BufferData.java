@@ -16,6 +16,17 @@ public class BufferData {
         };
     }
 
+    @DataProvider(name = "negative-data-readIntArr")
+    public static Object[][] testNegativeReadIntArr() {
+        final String errorMsg = "\u001B[31mInput should be int\u001B[0m\n";
+        return new Object[][]{
+                {"hello\n2 7 6 4", errorMsg, new int[]{2, 7, 6, 4}},
+                {"6bye 48\n5 7 8 9", errorMsg, new int[]{5, 7, 8, 9}},
+                {" \n2 7 6 4", errorMsg, new int[]{2, 7, 6, 4}},
+                {"\n5 7 8 9", errorMsg, new int[]{5, 7, 8, 9}}
+        };
+    }
+
     @DataProvider(name = "positive-data-readDoubleArr")
     public static Object[][] testPositiveReadDoubleArr() {
         return new Object[][]{
@@ -25,11 +36,14 @@ public class BufferData {
         };
     }
 
-    @DataProvider(name = "negative-data-readNumbers")
-    public static Object[][] testNegativeReadNumbers() {
+    @DataProvider(name = "negative-data-readDoubleArr")
+    public static Object[][] testNegativeReadDouble() {
+        final String errorMsg = "\u001B[31mInput should be double\u001B[0m\n";
         return new Object[][]{
-                {"hello"},
-                {"bye"}
+                {"hello\n14.0 30.0 5.0 7.0", errorMsg, new double[]{14.0, 30.0, 5.0, 7.0}},
+                {"6bye 48\n139532.80000000002 163691.0", errorMsg, new double[]{139532.80000000002, 163691.0}},
+                {" \n14.0 30.0 5.0 7.0", errorMsg, new double[]{14.0, 30.0, 5.0, 7.0}},
+                {"\n139532.80000000002 163691.0", errorMsg, new double[]{139532.80000000002, 163691.0}}
         };
     }
 
