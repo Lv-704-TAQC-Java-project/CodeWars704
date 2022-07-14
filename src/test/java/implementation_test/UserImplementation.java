@@ -4,13 +4,12 @@ import com.org.ita.kata.Eight;
 import com.org.ita.kata.Five;
 import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
-import com.org.ita.kata.implementation.avlrvn.EightImpl;
 import org.apache.commons.lang3.SerializationUtils;
 
 public class UserImplementation {
 
     private static final Eight[] EIGHT_IMPLEMENTATION = new Eight[]{
-            new EightImpl(),
+            new com.org.ita.kata.implementation.avlrvn.EightImpl(),
             new com.org.ita.kata.implementation.clarmmym.EightImpl(),
             new com.org.ita.kata.implementation.dankomax.EightImpl(),
             new com.org.ita.kata.implementation.MyroslavaVynokur.EightImpl(),
