@@ -6,6 +6,7 @@ import com.org.ita.kata.Six;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Arrays;
+import java.util.Locale;
 
 
 public class SIxImpl extends Base implements Six {
@@ -45,20 +46,20 @@ public class SIxImpl extends Base implements Six {
         String[] linesArr = cleanStr.split("\\r?\\n");
         double originalBalance = Double.parseDouble(linesArr[0]);
         double currentBalance = originalBalance;
-        StringBuilder finalStr = new StringBuilder(String.format("Original Balance: %.2f\\r\\n", originalBalance));
+        StringBuilder finalStr = new StringBuilder(String.format(Locale.ENGLISH, "Original Balance: %.2f\\r\\n", originalBalance));
 
         for (int i = 1; i < linesArr.length; i++) {
             String[] currentLineArr = linesArr[i].replaceAll("\\s+", " ").split(" ");
             double currentExpense = Double.parseDouble(currentLineArr[currentLineArr.length - 1]);
             currentBalance -= currentExpense;
             finalStr.append(String.join(" ", currentLineArr));
-            finalStr.append(String.format(" Balance %.2f\\r\\n", currentBalance));
+            finalStr.append(String.format(Locale.ENGLISH, " Balance %.2f\\r\\n", currentBalance));
         }
 
         double totalExpense = originalBalance - currentBalance;
         int numOfExpenses = linesArr.length - 1;
-        finalStr.append(String.format("Total expense  %.2f\\r\\n", totalExpense));
-        finalStr.append(String.format("Average expense  %.2f", totalExpense / numOfExpenses));
+        finalStr.append(String.format(Locale.ENGLISH, "Total expense  %.2f\\r\\n", totalExpense));
+        finalStr.append(String.format(Locale.ENGLISH, "Average expense  %.2f", totalExpense / numOfExpenses));
 
         return finalStr.toString();
     }
