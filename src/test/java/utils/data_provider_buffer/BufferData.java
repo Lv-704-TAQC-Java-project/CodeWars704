@@ -177,25 +177,23 @@ public class BufferData {
 
     @DataProvider(name = "readDoubleNegativeTestData")
     public static Object[][] readDoubleNegativeTestData() {
+        String errorMessage = "\u001B[31mInput should be double\u001B[0m\n";
         return new Object[][]{
-                {"19,8"},
-                {"0,000"},
-                {"-1235098,60099579"},
-                {" "},
-                {"world"},
+                {"bcfjw\n0.0", errorMessage, 0.0},
+                {"fdas485615\n25", errorMessage, 25},
+                {" \n25.000", errorMessage, 25.000},
+                {"\n15.123", errorMessage, 15.123},
         };
     }
 
-    @DataProvider(name = "readFloatNegativeTestData")
-    public static Object[][] readFloatNegativeTestData() {
+    @DataProvider(name = "negativeDataReadFloat")
+    public static Object[][] testNegativeReadFloat() {
+        final String errorMsg = "\u001B[31mInput should be float\u001B[0m\n";
         return new Object[][]{
-                {""},
-                {" "},
-                {"gjlkg"},
-                {"74653@56"},
-                {"0.0g"},
-                {"789.52-"},
-                {"gjgk.kjgjhh"}
+                {"hello\n14.0", errorMsg, 14.0f},
+                {"6bye 48\n139532.80000000002", errorMsg, 139532.80000000002f},
+                {" \n14.0", errorMsg, 14.0f},
+                {"\n139532.80000000002", errorMsg, 139532.80000000002f}
         };
     }
     @DataProvider(name = "readIntTestData")

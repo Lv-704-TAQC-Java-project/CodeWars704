@@ -76,15 +76,6 @@ public enum GroupInfo {
         return null;
     }
 
-    public static String getMemberGitHubById(int id) {
-        for (GroupInfo member : values()) {
-            if (member.id == id) {
-                return member.getGitHub();
-            }
-        }
-        return null;
-    }
-
     public static GroupInfo getMemberById(int id) {
         for (GroupInfo member : values()) {
             if (member.id == id) {

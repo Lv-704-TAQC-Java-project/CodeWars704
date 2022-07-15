@@ -17,7 +17,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public double readDouble() { //Olenka
+    public double readDouble() {
         try {
             return Double.parseDouble(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -27,7 +27,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public int readInt() { //Nastya
+    public int readInt() {
         try {
             return Integer.parseInt(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -37,7 +37,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public long readLong() { //Maksym
+    public long readLong() {
         try {
             return Long.parseLong(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -47,7 +47,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public BigInteger readBigInteger() { //Yaroslav
+    public BigInteger readBigInteger() {
         try {
             return new BigInteger(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -57,7 +57,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public String readString() { //Myrosia
+    public String readString() {
         try {
             return Buffer.br.readLine();
         } catch (IOException e) {
@@ -67,7 +67,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public float readFloat() {  //Olia
+    public float readFloat() {
         try {
             return Float.parseFloat(Buffer.br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -77,7 +77,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public String[] readStringArr() {  //Myrosia
+    public String[] readStringArr() {
         try {
             return Buffer.br.readLine().trim().split("\\s+");
         } catch (IOException e) {
@@ -87,7 +87,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public String[] readStringArrSplitByComma() {  //Yaroslav
+    public String[] readStringArrSplitByComma() {
         try {
             return Buffer.br.readLine().trim().split(",");
         } catch (IOException e) {
@@ -97,7 +97,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public int[] readIntArr() { //Yaryna
+    public int[] readIntArr() {
         try {
             String[] in = br.readLine().trim().split("\\s+");
             int[] arr = new int[in.length];
@@ -111,7 +111,7 @@ public class Buffer implements Reader {
     }
 
     @Override
-    public double[] readDoubleArr() { //Yaryna
+    public double[] readDoubleArr() {
         try {
             String[] in = br.readLine().trim().split("\\s+");
             double[] arr = new double[in.length];
@@ -127,7 +127,7 @@ public class Buffer implements Reader {
         }
     }
 
-    public double getPositiveDoubleInput() { //Maksym
+    public double getPositiveDoubleInput() {
         double number;
         boolean invalidNum;
 
@@ -142,7 +142,7 @@ public class Buffer implements Reader {
         return number;
     }
 
-    public int getValidIntFromUserInput(String invalidMessage, int start, int end) { //Myrosia
+    public int getValidIntFromUserInput(String invalidMessage, int start, int end) {
         int number;
         boolean invalidNum;
 
