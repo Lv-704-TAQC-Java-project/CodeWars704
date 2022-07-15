@@ -20,7 +20,7 @@ public class EightImpl extends Base implements Eight {
 
     @Override
     public int liters(double time) {
-        return (int) (time * 0.5);
+        return time > 0 ? (int) (time * 0.5) : 0;
     }
 
     @Override

@@ -67,7 +67,6 @@ public class FiveImpl extends Base implements Five {
 
     @Override
     public long[] gap(int g, long m, long n) {
-        long[] arr = new long[2];
         outer:
         for (long i = m; i <= i + g && i < n; i++) {
             if (checkForPrime(i) && checkForPrime(i + g)) {
@@ -80,9 +79,7 @@ public class FiveImpl extends Base implements Five {
                         continue outer;
                     }
                 }
-                arr[0] = i;
-                arr[1] = i + g;
-                return arr;
+                return new long[]{i, i + g};
             }
         }
         return null;
@@ -90,14 +87,10 @@ public class FiveImpl extends Base implements Five {
 
     private boolean checkForPrime(long inputNumber) {
         boolean isItPrime = true;
-        if (inputNumber <= 1) {
-            isItPrime = false;
-        } else {
-            for (int i = 2; i <= inputNumber / 2; i++) {
-                if ((inputNumber % i) == 0) {
-                    isItPrime = false;
-                    break;
-                }
+        for (int i = 2; i <= inputNumber / 2; i++) {
+            if ((inputNumber % i) == 0) {
+                isItPrime = false;
+                break;
             }
         }
         return isItPrime;
