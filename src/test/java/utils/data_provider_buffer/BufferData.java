@@ -183,12 +183,12 @@ public class BufferData {
 
     @DataProvider(name = "readDoubleNegativeTestData")
     public static Object[][] readDoubleNegativeTestData() {
+        String errorMessage = "\u001B[31mInput should be double\u001B[0m\n";
         return new Object[][]{
-                {"19,8"},
-                {"0,000"},
-                {"-1235098,60099579"},
-                {" "},
-                {"world"},
+                {"bcfjw\n0.0", errorMessage, 0.0},
+                {"fdas485615\n25", errorMessage, 25},
+                {" \n25.000", errorMessage, 25.000},
+                {"\n15.123", errorMessage, 15.123},
         };
     }
 
