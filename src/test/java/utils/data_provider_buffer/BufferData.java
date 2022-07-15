@@ -192,16 +192,14 @@ public class BufferData {
         };
     }
 
-    @DataProvider(name = "readFloatNegativeTestData")
-    public static Object[][] readFloatNegativeTestData() {
+    @DataProvider(name = "negativeDataReadFloat")
+    public static Object[][] testNegativeReadFloat() {
+        final String errorMsg = "\u001B[31mInput should be float\u001B[0m\n";
         return new Object[][]{
-                {""},
-                {" "},
-                {"gjlkg"},
-                {"74653@56"},
-                {"0.0g"},
-                {"789.52-"},
-                {"gjgk.kjgjhh"}
+                {"hello\n14.0", errorMsg, 14.0f},
+                {"6bye 48\n139532.80000000002", errorMsg, 139532.80000000002f},
+                {" \n14.0", errorMsg, 14.0f},
+                {"\n139532.80000000002", errorMsg, 139532.80000000002f}
         };
     }
     @DataProvider(name = "readIntTestData")
