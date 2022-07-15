@@ -171,11 +171,17 @@ public class BufferTest {
         bf.readDouble();
     }
 
-    @Test(expectedExceptions = NullPointerException.class, dataProvider = "readFloatNegativeTestData", dataProviderClass = BufferData.class)
-    public void testReadFloatNegative(String input) {
-        System.setIn(new ByteArrayInputStream((input).getBytes()));
-        Buffer bf = new Buffer();
-        bf.readFloat();
+    @Test(dataProvider = "negativeDataReadFloat", dataProviderClass = BufferData.class)
+    public void testNegativeReadDouble(String input, String expectedMessage, float expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer br = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        double actual = br.readFloat();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message");
+        softAssert.assertEquals(actual, expected, 0.0001, "Expected number was " + expected + "but was" + actual);
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "readIntTestData", dataProviderClass = BufferData.class)
