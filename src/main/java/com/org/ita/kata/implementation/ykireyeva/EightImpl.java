@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
-public class EigthImpl extends Base implements Eight {
+public class EightImpl extends Base implements Eight {
 
     private static BigDecimal findFactorial(double n) {
         BigDecimal factorial = BigDecimal.valueOf(1);

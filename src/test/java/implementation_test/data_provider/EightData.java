@@ -3,8 +3,6 @@ package implementation_test.data_provider;
 import implementation_test.UserImplementation;
 import org.testng.annotations.DataProvider;
 
-import static implementation_test.UserImplementation.EIGHT_IMPLEMENTATION;
-
 
 public class EightData {
 
@@ -34,7 +32,7 @@ public class EightData {
                 {80, 40},
                 {1600.20, 800.0},
         };
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
     @DataProvider(name = "negative-data-Liters")
@@ -43,7 +41,7 @@ public class EightData {
                 {-500.00, 0},
                 {-1, 0},
         };
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
 
@@ -61,7 +59,7 @@ public class EightData {
                 {new int[]{100, 38, 69, 65}, new int[]{10, 1444, 4761, 4225}},
                 {new int[]{64, 27, 83, 98, 10, 62, 58, 23, 57, 49, 53}, new int[]{8, 729, 6889, 9604, 100, 3844, 3364, 529, 3249, 7, 2809}}
         };
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
     @DataProvider(name = "data-provider-countPositivesSumNegatives")
@@ -91,7 +89,7 @@ public class EightData {
                 },
         };
 
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
     @DataProvider(name = "data-DivisibleBy")
@@ -112,7 +110,7 @@ public class EightData {
                         11,
                         new int[]{55, 11, 55, 11, 44, 99, 88, 99, 88, 44}}
         };
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
     @DataProvider(name = "volumeOfCuboidData")
@@ -123,7 +121,7 @@ public class EightData {
                 {23.61, 58.33, 12.11, 16677.5444},
                 {259, 333, 0.55, 47435.85}
         };
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
     @DataProvider(name = "mpgToKPMData")
@@ -134,7 +132,7 @@ public class EightData {
                 {30, 10.62f},
                 {150, 53.1f}
         };
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
     @DataProvider(name = "stringToNumber")
     public static Object[][] testDataStringToNumber() {
@@ -145,7 +143,7 @@ public class EightData {
                 {"345", 345},
                 {"2345678", 2345678}
         };
-        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineEightWithTestData(baseTestData);
     }
 
     @DataProvider(name = "twoDecimalPlacesTestData")

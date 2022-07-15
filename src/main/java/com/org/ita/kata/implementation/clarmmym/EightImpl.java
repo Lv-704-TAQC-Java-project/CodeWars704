@@ -6,7 +6,7 @@ import com.org.ita.kata.Eight;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EigthImpl extends Base implements Eight {
+public class EightImpl extends Base implements Eight {
     private static boolean hasIntegerRoot(int number) {
         int root = (int) Math.sqrt(number);
         return Math.pow(root, 2) == number;

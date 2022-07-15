@@ -6,7 +6,7 @@ import com.org.ita.kata.Eight;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class EigthImpl extends Base implements Eight {
+public class EightImpl extends Base implements Eight {
     private static long factorial(double n) {
         long factorial = 1;
         for (int i = 1; i <= n; i++) {

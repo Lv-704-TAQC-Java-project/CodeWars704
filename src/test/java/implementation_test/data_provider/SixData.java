@@ -3,11 +3,9 @@ package implementation_test.data_provider;
 import implementation_test.UserImplementation;
 import org.testng.annotations.DataProvider;
 
-import static implementation_test.UserImplementation.SIX_IMPLEMENTATION;
-
 public class SixData {
 
-    static String resultSheet = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
+    static final String resultSheet = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
             + "Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,"
             + "Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,"
             + "Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 112,Boston Celtics 112 Philadelphia 76ers 95,"
@@ -15,7 +13,7 @@ public class SixData {
             + "Toronto Raptors 106 Indiana Pacers 99,Orlando Magic 87 Washington Wizards 88,Golden State Warriors 111 New Orleans Pelicans 95,"
             + "Atlanta Hawks 94.88 Detroit Pistons 106,Chicago Bulls 94 Cleveland Cavaliers 95,"
             + "Los Angeles Lakers 113 Detroit Pistons 112,Los Angeles Lakers 111 Cleveland Cavaliers 111,Los Angeles Lakers 111 Atlanta Hawks 112,";
-    static String dataRainfall = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5," +
+    static final String dataRainfall = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5," +
             "Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
             "\nLondon:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0," +
             "Nov 59.0,Dec 52.9" +
@@ -121,7 +119,7 @@ public class SixData {
                         {1724640336594140626L, -1}
                 };
 
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "positive-data-NbaCup")
@@ -132,7 +130,7 @@ public class SixData {
                 {resultSheet, "Oklahoma City Thunder", "Oklahoma City Thunder:W=0;D=1;L=0;Scored=112;Conceded=112;Points=1"},
                 {resultSheet, "Chicago Bulls", "Chicago Bulls:W=0;D=0;L=2;Scored=182;Conceded=195;Points=0"}
         };
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "negative-data-NbaCup")
@@ -142,7 +140,7 @@ public class SixData {
                 {resultSheet, "Atlanta Hawks", "Error(float number):Atlanta Hawks 94.88 Detroit Pistons 106"},
                 {resultSheet, "", ""}
         };
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "data-provider-mean")
@@ -155,7 +153,7 @@ public class SixData {
                 {"Caracas", dataRainfall, -1},
                 {"Sydney", dataRainfall, 101.85000000000001}
         };
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "data-provider-variance")
@@ -168,7 +166,7 @@ public class SixData {
                 {"Caracas", dataRainfall, -1},
                 {"Sydney", dataRainfall, 483.1075000000001}
         };
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "stockSummaryData")
@@ -186,7 +184,7 @@ public class SixData {
 
                 };
 
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 
     @DataProvider(name = "stockSummaryDataNegative")
@@ -202,7 +200,7 @@ public class SixData {
 
                 };
 
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
     @DataProvider(name = "balanceData")
     public static Object[][] dataProviderBalance() {
@@ -225,6 +223,6 @@ public class SixData {
                                 "Average expense  39.65"}
                 };
 
-        return UserImplementation.combineImplWithTests(SIX_IMPLEMENTATION, baseTestData);
+        return UserImplementation.combineSixWithTestData(baseTestData);
     }
 }

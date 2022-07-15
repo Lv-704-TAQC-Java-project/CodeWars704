@@ -5,15 +5,21 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import utils.data_provider_buffer.BufferData;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import static com.org.ita.utils.Message.*;
 import java.io.*;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Arrays;
 import java.util.Optional;
 
 public class BufferTest {
 
-    @Test (dataProvider = "readStringTestData", dataProviderClass = BufferData.class)
+    @Test(dataProvider = "readStringTestData", dataProviderClass = BufferData.class)
     public void testReadString(String input, String expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Buffer br = new Buffer();
@@ -21,7 +27,7 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test (dataProvider = "readStringArrTestData", dataProviderClass = BufferData.class)
+    @Test(dataProvider = "readStringArrTestData", dataProviderClass = BufferData.class)
     public void testReadStringArr(String input, String[] expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Buffer br = new Buffer();
@@ -29,7 +35,7 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test (dataProvider = "getValidIntFromUserInputTestData", dataProviderClass = BufferData.class)
+    @Test(dataProvider = "getValidIntFromUserInputTestData", dataProviderClass = BufferData.class)
     public void testGetValidIntFromUserInput(String invalidMessage, int start, int end, String number, int expected) {
         System.setIn(new ByteArrayInputStream(number.getBytes()));
         Buffer br = new Buffer();
@@ -58,13 +64,17 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(expectedExceptions = NullPointerException.class,
-            dataProvider = "negative-data-readNumbers",
-            dataProviderClass = BufferData.class)
-    public void testNegativeReadIntArr(String input) {
+    @Test(dataProvider = "negative-data-readIntArr", dataProviderClass = BufferData.class)
+    public void testNegativeReadIntArr(String input, String expectedMessage, int[] expectedArray) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Buffer br = new Buffer();
-        br.readIntArr();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        int[] actual = br.readIntArr();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message");
+        softAssert.assertEquals(actual, expectedArray, "Expected array was " + Arrays.toString(expectedArray) + "but was" + Arrays.toString(actual));
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "positive-data-readDoubleArr", dataProviderClass = BufferData.class)
@@ -75,13 +85,17 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(expectedExceptions = NullPointerException.class,
-            dataProvider = "negative-data-readNumbers",
-            dataProviderClass = BufferData.class)
-    public void testNegativeReadDoubleArr(String input) {
-            System.setIn(new ByteArrayInputStream(input.getBytes()));
-            Buffer br = new Buffer();
-            br.readDoubleArr();
+    @Test(dataProvider = "negative-data-readDoubleArr", dataProviderClass = BufferData.class)
+    public void testNegativeReadDoubleArr(String input, String expectedMessage, double[] expectedArray) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer br = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        double[] actual = br.readDoubleArr();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message");
+        softAssert.assertEquals(actual, expectedArray, "Expected array was " + Arrays.toString(expectedArray) + "but was" + Arrays.toString(actual));
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "readLongTestData", dataProviderClass = BufferData.class)
@@ -106,7 +120,6 @@ public class BufferTest {
         softAssert.assertAll();
     }
 
-
     @Test(dataProvider = "readBigIntegerTestData", dataProviderClass = BufferData.class)
     public void testReadBigInteger(String input, BigInteger expected) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
@@ -115,7 +128,7 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
+      @Test(dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
     public void testReadBigIntegerNegative(String input, String expectedMessage, BigInteger expectedBigInteger) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
@@ -153,19 +166,20 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readDoubleNegativeTestData", dataProviderClass = BufferData.class)
+    @Test(expectedExceptions = NullPointerException.class, dataProvider = "readDoubleNegativeTestData", dataProviderClass = BufferData.class)
     public void testReadDoubleNegative(String input) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
         bf.readDouble();
     }
 
-    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readFloatNegativeTestData", dataProviderClass = BufferData.class)
+    @Test(expectedExceptions = NullPointerException.class, dataProvider = "readFloatNegativeTestData", dataProviderClass = BufferData.class)
     public void testReadFloatNegative(String input) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
         bf.readFloat();
     }
+
     @Test(dataProvider = "readIntTestData", dataProviderClass = BufferData.class)
     public void testReadInt(String input, double expected) {
         System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
@@ -174,10 +188,31 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readIntNegativeTestData", dataProviderClass = BufferData.class)
+    @Test(expectedExceptions = NullPointerException.class, dataProvider = "readIntNegativeTestData", dataProviderClass = BufferData.class)
     public void testReadIntNegative(String input) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
         bf.readInt();
+    }
+
+    @Test(dataProvider = "readPositiveDoubleTestData", dataProviderClass = BufferData.class)
+    public void getPositiveDoubleInputTest(String input, double expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer bf = new Buffer();
+        double actual = bf.getPositiveDoubleInput();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "readPositiveDoubleNegativeTestData", dataProviderClass = BufferData.class)
+    public void readPositiveDoubleNegativeTest(String input, String expectedMessage, double expectedDouble) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Buffer bf = new Buffer();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        double actual = bf.getPositiveDoubleInput();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message is shown");
+        softAssert.assertEquals(actual, expectedDouble, String.format("Expected double was %f, but got %f instead.", expectedDouble, actual));
+        softAssert.assertAll();
     }
 }

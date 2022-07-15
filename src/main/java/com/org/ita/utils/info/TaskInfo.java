@@ -302,10 +302,6 @@ public enum TaskInfo {
         }
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public int getId() {
         return id;
     }

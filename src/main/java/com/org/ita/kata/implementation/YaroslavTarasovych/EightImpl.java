@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
-public class EigthImpl extends Base implements Eight {
+public class EightImpl extends Base implements Eight {
     @Override
     public int liters(double time) {
         return (time >= 0) ? (int) Math.floor(time * 0.5) : 0;
