@@ -24,7 +24,7 @@ public class SevenImpl extends Base implements Seven {
             sum += 1 / divisor;
             divisor += 3;
         }
-        return new DecimalFormat("#.00").format(sum);
+        return new DecimalFormat("0.00").format(sum).replace(",", ".");
     }
 
     @Override

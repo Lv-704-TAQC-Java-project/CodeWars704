@@ -124,12 +124,12 @@ public class BufferData {
     @DataProvider(name = "readBigIntegerNegativeTestData")
     public static Object[][] readBigIntegerNegativeTestData() {
         return new Object[][]{
-                {"hello"},
-                {"12350986.078099579"},
-                {"-1235098,60099579"},
-                {" "},
-                {"536893059687657956@9870865978$975489365675364756896596897809678"},
-                {"0fgh"}
+                {"hello\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1") },
+                {"12350986.078099579\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
+                {"-1235098,60099579\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
+                {" \n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
+                {"536893059687657956@9870865978$975489365675364756896596897809678\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
+                {"0fgh\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")}
         };
     }
 
@@ -144,14 +144,8 @@ public class BufferData {
                     new String[]{"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
                         " when an unknown printer took a galley of type and scrambled it to make a type specimen book."}},
                 {"Some word", new String[]{"Some word"}},
-                {"Sections,, 1.10.32", new String[]{"Sections",""," 1.10.32"}}
-        };
-    }
-
-    @DataProvider(name = "readStringArrSplitByCommaNegativeTestData")
-    public static Object[][] readStringArrSplitByCommaNegativeTestData() {
-        return new Object[][]{
-                {""}
+                {"Sections,, 1.10.32", new String[]{"Sections",""," 1.10.32"}
+                }
         };
     }
 
