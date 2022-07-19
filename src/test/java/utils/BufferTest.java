@@ -121,7 +121,7 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-      @Test(dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
+    @Test(dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = BufferData.class)
     public void testReadBigIntegerNegative(String input, String expectedMessage, BigInteger expectedBigInteger) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
@@ -130,7 +130,7 @@ public class BufferTest {
         BigInteger actual = bf.readBigInteger();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error");
-        softAssert.assertEquals(actual, expectedBigInteger, String.format("Expected number was %s, but got %s instead.",expectedBigInteger.toString(),actual.toString()));
+        softAssert.assertEquals(actual, expectedBigInteger, String.format("Expected number was %s, but got %s instead.", expectedBigInteger.toString(), actual.toString()));
         softAssert.assertAll();
     }
 
@@ -193,11 +193,17 @@ public class BufferTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(expectedExceptions = NullPointerException.class, dataProvider = "readIntNegativeTestData", dataProviderClass = BufferData.class)
-    public void testReadIntNegative(String input) {
+    @Test(dataProvider = "readIntNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadIntNegative(String input, String expectedMessage, int expected) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
         Buffer bf = new Buffer();
-        bf.readInt();
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        int actual = bf.readInt();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error");
+        softAssert.assertEquals(actual, expected, String.format("Expected number was %d, but got %d instead.", expected, actual));
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "readPositiveDoubleTestData", dataProviderClass = BufferData.class)

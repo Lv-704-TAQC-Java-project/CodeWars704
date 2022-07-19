@@ -60,7 +60,7 @@ public class BufferData {
         return new Object[][]{
                 {"CodeWars 704 Lv 704 Java Project", new String[]{"CodeWars", "704", "Lv", "704", "Java", "Project"}},
                 {"getProperty(\"line.separator\") returns the OS dependent line separator",
-                        new String[]{"getProperty(\"line.separator\")", "returns", "the", "OS", "dependent", "line", "separator" }}
+                        new String[]{"getProperty(\"line.separator\")", "returns", "the", "OS", "dependent", "line", "separator"}}
         };
     }
 
@@ -74,10 +74,12 @@ public class BufferData {
 
     @DataProvider(name = "getValidIntFromUserInputTestDataNegative")
     public static Object[][] testGetValidIntFromUserUnputNegative() {
+        final String errorMsg1 = "\u001B[31mInput should be int\u001B[0m\n";
+        final String errorMsg2 = "\u001B[31mInput should be int\u001B[31m\u001B[0m\n";
         return new Object[][]{
-                {"Input should be int" + ANSI_RED, 0, 10, "\n5", 5, "\u001B[31mInput should be int\u001B[0m" + "\n"},
-                {"Input should be int" + ANSI_RED, 0, 10, "11\n5", 5, "[31mInput should be int[31m[0m" + "\n"},
-                {"Input should be int" + ANSI_RED, 0, 10, "abC\n5", 5, "\u001B[31mInput should be int\u001B[0m" + "\n"}
+                {"Input should be int" + ANSI_RED, 0, 10, "\n5", 5, errorMsg1},
+                {"Input should be int" + ANSI_RED, 0, 10, "11\n5", 5, errorMsg2},
+                {"Input should be int" + ANSI_RED, 0, 10, "abC\n5", 5, errorMsg1}
 
         };
     }
@@ -99,12 +101,12 @@ public class BufferData {
 
     @DataProvider(name = "readLongNegativeTestData")
     public static Object[][] readLongNegativeTestData() {
-        String errorMessage = "\u001B[31mInput should be of a 'long' type\u001B[0m\n";
+        String errorMsg = "\u001B[31mInput should be of a 'long' type\u001B[0m\n";
         return new Object[][]{
-                {"abra\n2456454884253485", errorMessage, 2456454884253485L},
-                {"fdas485615\n25", errorMessage, 25L},
-                {" \n25", errorMessage, 25L},
-                {"\n25", errorMessage, 25L},
+                {"abra\n2456454884253485", errorMsg, 2456454884253485L},
+                {"fdas485615\n25", errorMsg, 25L},
+                {" \n25", errorMsg, 25L},
+                {"\n25", errorMsg, 25L},
 //                {"\n25", "\u001B[31mInput should be of a LONG type\u001B[0m\n", 26L},
         };
     }
@@ -123,28 +125,29 @@ public class BufferData {
 
     @DataProvider(name = "readBigIntegerNegativeTestData")
     public static Object[][] readBigIntegerNegativeTestData() {
+        String errorMsg = "\u001B[31mInput should be BI\u001B[0m\n";
         return new Object[][]{
-                {"hello\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1") },
-                {"12350986.078099579\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
-                {"-1235098,60099579\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
-                {" \n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
-                {"536893059687657956@9870865978$975489365675364756896596897809678\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")},
-                {"0fgh\n1","\u001B[31mInput should be BI\u001B[0m\n", new BigInteger("1")}
+                {"hello\n1", errorMsg, new BigInteger("1")},
+                {"12350986.078099579\n1", errorMsg, new BigInteger("1")},
+                {"-1235098,60099579\n1", errorMsg, new BigInteger("1")},
+                {" \n1", errorMsg, new BigInteger("1")},
+                {"536893059687657956@9870865978$975489365675364756896596897809678\n1", errorMsg, new BigInteger("1")},
+                {"0fgh\n1", errorMsg, new BigInteger("1")}
         };
     }
 
     @DataProvider(name = "readStringArrSplitByCommaTestData")
     public static Object[][] readStringArrSplitByCommaTestData() {
         return new Object[][]{
-                {"1,2,3", new String[]{"1","2","3"}},
-                {"Hello, world, !", new String[]{"Hello"," world"," !"}},
-                {"Lorem Ipsum has been the industry's standard"+
-                        " dummy text ever since the 1500s, when an unknown "+
+                {"1,2,3", new String[]{"1", "2", "3"}},
+                {"Hello, world, !", new String[]{"Hello", " world", " !"}},
+                {"Lorem Ipsum has been the industry's standard" +
+                        " dummy text ever since the 1500s, when an unknown " +
                         "printer took a galley of type and scrambled it to make a type specimen book.",
-                    new String[]{"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book."}},
+                        new String[]{"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                                " when an unknown printer took a galley of type and scrambled it to make a type specimen book."}},
                 {"Some word", new String[]{"Some word"}},
-                {"Sections,, 1.10.32", new String[]{"Sections",""," 1.10.32"}
+                {"Sections,, 1.10.32", new String[]{"Sections", "", " 1.10.32"}
                 }
         };
     }
@@ -177,18 +180,18 @@ public class BufferData {
 
     @DataProvider(name = "readDoubleNegativeTestData")
     public static Object[][] readDoubleNegativeTestData() {
-        String errorMessage = "\u001B[31mInput should be double\u001B[0m\n";
+        String errorMsg = "\u001B[31mInput should be double\u001B[0m\n";
         return new Object[][]{
-                {"bcfjw\n0.0", errorMessage, 0.0},
-                {"fdas485615\n25", errorMessage, 25},
-                {" \n25.000", errorMessage, 25.000},
-                {"\n15.123", errorMessage, 15.123},
+                {"bcfjw\n0.0", errorMsg, 0.0},
+                {"fdas485615\n25", errorMsg, 25},
+                {" \n25.000", errorMsg, 25.000},
+                {"\n15.123", errorMsg, 15.123},
         };
     }
 
     @DataProvider(name = "negativeDataReadFloat")
     public static Object[][] testNegativeReadFloat() {
-        final String errorMsg = "\u001B[31mInput should be float\u001B[0m\n";
+        String errorMsg = "\u001B[31mInput should be float\u001B[0m\n";
         return new Object[][]{
                 {"hello\n14.0", errorMsg, 14.0f},
                 {"6bye 48\n139532.80000000002", errorMsg, 139532.80000000002f},
@@ -196,6 +199,7 @@ public class BufferData {
                 {"\n139532.80000000002", errorMsg, 139532.80000000002f}
         };
     }
+
     @DataProvider(name = "readIntTestData")
     public static Object[][] readIntTestData() {
         return new Object[][]{
@@ -210,12 +214,12 @@ public class BufferData {
 
     @DataProvider(name = "readIntNegativeTestData")
     public static Object[][] readIntNegativeTestData() {
+        String errorMsg = "\u001B[31mInput should be int\u001B[0m\n";
         return new Object[][]{
-                {"111111111111111234567890o9i87654323"},
-                {"1.5"},
-                {"wrethyft"},
-                {" "},
-                {"hi"},
+                {"hello\n2", errorMsg, 2},
+                {"6bye 48\n55", errorMsg, 55},
+                {" \n270", errorMsg, 270},
+                {"\n578", errorMsg, 578}
         };
     }
 
@@ -233,16 +237,17 @@ public class BufferData {
 
     @DataProvider(name = "readPositiveDoubleNegativeTestData")
     public static Object[][] readPositiveDoubleNegativeTestData() {
-        String errorMessage = "\u001B[31mEnter positive number.\u001B[0m\n";
+        String errorMsg1 = "\u001B[31mEnter positive number.\u001B[0m\n";
+        String errorMsg2 = "\u001B[31mInput should be double\u001B[0m\n";
         return new Object[][]{
-                {"-0.00000000001\n24564548", errorMessage, 24564548},
-                {"-16.123\n16.123", errorMessage, 16.123},
-                {"-1.7e308\n1.7e308", errorMessage, 1.7e308},
-                {"-1\n1", errorMessage, 1},
-                {"-1456456158\n1456456158", errorMessage, 1456456158},
-                {"\n14.56", "\u001B[31mInput should be double\u001B[0m\n", 14.56},
-                {" \n0.1456456158", "\u001B[31mInput should be double\u001B[0m\n", 0.1456456158},
-                {"abra\n1450006158", "\u001B[31mInput should be double\u001B[0m\n", 1450006158},
+                {"-0.00000000001\n24564548", errorMsg1, 24564548},
+                {"-16.123\n16.123", errorMsg1, 16.123},
+                {"-1.7e308\n1.7e308", errorMsg1, 1.7e308},
+                {"-1\n1", errorMsg1, 1},
+                {"-1456456158\n1456456158", errorMsg1, 1456456158},
+                {"\n14.56", errorMsg2, 14.56},
+                {" \n0.1456456158", errorMsg2, 0.1456456158},
+                {"abra\n1450006158", errorMsg2, 1450006158},
 //                {"-1456456158\n1456456158", "\u001B[31mEnter POSITIVE number.\u001B[0m\n", 14},
         };
     }
