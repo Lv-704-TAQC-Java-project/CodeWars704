@@ -1,12 +1,12 @@
 package com.org.ita.kata.implementation.ykireyeva;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.stream.IntStream;
 
-public class FiveImpl extends Base implements Five {
+public class FiveImpl extends BaseKata implements Five {
     private static int fibonacci(int n) {
         if (n <= 1)
             return n;

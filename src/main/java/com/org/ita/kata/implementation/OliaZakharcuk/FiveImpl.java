@@ -1,12 +1,12 @@
 package com.org.ita.kata.implementation.OliaZakharcuk;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-public class FiveImpl extends Base implements Five {
+public class FiveImpl extends BaseKata implements Five {
     private static boolean isPrime(long n) {
 
         for (long i = 2; i <= (long) Math.sqrt(n); i++) {

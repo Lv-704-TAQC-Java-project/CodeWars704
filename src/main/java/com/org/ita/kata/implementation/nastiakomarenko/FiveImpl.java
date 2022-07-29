@@ -1,6 +1,6 @@
 package com.org.ita.kata.implementation.nastiakomarenko;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class FiveImpl extends Base implements Five {
+public class FiveImpl extends BaseKata implements Five {
     private static boolean prime(double n) {
         boolean prime = true;
         for (int m = 2; m <= n / 2; m++) {

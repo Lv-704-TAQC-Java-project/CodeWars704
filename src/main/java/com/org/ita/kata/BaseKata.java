@@ -1,6 +1,6 @@
 package com.org.ita.kata;
 
-public abstract class Base {
+public abstract class BaseKata {
 
     @Override
     public String toString() {
@@ -8,4 +8,3 @@ public abstract class Base {
         return String.format("%s", names[names.length - 2]);
     }
 }
-

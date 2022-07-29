@@ -1,9 +1,9 @@
 package com.org.ita.kata.implementation.avlrvn;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Six;
 
-public class SIxImpl extends Base implements Six {
+public class SIxImpl extends BaseKata implements Six {
     @Override
     public long findNb(long m) {
         return 0;

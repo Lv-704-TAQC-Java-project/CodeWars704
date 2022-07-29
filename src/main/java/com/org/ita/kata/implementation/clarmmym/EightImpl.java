@@ -1,12 +1,12 @@
 package com.org.ita.kata.implementation.clarmmym;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Eight;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EightImpl extends Base implements Eight {
+public class EightImpl extends BaseKata implements Eight {
     private static boolean hasIntegerRoot(int number) {
         int root = (int) Math.sqrt(number);
         return Math.pow(root, 2) == number;

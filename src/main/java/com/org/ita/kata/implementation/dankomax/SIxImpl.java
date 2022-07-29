@@ -1,6 +1,6 @@
 package com.org.ita.kata.implementation.dankomax;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Six;
 
 import java.math.BigDecimal;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Locale;
 
 
-public class SIxImpl extends Base implements Six {
+public class SIxImpl extends BaseKata implements Six {
     private static String[] townRainfallArr(String town, String strng) {
         return Arrays.stream(strng.split("\n"))
                 .filter(t -> t.contains(town + ":"))

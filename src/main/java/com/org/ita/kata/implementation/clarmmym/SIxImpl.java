@@ -1,6 +1,6 @@
 package com.org.ita.kata.implementation.clarmmym;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Six;
 
 import java.math.BigDecimal;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SIxImpl extends Base implements Six {
+public class SIxImpl extends BaseKata implements Six {
     @Override
     public long findNb(long m) {
         final int THREE = 3;

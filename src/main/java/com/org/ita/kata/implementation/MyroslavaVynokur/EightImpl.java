@@ -1,6 +1,6 @@
 package com.org.ita.kata.implementation.MyroslavaVynokur;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Eight;
 
 import java.text.DecimalFormat;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EightImpl extends Base implements Eight {
+public class EightImpl extends BaseKata implements Eight {
     @Override
     public int liters(double time) {
         if (time > 0) {

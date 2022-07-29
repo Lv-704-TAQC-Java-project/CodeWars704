@@ -1,11 +1,11 @@
 package com.org.ita.kata.implementation.dankomax;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Eight;
 
 import java.util.Arrays;
 
-public class EightImpl extends Base implements Eight {
+public class EightImpl extends BaseKata implements Eight {
     @Override
     public int liters(double time) {
         if (time < 0) {

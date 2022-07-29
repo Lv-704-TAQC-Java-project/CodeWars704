@@ -1,6 +1,6 @@
 package com.org.ita.kata.implementation.clarmmym;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Five;
 
 import java.math.BigInteger;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class FiveImpl extends Base implements Five {
+public class FiveImpl extends BaseKata implements Five {
     @Override
     public int artificialRain(int[] v) {
         if (v.length == 1) {

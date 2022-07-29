@@ -1,9 +1,9 @@
 package com.org.ita.kata.implementation.OliaZakharcuk;
 
-import com.org.ita.kata.Base;
+import com.org.ita.kata.BaseKata;
 import com.org.ita.kata.Seven;
 
-public class SevenImpl extends Base implements Seven {
+public class SevenImpl extends BaseKata implements Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
 
