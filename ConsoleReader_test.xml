@@ -5,7 +5,7 @@
 
     <test name = "exampletest1">
         <classes>
-            <class name = "utils.BufferTest" />
+            <class name = "utils.ConsoleReaderTest" />
         </classes>
     </test>
 

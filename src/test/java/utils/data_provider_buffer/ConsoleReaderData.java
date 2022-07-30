@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static com.org.ita.utils.Message.ANSI_RED;
 
-public class BufferData {
+public class ConsoleReaderData {
 
     @DataProvider(name = "positive-data-readIntArr")
     public static Object[][] testPositiveReadIntArr() {
