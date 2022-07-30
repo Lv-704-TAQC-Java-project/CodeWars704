@@ -8,18 +8,18 @@ import java.math.BigInteger;
 import static com.org.ita.utils.Message.*;
 
 
-public class Buffer implements Reader {
+public class ConsoleReader implements Reader {
 
     public static BufferedReader br;
 
-    public Buffer() {
+    public ConsoleReader() {
         br = new BufferedReader(new InputStreamReader(System.in));
     }
 
     @Override
     public double readDouble() {
         try {
-            return Double.parseDouble(Buffer.br.readLine());
+            return Double.parseDouble(ConsoleReader.br.readLine());
         } catch (IOException | NumberFormatException e) {
             colorln("Input should be double", ANSI_RED);
             return this.readDouble();
@@ -29,7 +29,7 @@ public class Buffer implements Reader {
     @Override
     public int readInt() {
         try {
-            return Integer.parseInt(Buffer.br.readLine());
+            return Integer.parseInt(ConsoleReader.br.readLine());
         } catch (IOException | NumberFormatException e) {
             colorln("Input should be int", ANSI_RED);
             return this.readInt();
@@ -39,7 +39,7 @@ public class Buffer implements Reader {
     @Override
     public long readLong() {
         try {
-            return Long.parseLong(Buffer.br.readLine());
+            return Long.parseLong(ConsoleReader.br.readLine());
         } catch (IOException | NumberFormatException e) {
             colorln("Input should be of a 'long' type", ANSI_RED);
             return this.readLong();
@@ -49,7 +49,7 @@ public class Buffer implements Reader {
     @Override
     public BigInteger readBigInteger() {
         try {
-            return new BigInteger(Buffer.br.readLine());
+            return new BigInteger(ConsoleReader.br.readLine());
         } catch (IOException | NumberFormatException e) {
             colorln("Input should be BI", ANSI_RED);
             return this.readBigInteger();
@@ -59,7 +59,7 @@ public class Buffer implements Reader {
     @Override
     public String readString() {
         try {
-            return Buffer.br.readLine();
+            return ConsoleReader.br.readLine();
         } catch (IOException e) {
             colorln(e.getMessage(), ANSI_RED);
             return this.readString();
@@ -69,7 +69,7 @@ public class Buffer implements Reader {
     @Override
     public float readFloat() {
         try {
-            return Float.parseFloat(Buffer.br.readLine());
+            return Float.parseFloat(ConsoleReader.br.readLine());
         } catch (IOException | NumberFormatException e) {
             colorln("Input should be float", ANSI_RED);
             return this.readFloat();
@@ -79,7 +79,7 @@ public class Buffer implements Reader {
     @Override
     public String[] readStringArr() {
         try {
-            return Buffer.br.readLine().trim().split("\\s+");
+            return ConsoleReader.br.readLine().trim().split("\\s+");
         } catch (IOException e) {
             colorln(e.getMessage(), ANSI_RED);
             return this.readStringArr();
@@ -89,7 +89,7 @@ public class Buffer implements Reader {
     @Override
     public String[] readStringArrSplitByComma() {
         try {
-            return Buffer.br.readLine().trim().split(",");
+            return ConsoleReader.br.readLine().trim().split(",");
         } catch (IOException e) {
             colorln("Input should be String", ANSI_RED);
             return this.readStringArrSplitByComma();

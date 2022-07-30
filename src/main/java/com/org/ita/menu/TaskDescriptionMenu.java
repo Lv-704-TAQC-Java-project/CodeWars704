@@ -1,6 +1,6 @@
 package com.org.ita.menu;
 
-import com.org.ita.utils.Buffer;
+import com.org.ita.utils.ConsoleReader;
 import com.org.ita.utils.Runner;
 import com.org.ita.utils.info.TaskInfo;
 
@@ -8,7 +8,7 @@ import static com.org.ita.utils.Message.*;
 
 public class TaskDescriptionMenu implements Runner {
 
-    final Buffer br = new Buffer();
+    final ConsoleReader reader = new ConsoleReader();
 
     @Override
     public void run() {
@@ -20,7 +20,7 @@ public class TaskDescriptionMenu implements Runner {
         colorln("1..24 - to view task description", ANSI_GREEN);
         colorln("0 - return to menu", ANSI_YELLOW);
 
-        int number = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 24);
+        int number = reader.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 24);
 
         if (number != 0) {
             description(number);
@@ -35,7 +35,7 @@ public class TaskDescriptionMenu implements Runner {
         colorln(DIVIDER, ANSI_BLUE);
         System.out.println("Click enter to return: ");
 
-        br.readString();
+        reader.readString();
         new TaskDescriptionMenu().run();
     }
 }

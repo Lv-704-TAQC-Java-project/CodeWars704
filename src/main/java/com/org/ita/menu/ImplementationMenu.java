@@ -1,6 +1,6 @@
 package com.org.ita.menu;
 
-import com.org.ita.utils.Buffer;
+import com.org.ita.utils.ConsoleReader;
 import com.org.ita.utils.Runner;
 import com.org.ita.utils.info.GroupInfo;
 
@@ -9,7 +9,7 @@ import static com.org.ita.utils.Message.*;
 
 public class ImplementationMenu implements Runner {
 
-    final Buffer br = new Buffer();
+    final ConsoleReader reader = new ConsoleReader();
     final String tableFormat = "%-2s  %-23s %-16s\n";
     final String tableHeader = ANSI_YELLOW + tableFormat + ANSI_RESET;
 
@@ -26,7 +26,7 @@ public class ImplementationMenu implements Runner {
         colorln("0 - return to main menu", ANSI_YELLOW);
         colorln("ID from 1 to " + GroupInfo.values().length + " - select implementation", ANSI_GREEN);
 
-        int a = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 9);
+        int a = reader.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 9);
         if (a > 0 && a <= GroupInfo.values().length) {
             MainMenu.setCurrentImplementation(a);
         }

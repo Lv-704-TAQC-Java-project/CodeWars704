@@ -1,6 +1,6 @@
 package com.org.ita.menu;
 
-import com.org.ita.utils.Buffer;
+import com.org.ita.utils.ConsoleReader;
 import com.org.ita.utils.Runner;
 import com.org.ita.utils.info.GroupInfo;
 
@@ -13,7 +13,7 @@ public class MainMenu {
 
     private static final List<Runner> list = new ArrayList<>();
     private static int currentImplementation = 0;
-    final Buffer br = new Buffer();
+    final ConsoleReader reader = new ConsoleReader();
 
     public static int getCurrentImplementation() {
         return currentImplementation;
@@ -46,7 +46,7 @@ public class MainMenu {
         while (chooseNumber > 0 && chooseNumber < 4) {
             menuTitle();
 
-            chooseNumber = br.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
+            chooseNumber = reader.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
 
             list.add(new Exit());
             list.add(new ImplementationMenu());
