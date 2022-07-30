@@ -1,4 +1,4 @@
-package utils.data_provider_buffer;
+package utils.data_provider_console_reader;
 
 import org.testng.annotations.DataProvider;
 

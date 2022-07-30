@@ -3,7 +3,7 @@ package utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import utils.data_provider_buffer.ConsoleReaderData;
+import utils.data_provider_console_reader.ConsoleReaderData;
 
 import java.io.*;
 import java.math.BigInteger;
