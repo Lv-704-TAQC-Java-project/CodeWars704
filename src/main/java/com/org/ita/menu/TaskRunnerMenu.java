@@ -233,7 +233,7 @@ public class TaskRunnerMenu implements Runner {
     public void runSmallest() {
         colorHeader("Run task Smallest");
         System.out.println("Please enter positive number (long):");
-        long n = reader.readLong();
+        long n = reader.getPositiveLongInput();
 
         long[] resultArr = member.getFive().smallest(n);
         System.out.println("You have entered " + n);
