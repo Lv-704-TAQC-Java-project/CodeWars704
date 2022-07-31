@@ -27,12 +27,12 @@ public class TaskRunnerMenu implements Runner {
         colorln("1..24 - to run a task", ANSI_GREEN);
         colorln("0 - return to menu", ANSI_YELLOW);
 
-        int number = reader.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 24);
+        int number = reader.readIntegerInputInRange("Invalid input! Number should be in range from 1 to 24.", 0, 24);
 
         if (number != 0) {
             if (MainMenu.getCurrentImplementation() == 0) {
                 colorln("You need to pick a user first:", ANSI_RED);
-                int userId = reader.getValidIntFromUserInput("Invalid user ID. Choose in range from 1 to " + GROUP_SIZE, 1, GROUP_SIZE);
+                int userId = reader.readIntegerInputInRange("Invalid user ID. Choose in range from 1 to " + GROUP_SIZE, 1, GROUP_SIZE);
 
                 colorln("Selected user: " + GroupInfo.getMemberNameById(userId), ANSI_GREEN);
                 MainMenu.setCurrentImplementation(userId);
@@ -146,13 +146,13 @@ public class TaskRunnerMenu implements Runner {
     public void runGetVolumeOfCuboid() {
         colorHeader("Run task getVolumeOfCuboid.");
         System.out.println("Please input length of cuboid (double):");
-        double a = reader.getPositiveDoubleInput();
+        double a = reader.readPositiveDoubleInput();
 
         System.out.println("Please input width of cuboid (double):");
-        double b = reader.getPositiveDoubleInput();
+        double b = reader.readPositiveDoubleInput();
 
         System.out.println("Please input height of cuboid (double):");
-        double c = reader.getPositiveDoubleInput();
+        double c = reader.readPositiveDoubleInput();
 
         double volume = member.getEight().getVolumeOfCuboid(a, b, c);
         colorln("Result: " + volume + " volume", ANSI_YELLOW);
@@ -233,7 +233,7 @@ public class TaskRunnerMenu implements Runner {
     public void runSmallest() {
         colorHeader("Run task Smallest");
         System.out.println("Please enter positive number (long):");
-        long n = reader.getPositiveLongInput();
+        long n = reader.readPositiveLongInput();
 
         long[] resultArr = member.getFive().smallest(n);
         System.out.println("You have entered " + n);

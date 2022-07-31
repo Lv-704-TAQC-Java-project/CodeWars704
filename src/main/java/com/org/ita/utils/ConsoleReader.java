@@ -127,7 +127,7 @@ public class ConsoleReader implements Reader {
         }
     }
 
-    public long getPositiveLongInput() {
+    public long readPositiveLongInput() {
         long number;
         boolean invalidNum;
 
@@ -142,7 +142,7 @@ public class ConsoleReader implements Reader {
         return number;
     }
 
-    public double getPositiveDoubleInput() {
+    public double readPositiveDoubleInput() {
         double number;
         boolean invalidNum;
 
@@ -157,7 +157,7 @@ public class ConsoleReader implements Reader {
         return number;
     }
 
-    public int getValidIntFromUserInput(String invalidMessage, int start, int end) {
+    public int readIntegerInputInRange(String invalidMessage, int start, int end) {
         int number;
         boolean invalidNum;
 

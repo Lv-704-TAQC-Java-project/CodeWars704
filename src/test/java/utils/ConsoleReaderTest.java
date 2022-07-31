@@ -31,7 +31,7 @@ public class ConsoleReaderTest {
     public void testGetValidIntFromUserInput(String invalidMessage, int start, int end, String number, int expected) {
         System.setIn(new ByteArrayInputStream(number.getBytes()));
         com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
-        int actual = reader.getValidIntFromUserInput(invalidMessage, start, end);
+        int actual = reader.readIntegerInputInRange(invalidMessage, start, end);
         Assert.assertEquals(actual, expected);
     }
 
@@ -41,7 +41,7 @@ public class ConsoleReaderTest {
         com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
-        int actual = reader.getValidIntFromUserInput(invalidMessage, start, end);
+        int actual = reader.readIntegerInputInRange(invalidMessage, start, end);
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedError, "Incorrect error");
         softAssert.assertEquals(actual, expected, "Expected number was " + expected + "but was" + actual);
@@ -209,7 +209,7 @@ public class ConsoleReaderTest {
     public void getPositiveDoubleInputTest(String input, double expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
-        double actual = reader.getPositiveDoubleInput();
+        double actual = reader.readPositiveDoubleInput();
         Assert.assertEquals(actual, expected);
     }
 
@@ -219,7 +219,7 @@ public class ConsoleReaderTest {
         com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
-        double actual = reader.getPositiveDoubleInput();
+        double actual = reader.readPositiveDoubleInput();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(String.valueOf(output).replace("\r", ""), expectedMessage, "Incorrect error message is shown");
         softAssert.assertEquals(actual, expectedDouble, String.format("Expected double was %f, but got %f instead.", expectedDouble, actual));

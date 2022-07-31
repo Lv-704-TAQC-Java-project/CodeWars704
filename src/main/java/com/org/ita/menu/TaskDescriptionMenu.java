@@ -20,7 +20,7 @@ public class TaskDescriptionMenu implements Runner {
         colorln("1..24 - to view task description", ANSI_GREEN);
         colorln("0 - return to menu", ANSI_YELLOW);
 
-        int number = reader.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 24);
+        int number = reader.readIntegerInputInRange("Invalid input! Number should be in range from 1 to 24.", 0, 24);
 
         if (number != 0) {
             description(number);

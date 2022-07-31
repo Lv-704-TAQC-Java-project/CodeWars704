@@ -46,7 +46,7 @@ public class MainMenu {
         while (chooseNumber > 0 && chooseNumber < 4) {
             menuTitle();
 
-            chooseNumber = reader.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
+            chooseNumber = reader.readIntegerInputInRange("Invalid input! Number should be in range from 0 to 3.", 0, 3);
 
             list.add(new Exit());
             list.add(new ImplementationMenu());
