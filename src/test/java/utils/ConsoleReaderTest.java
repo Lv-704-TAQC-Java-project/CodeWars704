@@ -1,5 +1,6 @@
 package utils;
 
+import com.org.ita.utils.ConsoleReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -14,7 +15,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readStringTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadString(String input, String expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         String actual = reader.readString();
         Assert.assertEquals(actual, expected);
     }
@@ -22,7 +23,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readStringArrTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadStringArr(String input, String[] expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         String[] actual = reader.readStringArr();
         Assert.assertEquals(actual, expected);
     }
@@ -30,7 +31,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "getValidIntFromUserInputTestData", dataProviderClass = ConsoleReaderData.class)
     public void testGetValidIntFromUserInput(String invalidMessage, int start, int end, String number, int expected) {
         System.setIn(new ByteArrayInputStream(number.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         int actual = reader.readIntegerInputInRange(invalidMessage, start, end);
         Assert.assertEquals(actual, expected);
     }
@@ -38,7 +39,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "getValidIntFromUserInputTestDataNegative", dataProviderClass = ConsoleReaderData.class)
     public void testGetValidIntFromUserInputNegative(String invalidMessage, int start, int end, String number, int expected, String expectedError) {
         System.setIn(new ByteArrayInputStream(number.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         int actual = reader.readIntegerInputInRange(invalidMessage, start, end);
@@ -51,7 +52,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "positive-data-readIntArr", dataProviderClass = ConsoleReaderData.class)
     public void testPositiveReadIntArr(String input, int[] expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         int[] actual = reader.readIntArr();
         Assert.assertEquals(actual, expected);
     }
@@ -59,7 +60,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "negative-data-readIntArr", dataProviderClass = ConsoleReaderData.class)
     public void testNegativeReadIntArr(String input, String expectedMessage, int[] expectedArray) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         int[] actual = reader.readIntArr();
@@ -72,7 +73,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "positive-data-readDoubleArr", dataProviderClass = ConsoleReaderData.class)
     public void testPositiveReadDoubleArr(String input, double[] expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         double[] actual = reader.readDoubleArr();
         Assert.assertEquals(actual, expected);
     }
@@ -80,7 +81,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "negative-data-readDoubleArr", dataProviderClass = ConsoleReaderData.class)
     public void testNegativeReadDoubleArr(String input, String expectedMessage, double[] expectedArray) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         double[] actual = reader.readDoubleArr();
@@ -94,7 +95,7 @@ public class ConsoleReaderTest {
     public void testReadLong(String input, long expected) {
         System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
 
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         long actual = reader.readLong();
         Assert.assertEquals(actual, expected);
     }
@@ -102,7 +103,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readLongNegativeTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadLongNegative(String input, String expectedMessage, Long expectedLong) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         long actual = reader.readLong();
@@ -115,7 +116,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readBigIntegerTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadBigInteger(String input, BigInteger expected) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         BigInteger actual = reader.readBigInteger();
         Assert.assertEquals(actual, expected);
     }
@@ -123,7 +124,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readBigIntegerNegativeTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadBigIntegerNegative(String input, String expectedMessage, BigInteger expectedBigInteger) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         BigInteger actual = reader.readBigInteger();
@@ -136,7 +137,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readStringArrSplitByCommaTestData", dataProviderClass = ConsoleReaderData.class)
     public void testStringArrSplitByComma(String input, String[] expected) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         String[] actual = reader.readStringArrSplitByComma();
         Assert.assertEquals(actual, expected);
     }
@@ -153,7 +154,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readDoubleTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadDouble(String input, double expected) {
         System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         double actual = reader.readDouble();
         Assert.assertEquals(actual, expected);
     }
@@ -161,7 +162,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readDoubleNegativeTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadDoubleNegative(String input, String expectedMessage, double expectedDouble) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         double actual = reader.readDouble();
@@ -174,7 +175,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "negativeDataReadFloat", dataProviderClass = ConsoleReaderData.class)
     public void testNegativeReadDouble(String input, String expectedMessage, float expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         double actual = reader.readFloat();
@@ -187,7 +188,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readIntTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadInt(String input, double expected) {
         System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         int actual = reader.readInt();
         Assert.assertEquals(actual, expected);
     }
@@ -195,7 +196,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readIntNegativeTestData", dataProviderClass = ConsoleReaderData.class)
     public void testReadIntNegative(String input, String expectedMessage, int expected) {
         System.setIn(new ByteArrayInputStream((input).getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         int actual = reader.readInt();
@@ -208,7 +209,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readPositiveDoubleTestData", dataProviderClass = ConsoleReaderData.class)
     public void getPositiveDoubleInputTest(String input, double expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         double actual = reader.readPositiveDoubleInput();
         Assert.assertEquals(actual, expected);
     }
@@ -216,7 +217,7 @@ public class ConsoleReaderTest {
     @Test(dataProvider = "readPositiveDoubleNegativeTestData", dataProviderClass = ConsoleReaderData.class)
     public void readPositiveDoubleNegativeTest(String input, String expectedMessage, double expectedDouble) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        com.org.ita.utils.ConsoleReader reader = new com.org.ita.utils.ConsoleReader();
+        ConsoleReader reader = new ConsoleReader();
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         double actual = reader.readPositiveDoubleInput();
