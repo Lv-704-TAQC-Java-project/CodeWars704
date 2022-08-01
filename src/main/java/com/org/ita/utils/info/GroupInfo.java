@@ -9,7 +9,7 @@ import com.org.ita.kata.implementation.avlrvn.EightImpl;
 public enum GroupInfo {
 
     MEMBER_AnnaNezhuvaka(1, "Anna Nezhuvaka", "avlrvn",
-            new EightImpl(),
+            new com.org.ita.kata.implementation.avlrvn.EightImpl(),
             new com.org.ita.kata.implementation.avlrvn.SevenImpl(),
             new com.org.ita.kata.implementation.avlrvn.SIxImpl(),
             new com.org.ita.kata.implementation.avlrvn.FiveImpl()),
