@@ -48,11 +48,11 @@ public class EigthImpl extends Base implements Eight {
     public int[] countPositivesSumNegatives(int[] input) {
         if (input == null || input.length == 0) return new int[0];
         int[] newArray = new int[]{0, 0};
-        for (int i = 0; i < input.length; i++) {
-            if (input[i] > 0) {
+        for (int j : input) {
+            if (j > 0) {
                 newArray[0]++;
             } else {
-                newArray[1] += input[i];
+                newArray[1] += j;
             }
         }
         return newArray;
@@ -84,8 +84,7 @@ public class EigthImpl extends Base implements Eight {
     @Override
     public double twoDecimalPlaces(double number) {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        String result = decimalFormat.format(number).replaceAll(",", ".");
-        return Double.valueOf(result);
+        return Double.valueOf(decimalFormat.format(number).replaceAll(",", "."));
     }
 
     @Override
