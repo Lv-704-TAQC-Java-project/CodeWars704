@@ -9,9 +9,9 @@ import static com.org.ita.utils.Message.*;
 
 public class ImplementationMenu implements Runner {
 
-    Buffer br = new Buffer();
-    String tableFormat = "%-2s  %-23s %-16s\n";
-    String tableHeader = ANSI_YELLOW + tableFormat + ANSI_RESET;
+    final Buffer br = new Buffer();
+    final String tableFormat = "%-2s  %-23s %-16s\n";
+    final String tableHeader = ANSI_YELLOW + tableFormat + ANSI_RESET;
 
     @Override
     public void run() {
@@ -23,8 +23,8 @@ public class ImplementationMenu implements Runner {
         }
 
         colorln(DIVIDER, ANSI_BLUE);
-        colorln("0 - return to main manu", ANSI_YELLOW);
-        colorln("ID from 1 to " + GroupInfo.values().length + " - select imlementation", ANSI_GREEN);
+        colorln("0 - return to main menu", ANSI_YELLOW);
+        colorln("ID from 1 to " + GroupInfo.values().length + " - select implementation", ANSI_GREEN);
 
         int a = br.getValidIntFromUserInput("Invalid input! Number should be in range from 1 to 24.", 0, 9);
         if (a > 0 && a <= GroupInfo.values().length) {

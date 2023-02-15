@@ -109,4 +109,48 @@ public class BufferTest {
         bf.readStringArrSplitByComma();
     }
 
+    @Test(dataProvider = "readFloatTestData", dataProviderClass = BufferData.class)
+    public void testReadFloat(String input, float expected) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        float actual = bf.readFloat();
+        Assert.assertEquals(actual, expected);
+    }
+
+
+    @Test(dataProvider = "readDoubleTestData", dataProviderClass = BufferData.class)
+    public void testReadDouble(String input, double expected) {
+        System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
+        Buffer bf = new Buffer();
+        double actual = bf.readDouble();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readDoubleNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadDoubleNegative(String input) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        bf.readDouble();
+    }
+
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readFloatNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadFloatNegative(String input) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        bf.readFloat();
+    }
+    @Test(dataProvider = "readIntTestData", dataProviderClass = BufferData.class)
+    public void testReadInt(String input, double expected) {
+        System.setIn(new ByteArrayInputStream((input + System.getProperty("line.separator")).getBytes()));
+        Buffer bf = new Buffer();
+        int actual = bf.readInt();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test( expectedExceptions = NullPointerException.class, dataProvider = "readIntNegativeTestData", dataProviderClass = BufferData.class)
+    public void testReadIntNegative(String input) {
+        System.setIn(new ByteArrayInputStream((input).getBytes()));
+        Buffer bf = new Buffer();
+        bf.readInt();
+    }
 }

@@ -13,7 +13,7 @@ public class MainMenu {
 
     private static final List<Runner> list = new ArrayList<>();
     private static int currentImplementation = 0;
-    Buffer br = new Buffer();
+    final Buffer br = new Buffer();
 
     public static int getCurrentImplementation() {
         return currentImplementation;
@@ -43,9 +43,12 @@ public class MainMenu {
 
     public void run() {
 
+
         while (true) {
+
             menuTitle();
-            int chooseNumber = br.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
+
+            chooseNumber = br.getValidIntFromUserInput("Invalid input! Number should be in range from 0 to 3.", 0, 3);
 
             list.add(new Exit());
             list.add(new ImplementationMenu());

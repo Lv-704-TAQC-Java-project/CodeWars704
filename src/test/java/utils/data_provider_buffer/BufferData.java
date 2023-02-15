@@ -116,4 +116,76 @@ public class BufferData {
                 {""}
         };
     }
+
+    @DataProvider(name = "readFloatTestData")
+    public static Object[][] readFloatTestData() {
+        return new Object[][]{
+                {"0", 0.0f},
+                {"1", 1f},
+                {"555", 555f},
+                {"678935627854", 678935627854f},
+                {"0.00068925", 0.00068925f},
+                {"0.5698632568954123658", 0.5698632568954123658f},
+                {"5986523598.235897536", 5986523598.235897536f}
+        };
+    }
+
+
+    @DataProvider(name = "readDoubleTestData")
+    public static Object[][] readDoubleTestData() {
+        return new Object[][]{
+                {"0.0", 0.0},
+                {"1", 1},
+                {"16.123", 16.123},
+                {"-386.8527", -386.8527},
+                {"-1.7e308", -1.7e308},
+                {"1.7e308", 1.7e308},
+        };
+    }
+
+    @DataProvider(name = "readDoubleNegativeTestData")
+    public static Object[][] readDoubleNegativeTestData() {
+        return new Object[][]{
+                {"19,8"},
+                {"0,000"},
+                {"-1235098,60099579"},
+                {" "},
+                {"world"},
+        };
+    }
+
+    @DataProvider(name = "readFloatNegativeTestData")
+    public static Object[][] readFloatNegativeTestData() {
+        return new Object[][]{
+                {""},
+                {" "},
+                {"gjlkg"},
+                {"74653@56"},
+                {"0.0g"},
+                {"789.52-"},
+                {"gjgk.kjgjhh"}
+        };
+    }
+    @DataProvider(name = "readIntTestData")
+    public static Object[][] readIntTestData() {
+        return new Object[][]{
+                {"0", 0},
+                {"1", 1},
+                {"163", 163},
+                {"-38687", -38687},
+                {"23456", -23456},
+                {"112345", 112345},
+        };
+    }
+
+    @DataProvider(name = "readIntNegativeTestData")
+    public static Object[][] readIntNegativeTestData() {
+        return new Object[][]{
+                {"111111111111111234567890o9i87654323"},
+                {"1.5"},
+                {"wrethyft"},
+                {" "},
+                {"hi"},
+        };
+    }
 }

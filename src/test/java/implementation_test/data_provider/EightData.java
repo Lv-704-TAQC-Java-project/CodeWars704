@@ -136,6 +136,17 @@ public class EightData {
         };
         return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
     }
+    @DataProvider(name = "stringToNumber")
+    public static Object[][] testDataStringToNumber() {
+        Object[][] baseTestData = new Object[][]{
+                {"7", 7},
+                {"0", 0},
+                {"-2", -2},
+                {"345", 345},
+                {"2345678", 2345678}
+        };
+        return UserImplementation.combineImplWithTests(EIGHT_IMPLEMENTATION, baseTestData);
+    }
 
     @DataProvider(name = "twoDecimalPlacesTestData")
     public static Object[][] twoDecimalPlacesTestData() {

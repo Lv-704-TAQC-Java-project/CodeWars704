@@ -6,10 +6,6 @@ import com.org.ita.kata.Seven;
 import com.org.ita.kata.Six;
 import org.apache.commons.lang3.SerializationUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class UserImplementation {
 
     public static final Eight[] EIGHT_IMPLEMENTATION = new Eight[]{

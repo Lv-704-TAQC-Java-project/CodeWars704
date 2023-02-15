@@ -36,6 +36,7 @@ public class EightImplTest {
     @Test(dataProvider = "data-provider-countPositivesSumNegatives", dataProviderClass = EightData.class)
     public void testCountPositivesSumNegatives(Eight eightImpl, int[] numbers, int[] expected) {
         int[] actual = eightImpl.countPositivesSumNegatives(numbers);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "data-DivisibleBy", dataProviderClass = EightData.class)
@@ -56,6 +57,11 @@ public class EightImplTest {
         final double delta = 0.0001;
         float actual = eightImpl.mpgToKPM(mpg);
         Assert.assertEquals(actual, expected, delta, "Error: your data was " + mpg);
+    }
+    @Test(dataProvider = "stringToNumber", dataProviderClass = EightData.class)
+    public void testDataStringToNumber(Eight eightImpl, String str, int expected) {
+        int actual = eightImpl.stringToNumber(str);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "twoDecimalPlacesTestData", dataProviderClass = EightData.class)

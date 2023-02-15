@@ -51,6 +51,11 @@ public class SixImplTest {
         String actual = sixImpl.stockSummary(lstOfArt, lstOf1stLetter);
         Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.asList(lstOfArt));
     }
+    @Test(dataProvider = "balanceData", dataProviderClass = SixData.class)
+    public void testBalance(Six sixImpl, String book, String expected) {
+        String actual = sixImpl.balance(book);
+        Assert.assertEquals(actual, expected, "Error: your string was " + Arrays.asList(book));
+    }
 
     @Test(dataProvider = "stockSummaryDataNegative", dataProviderClass = SixData.class)
     public void testStockSummaryNegative(Six sixImpl, String[] lstOfArt, String[] lstOf1stLetter, String expected) {
@@ -58,4 +63,9 @@ public class SixImplTest {
         Assert.assertEquals(actual, expected, "Error: your array was " + Arrays.asList(lstOfArt));
     }
 
+    @Test(dataProvider = "balanceData", dataProviderClass = SixData.class)
+    public void testBalance(Six sixImpl, String book,String expected) {
+        String actual = sixImpl.balance( book );
+        Assert.assertEquals(actual, expected, "Error: your string was " + Arrays.asList(book));
+    }
 }

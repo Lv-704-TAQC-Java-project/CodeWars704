@@ -8,7 +8,7 @@ import static com.org.ita.utils.Message.*;
 
 public class TaskDescriptionMenu implements Runner {
 
-    Buffer br = new Buffer();
+    final Buffer br = new Buffer();
 
     @Override
     public void run() {
